@@ -1,36 +1,34 @@
 openapi: 3.0.0
 info:
-  title: Beckn Core API
-  description: Beckn Core API specification
-  version: 0.9.1
+  title: Beckn for Local Retail 
+  description: Adaptation of beckn protocol for the local retail domain
+  version: 0.9.3
+
 security:
   - SubscriberAuth: []
+  - GatewaySubscriberAuth: []
+  - GatewaySubscriberAuthNew: []
 paths:
   /search:
     post:
       tags:
         - Beckn Provider Platform (BPP)
         - Beckn Gateway (BG)
-      description: Search for services by intent
-      security:
-        - SubscriberAuth: []
-          GatewaySubscriberAuth: []
+      description: BAP declares intent to buy products from retail providers
       requestBody:
-        description: BAP searches for services
         content:
           application/json:
             schema:
               type: object
               properties:
                 context:
-                  $ref: '#/components/schemas/Context'
+                  description: Describes the retail context of the search request
+                  $ref: '#/components/schemas/SearchContext'
                 message:
                   type: object
                   properties:
                     intent:
                       $ref: '#/components/schemas/Intent'
-                  required:
-                    - intent
               required:
                 - context
                 - message
@@ -42,8 +40,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -72,62 +68,10 @@ paths:
                 message:
                   type: object
                   properties:
-                    selected:
-                      type: object
-                      properties:
-                        provider:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Provider/properties/id'
-                            locations:
-                              type: array
-                              maxItems: 1
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    $ref: '#/components/schemas/Location/properties/id'
-                                required:
-                                  - id
-                          required:
-                            - id
-                            - locations
-                        items:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/Item/properties/id'
-                              quantity:
-                                $ref: '#/components/schemas/ItemQuantity/properties/selected'
-                            required:
-                              - id
-                              - quantity
-                        add_ons:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/AddOn/properties/id'
-                            required:
-                              - id
-                        offers:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/Offer/properties/id'
-                            required:
-                              - id
-                      required:
-                        - provider
-                        - items
+                    order:
+                      $ref: '#/components/schemas/Order'
                   required:
-                    - selected
+                    - order
               required:
                 - context
                 - message
@@ -142,8 +86,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -173,67 +115,7 @@ paths:
                   type: object
                   properties:
                     order:
-                      type: object
-                      properties:
-                        provider:
-                          type: object
-                          properties:
-                            id:
-                              $ref: '#/components/schemas/Provider/properties/id'
-                            locations:
-                              type: array
-                              maxItems: 1
-                              items:
-                                type: object
-                                properties:
-                                  id:
-                                    $ref: '#/components/schemas/Location/properties/id'
-                                required:
-                                  - id
-                          required:
-                            - id
-                            - locations
-                        items:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/Item/properties/id'
-                              quantity:
-                                $ref: '#/components/schemas/ItemQuantity/properties/selected'
-                            required:
-                              - id
-                              - quantity
-                        add_ons:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/AddOn/properties/id'
-                            required:
-                              - id
-                        offers:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                $ref: '#/components/schemas/Offer/properties/id'
-                            required:
-                              - id
-                        billing:
-                          $ref: '#/components/schemas/Billing'
-                        fulfillment:
-                          $ref: '#/components/schemas/Fulfillment'
-                      required:
-                        - provider
-                        - items
-                        - add_ons
-                        - offers
-                        - billing
-                        - fulfillment
+                      $ref: '#/components/schemas/Order'
                   required:
                     - order
               required:
@@ -247,8 +129,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -292,8 +172,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -337,8 +215,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -385,8 +261,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -423,7 +297,6 @@ paths:
                       $ref: '#/components/schemas/Descriptor'
                   required:
                     - order_id
-                    - cancellation_reason_id
               required:
                 - context
                 - message
@@ -435,8 +308,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -484,8 +355,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -512,18 +381,7 @@ paths:
                 context:
                   $ref: '#/components/schemas/Context'
                 message:
-                  type: object
-                  properties:
-                    id:
-                      type: string
-                      description: ID of the item to be rated
-                    value:
-                      type: integer
-                      maximum: 5
-                      minimum: 1
-                  required:
-                    - id
-                    - value
+                  $ref: '#/components/schemas/Rating'
               required:
                 - context
                 - message
@@ -535,8 +393,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -554,13 +410,6 @@ paths:
       tags:
         - Beckn Provider Platform (BPP)
       description: Contact support
-      parameters:
-        - in: header
-          name: Signature
-          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
-          schema:
-            type: string
-          required: true
       requestBody:
         description: TODO
         content:
@@ -587,8 +436,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -607,9 +454,6 @@ paths:
         - Beckn App Platform (BAP)
         - Beckn Gateway (BG)
       description: Send catalog
-      security:
-        - SubscriberAuth: []
-        - GatewaySubscriberAuth: []
       requestBody:
         description: TODO
         content:
@@ -638,8 +482,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -668,7 +510,7 @@ paths:
                 message:
                   type: object
                   properties:
-                    selected:
+                    order:
                       type: object
                       properties:
                         provider:
@@ -694,7 +536,7 @@ paths:
                         quote:
                           $ref: '#/components/schemas/Quotation'
                   required:
-                    - selected
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -707,8 +549,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -719,20 +559,12 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_init:
     post:
       tags:
         - Beckn App Platform (BAP)
       description: Send order object with payment details updated
-      parameters:
-        - in: header
-          name: Proxy-Authorization
-          required: false
-          schema:
-            type: string
-            description: 'Signature of message body + X-Sub-Authorization header using BG''s signing public key. For example Proxy-Authorization : Signature subId=''bg-example.com'',algorithm=''rsa-sha256'' headers=''Authorization'' signature=''Base64(RSA-SHA256(signing string))'''
       requestBody:
         description: TODO
         content:
@@ -745,7 +577,7 @@ paths:
                 message:
                   type: object
                   properties:
-                    initialized:
+                    order:
                       type: object
                       properties:
                         provider:
@@ -790,7 +622,7 @@ paths:
                         payment:
                           $ref: '#/components/schemas/Payment'
                   required:
-                    - initialized
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -803,8 +635,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -815,7 +645,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_confirm:
     post:
@@ -850,8 +679,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -862,7 +689,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_track:
     post:
@@ -897,8 +723,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -909,7 +733,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_cancel:
     post:
@@ -944,8 +767,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -956,7 +777,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_update:
     post:
@@ -991,8 +811,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1003,7 +821,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_status:
     post:
@@ -1038,8 +855,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1050,7 +865,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_rating:
     post:
@@ -1067,12 +881,7 @@ paths:
                 context:
                   $ref: '#/components/schemas/Context'
                 message:
-                  type: object
-                  properties:
-                    feedback:
-                      $ref: '#/components/schemas/Feedback'
-                  required:
-                    - feedback
+                  $ref: '#/components/schemas/RatingAck'
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -1085,8 +894,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1097,7 +904,6 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
   /on_support:
     post:
@@ -1137,8 +943,6 @@ paths:
               schema:
                 type: object
                 properties:
-                  context:
-                    $ref: '#/components/schemas/Context'
                   message:
                     type: object
                     properties:
@@ -1149,98 +953,376 @@ paths:
                   error:
                     $ref: '#/components/schemas/Error'
                 required:
-                  - context
                   - message
 
   /get_cancellation_reasons:
     post:
       tags:
         - BPP Meta APIs
-      description: Look up subscriber(s) in a registry
-      parameters:
-        - in: header
-          name: Signature
-          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
-          schema:
-            type: string
-          required: true
+      description: Get cancellation reasons from the BPP
       requestBody:
-        description: TODO
+        description: Context header is sent as the request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Context'
+              type: object
+              properties:
+                context:
+                  $ref: '#/components/schemas/Context'
       responses:
         '200':
-          description: List of cancellation reasons
+          description: Acknowledgement of message received
           content:
             application/json:
               schema:
-                type: array
-                items:
-                   $ref: '#/components/schemas/Option'
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+
+  /cancellation_reasons:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Get cancellation reasons from the BPP
+      requestBody:
+        description: List of cancellation reasons
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    cancellation_reasons:
+                      type: array
+                      items:
+                          $ref: '#/components/schemas/Option'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
 
   /get_return_reasons:
     post:
       tags:
         - BPP Meta APIs
-      description: Look up subscriber(s) in a registry
-      parameters:
-        - in: header
-          name: Signature
-          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
-          schema:
-            type: string
-          required: true
+      description: Get return reasons from the BPP
       requestBody:
-        description: TODO
+        description: Context header is sent as the request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Context'
+              type: object
+              properties:
+                context:
+                  $ref: '#/components/schemas/Context'
       responses:
         '200':
-          description: List of return reasons
+          description: Acknowledgement of message received
           content:
             application/json:
               schema:
-                type: array
-                items:
-                   $ref: '#/components/schemas/Option'
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+
+  /return_reasons:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Get return reasons from the BPP
+      requestBody:
+        description: List of return reasons
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
+                return_reasons:
+                  type: array
+                  items:
+                      $ref: '#/components/schemas/Option'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
 
   /get_rating_categories:
     post:
       tags:
         - BPP Meta APIs
-      description: Get a list of feedback forms based on rating inputs
-      parameters:
-        - in: header
-          name: Signature
-          description: This contains the digital signature of the request body signed using the signing private key of the Subscriber
-          schema:
-            type: string
-          required: true
+      description: Get a list of categories that can be rated by the BAP
       requestBody:
-        description: TODO
+        description: Context header is sent as the request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Context'
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
       responses:
         '200':
-          description: Feedback forms
+          description: Acknowledgement of message received
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  allOf:
-                  - $ref: '#/components/schemas/Category'
-                  - type: object
+                type: object
+                properties:
+                  message:
+                    type: object
                     properties:
-                      question:
-                        type: string
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
 
+  /rating_categories:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Get a list of categories that can be rated by the BAP
+      requestBody:
+        description: Array of categories which can be rated
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
+                rating_categories:  
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Rating/properties/rating_category'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+
+  /get_feedback_categories:
+    post:
+      tags:
+        - BPP Meta APIs
+      description: Get a list of categories for which feedback can be given by the BAP
+      requestBody:
+        description: Context header is sent as the request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+
+  /feedback_categories:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Get a list of categories for which feedback can be given by the BAP
+      requestBody:
+        description: Array of categories for which feedback can be given by the BAP
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                    $ref: '#/components/schemas/Context'
+                feedback_categories:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Rating/properties/rating_category'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+                    
+  /get_feedback_form:
+    post:
+      tags:
+        - BPP Meta APIs
+      description: Request a feedback form from the BPP
+      requestBody:
+        description: The rating value and category is sent by the BAP
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: '#/components/schemas/Context'
+                message:
+                  type: object
+                  properties:
+                    rating_value:
+                      $ref: '#/components/schemas/Rating/properties/value'
+                    rating_category:
+                      $ref: '#/components/schemas/Rating/properties/rating_category'
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
+
+  /feedback_form:
+    post:
+      tags:
+        - BAP Meta APIs
+      description: Get a feedback form from the BPP
+      requestBody:
+        description: Feedback form sent by the BPP 
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                context:
+                  $ref: '#/components/schemas/Context'
+                message:
+                    $ref: '#/components/schemas/Feedback'
+
+      responses:
+        '200':
+          description: Acknowledgement of message received
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    properties:
+                      ack:
+                        $ref: '#/components/schemas/Ack'
+                    required:
+                      - ack
+                  error:
+                    $ref: '#/components/schemas/Error'
+                required:
+                  - message
 
 components:
   securitySchemes:
@@ -1248,13 +1330,40 @@ components:
       type: apiKey
       in: header
       name: Authorization
-      description: 'Signature of message body using BAP or BPP subscriber''s signing public key. <br/><br/>For example:<br/><br/><code>Authorization : Signature keyId=''bap-example.com'', signature=''Base64(EdDSA-SHA512(requestBody))''</code>'
+      description: 'Signature of message body using BAP or BPP subscriber''s signing public key. <br/><br/>Format:<br/><br/><code>Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(BLAKE-512(signing string))"</code>'
     GatewaySubscriberAuth:
       type: apiKey
       in: header
       name: Proxy-Authorization
-      description: 'Signature of message body + BAP/BPP''s Authorization header using BG''s signing public key. For example:<br/><br/><code>Proxy-Authorization : Signature keyId=''bg-example.com'' headers=''Authorization'',signature=''Base64(EdDSA-SHA512(requestBody)''</code>'
+      description: 'Signature of message body + BAP/BPP''s Authorization header using BG''s signing public key. Format:<br/><br/><code>Proxy-Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(BLAKE-512(signing string))"</code><p><b>Note:</b>This header will be deprecated soon and will no longer be supported in future releases. New implementors are requested to use the X-Gateway-Authorization header. Existing implementations are requested to migrate their header to the new header. The deprecation date will be set after discussion as per the standard specification governance process.</p>'
+    GatewaySubscriberAuthNew:
+      type: apiKey
+      in: header
+      name: X-Gateway-Authorization
+      description: 'Signature of message body + BAP/BPP''s Authorization header using BG''s signing public key. Format:<br/><br/><code>X-Gateway-Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(BLAKE-512(signing string))"</code>'
   schemas:
+    RetailSearchContext:
+      description: Describes the context of a Retail Search Request
+      allOf:
+        - $ref: '#/components/schemas/RetailContext'
+        - properties:
+            action:
+              type: string
+              enum:
+                - search
+          required:
+            - action
+    
+    RetailSelectContext:
+      description: Describes the context of a Retail Search Request
+      allOf:
+        - $ref: '#/components/schemas/RetailContext'
+        - properties:
+            action:
+              type: string
+              enum:
+                - select
+
     Ack:
       description: Describes the ACK response
       type: object
@@ -1312,6 +1421,36 @@ components:
         area_code:
           type: string
           description: 'Area code. This can be Pincode, ZIP code or any equivalent'
+    Agent:
+      description: Describes an order executor
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - $ref: '#/components/schemas/Contact'
+        - type: object
+          properties:
+            rateable:
+              $ref: '#/components/schemas/Rateable'
+    Authorization:
+      description: Describes an authorization mechanism
+      type: object
+      properties:
+        type: 
+          type: string
+          description: Type of authorization mechanism used
+        token:
+          type: string
+          description: Token used for authorization
+        valid_from:
+          type: string
+          format: date-time 
+          description: Timestamp in RFC3339 format from which token is valid
+        valid_to:
+          type: string
+          format: date-time 
+          description: Timestamp in RFC3339 format until which token is valid
+        status:
+          type: string
+          description: Status of the token
     Billing:
       description: Describes a billing event
       type: object
@@ -1395,9 +1534,7 @@ components:
         bpp/providers:
           type: array
           items:
-            allOf:
-              - $ref: '#/components/schemas/Provider'
-              - $ref: '#/components/schemas/ProviderCatalog'
+            $ref: '#/components/schemas/Provider'
         exp:
           type: string
           description: Time after which catalog has to be refreshed
@@ -1419,11 +1556,15 @@ components:
           $ref: '#/components/schemas/Tags'
     Circle:
       description: Describes a circular area on the map
-      allOf:
-        - $ref: '#/components/schemas/Gps'
-        - properties:
-            radius:
-              $ref: '#/components/schemas/Scalar'
+      type: object
+      properties:
+        gps:
+          $ref: '#/components/schemas/Gps'
+        radius:
+          $ref: '#/components/schemas/Scalar'
+      required:
+        - gps
+        - radius
     City:
       description: Describes a city
       type: object
@@ -1455,7 +1596,7 @@ components:
           $ref: '#/components/schemas/City/properties/code'
         action:
           type: string
-          description: Defines the Beckn API call. Any actions other than the ennumerated actions are not supported by Beckn Protocol
+          description: Defines the Beckn API call. Any actions other than the enumerated actions are not supported by Beckn Protocol
           enum:
             - search
             - select
@@ -1465,7 +1606,7 @@ components:
             - status
             - track
             - cancel
-            - feedback
+            - rating
             - support
             - on_search
             - on_select
@@ -1475,34 +1616,33 @@ components:
             - on_status
             - on_track
             - on_cancel
-            - on_feedback
+            - on_rating
             - on_support
-            - ack
         core_version:
           type: string
           description: Version of Beckn core API specification being used
         bap_id:
           type: string
           format: uri
-          description: This is registered domain name of the BAP. Must be an HTTPS domain in open networks
+          description: Unique id of the BAP. By default it is the fully qualified domain name of the BAP
         bap_uri:
           type: string
           format: uri
-          description: URI of the BAP. Must have the same domain name as the bap_id
+          description: URI of the BAP for accepting callbacks. Must have the same domain name as the bap_id
         bpp_id:
           type: string
           format: uri
-          description: This is registered domain name of the BPP. Must be an HTTPS domain in open networks
+          description: Unique id of the BPP. By default it is the fully qualified domain name of the BPP
         bpp_uri:
           type: string
           format: uri
           description: URI of the BPP. Must have the same domain name as the bap_id
         transaction_id:
           type: string
-          description: 'This is a unique value which persists across all API calls from search through confirm. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback transaction_id with the request transaction_id'
+          description: This is a unique value which persists across all API calls from search through confirm
         message_id:
           type: string
-          description: 'This is a unique value which persists during a request / callback cycle. The format for transaction id is an ecrypted value of the following string. ''{bap_id}/{action}/{timestamp}/{ttl}/{random nonce}'' using a key known only to the BAP. The BAP will decrypt this value to compare the callback message_id with the request message_id'
+          description: This is a unique value which persists during a request / callback cycle
         timestamp:
           type: string
           format: date-time
@@ -1511,7 +1651,8 @@ components:
           type: string
           description: The encryption public key of the sender
         ttl:
-          $ref: '#/components/schemas/Duration'
+          type: string
+          description: The duration in ISO8601 format after timestamp for which this message holds valid
       required:
         - domain
         - action
@@ -1539,7 +1680,7 @@ components:
       pattern: '[+-]?([0-9]*[.])?[0-9]+'
 
     Descriptor:
-      description: Describes the description of a real-world object. Maintained by Beckn Foundation
+      description: Describes the description of a real-world object.
       type: object
       properties:
         name:
@@ -1573,6 +1714,17 @@ components:
           $ref: '#/components/schemas/Scalar'
         height:
           $ref: '#/components/schemas/Scalar'
+    
+    Document:
+      description: Describes a document which can be sent as a url
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+        label:
+          type: string
+    
     Domain:
       description: Describes the domain of an object
       type: string
@@ -1601,7 +1753,7 @@ components:
           description: Path to json schema generating the error. Used only during json schema validation errors
         message:
           type: string
-          description: Human readable message descirbing the error
+          description: Human readable message describing the error
       required:
         - type
         - code
@@ -1610,12 +1762,62 @@ components:
       description: Feedback for a service
       type: object
       properties:
+        feedback_form:
+          $ref: '#/components/schemas/FeedbackForm'
+        feedback_url:
+          $ref: '#/components/schemas/FeedbackUrl'
+          
+    FeedbackForm: 
+      description: Describes a feedback form that a BPP can send to get feedback from the BAP
+      type: array
+      items:
+        $ref: '#/components/schemas/FeedbackFormElement'
+    
+    FeedbackFormElement:
+      description: An element in the feedback form. It can be question or an answer to the question.
+      type: object
+      properties:
         id:
           type: string
-        descriptor:
-          type: string
         parent_id:
+          $ref: '#/components/schemas/FeedbackFormElement/properties/id'
+        question:
+          description: Specifies the question to which the answer options will be contained in the child FeedbackFormElements
           type: string
+        answer:
+          description: Specifies an answer option to which the question will be in the FeedbackFormElement specified in parent_id  
+          type: string
+        answer_type:
+          description: Specifies how the answer option should be rendered.
+          type: string
+          enum :
+            - radio
+            - checkbox
+            - text
+      
+    FeedbackUrl:
+      description: Describes how a feedback URL will be sent by the BPP
+      type: object
+      properties:
+        url:
+          description: feedback URL sent by the BPP
+          type: string
+          format: uri
+        tl_method:
+          type: string
+          enum:
+            - http/get
+            - http/post
+        params:
+          type: object
+          properties:
+            feedback_id:
+              type: string
+              description: This value will be placed in the the $feedback_id url param in case of http/get and in the requestBody http/post requests
+          additionalProperties:
+            type: string
+          required:
+            - feedback_id
 
 
 
@@ -1630,17 +1832,29 @@ components:
         type:
           type: string
           description: This describes the type of fulfillment
+        provider_id:
+          $ref: '#/components/schemas/Provider/properties/id'
+        rating:
+          $ref: '#/components/schemas/Rating/properties/value'
         state:
           $ref: '#/components/schemas/State'
         tracking:
           type: boolean
           description: Indicates whether the fulfillment allows tracking
           default: false
+        customer:
+          type: object
+          properties:
+            person:
+              $ref: '#/components/schemas/Person'
+            contact:
+              $ref: '#/components/schemas/Contact'
         agent:
-          description: The person who fulfills the order
-          allOf:
-            - $ref: '#/components/schemas/Person'
-            - $ref: '#/components/schemas/Contact'
+          $ref: '#/components/schemas/Agent'
+        person:
+          $ref: '#/components/schemas/Person'
+        contact:
+          $ref: '#/components/schemas/Contact'
         vehicle:
           $ref: '#/components/schemas/Vehicle'
         start:
@@ -1655,6 +1869,10 @@ components:
               $ref: '#/components/schemas/Descriptor'
             contact:
               $ref: '#/components/schemas/Contact'
+            person:
+              $ref: '#/components/schemas/Person'
+            authorization:
+              $ref: '#/components/schemas/Authorization'
         end:
           description: Details on the end of fulfillment
           type: object
@@ -1667,8 +1885,12 @@ components:
               $ref: '#/components/schemas/Descriptor'
             contact:
               $ref: '#/components/schemas/Contact'
-        purpose:
-          type: string
+            person:
+              $ref: '#/components/schemas/Person'
+            authorization:
+              $ref: '#/components/schemas/Authorization'
+        rateable:
+          $ref: '#/components/schemas/Rateable'
         tags:
           $ref: '#/components/schemas/Tags'
     Gps:
@@ -1682,47 +1904,12 @@ components:
       description: Intent of a user. Used for searching for services
       type: object
       properties:
-        query_string:
-          type: string
+        descriptor:
+          $ref: '#/components/schemas/Descriptor'
         provider:
-          type: object
-          properties:
-            id:
-              $ref: '#/components/schemas/Provider/properties/id'
-            descriptor:
-              $ref: '#/components/schemas/Descriptor'
-            locations:
-              type: array
-              maxItems: 1
-              items:
-                type: object
-                properties:
-                  id:
-                    $ref: '#/components/schemas/Location/properties/id'
+          $ref: '#/components/schemas/Provider'
         fulfillment:
-          type: object
-          properties:
-            id:
-              $ref: '#/components/schemas/Fulfillment/properties/id'
-            start:
-              type: object
-              properties:
-                location:
-                  $ref: '#/components/schemas/Location'
-                time:
-                  $ref: '#/components/schemas/Time'
-            end:
-              type: object
-              properties:
-                location:
-                  $ref: '#/components/schemas/Location'
-                time:
-                  $ref: '#/components/schemas/Time'
-            tags:
-              $ref: '#/components/schemas/Tags'
-            vehicle:
-              $ref: '#/components/schemas/Vehicle'
-
+          $ref: '#/components/schemas/Fulfillment'
         payment:
           $ref: '#/components/schemas/Payment'
         category:
@@ -1731,8 +1918,6 @@ components:
           $ref: '#/components/schemas/Offer'
         item:
           $ref: '#/components/schemas/Item'
-        purpose:
-          type: string
         tags:
           $ref: '#/components/schemas/Tags'
             
@@ -1796,10 +1981,16 @@ components:
           $ref: '#/components/schemas/Price'
         category_id:
           $ref: '#/components/schemas/Category/properties/id'
+        fulfillment_id:
+          $ref: '#/components/schemas/Fulfillment/properties/id'
+        rating:
+          $ref: '#/components/schemas/Rating/properties/value'
         location_id:
           $ref: '#/components/schemas/Location/properties/id'
         time:
           $ref: '#/components/schemas/Time'
+        rateable:
+          $ref: '#/components/schemas/Rateable'
         matched:
           type: boolean
         related:
@@ -1815,7 +2006,7 @@ components:
         code:
           type: string
     Location:
-      description: Describes the location of a runtime object. Extension not allowed
+      description: Describes the location of a runtime object.
       type: object
       properties:
         id:
@@ -1838,16 +2029,8 @@ components:
           type: string
         3dspace:
           type: string
-
-    MonetaryValue:
-      description: Describes a monetary value used for exchange
-      type: object
-      properties:
-        currency:
-          type: string
-        value:
-          $ref: '#/components/schemas/DecimalValue'
-
+        time:
+          $ref: '#/components/schemas/Time'
     Name:
       type: string
       description: 'Describes the name of a person in format: ./{given_name}/{honorific_prefix}/{first_name}/{middle_name}/{last_name}/{honorific_suffix}'
@@ -1923,9 +2106,6 @@ components:
                     $ref: '#/components/schemas/Location/properties/id'
                 required:
                   - id
-          required:
-            - id
-            - locations
         items:
           type: array
           items:
@@ -1937,7 +2117,6 @@ components:
                 $ref: '#/components/schemas/ItemQuantity/properties/selected'
             required:
               - id
-              - quantity
         add_ons:
           type: array
           items:
@@ -1956,20 +2135,14 @@ components:
                 $ref: '#/components/schemas/Offer/properties/id'
             required:
               - id
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
         billing:
           $ref: '#/components/schemas/Billing'
         fulfillment:
-          allOf:
-            - $ref: '#/components/schemas/Fulfillment'
-            - properties:
-                customer:
-                  allOf:
-                    - $ref: '#/components/schemas/Person'
-                    - $ref: '#/components/schemas/Contact'
-                    - required:
-                      - name
-              required:
-                - customer
+          $ref: '#/components/schemas/Fulfillment'
         quote:
           $ref: '#/components/schemas/Quotation'
         payment:
@@ -1980,15 +2153,6 @@ components:
         updated_at:
           type: string
           format: date-time
-      required:
-        - provider
-        - items
-        - add_ons
-        - offers
-        - billing
-        - fulfillment
-        - quote
-        - payment
 
     Organization:
       description: Describes an organization
@@ -2028,10 +2192,16 @@ components:
             transaction_id:
               type: string
               description: This value will be placed in the the $transaction_id url param in case of http/get and in the requestBody http/post requests
+            transaction_status:
+              type: string
             amount:
-              $ref: '#/components/schemas/MonetaryValue/properties/value'
+              $ref: '#/components/schemas/Price/properties/value'
+            currency:
+              $ref: '#/components/schemas/Price/properties/currency'
           additionalProperties:
             type: string
+          required:
+            - currency
         type:
           type: string
           enum:
@@ -2043,12 +2213,12 @@ components:
           type: string
           enum:
             - PAID
-            - NOT-PATD
+            - NOT-PAID
         time:
           $ref: '#/components/schemas/Time'
 
     Person:
-      description: Describes a person. Extension not allowed
+      description: Describes a person.
       type: object
       properties:
         name:
@@ -2080,25 +2250,41 @@ components:
 
     Price:
       description: Describes the price of an item. Allows for domain extension.
-      allOf:
-        - $ref: '#/components/schemas/MonetaryValue'
-        - properties:
-            estimated_value:
-              $ref: '#/components/schemas/DecimalValue'
-            computed_value:
-              $ref: '#/components/schemas/DecimalValue'
-            listed_value:
-              $ref: '#/components/schemas/DecimalValue'
-            offered_value:
-              $ref: '#/components/schemas/DecimalValue'
-            minimum_value:
-              $ref: '#/components/schemas/DecimalValue'
-            maximum_value:
-              $ref: '#/components/schemas/DecimalValue'
-    ProviderCatalog:
-      description: Describes a provider catalog
       type: object
       properties:
+        currency:
+          type: string
+        value:
+          $ref: '#/components/schemas/DecimalValue'
+        estimated_value:
+          $ref: '#/components/schemas/DecimalValue'
+        computed_value:
+          $ref: '#/components/schemas/DecimalValue'
+        listed_value:
+          $ref: '#/components/schemas/DecimalValue'
+        offered_value:
+          $ref: '#/components/schemas/DecimalValue'
+        minimum_value:
+          $ref: '#/components/schemas/DecimalValue'
+        maximum_value:
+          $ref: '#/components/schemas/DecimalValue'
+          
+    Provider:
+      description: 'Describes a service provider. This can be a restaurant, a hospital, a Store etc'
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Id of the provider'
+        descriptor:
+          $ref: '#/components/schemas/Descriptor'
+        category_id:
+          type: string
+          description: 'Category Id of the provider'
+        rating:
+          $ref: '#/components/schemas/Rating/properties/value'
+        time:
+          $ref: '#/components/schemas/Time'
         categories:
           type: array
           items:
@@ -2115,10 +2301,11 @@ components:
           type: array
           items:
             allOf:
-              - $ref: '#/components/schemas/Location'
-              - properties:
-                  time:
-                    $ref: '#/components/schemas/Time'
+            - $ref: '#/components/schemas/Location'
+            - type: object
+              properties:
+                rateable:
+                  $ref: '#/components/schemas/Rateable'
         offers:
           type: array
           items:
@@ -2131,22 +2318,8 @@ components:
           type: string
           description: Time after which catalog has to be refreshed
           format: date-time
-
-    Provider:
-      description: 'Describes a service provider. This can be a restaurant, a hospital, a Store etc'
-      type: object
-      properties:
-        id:
-          type: string
-          description: 'Id of the provider. The syntax of the ID is {unique provider identifier. If the provider name has an @, it has to be escaped}@{bpp_id}'
-        descriptor:
-          $ref: '#/components/schemas/Descriptor'
-        time:
-          $ref: '#/components/schemas/Time'
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Location'
+        rateable:
+          $ref: '#/components/schemas/Rateable'
         tags:
           $ref: '#/components/schemas/Tags'
 
@@ -2161,15 +2334,6 @@ components:
           items:
             type: object
             properties:
-              type:
-                type: string
-                enum:
-                  - item
-                  - offer
-                  - add-on
-                  - fulfillment
-              ref_id:
-                type: string
               title:
                 type: string
               price:
@@ -2177,29 +2341,41 @@ components:
         ttl:
           $ref: '#/components/schemas/Duration'
 
+    Rateable:
+      description: If the entity can be rated or not
+      type: boolean
+
     Rating:
-      description: Describes the rating of a person or an object. Extension not allowed
+      description: Describes the rating of a person or an object.
       type: object
       properties:
+        rating_category:
+          description: Category of the object being rated
+          type: string
+        id:
+          description: Id of the object being rated
+          type: string
         value:
+          description: Rating value given to the object
           type: number
           minimum: 0
-        unit:
-          type: string
-          default: U+2B50
-          description: 'Follows the unicode 13.0 format for emojis : https://unicode.org/emoji/charts/full-emoji-list.html'
-        max_value:
-          type: number
-          default: 5
-        direction:
-          type: string
-          enum:
-            - UP
-            - DOWN
-          default: UP
+        feedback_form: 
+          $ref: '#/components/schemas/FeedbackForm'
+        feedback_id:
+          $ref: '#/components/schemas/FeedbackUrl/properties/params/properties/feedback_id'
+          
+    RatingAck:
+      type: object
+      properties:
+        feedback_ack:
+          description: If feedback has been recorded or not
+          type: boolean
+        rating_ack:
+          description: If rating has been recorded or not
+          type: boolean
 
     Scalar:
-      description: An object representing a scalar quantity. Extension allowed only to the limit of vector
+      description: An object representing a scalar quantity.
       type: object
       properties:
         type:
@@ -2280,7 +2456,7 @@ components:
           $ref: '#/components/schemas/Country/properties/code'
         signing_public_key:
           type: string
-          description: 'Signing Public key of the subscriber. <br/><br/>Any subscriber platform (BAP, BPP, BG) who wants to transact on the network must digitally sign the ```requestBody``` using the corresponding private key of this public key and send it in the transport layer header. In case of ```HTTP``` it is the ```Authorization``` header. <br><br/>The ```Authorization``` will be used to validate the signature of a BAP or BPP.<br/><br/>Furthermore, if an API call is being proxied or multicast by a Beckn Gateway, the BG must use it\''s signing key to digitally sign the ```requestBody``` using the corresponding private key of this public key and send it in the ```Proxy-Authorization``` header.'
+          description: 'Signing Public key of the subscriber. <br/><br/>Any subscriber platform (BAP, BPP, BG) who wants to transact on the network must digitally sign the ```requestBody``` using the corresponding private key of this public key and send it in the transport layer header. In case of ```HTTP``` it is the ```Authorization``` header. <br><br/>The ```Authorization``` will be used to validate the signature of a BAP or BPP.<br/><br/>Furthermore, if an API call is being proxied or multicast by a Beckn Gateway, the BG must use it\''s signing key to digitally sign the ```requestBody``` using the corresponding private key of this public key and send it in the ```X-Gateway-Authorization``` header.'
         encryption_public_key:
           type: string
           description: Encryption public key of the BAP subscriber. Any BPP must encrypt the ```requestBody.message``` value of the ```on_search``` API using this public key.
@@ -2346,6 +2522,8 @@ components:
         days:
           type: string
           description: comma separated values representing days of the week
+        schedule:
+          $ref: '#/components/schemas/Schedule'
 
     TrackingData:
       description: Describes tracking data object during live tracking of an order
@@ -2355,11 +2533,6 @@ components:
       description: Describes the tracking info of an object
       type: object
       properties:
-        tl_method:
-          type: string
-          enum:
-            - http/get
-            - ws
         url:
           type: string
           format: uri
