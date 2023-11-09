@@ -16,7 +16,12 @@
   "message": {
     "order": {
       "provider": {
-        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+        "locations": [
+          {
+            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+          }
+        ]
       },
       "items": [
         {

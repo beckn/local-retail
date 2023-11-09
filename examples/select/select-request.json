@@ -26,7 +26,7 @@
           }
         }
       ],
-      "fulfillments": {
+      "fulfillment": {
         "id": "f1"
       }
     }

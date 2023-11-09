@@ -17,15 +17,7 @@
   "message": {
       "order": {
           "provider": {
-            "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
-            "descriptor": {
-              "name": "Venky.Mahadevan@Bazaar"
-            },
-            "locations": [
-              {
-                "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
-              }
-            ]
+            "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
           },
           "items": [
             {
