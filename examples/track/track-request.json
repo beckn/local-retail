@@ -1,10 +1,10 @@
 {
     "context": {
-      "domain": "nic2004:52110",
+      "domain": "local-retail",
       "country": "IND",
       "city": "std:080",
       "action": "track",
-      "core_version": "0.9.3",
+      "core_version": "0.9.4",
       "bap_id": "farm-fresh-bap-id",
       "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
       "bpp_id": "farm-fresh-bpp-subId",
