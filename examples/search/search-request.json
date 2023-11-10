@@ -15,7 +15,20 @@
     "intent": {
       "category": {
         "descriptor": {
-          "code": "retail"
+          "code": "electronics"
+        }
+      },
+      "item": {
+        "descriptor": {
+          "name": "earphone"
+        }
+      },
+      "fulfillment": {
+        "type": "Delivery",
+        "end": {
+          "location": {
+            "gps": "28.4594965,77.0266383"
+          }
         }
       }
     }
