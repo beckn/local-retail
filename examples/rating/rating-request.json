@@ -1,10 +1,12 @@
 {
     "context": {
       "domain": "local-retail",
-      "country": "IND",
-      "city": "std:080",
+      "location": {
+        "country": "IND",
+        "city": "std:080"
+      },
       "action": "rating",
-      "core_version": "0.9.4",
+      "version": "1.1.0",
       "bap_id": "farm-fresh-bap-id",
       "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
       "bpp_id": "farm-fresh-bpp-subId",
@@ -15,21 +17,12 @@
       "ttl": "PT10M"
     },
     "message": {
-        "rating": {
-            "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
-            "rating_category": "Order",
-            "value": "8",
-            "feedback_form": [
-                {
-                    "id": "q1",
-                    "question": "what did you like about the product ?"
-                },
-                {
-                    "id": "a1",
-                    "parent_id": "q1",
-                    "answer_type": "text"
-                }
-            ]
-        }
+        "ratings": [
+            {
+                "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+                "rating_category": "Order",
+                "value": "8"
+            }
+        ]
     }
-  }
+}

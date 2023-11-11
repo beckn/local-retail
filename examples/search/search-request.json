@@ -1,10 +1,12 @@
 {
   "context": {
     "domain": "local-retail",
-    "country": "IND",
-    "city": "std:080",
+    "location": {
+      "country": "IND",
+      "city": "std:080"
+    },
     "action": "search",
-    "core_version": "0.9.4",
+    "version": "1.1.0",
     "bap_id": "farm-fresh-bap-id",
     "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
     "transaction_id":"8100d125-76a7-4588-88be-81b97657cd09",
@@ -25,11 +27,13 @@
       },
       "fulfillment": {
         "type": "Delivery",
-        "end": {
-          "location": {
-            "gps": "28.4594965,77.0266383"
+        "stops": [
+          {
+            "location": {
+              "gps": "28.4594965,77.0266383"
+            }
           }
-        }
+        ]
       }
     }
   }
