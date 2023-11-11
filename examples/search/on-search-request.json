@@ -19,7 +19,7 @@
   "message": {
     "catalog": {
       "descriptor": {
-          "name": "HBO"
+        "name": "HBO"
       },
       "providers": [
         {
@@ -29,8 +29,8 @@
           },
           "locations": [
             {
-            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
-            "gps": "12.909955,77.596316"
+              "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
+              "gps": "12.909955,77.596316"
             }
           ],
           "categories": [
@@ -64,7 +64,7 @@
               "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
               "descriptor": {
                 "images": [
-                "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
                 ],
                 "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
                 "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
@@ -72,9 +72,9 @@
               },
               "matched": true,
               "price": {
-                  "listed_value": "1200.0",
-                  "currency": "INR",
-                  "value": "1200.0"
+                "listed_value": "1200.0",
+                "currency": "INR",
+                "value": "1200.0"
               },
               "recommended": true,
               "location_id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",

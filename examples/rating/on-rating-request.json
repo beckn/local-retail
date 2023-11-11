@@ -17,10 +17,10 @@
     "ttl": "PT10M"
   },
   "message": {
-      "feedback_form": {
-        "form": {
-          "url": "https://inds-network-bpp.becknprotocol.io/feedback/portal"
-        }
+    "feedback_form": {
+      "form": {
+        "url": "https://inds-network-bpp.becknprotocol.io/feedback/portal"
       }
+    }
   }
 }
