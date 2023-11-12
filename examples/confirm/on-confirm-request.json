@@ -16,7 +16,7 @@
   },
   "message": {
     "order": {
-      "id":"b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
       "provider": {
         "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
       },
@@ -65,7 +65,7 @@
         }
       },
       "quote": {
-        "price" :{
+        "price": {
           "currency": "INR",
           "value": "1500.0"
         },
