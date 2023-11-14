@@ -2,8 +2,12 @@
   "context": {
     "domain": "local-retail",
     "location": {
-      "country": "IND",
-      "city": "std:080"
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
     },
     "action": "confirm",
     "version": "1.1.0",
@@ -38,9 +42,15 @@
               "location": {
                 "gps": "13.2008459,77.708736",
                 "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
-                "city": "Gangamuthanahalli",
-                "state": "Karnataka",
-                "country": "IND",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
                 "area_code": "75001"
               },
               "contact": {

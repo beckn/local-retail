@@ -2,8 +2,12 @@
   "context": {
     "domain": "local-retail",
     "location": {
-      "country": "IND",
-      "city": "std:080"
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
     },
     "action": "on_search",
     "version": "1.1.0",
@@ -64,7 +68,9 @@
               "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
               "descriptor": {
                 "images": [
-                  "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  {
+                    "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  }
                 ],
                 "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
                 "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",

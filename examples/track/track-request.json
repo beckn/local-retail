@@ -1,10 +1,13 @@
 {
   "context": {
     "domain": "local-retail",
-    "country": "IND",
     "location": {
-      "country": "IND",
-      "city": "std:080"
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
     },
     "action": "track",
     "version": "1.1.0",
