@@ -4,14 +4,14 @@ This document contains the REQUIRED and RECOMMENDED standard functionality that 
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119].
 
-## 1.1 Discovery of Education & Skilling Services
+## 1.1 Discovery of local retail providers
 
 ### 1.1.1 Recommendations for BPPs
 The following recommendations need to be considered when implementing discovery functionality for a retail BPP
 
 - REQUIRED. The BPP MUST implement the `search` endpoint to receive an `Intent` object sent by BAPs
 - REQUIRED. The BPP MUST return a catalog of retail products on the `on_search` callback endpoint specified in the `context.bap_uri` field of the `search` request body.
-- REQUIRED. The BPP MUST map its education & skilling service products to the `Item` schema.
+- REQUIRED. The BPP MUST map its local retail products to the `Item` schema.
 - REQUIRED. Any retail service provider-related information like name, logo, short description must be mapped to the `Provider.descriptor` schema
 - REQUIRED. Any form that must be filled before receiving a quotation must be mapped to the `XInput` schema
 - REQUIRED. If the platform wants to group its products under a specific category, it must map each category to the `Category` schema
@@ -32,12 +32,195 @@ The following recommendations need to be considered when implementing discovery 
 ### Example
 A search request for a local retail  may look like this
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "search",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "timestamp": "2023-11-06T09:41:09.673Z"
+  },
+  "message": {
+    "intent": {
+      "category": {
+        "descriptor": {
+          "code": "electronics"
+        }
+      },
+      "item": {
+        "descriptor": {
+          "name": "earphone"
+        }
+      },
+      "fulfillment": {
+        "type": "Delivery",
+        "stops": [
+          {
+            "location": {
+              "gps": "28.4594965,77.0266383"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 An example catalog of a local retail  service may look like this
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_search",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "catalog": {
+      "descriptor": {
+        "name": "HBO"
+      },
+      "providers": [
+        {
+          "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "locations": [
+            {
+              "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
+              "gps": "12.909955,77.596316"
+            }
+          ],
+          "categories": [
+            {
+              "id": "c1",
+              "descriptor": {
+                "code": "grocery",
+                "name": "grocery"
+              }
+            },
+            {
+              "id": "c2",
+              "descriptor": {
+                "code": "electronics",
+                "name": "electronics"
+              }
+            }
+          ],
+          "fulfillments": [
+            {
+              "id": "f1",
+              "type": "Delivery"
+            },
+            {
+              "id": "f2",
+              "type": "Self-Pickup"
+            }
+          ],
+          "items": [
+            {
+              "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+              "descriptor": {
+                "images": [
+                  {
+                    "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                  }
+                ],
+                "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+                "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+                "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+              },
+              "matched": true,
+              "price": {
+                "listed_value": "1200.0",
+                "currency": "INR",
+                "value": "1200.0"
+              },
+              "recommended": true,
+              "location_id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
+              "category_id": "c1",
+              "fulfillment_id": "f1",
+              "tags": [
+                {
+                  "descriptor": {
+                    "name": "item-cataegory"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "category"
+                      },
+                      "value": "retail"
+                    }
+                  ]
+                },
+                {
+                  "descriptor": {
+                    "name": "item-properties"
+                  },
+                  "list": [
+                    {
+                      "descriptor": {
+                        "name": "waterbottle"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Trekking"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Sipper"
+                      },
+                      "value": "y"
+                    },
+                    {
+                      "descriptor": {
+                        "name": "Hiking"
+                      },
+                      "value": "y"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## 1.2 Application for local-retail 
@@ -77,32 +260,637 @@ This section provides recommendations for implementing the APIs related to a loc
 
 Below is an example of a `select` request
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "select",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.217Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "selected": {
+            "quantity": {
+              "count": 2
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+        }
+      ]
+    }
+  }
+}
 ```
 
 Below is an example of an `on_select` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_select",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+        "descriptor": {
+          "name": "Venky.Mahadevan@Bazaar"
+        },
+        "locations": [
+          {
+            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+              }
+            ],
+            "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+            "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+            "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "INR",
+            "value": "1200.0"
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "f1"
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "1500.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "INR",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "INR",
+              "value": "300.0"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
 ```
 
 
 Below is an example of a `init` request
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "init",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "message_id": "06f49c01-65b7-4754-8b37-ab4e33688154",
+    "timestamp": "2023-11-06T09:45:40.407Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "selected": {
+            "quantity": {
+              "count": 2
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "75001"
+              },
+              "contact": {
+                "phone": "919246394908",
+                "email": "nc.rehman@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Motiur Rehman"
+            },
+            "contact": {
+              "phone": "919122343344"
+            }
+          }
+        }
+      ],
+      "billing": {
+        "name": "Motiur Rehman",
+        "phone": "9191223433",
+        "email": "nc.rehman@gmail.com",
+        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "city": {
+          "name": "Gangamuthanahalli"
+        },
+        "state": {
+          "name": "Karnataka"
+        }
+      }
+    }
+  }
+}
 ```
 
 Below is an example of an `on_init` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_init",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "06f49c01-65b7-4754-8b37-ab4e33688154",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:45:40.421Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+        "descriptor": {
+          "name": "Venky.Mahadevan@Bazaar"
+        },
+        "locations": [
+          {
+            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+              }
+            ],
+            "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+            "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+            "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "INR",
+            "value": "1200.0"
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "75001"
+              },
+              "contact": {
+                "phone": "919246394908",
+                "email": "nc.rehman@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Motiur Rehman"
+            },
+            "contact": {
+              "phone": "919122343344"
+            }
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "1500.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "INR",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "INR",
+              "value": "300.0"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Motiur Rehman",
+        "phone": "9191223433",
+        "email": "nc.rehman@gmail.com",
+        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "city": {
+          "name": "Gangamuthanahalli"
+        },
+        "state": {
+          "name": "Karnataka"
+        }
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "1500",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 Below is an example of a `confirm` request
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "confirm",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "58d0a142-68e3-48d9-92e8-fbc791e44949",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.280Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider"
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "selected": {
+            "quantity": {
+              "count": 2
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "75001"
+              },
+              "contact": {
+                "phone": "919246394908",
+                "email": "nc.rehman@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Motiur Rehman"
+            },
+            "contact": {
+              "phone": "919122343344"
+            }
+          }
+        }
+      ],
+      "billing": {
+        "name": "Motiur Rehman",
+        "phone": "9191223433",
+        "email": "nc.rehman@gmail.com",
+        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "city": {
+          "name": "Gangamuthanahalli"
+        },
+        "state": {
+          "name": "Karnataka"
+        }
+      },
+      "payments": [
+        {
+          "status": "PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "1500",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 Below is an example of an `on_confirm` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_confirm",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "58d0a142-68e3-48d9-92e8-fbc791e44949",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+        "descriptor": {
+          "name": "Venky.Mahadevan@Bazaar"
+        },
+        "locations": [
+          {
+            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+              }
+            ],
+            "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+            "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+            "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "INR",
+            "value": "1200.0"
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "75001"
+              },
+              "contact": {
+                "phone": "919246394908",
+                "email": "nc.rehman@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Motiur Rehman"
+            },
+            "contact": {
+              "phone": "919122343344"
+            }
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "1500.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "INR",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "INR",
+              "value": "300.0"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Motiur Rehman",
+        "phone": "9191223433",
+        "email": "nc.rehman@gmail.com",
+        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "city": {
+          "name": "Gangamuthanahalli"
+        },
+        "state": {
+          "name": "Karnataka"
+        }
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "1500",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "cancellation_fee": {
+            "amount": {
+              "currency": "INR",
+              "value": "100"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## 1.3 Fulfillment of retail Services
@@ -144,12 +932,196 @@ This section contains recommendations for implementing the APIs related to fulfi
 
 Below is an example of a `status` request
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "status",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order_id": "b989c9a9-f603-4d44-b38d-26fd72286b38"
+  }
+}
 ```
 
 Below is an example of an `on_status` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_status",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "order": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "provider": {
+        "id": "./retail.kirana/ind.blr/33@tourism-bpp-infra2.becknprotocol.io.provider",
+        "descriptor": {
+          "name": "Venky.Mahadevan@Bazaar"
+        },
+        "locations": [
+          {
+            "id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
+          "descriptor": {
+            "images": [
+              {
+                "url": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+              }
+            ],
+            "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+            "short_desc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+            "long_desc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that’s free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won’t spill a drop even when it’s tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>"
+          },
+          "category_ids": [
+            "c1"
+          ],
+          "price": {
+            "listed_value": "1200.0",
+            "currency": "INR",
+            "value": "1200.0"
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "city": {
+                  "name": "Gangamuthanahalli"
+                },
+                "state": {
+                  "name": "Karnataka"
+                },
+                "country": {
+                  "code": "IND"
+                },
+                "area_code": "75001"
+              },
+              "contact": {
+                "phone": "919246394908",
+                "email": "nc.rehman@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Motiur Rehman"
+            },
+            "contact": {
+              "phone": "919122343344"
+            }
+          },
+          "state": {
+            "descriptor": {
+              "code": "PACKING",
+              "short_desc": "Order is getting packed ..."
+            },
+            "updated_at": "2023-05-26T05:23:04.443Z"
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "1500.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "INR",
+              "value": "1200.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "INR",
+              "value": "300.0"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Motiur Rehman",
+        "phone": "9191223433",
+        "email": "nc.rehman@gmail.com",
+        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "city": {
+          "name": "Gangamuthanahalli"
+        },
+        "state": {
+          "name": "Karnataka"
+        }
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "1500",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ],
+      "cancellation_terms": [
+        {
+          "cancellation_fee": {
+            "amount": {
+              "currency": "INR",
+              "value": "100"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## 1.4 Post-fulfillment of retail Services
@@ -190,19 +1162,138 @@ Below is an example of an `rating_categories` callback
 Below is an example of a `rating` request
 
 ```
-
+{
+    "context": {
+        "domain": "local-retail",
+        "location": {
+            "country": {
+              "code": "IND"
+            },
+            "city": {
+              "code": "std:080"
+            }
+          },
+        "action": "rating",
+        "version": "1.1.0",
+        "bap_id": "farm-fresh-bap-id",
+        "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+        "bpp_id": "farm-fresh-bpp-subId",
+        "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "message_id": "b0c5b14f-a7db-4329-b7e2-42a5f6486085",
+        "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+        "timestamp": "2023-11-06T10:14:10.295Z",
+        "ttl": "PT10M"
+    },
+    "message": {
+        "ratings": [
+            {
+                "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+                "rating_category": "Order",
+                "value": "8"
+            }
+        ]
+    }
+}
 ```
 Below is an example of an `on_rating` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_rating",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "b0c5b14f-a7db-4329-b7e2-42a5f6486085",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "feedback_form": {
+      "form": {
+        "url": "https://inds-network-bpp.becknprotocol.io/feedback/portal"
+      }
+    }
+  }
+}
 ```
 
 Below is an example of a `support` request
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "support",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "1f507212-23fe-4acc-a34e-d25b459ad105",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "support": {
+      "ref_id": "894789-43954",
+      "phone": "+91 4444444444",
+      "email": "me@gmail.com"
+    }
+  }
+}
 ```
 
 Below is an example of an `on_support` callback
 ```
-
+{
+  "context": {
+    "domain": "local-retail",
+    "location": {
+      "country": {
+        "code": "IND"
+      },
+      "city": {
+        "code": "std:080"
+      }
+    },
+    "action": "on_support",
+    "version": "1.1.0",
+    "bap_id": "farm-fresh-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "farm-fresh-bpp-subId",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "1f507212-23fe-4acc-a34e-d25b459ad105",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "support": {
+      "ref_id": "d4975df5-b18c-4772-80ad",
+      "callback_phone": "+91 8765495826",
+      "phone": "+91 9876543298",
+      "email": "abcd.support@support.com"
+    }
+  }
+}
 ```
