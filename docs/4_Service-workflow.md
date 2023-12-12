@@ -1,4 +1,4 @@
-# Discovery/Services Workflow for Manufacturing Services
+# Discovery/Services Workflow for Local Retail
 
 ## Overview
 
@@ -6,4 +6,4 @@
 ## Architecture
 
 
-### Discovery of Manufacturing Services
+### Discovery of Local Retail
