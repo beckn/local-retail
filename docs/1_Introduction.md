@@ -14,10 +14,10 @@ Local Reatil is an adaptation of Beckn Protocol tailored for the retail sector. 
 
 ## 1.4 Key Digital Functionalities of Local-Retail enabled platforms
 
-Discovery: Discovery, browsing of catalogs containing retail items offered by various providers.
-Ordering: Selecting items from the catalog and doing payment for retail items from any provider.
-Fulfillment: Manages post-order activities like tracking and status updates during the fulfillment of any of the activities mentioned above.
-Post-Fulfillment: Handles activities like rating, feedback, support, and issuing of verifiable credentials.
+1. Discovery: Discovery, browsing of catalogs containing retail items offered by various providers.
+1. Ordering: Selecting items from the catalog and doing payment for retail items from any provider.
+1. Fulfillment: Manages post-order activities like tracking and status updates during the fulfillment of any of the activities mentioned above.
+1. Post-Fulfillment: Handles activities like rating, feedback, support, and issuing of verifiable credentials.
 
 
 ## 1.5 Transporting Verifiable Credentials: Enhancing Trust and Reliability
@@ -26,10 +26,10 @@ One of the most transformative aspects of the Beckn Protocol and Local-Retail is
 
 ## 1.6 Benefits of a Unified Digital Infrastructure
 
-Reduced Information Asymmetry: A common protocol allows for standardized information sharing, reducing gaps in knowledge and expectations.
-Cost-Effective Trust Verification: The protocol's inherent security features minimize the cost of trust verification.
-Enhanced Discoverability: The infrastructure allows for the seamless discovery of opportunities across multiple platforms.
-Portability: Users can easily switch between different service providers without losing their data or trust credentials.
+1. Reduced Information Asymmetry: A common protocol allows for standardized information sharing, reducing gaps in knowledge and expectations.
+1. Cost-Effective Trust Verification: The protocol's inherent security features minimize the cost of trust verification.
+1. Enhanced Discoverability: The infrastructure allows for the seamless discovery of opportunities across multiple platforms.
+1. Portability: Users can easily switch between different service providers without losing their data or trust credentials.
 
 ## 1.7 Conclusion
 
