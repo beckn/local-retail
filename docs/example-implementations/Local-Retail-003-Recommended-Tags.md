@@ -1,4 +1,4 @@
-# Introduction to Local-Retail
+# Recommended Tags for Local-Retail
 #### Local-Retail WG -  Working Draft - Nov 10, 2023
 
 ## Document Type
