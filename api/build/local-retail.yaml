@@ -23,7 +23,7 @@ paths:
               properties:
                 context:
                   description: Describes the retail context of the search request
-                  $ref: '#/components/schemas/SearchContext'
+                  $ref: '#/components/schemas/Context'
                 message:
                   type: object
                   properties:
@@ -1342,28 +1342,6 @@ components:
       name: X-Gateway-Authorization
       description: 'Signature of message body + BAP/BPP''s Authorization header using BG''s signing public key. Format:<br/><br/><code>X-Gateway-Authorization : Signature keyId="{subscriber_id}|{unique_key_id}|{algorithm}",algorithm="ed25519",created="1606970629",expires="1607030629",headers="(created) (expires) digest",signature="Base64(BLAKE-512(signing string))"</code>'
   schemas:
-    RetailSearchContext:
-      description: Describes the context of a Retail Search Request
-      allOf:
-        - $ref: '#/components/schemas/RetailContext'
-        - properties:
-            action:
-              type: string
-              enum:
-                - search
-          required:
-            - action
-    
-    RetailSelectContext:
-      description: Describes the context of a Retail Search Request
-      allOf:
-        - $ref: '#/components/schemas/RetailContext'
-        - properties:
-            action:
-              type: string
-              enum:
-                - select
-
     Ack:
       description: Describes the ACK response
       type: object
