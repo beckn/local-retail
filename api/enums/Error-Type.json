@@ -1,0 +1,7 @@
+[
+    "CONTEXT-ERROR",
+    "CORE-ERROR",
+    "DOMAIN-ERROR",
+    "POLICY-ERROR",
+    "JSON_SCHEMA-ERROR"
+]
