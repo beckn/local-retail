@@ -1,0 +1,16 @@
+{
+    "enum": [
+        {
+            "01": "On-Order"
+        },
+        {
+            "02": "Pre-Fulfillment"
+        },
+        {
+            "03": "On-Fulfillment"
+        },
+        {
+            "04": "Post-Fulfillment"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "enum": [
+        {
+            "01": "Home-Delivery"
+        },
+        {
+            "02": "Store-Pickup"
+        },
+        {
+            "03": "Store-Pickup-And-Home-Delivery"
+        }
+    ]
+}

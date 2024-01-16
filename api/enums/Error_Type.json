@@ -1,0 +1,19 @@
+{
+    "enum": [
+        {
+            "01": "CONTEXT-ERROR"
+        },
+        {
+            "02": "CORE-ERROR"
+        },
+        {
+            "03": "DOMAIN-ERROR"
+        },
+        {
+            "04": "POLICY-ERROR"
+        },
+        {
+            "05": "JSON_SCHEMA-ERROR"
+        }
+    ]
+}

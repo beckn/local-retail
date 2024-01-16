@@ -1,0 +1,10 @@
+{
+    "enum": [
+        {
+            "01": "text/html"
+        },
+        {
+            "02": "application/xml"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "enum": [
+        {
+            "01": "Item"
+        },
+        {
+            "02": "Order"
+        },
+        {
+            "03": "Provider"
+        },
+        {
+            "04": "Fulfillment"
+        },
+        {
+            "05": "Agent"
+        },
+        {
+            "06": "Support"
+        }
+    ]
+}

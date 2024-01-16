@@ -1073,6 +1073,14 @@ components:
       description: 'Describes an error object that is returned by a BAP, BPP or BG as a response or callback to an action by another network participant. This object is sent when any request received by a network participant is unacceptable. This object can be sent either during Ack or with the callback.'
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - CONTEXT-ERROR
+            - CORE-ERROR
+            - DOMAIN-ERROR
+            - POLICY-ERROR
+            - JSON-SCHEMA-ERROR
         code:
           type: string
           description: 'Standard error code. For full list of error codes, refer to docs/protocol-drafts/BECKN-005-ERROR-CODES-DRAFT-01.md of this repo"'
@@ -1126,6 +1134,10 @@ components:
         type:
           description: 'A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled. For example, a retail order can be fulfilled either via store pickup or a home delivery. Similarly, a medical consultation can be provided either in-person or via tele-consultation. The network policy must publish standard fulfillment type codes for the different modes of fulfillment.'
           type: string
+          enum:
+            - Home-Delivery
+            - Store-Pickup
+            - Store-Pickup-And-Home-Delivery
         rateable:
           description: Whether the fulfillment can be rated or not
           type: boolean
@@ -1374,7 +1386,7 @@ components:
               fulfillment_state:
                 description: The state of fulfillment during which this term is applicable.
                 allOf:
-                  - $ref: '#/components/schemas/State'
+                  - $ref: '#/components/schemas/FulfillmentState'
               refund_eligible:
                 description: Indicates if cancellation will result in a refund
                 type: boolean
@@ -1542,16 +1554,21 @@ components:
           description: Status of the order. Allowed values can be defined by the network policy
           type: string
           enum:
-            - ACTIVE
-            - COMPLETE
-            - CANCELLED
+            - Initiated
+            - Acknowledged
+            - Packed
+            - Shipped
+            - Delivered
+            - Cancelled
         type:
-          description: 'This is used to indicate the type of order being created to BPPs. Sometimes orders can be linked to previous orders, like a replacement order in a retail domain. A follow-up consultation in healthcare domain. A single order part of a subscription order. The list of order types can be standardized at the network level.'
+          description: 'This is used to indicate the type of order being created to BPPs. Sometimes orders can be linked to previous orders, like a replacement order.'
           type: string
-          default: DEFAULT
+          default: Default
           enum:
-            - DRAFT
-            - DEFAULT
+            - Default #normal order
+            - Pre-Order #not releaed yet
+            - Backorder #unavilable
+            - Replacement-Order
         provider:
           description: Details of the provider whose catalog items have been selected.
           allOf:
@@ -1657,7 +1674,11 @@ components:
           description: ID of the payment term that can be referred at an item or an order level in a catalog
           type: string
         collected_by:
+          type: string
           description: 'This field indicates who is the collector of payment. The BAP can set this value to ''bap'' if it wants to collect the payment first and  settle it to the BPP. If the BPP agrees to those terms, the BPP should not send the payment url. Alternatively, the BPP can set this field with the value ''bpp'' if it wants the payment to be made directly.'
+          enum:
+            - BAP
+            - BPP
         url:
           type: string
           description: 'A payment url to be called by the BAP. If empty, then the payment is to be done offline. The details of payment should be present in the params object. If tl_method = http/get, then the payment details will be sent as url params. Two url param values, ```$transaction_id``` and ```$amount``` are mandatory.'
@@ -1856,6 +1877,15 @@ components:
                 type: string
               price:
                 $ref: '#/components/schemas/Price'
+              breakup_category:
+                type: string
+                enum:
+                  - Item
+                  - Delivery
+                  - Packaging
+                  - Tax
+                  - Misc
+                  - Discount
         ttl:
           $ref: '#/components/schemas/Duration'
     Rating:
@@ -2030,6 +2060,12 @@ components:
       description: Details of customer support
       type: object
       properties:
+        type:
+          type: string
+          enum:
+            - order
+            - billing
+            - fulfillment
         ref_id:
           type: string
         callback_phone:

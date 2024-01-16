@@ -1,0 +1,13 @@
+{
+    "enum": [
+        {
+            "01": "text/plain"
+        },
+        {
+            "02": "text/html"
+        },
+        {
+            "03": "application/json"
+        }
+    ]
+}
