@@ -268,7 +268,10 @@ This section provides recommendations for implementing the APIs related to a pur
 5. Buyer App render the quotation in the cart page.
 6. Buyer select his delivery and shipping address.
 7. Buyer app send /init call to the seller app with the buyer's billing and shipping detail.
-8. Seller App return fulfilment and payment terms along with the quotation.
+8. Seller App return fulfilment and payment terms along with the quotation which includes total item price, taxes and delivery fee.
+
+Note : During this time, the seller app may call /search and /select endpoint of logistic app to get the actual delivery fee. Incase the seller app has an agreement with the logistic app, they may provide the quotation to the buyer app with an standard delivery fee.
+
 9. Buyer App render the details in the checkout page.
 10. Buyer Complete the payment.
 11. Buyer app send /confirm call to the seller app with the payment details and order confirmation.
