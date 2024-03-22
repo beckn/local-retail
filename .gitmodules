@@ -1,3 +1,3 @@
-[submodule "api/core"]
+[submodule "api/core-V1.1.0"]
 	path = api/core
 	url = https://github.com/beckn/protocol-specifications
