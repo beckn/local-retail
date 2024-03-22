@@ -641,9 +641,10 @@ Below is an example of an `on_init` callback
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -746,6 +747,7 @@ Below is an example of a `confirm` request
           "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -889,9 +891,10 @@ Below is an example of an `on_confirm` callback
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -1352,9 +1355,10 @@ Below is an example of a `on_update` callback
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -1548,9 +1552,10 @@ Below is an example of a `on_cancel` callback
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
