@@ -1,5 +1,5 @@
 
-# Terminologies
+# Terminology
 Below is a glossary of terms frequently used in the Local-Retail ecosystem. These terms have been chosen specifically around four specific activities that are performed during discovery namely
 
 ## Glossary of the terms used

@@ -50,6 +50,11 @@
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -128,9 +133,10 @@
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
