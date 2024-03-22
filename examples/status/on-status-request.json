@@ -50,6 +50,11 @@
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",

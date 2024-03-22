@@ -171,9 +171,11 @@ An example catalog of a local retail may look like this
                 "value": "1200.0"
               },
               "recommended": true,
-              "location_id": "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location",
-              "category_id": "c1",
-              "fulfillment_id": "f1",
+              "location_ids": [
+                  "./retail.kirana/ind.blr/1@tourism-bpp-infra2.becknprotocol.io.provider_location"
+              ],
+              "category_ids": ["c1"],
+              "fulfillment_ids": ["f1"],
               "tags": [
                 {
                   "descriptor": {
@@ -310,9 +312,9 @@ Below is an example of a `select` request
       "items": [
         {
           "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
-          "selected": {
-            "quantity": {
-              "count": 2
+          "quantity": {
+            "selected" :{
+              "count" : 2
             }
           }
         }
@@ -380,6 +382,11 @@ Below is an example of an `on_select` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -451,9 +458,9 @@ Below is an example of a `init` request
       "items": [
         {
           "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
-          "selected": {
-            "quantity": {
-              "count": 2
+          "quantity": {
+            "selected" :{
+              "count" : 2
             }
           }
         }
@@ -563,6 +570,11 @@ Below is an example of an `on_init` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -641,10 +653,9 @@ Below is an example of an `on_init` callback
       },
       "payments": [
         {
-          "status": "PAID",
+          "status": "NOT-PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
-            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -688,9 +699,9 @@ Below is an example of a `confirm` request
       "items": [
         {
           "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
-          "selected": {
-            "quantity": {
-              "count": 2
+          "quantity": {
+            "selected" :{
+              "count" : 2
             }
           }
         }
@@ -813,6 +824,11 @@ Below is an example of an `on_confirm` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -1064,6 +1080,11 @@ Below is an example of an `on_status` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -1149,9 +1170,10 @@ Below is an example of an `on_status` callback
       },
       "payments": [
         {
-          "status": "NOT-PAID",
+          "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
@@ -1270,6 +1292,11 @@ Below is an example of a `on_update` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
@@ -1467,6 +1494,11 @@ Below is an example of a `on_cancel` callback
           "category_ids": [
             "c1"
           ],
+          "quantity": {
+            "selected" :{
+              "count" : 2
+            }
+          },
           "price": {
             "listed_value": "1200.0",
             "currency": "INR",
