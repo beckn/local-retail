@@ -27,9 +27,9 @@
       "items": [
         {
           "id": "./retail.kirana/ind.blr/247@tourism-bpp-infra2.becknprotocol.io.item",
-          "selected": {
-            "quantity": {
-              "count": 2
+          "quantity": {
+            "selected" :{
+              "count" : 2
             }
           }
         }
@@ -86,6 +86,7 @@
           "status": "PAID",
           "type": "PRE-FULFILLMENT",
           "params": {
+            "transaction_id" : "raz816863816313",
             "amount": "1500",
             "currency": "INR",
             "bank_code": "INB0004321",
