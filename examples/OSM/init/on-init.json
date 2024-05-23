@@ -1,0 +1,203 @@
+{
+  "context": {
+    "domain": "localretail:shopping",
+    "location": {
+      "country": {
+        "code": "FRA"
+      },
+      "city": {
+        "code": "std:33"
+      }
+    },
+    "action": "on_init",
+    "version": "1.1.0",
+    "bap_id": "osm-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "osm-bpp-id",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "4c291e58-1bcb-4a5c-a2cf-17f0e3365421",
+        "descriptor": {
+          "name": "Le Petit Café",
+          "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnqGGKCB53sktJwBu6VtxqWGvvzggYV9t57U7e9147vw&s"
+          ],
+          "short_desc": "Indulge in the charm of Parisian culture at Le Petit Café, where every sip of coffee and bite of pastry brings you closer to the heart of the city. With a cozy ambiance and a menu inspired by French culinary traditions, we invite you to savor the flavors of Paris in every moment."
+        },
+        "locations": [
+          {
+            "id": "1",
+            "gps": "12.936938,77.695088"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d4186a6d-4f62-4925-9ec5-83a1eb45b7cb",
+          "descriptor": {
+            "images": [
+              "https://assets.afcdn.com/recipe/20131024/24713_w1024h576c1cx2747cy1872.jpg"
+            ],
+            "name": "Croissant au Beurre",
+            "short_desc": "Enjoy a classic French pastry with our Croissant au Beurre. Flaky, buttery, and irresistible, it's the perfect way to start your day.",
+            "long_desc": "<p>Indulge in the rich flavor and delicate texture of our Croissant au Beurre. Made with layers of buttery dough that are folded and baked to perfection, this iconic French pastry is a true delight for the senses. Pair it with a cup of freshly brewed coffee or a steaming hot chocolate for a truly decadent treat.</p>"
+          },
+          "matched": true,
+          "quantity": {
+            "selected": {
+              "count": 1
+            }
+          },
+          "price": {
+            "listed_value": "150.0",
+            "currency": "INR",
+            "value": "150.0"
+          },
+          "recommended": true,
+          "location_ids": [
+            "1"
+          ],
+          "category_ids": [
+            "c1"
+          ],
+          "fulfillment_ids": [
+            "1"
+          ],
+          "tags": [
+            {
+              "descriptor": {
+                "name": "search-tags"
+              },
+              "list": [
+                {
+                  "value": "croissant"
+                },
+                {
+                  "value": "pastry"
+                },
+                {
+                  "value": "French"
+                },
+                {
+                  "value": "breakfast"
+                },
+                {
+                  "value": "buttery"
+                },
+                {
+                  "value": "flaky"
+                }
+              ]
+            },
+            {
+              "descriptor": {
+                "name": "additional-info"
+              },
+              "list": [
+                {
+                  "descriptor": {
+                    "code": "rating"
+                  },
+                  "value": "4.5"
+                },
+                {
+                  "descriptor": {
+                    "code": "type"
+                  },
+                  "value": "Veg"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "fulfillments": [
+        {
+          "type": "Delivery",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "15 Rue Du Soleil, Paris, France",
+                "city": {
+                  "name": "Paris"
+                },
+                "state": {
+                  "name": "Paris"
+                },
+                "country": {
+                  "code": "FRA"
+                },
+                "area_code": "75020"
+              },
+              "contact": {
+                "phone": "0612345678",
+                "email": "lisa.k@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Lisa K"
+            },
+            "contact": {
+              "phone": "0612345678"
+            }
+          }
+        }
+      ],
+      "quote": {
+        "price": {
+          "currency": "INR",
+          "value": "200.0"
+        },
+        "breakup": [
+          {
+            "title": "base-price",
+            "price": {
+              "currency": "INR",
+              "value": "150.0"
+            }
+          },
+          {
+            "title": "taxes",
+            "price": {
+              "currency": "INR",
+              "value": "50.0"
+            }
+          }
+        ]
+      },
+      "billing": {
+        "name": "Lisa K",
+        "phone": "0612345678",
+        "email": "lisa.k@gmail.com",
+        "address": "15 Rue Du Soleil, Paris, France",
+        "city": {
+          "name": "Paris"
+        },
+        "state": {
+          "name": "Paris"
+        }
+      },
+      "payments": [
+        {
+          "status": "NOT-PAID",
+          "type": "PRE-FULFILLMENT",
+          "params": {
+            "amount": "200",
+            "currency": "INR",
+            "bank_code": "INB0004321",
+            "bank_account_number": "1234002341"
+          }
+        }
+      ]
+    }
+  }
+}
