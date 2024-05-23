@@ -6,7 +6,7 @@
         "code": "IND"
       },
       "city": {
-        "code": "std:080"
+        "code": "std:011"
       }
     },
     "action": "on_confirm",
@@ -106,30 +106,30 @@
             {
               "location": {
                 "gps": "13.2008459,77.708736",
-                "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+                "address": "151-e, janpath road,New Delhi, India",
                 "city": {
-                  "name": "Gangamuthanahalli"
+                  "name": "New Delhi"
                 },
                 "state": {
-                  "name": "Karnataka"
+                  "name": "Delhi"
                 },
                 "country": {
                   "code": "IND"
                 },
-                "area_code": "75001"
+                "area_code": "110001"
               },
               "contact": {
-                "phone": "919246394908",
-                "email": "nc.rehman@gmail.com"
+                "phone": "6251423251",
+                "email": "santosh.k@gmail.com"
               }
             }
           ],
           "customer": {
             "person": {
-              "name": "Motiur Rehman"
+              "name": "Santosh Kumar"
             },
             "contact": {
-              "phone": "919122343344"
+              "phone": "6251423251"
             }
           }
         }
@@ -157,15 +157,15 @@
         ]
       },
       "billing": {
-        "name": "Motiur Rehman",
-        "phone": "9191223433",
-        "email": "nc.rehman@gmail.com",
-        "address": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block, Gangamuthanahalli, Karnataka 560300, India",
+        "name": "Santosh Kumar",
+        "phone": "6251423251",
+        "email": "santosh.k@gmail.com",
+        "address": "151-e, janpath road,New Delhi, India",
         "city": {
-          "name": "Gangamuthanahalli"
+          "name": "New Delhi"
         },
         "state": {
-          "name": "Karnataka"
+          "name": "Delhi"
         }
       },
       "payments": [
