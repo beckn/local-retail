@@ -54,8 +54,9 @@ paths:
                         action:
                           enum:
                             - select
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -87,8 +88,9 @@ paths:
                         action:
                           enum:
                             - init
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -142,8 +144,9 @@ paths:
                         action:
                           enum:
                             - confirm
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -175,8 +178,9 @@ paths:
                         action:
                           enum:
                             - status
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -208,8 +212,9 @@ paths:
                         action:
                           enum:
                             - track
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -244,8 +249,9 @@ paths:
                         action:
                           enum:
                             - cancel
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -281,8 +287,9 @@ paths:
                         action:
                           enum:
                             - update
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -320,8 +327,9 @@ paths:
                         action:
                           enum:
                             - rating
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -353,8 +361,9 @@ paths:
                         action:
                           enum:
                             - support
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -385,8 +394,9 @@ paths:
                         action:
                           enum:
                             - on_search
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -419,8 +429,9 @@ paths:
                         action:
                           enum:
                             - on_select
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -451,8 +462,9 @@ paths:
                         action:
                           enum:
                             - on_init
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -485,8 +497,9 @@ paths:
                         action:
                           enum:
                             - on_confirm
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -519,8 +532,9 @@ paths:
                         action:
                           enum:
                             - on_track
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -553,8 +567,9 @@ paths:
                         action:
                           enum:
                             - on_cancel
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -587,8 +602,9 @@ paths:
                         action:
                           enum:
                             - on_update
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -621,8 +637,9 @@ paths:
                         action:
                           enum:
                             - on_status
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -655,8 +672,9 @@ paths:
                         action:
                           enum:
                             - on_rating
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -690,8 +708,9 @@ paths:
                         action:
                           enum:
                             - on_support
-                      required:
-                        - action
+                  required:
+                    - bpp_id
+                    - bpp_uri
                 message:
                   type: object
                   properties:
@@ -987,6 +1006,14 @@ components:
         ttl:
           description: The duration in ISO8601 format after timestamp for which this message holds valid
           type: string
+      required:
+          - action
+          - domain
+          - version
+          - bap_id
+          - bap_uri
+          - transaction_id
+          - message_id
     Country:
       description: Describes a country
       type: object
