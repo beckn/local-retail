@@ -1157,9 +1157,9 @@ components:
           description: 'A code that describes the mode of fulfillment. This is typically set when there are multiple ways an order can be fulfilled. For example, a retail order can be fulfilled either via store pickup or a home delivery. Similarly, a medical consultation can be provided either in-person or via tele-consultation. The network policy must publish standard fulfillment type codes for the different modes of fulfillment.'
           type: string
           enum:
-            - Home-Delivery
-            - Store-Pickup
-            - Store-Pickup-With-Partial-Delivery
+            - HOME_DELIVERY
+            - STORE_PICKUP
+            - STORE_PICKUP_WITH_PARTIAL_DELIVERY
         rateable:
           description: Whether the fulfillment can be rated or not
           type: boolean
@@ -1204,7 +1204,19 @@ components:
       type: object
       properties:
         descriptor:
-          $ref: '#/components/schemas/Descriptor'
+          allOf:
+            - $ref: '#/components/schemas/Descriptor'
+            - properties:
+                code:
+                  enum:
+                    - INITIATED
+                    - ACKNOWLEDGED
+                    - PACKED
+                    - SHIPPED
+                    - OUT_FOR_DELIVERY
+                    - DELIVERED
+                    - CANCELLED
+
         updated_at:
           type: string
           format: date-time
@@ -1584,10 +1596,10 @@ components:
           type: string
           default: Default
           enum:
-            - Default #normal order
-            - Pre-Order #not releaed yet
-            - Backorder #unavilable
-            - Replacement-Order
+            - DEFAULT #NORMAL ORDER
+            - PRE_ORDER #NOT RELEAED YET
+            - BACKORDER #UNAVILABLE
+            - REPLACEMENT_ORDER
         provider:
           description: Details of the provider whose catalog items have been selected.
           allOf:
@@ -1696,8 +1708,10 @@ components:
           type: string
           description: 'This field indicates who is the collector of payment. The BAP can set this value to ''bap'' if it wants to collect the payment first and  settle it to the BPP. If the BPP agrees to those terms, the BPP should not send the payment url. Alternatively, the BPP can set this field with the value ''bpp'' if it wants the payment to be made directly.'
           enum:
-            - BAP
-            - BPP
+            - SELLER
+            - SELLER_APP
+            - BUYER_APP
+            - LOGISTICS
         url:
           type: string
           description: 'A payment url to be called by the BAP. If empty, then the payment is to be done offline. The details of payment should be present in the params object. If tl_method = http/get, then the payment details will be sent as url params. Two url param values, ```$transaction_id``` and ```$amount``` are mandatory.'
@@ -1727,15 +1741,15 @@ components:
         type:
           type: string
           enum:
-            - PRE-ORDER
-            - PRE-FULFILLMENT
-            - ON-FULFILLMENT
-            - POST-FULFILLMENT
+            - PRE_ORDER
+            - PRE_FULFILLMENT
+            - ON_FULFILLMENT
+            - POST_FULFILLMENT
         status:
           type: string
           enum:
             - PAID
-            - NOT-PAID
+            - NOT_PAID
         time:
           $ref: '#/components/schemas/Time'
         tags:
@@ -1894,17 +1908,15 @@ components:
                 $ref: '#/components/schemas/Item'
               title:
                 type: string
+                enum:
+                  - ITEM
+                  - DELIVERY
+                  - PACKAGING
+                  - TAX
+                  - MISC
+                  - DISCOUNT
               price:
                 $ref: '#/components/schemas/Price'
-              breakup_category:
-                type: string
-                enum:
-                  - Item
-                  - Delivery
-                  - Packaging
-                  - Tax
-                  - Misc
-                  - Discount
         ttl:
           $ref: '#/components/schemas/Duration'
     Rating:
@@ -1915,12 +1927,12 @@ components:
           description: Category of the entity being rated
           type: string
           enum:
-            - Item
-            - Order
-            - Fulfillment
-            - Provider
-            - Agent
-            - Support
+            - ITEM
+            - ORDER
+            - FULFILLMENT
+            - PROVIDER
+            - AGENT
+            - SUPPORT
         id:
           description: Id of the object being rated
           type: string
@@ -2079,12 +2091,6 @@ components:
       description: Details of customer support
       type: object
       properties:
-        type:
-          type: string
-          enum:
-            - order
-            - billing
-            - fulfillment
         ref_id:
           type: string
         callback_phone:
@@ -2174,8 +2180,8 @@ components:
           description: 'This value indicates if the tracking is currently active or not. If this value is `active`, then the BAP can begin tracking the order. If this value is `inactive`, the tracking URL is considered to be expired and the BAP should stop tracking the order.'
           type: string
           enum:
-            - active
-            - inactive
+            - ACTIVE
+            - INACTIVE
     Vehicle:
       description: 'Describes a vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.<br>This has properties like category, capacity, make, model, size,variant,color,energy_type,registration'
       type: object
