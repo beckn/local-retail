@@ -527,9 +527,10 @@ paths:
                         - return_terms
                         - replacement_terms
                         - id
-
                   required:
                     - order
+                  oneOf:
+                    - $ref: '#/components/schemas/ElectronicsItemWithUserManual'
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -1471,23 +1472,6 @@ components:
             - properties:
                 code:
                   type: string
-                  enum:
-                    - ELECTRONICS
-                    - FASHION
-                    - GROCERIES
-                    - SNACKS
-                    - DESSERTS
-                    - BEAUTY_AND_PERSONAL_CARE
-                    - FURNITURE
-                    - SPORTS
-                    - TOYS_GAMES
-                    - STATIONERY
-                    - HEALTHCARE
-                    - TRAVEL_AND_LUGGAGE
-                    - CRAFTS
-                    - HOUSEHOLD_ESSENTIALS
-                    - PET
-                    - GIFTS
         creator:
           description: The creator of this item
           allOf:
@@ -1594,6 +1578,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagGroup'
+    ElectronicsItem:
+      allOf:
+        - $ref: '#/components/schemas/Item'
+        - properties:
+            descriptor:
+              type: object
+              properties:
+                code:
+                  type: string
+                  enum:
+                    - ELECTRONICS
+            add_ons:
+              type: array
+              items:
+                type: object
+                properties:
+                  descriptor:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        enum:
+                          - USER_MANUAL
     Location:
       description: The physical location of something
       type: object
@@ -2390,4 +2397,32 @@ components:
         required:
           description: Indicates whether the form data is mandatorily required by the BPP to confirm the order.
           type: boolean
-      
+    ElectronicsItemWithUserManual:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/Order'
+        - properties:
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  descriptor:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                        enum:
+                          - ELECTRONICS
+                  add-ons:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        descriptor:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                              enum:
+                                - USER_MANUAL
