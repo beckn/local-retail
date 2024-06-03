@@ -1016,7 +1016,6 @@ components:
           description: Duration in seconds after which this catalog will expire
           type: string
       required:
-        - fulfillments
         - providers
     Category:
       description: A label under which a collection of items can be grouped.
@@ -2133,6 +2132,7 @@ components:
         breakup:
           description: the breakup of the total quoted price
           type: array
+          minItems: 1
           items:
             type: object
             properties:
