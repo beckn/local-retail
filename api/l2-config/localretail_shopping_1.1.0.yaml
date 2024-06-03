@@ -529,8 +529,6 @@ paths:
                         - id
                   required:
                     - order
-                  oneOf:
-                    - $ref: '#/components/schemas/ElectronicsItemWithUserManual'
                 error:
                   $ref: '#/components/schemas/Error'
               required:
