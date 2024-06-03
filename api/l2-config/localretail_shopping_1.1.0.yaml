@@ -2432,32 +2432,3 @@ components:
         required:
           description: Indicates whether the form data is mandatorily required by the BPP to confirm the order.
           type: boolean
-    ElectronicsItemWithUserManual:
-      type: object
-      allOf:
-        - $ref: '#/components/schemas/Order'
-        - properties:
-            items:
-              type: array
-              items:
-                type: object
-                properties:
-                  descriptor:
-                    type: object
-                    properties:
-                      code:
-                        type: string
-                        enum:
-                          - ELECTRONICS
-                  add-ons:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        descriptor:
-                          type: object
-                          properties:
-                            code:
-                              type: string
-                              enum:
-                                - USER_MANUAL
