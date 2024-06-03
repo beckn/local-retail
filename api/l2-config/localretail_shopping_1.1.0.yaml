@@ -61,7 +61,12 @@ paths:
                   type: object
                   properties:
                     order:
-                      $ref: '#/components/schemas/Order'
+                      allOf:
+                        - $ref: '#/components/schemas/Order'
+                      required:
+                        - provider
+                        - items
+                        - fulfillments
                   required:
                     - order
               required:
@@ -98,8 +103,11 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/Order'
                       required:
+                        - provider
+                        - items
+                        - fulfillments
                         - billing
-                  required: 
+                  required:
                     - order
               required:
                 - context
@@ -157,9 +165,12 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/Order'
                       required:
+                        - provider
+                        - items
+                        - fulfillments
                         - billing
                         - payments
-                  required: 
+                  required:
                     - order
               required:
                 - context
@@ -309,6 +320,8 @@ paths:
                       description: Updated order object
                       allOf:
                         - $ref: '#/components/schemas/Order'
+                      required:
+                        - id
                   required:
                     - update_target
                     - order
@@ -379,6 +392,8 @@ paths:
                   properties:
                     support:
                       $ref: '#/components/schemas/Support'
+                  required:
+                    - ref_id
               required:
                 - context
                 - message
@@ -449,11 +464,17 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/Order'
                       required:
+                        - provider
+                        - items
+                        - fulfillments
                         - quote
+                  required:
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
                 - context
+                - message
       responses:
         default:
           $ref: '#/paths/~1init/post/responses/default'
@@ -485,6 +506,9 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/Order'
                       required:
+                        - provider
+                        - items
+                        - fulfillments
                         - quote
                         - billing
                         - payments
@@ -529,6 +553,9 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/Order'
                       required:
+                        - provider
+                        - items
+                        - fulfillments
                         - quote
                         - billing
                         - payments
@@ -606,6 +633,9 @@ paths:
                   allOf:
                     - $ref: '#/components/schemas/Order'
                   required:
+                    - provider
+                    - items
+                    - fulfillments
                     - quote
                     - billing
                     - payments
@@ -646,6 +676,9 @@ paths:
                   allOf:
                     - $ref: '#/components/schemas/Order'
                   required:
+                    - provider
+                    - items
+                    - fulfillments
                     - quote
                     - billing
                     - payments
@@ -686,6 +719,9 @@ paths:
                     allOf:
                       - $ref: '#/components/schemas/Order'
                     required:
+                      - provider
+                      - items
+                      - fulfillments
                       - quote
                       - billing
                       - payments
@@ -1857,10 +1893,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagGroup'
-      required:
-        - provider
-        - items
-        - fulfillments
     Organization:
       description: An organization. Usually a recognized business entity.
       type: object
@@ -2310,10 +2342,10 @@ components:
           type: string
         callback_phone:
           type: string
-          format: phone
+          pattern: '^\+?[1-9]\d{1,14}$'
         phone:
           type: string
-          format: phone
+          pattern: '^\+?[1-9]\d{1,14}$'
         email:
           type: string
           format: email
