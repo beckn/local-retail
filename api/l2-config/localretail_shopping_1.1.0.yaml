@@ -62,7 +62,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BAPOrder'
                       required:
                         - provider
                         - items
@@ -101,7 +101,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BAPOrder'
                       required:
                         - provider
                         - items
@@ -163,7 +163,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BAPOrder'
                       required:
                         - provider
                         - items
@@ -462,7 +462,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BPPOrder'
                       required:
                         - provider
                         - items
@@ -504,7 +504,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BPPOrder'
                       required:
                         - provider
                         - items
@@ -551,7 +551,7 @@ paths:
                   properties:
                     order:
                       allOf:
-                        - $ref: '#/components/schemas/Order'
+                        - $ref: '#/components/schemas/BPPOrder'
                       required:
                         - provider
                         - items
@@ -631,7 +631,7 @@ paths:
                     - bpp_uri
                 message:
                   allOf:
-                    - $ref: '#/components/schemas/Order'
+                    - $ref: '#/components/schemas/BPPOrder'
                   required:
                     - provider
                     - items
@@ -674,7 +674,7 @@ paths:
                     - bpp_uri
                 message:
                   allOf:
-                    - $ref: '#/components/schemas/Order'
+                    - $ref: '#/components/schemas/BPPOrder'
                   required:
                     - provider
                     - items
@@ -717,7 +717,7 @@ paths:
                     - bpp_uri
                 message:
                     allOf:
-                      - $ref: '#/components/schemas/Order'
+                      - $ref: '#/components/schemas/BPPOrder'
                     required:
                       - provider
                       - items
@@ -953,6 +953,9 @@ components:
           description: Any additional information regarding the nature of cancellation
           allOf:
             - $ref: '#/components/schemas/Descriptor'
+      required:
+        - time
+        - cancelled_by
     CancellationTerm:
       description: Describes the cancellation terms of an item or an order. This can be referenced at an item or order level. Item-level cancellation terms can override the terms at the order level.
       type: object
@@ -975,6 +978,9 @@ components:
           $ref: '#/components/schemas/XInput'
         external_ref:
           $ref: '#/components/schemas/MediaFile'
+      required:
+        - cancel_by
+        - cancellation_fee
     Catalog:
       description: 'Describes the products or services offered by a BPP. This is typically sent as the response to a search intent from a BAP. The payment terms, offers and terms of fulfillment supported by the BPP can also be included here. The BPP can show hierarchical nature of products/services in its catalog using the parent_category_id in categories. The BPP can also send a ttl (time to live) in the context which is the duration for which a BAP can cache the catalog and use the cached catalog.  <br>This has properties like bbp/descriptor,bbp/categories,bbp/fulfillments,bbp/payments,bbp/offers,bbp/providers and exp<br>This is used in the following situations.<br><ul><li>This is typically used in the discovery stage when the BPP sends the details of the products and services it offers as response to a search intent from the BAP. </li></ul>'
       type: object
@@ -1004,7 +1010,37 @@ components:
           items:
             allOf:
               - $ref: '#/components/schemas/Provider'
+              - properties:
+                  items:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '#/components/schemas/Item'
+                        - properties:
+                            descriptor:
+                              allOf:
+                                - $ref: '#/components/schemas/Descriptor'
+                              required:
+                                - name
+                                - images
+                                - short_desc
+                                - long_desc
+                      required:
+                        - id
+                        - descriptor
+                        - price
+                        - category_ids
+                        - fulfillment_ids
+                  descriptor:
+                    allOf:
+                      - $ref: '#/components/schemas/Descriptor'
+                    required:
+                      - name
+                      - images
+                      - short_desc
+                      - long_desc
             required:
+              - id
               - categories
               - descriptor
               - items
@@ -1408,6 +1444,8 @@ components:
         height:
           description: Height of the image in pixels
           type: string
+      required:
+        - url
     Intent:
       description: 'The intent to buy or avail a product or a service. The BAP can declare the intent of the consumer containing <ul><li>What they want (A product, service, offer)</li><li>Who they want (A seller, service provider, agent etc)</li><li>Where they want it and where they want it from</li><li>When they want it (start and end time of fulfillment</li><li>How they want to pay for it</li></ul><br>This has properties like descriptor,provider,fulfillment,payment,category,offer,item,tags<br>This is typically used by the BAP to send the purpose of the user''s search to the BPP. This will be used by the BPP to find products or services it offers that may match the user''s intent.<br>For example, in Mobility, the mobility consumer declares a mobility intent. In this case, the mobility consumer declares information that describes various aspects of their journey like,<ul><li>Where would they like to begin their journey (intent.fulfillment.start.location)</li><li>Where would they like to end their journey (intent.fulfillment.end.location)</li><li>When would they like to begin their journey (intent.fulfillment.start.time)</li><li>When would they like to end their journey (intent.fulfillment.end.time)</li><li>Who is the transport service provider they would like to avail services from (intent.provider)</li><li>Who is traveling (This is not recommended in public networks) (intent.fulfillment.customer)</li><li>What kind of fare product would they like to purchase (intent.item)</li><li>What add-on services would they like to avail</li><li>What offers would they like to apply on their booking (intent.offer)</li><li>What category of services would they like to avail (intent.category)</li><li>What additional luggage are they carrying</li><li>How would they like to pay for their journey (intent.payment)</li></ul><br>For example, in health domain, a consumer declares the intent for a lab booking the describes various aspects of their booking like,<ul><li>Where would they like to get their scan/test done (intent.fulfillment.start.location)</li><li>When would they like to get their scan/test done (intent.fulfillment.start.time)</li><li>When would they like to get the results of their test/scan (intent.fulfillment.end.time)</li><li>Who is the service provider they would like to avail services from (intent.provider)</li><li>Who is getting the test/scan (intent.fulfillment.customer)</li><li>What kind of test/scan would they like to purchase (intent.item)</li><li>What category of services would they like to avail (intent.category)</li><li>How would they like to pay for their journey (intent.payment)</li></ul>'
       type: object
@@ -1610,6 +1648,9 @@ components:
                   - $ref: '#/components/schemas/Time'
               refund_amount:
                 $ref: '#/components/schemas/Price'
+            required:
+              - refund_within
+              - refund_amount
         replacement_terms:
           description: Terms that are applicable be met when this item is replaced
           type: array
@@ -1651,7 +1692,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagGroup'
-    NewItem:
+    BPPItem:
       allOf:
         - $ref: '#/components/schemas/Item'
         - anyOf:
@@ -1822,7 +1863,7 @@ components:
           type: array
           minItems: 1
           items:
-            $ref: '#/components/schemas/NewItem'
+            $ref: '#/components/schemas/Item'
         add_ons:
           description: The add-ons purchased / availed in this order
           type: array
@@ -1892,6 +1933,107 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TagGroup'
+    BAPOrder:
+      description: Describes the order details from the perspective of the BAP. Contains the order details sent from a BAP to BPP.
+      allOf:
+        - $ref: '#/components/schemas/Order'
+        - properties:
+            provider:
+              allOf:
+                - $ref: '#/components/schemas/Provider'
+              required:
+                - id
+            items:
+              type: array
+              minItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/Item'
+                required:
+                  - id
+            fulfillments:
+              type: array
+              minItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/Fulfillment'
+                required:
+                  - id
+      required:
+        - provider
+        - items
+        - fulfillments
+    BPPOrder:
+      description: Describes the order details from the perspective of the BPP. Contains the order details sent from a BPP to BAP.
+      allOf:
+        - $ref: '#/components/schemas/Order'
+        - properties:
+            provider:
+              allOf:
+                - $ref: '#/components/schemas/Provider'
+                - properties:
+                    descriptor:
+                      allOf:
+                        - $ref: '#/components/schemas/Descriptor'
+                        - properties:
+                            images:
+                              type: array
+                              minItems: 1
+                              items:
+                                $ref: '#/components/schemas/Image'
+                      required:
+                        - name
+                        - images
+                        - short_desc
+                        - long_desc
+              required:
+                - id
+                - descriptor
+            items:
+              type: array
+              minItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/BPPItem'
+                  - properties:
+                      descriptor:
+                        allOf:
+                          - $ref: '#/components/schemas/Descriptor'
+                          - properties:
+                              images:
+                                type: array
+                                minItems: 1
+                                items:
+                                  $ref: '#/components/schemas/Image'
+                        required:
+                          - name
+                          - images
+                          - short_desc
+                          - long_desc
+                      price:
+                        allOf:
+                          - $ref: '#/components/schemas/Price'
+                        required:
+                          - currency
+                          - value
+                required:
+                  - id
+                  - descriptor
+                  - price
+            fulfillments:
+              type: array
+              minItems: 1
+              items:
+                allOf:
+                  - $ref: '#/components/schemas/Fulfillment'
+                required:
+                  - id
+                  - type
+      required:
+        - provider
+        - items
+        - fulfillments
+        - quote
     Organization:
       description: An organization. Usually a recognized business entity.
       type: object
@@ -2129,6 +2271,9 @@ components:
           description: The total quoted price
           allOf:
             - $ref: '#/components/schemas/Price'
+          required:
+            - currency
+            - value
         breakup:
           description: the breakup of the total quoted price
           type: array
@@ -2148,10 +2293,19 @@ components:
                   - MISC
                   - DISCOUNT
               price:
-                $ref: '#/components/schemas/Price'
+                allOf:
+                  - $ref: '#/components/schemas/Price'
+                required:
+                  - currency
+                  - value
+            required:
+              - title
+              - price
         ttl:
           $ref: '#/components/schemas/Duration'
       required:
+        - price
+        - breakup
         - ttl
     Rating:
       description: Describes the rating of an entity
@@ -2220,6 +2374,8 @@ components:
             - $ref: '#/components/schemas/Time'
         external_ref:
           $ref: '#/components/schemas/MediaFile'
+      required:
+        - replace_within
     ReturnTerm:
       description: Describes the return policy of an item or an order
       type: object
@@ -2246,6 +2402,8 @@ components:
           enum:
             - CONSUMER
             - PROVIDER
+      required:
+        - return_time
     Scalar:
       description: Describes a scalar
       type: object
