@@ -463,10 +463,10 @@ paths:
                     order:
                       allOf:
                         - $ref: '#/components/schemas/BPPOrder'
+                        - not:
+                            required:
+                              - id
                       required:
-                        - provider
-                        - items
-                        - fulfillments
                         - quote
                   required:
                     - order
@@ -505,10 +505,10 @@ paths:
                     order:
                       allOf:
                         - $ref: '#/components/schemas/BPPOrder'
+                        - not:
+                            required:
+                              - id
                       required:
-                        - provider
-                        - items
-                        - fulfillments
                         - quote
                         - billing
                         - payments
@@ -552,10 +552,21 @@ paths:
                     order:
                       allOf:
                         - $ref: '#/components/schemas/BPPOrder'
+                        - properties:
+                            fulfillments:
+                              type: array
+                              items:
+                                allOf:
+                                  - properties:
+                                      state:
+                                        allOf:
+                                          - properties:
+                                              descriptor:
+                                                required:
+                                                  - code
+                                required:
+                                  - state
                       required:
-                        - provider
-                        - items
-                        - fulfillments
                         - quote
                         - billing
                         - payments
@@ -630,20 +641,39 @@ paths:
                     - bpp_id
                     - bpp_uri
                 message:
-                  allOf:
-                    - $ref: '#/components/schemas/BPPOrder'
+                  type: object
+                  properties:
+                    order:
+                      allOf:
+                        - $ref: '#/components/schemas/BPPOrder'
+                        - properties:
+                            fulfillments:
+                              type: array
+                              items:
+                                allOf:
+                                  - properties:
+                                      state:
+                                        allOf:
+                                          - properties:
+                                              descriptor:
+                                                required:
+                                                  - code
+                                        required:
+                                          - descriptor
+                                required:
+                                  - state
+                      required:
+                        - quote
+                        - billing
+                        - payments
+                        - cancellation_terms
+                        - refund_terms
+                        - return_terms
+                        - replacement_terms
+                        - id
+                        - cancellation
                   required:
-                    - provider
-                    - items
-                    - fulfillments
-                    - quote
-                    - billing
-                    - payments
-                    - cancellation_terms
-                    - refund_terms
-                    - return_terms
-                    - replacement_terms
-                    - id
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -673,20 +703,38 @@ paths:
                     - bpp_id
                     - bpp_uri
                 message:
-                  allOf:
-                    - $ref: '#/components/schemas/BPPOrder'
+                  type: object
+                  properties:
+                    order:
+                      allOf:
+                        - $ref: '#/components/schemas/BPPOrder'
+                        - properties:
+                            fulfillments:
+                              type: array
+                              items:
+                                allOf:
+                                  - properties:
+                                      state:
+                                        allOf:
+                                          - properties:
+                                              descriptor:
+                                                required:
+                                                  - code
+                                        required:
+                                          - descriptor
+                                required:
+                                  - state
+                      required:
+                        - quote
+                        - billing
+                        - payments
+                        - cancellation_terms
+                        - refund_terms
+                        - return_terms
+                        - replacement_terms
+                        - id
                   required:
-                    - provider
-                    - items
-                    - fulfillments
-                    - quote
-                    - billing
-                    - payments
-                    - cancellation_terms
-                    - refund_terms
-                    - return_terms
-                    - replacement_terms
-                    - id
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -716,20 +764,38 @@ paths:
                     - bpp_id
                     - bpp_uri
                 message:
-                    allOf:
-                      - $ref: '#/components/schemas/BPPOrder'
-                    required:
-                      - provider
-                      - items
-                      - fulfillments
-                      - quote
-                      - billing
-                      - payments
-                      - cancellation_terms
-                      - refund_terms
-                      - return_terms
-                      - replacement_terms
-                      - id
+                  type: object
+                  properties:
+                    order:
+                      allOf:
+                        - $ref: '#/components/schemas/BPPOrder'
+                        - properties:
+                            fulfillments:
+                              type: array
+                              items:
+                                allOf:
+                                  - properties:
+                                      state:
+                                        allOf:
+                                          - properties:
+                                              descriptor:
+                                                required:
+                                                  - code
+                                        required:
+                                          - descriptor
+                                required:
+                                  - state
+                      required:
+                        - quote
+                        - billing
+                        - payments
+                        - cancellation_terms
+                        - refund_terms
+                        - return_terms
+                        - replacement_terms
+                        - id
+                  required:
+                    - order
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -798,7 +864,15 @@ paths:
                   type: object
                   properties:
                     support:
-                      $ref: '#/components/schemas/Support'
+                      allOf:
+                        - $ref: '#/components/schemas/Support'
+                        - anyOf:
+                            - required:
+                              - phone
+                            - required:
+                              - email
+                            - required:
+                              - url
                 error:
                   $ref: '#/components/schemas/Error'
               required:
@@ -1400,6 +1474,7 @@ components:
             - $ref: '#/components/schemas/Descriptor'
             - properties:
                 code:
+                  type: string
                   enum:
                     - INITIATED
                     - ACKNOWLEDGED
@@ -1408,7 +1483,6 @@ components:
                     - OUT_FOR_DELIVERY
                     - DELIVERED
                     - CANCELLED
-
         updated_at:
           type: string
           format: date-time
@@ -1985,13 +2059,11 @@ components:
                         - name
                         - images
                         - short_desc
-                        - long_desc
               required:
                 - id
                 - descriptor
             items:
               type: array
-              minItems: 1
               items:
                 allOf:
                   - $ref: '#/components/schemas/BPPItem'
@@ -2009,7 +2081,6 @@ components:
                           - name
                           - images
                           - short_desc
-                          - long_desc
                       price:
                         allOf:
                           - $ref: '#/components/schemas/Price'
@@ -2022,10 +2093,7 @@ components:
                   - price
             fulfillments:
               type: array
-              minItems: 1
               items:
-                allOf:
-                  - $ref: '#/components/schemas/Fulfillment'
                 required:
                   - id
                   - type
@@ -2033,7 +2101,6 @@ components:
         - provider
         - items
         - fulfillments
-        - quote
     Organization:
       description: An organization. Usually a recognized business entity.
       type: object
@@ -2510,6 +2577,8 @@ components:
         url:
           type: string
           format: uri
+      required:
+        - ref_id
     Tag:
       description: 'Describes a tag. This is used to contain extended metadata. This object can be added as a property to any schema to describe extended attributes. For BAPs, tags can be sent during search to optimize and filter search results. BPPs can use tags to index their catalog to allow better search functionality. Tags are sent by the BPP as part of the catalog response in the `on_search` callback. Tags are also meant for display purposes. Upon receiving a tag, BAPs are meant to render them as name-value pairs. This is particularly useful when rendering tabular information about a product or service.'
       type: object
