@@ -63,10 +63,6 @@ paths:
                     order:
                       allOf:
                         - $ref: '#/components/schemas/BAPOrder'
-                      required:
-                        - provider
-                        - items
-                        - fulfillments
                   required:
                     - order
               required:
@@ -103,9 +99,6 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/BAPOrder'
                       required:
-                        - provider
-                        - items
-                        - fulfillments
                         - billing
                   required:
                     - order
@@ -165,9 +158,6 @@ paths:
                       allOf:
                         - $ref: '#/components/schemas/BAPOrder'
                       required:
-                        - provider
-                        - items
-                        - fulfillments
                         - billing
                         - payments
                   required:
