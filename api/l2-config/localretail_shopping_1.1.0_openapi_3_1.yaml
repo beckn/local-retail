@@ -1034,7 +1034,7 @@ components:
                             code:
                               const: category
                         value:
-                          const: electronics
+                          const: ELECTRONICS
         then:
           properties:
             tags:
@@ -1046,7 +1046,7 @@ components:
                         descriptor:
                           properties:
                             code:
-                              const: manual
+                              const: MANUAL
     BPPOrder:
       allOf:
       - $ref: '#/components/schemas/Order'
@@ -1518,6 +1518,8 @@ components:
           type: object
         code:
           type: string
+          enum:
+            - MANUAL
         images:
           items:
             $ref: '#/components/schemas/Image'
