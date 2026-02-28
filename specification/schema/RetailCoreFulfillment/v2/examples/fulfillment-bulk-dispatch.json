@@ -1,0 +1,39 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Fulfillment",
+  "beckn:id": "FUL-BULK-003",
+  "beckn:fulfillmentType": "Delivery",
+  "beckn:trackingAction": "Trackable",
+
+  "beckn:fulfillmentAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreFulfillmentAttributes",
+
+    "supportedFulfillmentTypes": ["DELIVERY"],
+
+    "deliveryDetails": {
+      "address": {
+        "@type": "schema:Place",
+        "schema:address": {
+          "@type": "schema:PostalAddress",
+          "schema:streetAddress": "Warehouse 12, Industrial Estate",
+          "schema:addressLocality": "Berlin",
+          "schema:postalCode": "10115",
+          "schema:addressCountry": "DE"
+        }
+      },
+      "contact": {
+        "name": "Warehouse Manager",
+        "phone": "+49-123-456789"
+      }
+    },
+
+    "sla": {
+      "min": "P1D",
+      "max": "P3D",
+      "unitBasis": "DISPATCH"
+    },
+
+    "handling": ["OVERSIZED", "BULK", "HIGH_VALUE"]
+  }
+}

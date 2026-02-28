@@ -1,0 +1,61 @@
+{
+  "id": "retail-core-order-v2",
+  "title": "Retail Core Order Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Order",
+  "attachAt": "beckn:orderAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/RetailCoreOrderAttributes",
+  "coreReference": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Order",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:id", "source": "core" },
+      { "path": "beckn:orderNumber", "source": "core" },
+      { "path": "beckn:orderStatus", "source": "core" },
+
+      { "path": "beckn:orderAttributes.buyerInstructions", "source": "pack" },
+      { "path": "beckn:orderAttributes.deliveryPreferences.leaveAtDoor", "source": "pack" },
+      { "path": "beckn:orderAttributes.deliveryPreferences.contactless", "source": "pack" },
+      { "path": "beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.start", "source": "pack" },
+      { "path": "beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.end", "source": "pack" },
+
+      { "path": "beckn:orderAttributes.gift.isGift", "source": "pack" },
+
+      { "path": "beckn:orderAttributes.invoicePreferences.taxId.scheme", "source": "pack" },
+      { "path": "beckn:orderAttributes.invoicePreferences.taxId.country", "source": "pack" },
+      { "path": "beckn:orderAttributes.invoicePreferences.taxId.value", "source": "pack" },
+
+      { "path": "beckn:orderAttributes.loyalty.programId", "source": "pack" },
+      { "path": "beckn:orderAttributes.source.channel", "source": "pack" },
+      { "path": "beckn:orderAttributes.source.campaignId", "source": "pack" }
+    ],
+
+    "filterable": [
+      { "path": "beckn:orderStatus", "source": "core" },
+      { "path": "beckn:orderAttributes.gift.isGift", "source": "pack" },
+      { "path": "beckn:orderAttributes.deliveryPreferences.contactless", "source": "pack" },
+      { "path": "beckn:orderAttributes.source.channel", "source": "pack" }
+    ],
+
+    "sortable": []
+  },
+
+  "minimalForOps": [
+    "beckn:id",
+    "beckn:orderStatus",
+    "beckn:orderAttributes.deliveryPreferences",
+    "beckn:orderAttributes.buyerInstructions"
+  ],
+
+  "privacy": {
+    "pii": true,
+    "sensitiveFields": [
+      "beckn:buyer",
+      "beckn:fulfillment",
+      "beckn:orderAttributes.invoicePreferences"
+    ]
+  }
+}

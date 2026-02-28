@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "retail": "https://beckn.org/schema/retail#",
+
+    "RetailCoreItemAttributes": "retail:RetailCoreItemAttributes",
+
+    "identity": "retail:identity",
+    "brand": "schema:brand",
+    "originCountry": "schema:countryOfOrigin",
+
+    "physical": "retail:physical",
+    "weight": "schema:weight",
+    "volume": "schema:QuantitativeValue",
+
+    "dimensions": "retail:dimensions",
+    "unit": "schema:unitText",
+    "length": "schema:depth",
+    "breadth": "schema:width",
+    "height": "schema:height",
+
+    "appearance": "retail:appearance",
+    "color": "schema:color",
+    "material": "schema:material",
+    "finish": "retail:finish",
+
+    "food": "retail:food",
+    "classification": "retail:foodClassification",
+
+    "packagedGoodsDeclaration": "retail:packagedGoodsDeclaration",
+    "manufacturerOrPacker": "retail:manufacturerOrPacker",
+    "commonOrGenericName": "schema:name",
+    "netQuantity": "schema:quantity",
+    "manufacturePackingImportDate": "retail:manufacturePackingImportDate",
+    "month": "schema:month",
+    "year": "schema:year",
+
+    "foodRegulatoryDeclaration": "retail:foodRegulatoryDeclaration",
+    "registrations": "retail:registrations",
+    "scheme": "retail:scheme",
+    "role": "retail:role",
+    "additives": "retail:additives",
+    "notes": "schema:description",
+
+    "credentials": "retail:credentials",
+    "issuer": "schema:issuer",
+    "id": "schema:identifier",
+    "type": "schema:additionalType"
+  }
+}

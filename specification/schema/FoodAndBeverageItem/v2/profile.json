@@ -1,0 +1,29 @@
+{
+  "id": "fnb-item-v2",
+  "title": "Food & Beverage Item Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/FoodAndBeverageItemAttributes",
+
+  "indexing": {
+    "indexable": [
+      { "path": "schema:name", "source": "core" },
+      { "path": "beckn:itemAttributes.identity.brand", "source": "retail-core" },
+      { "path": "beckn:itemAttributes.allergens[*]", "source": "pack" },
+      { "path": "beckn:itemAttributes.cuisine", "source": "pack" }
+    ],
+    "filterable": [
+      { "path": "beckn:itemAttributes.cuisine", "source": "pack" },
+      { "path": "beckn:itemAttributes.allergens[*]", "source": "pack" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "schema:name",
+    "beckn:itemAttributes.identity.brand"
+  ]
+}

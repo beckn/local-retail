@@ -1,0 +1,35 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Order",
+  "beckn:id": "ORDER-1002",
+  "beckn:orderStatus": "PENDING",
+  "beckn:orderNumber": "R-2026-1002",
+  "beckn:seller": "PROV-STORE-009",
+  "beckn:buyer": {
+    "@type": "beckn:Buyer",
+    "beckn:id": "BUYER-991"
+  },
+  "beckn:orderItems": [
+    {
+      "beckn:lineId": "LINE-1",
+      "beckn:orderedItem": "ITEM-URBANLIVING-SIDETABLE-01",
+      "beckn:quantity": {
+        "@type": "schema:QuantitativeValue",
+        "value": 1,
+        "unitText": "COUNT"
+      }
+    }
+  ],
+  "beckn:payment": {
+    "@type": "beckn:Payment",
+    "schema:paymentStatus": "PaymentDue"
+  },
+  "beckn:fulfillment": {
+    "@type": "beckn:Fulfillment",
+    "beckn:id": "FUL-1002"
+  },
+  "beckn:orderAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreOrderAttributes"
+  }
+}

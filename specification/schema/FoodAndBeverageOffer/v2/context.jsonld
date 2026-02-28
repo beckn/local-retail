@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@import": "../../RetailCoreOffer/v2/context.jsonld",
+
+    "fnb": "https://beckn.org/schema/retail/fnb#",
+    "FoodAndBeverageOfferAttributes": "fnb:FoodAndBeverageOfferAttributes",
+
+    "customization": "fnb:customization",
+    "groups": "fnb:customizationGroup",
+
+    "code": "schema:identifier",
+    "name": "schema:name",
+
+    "selection": "fnb:selectionRule",
+    "minSelections": "fnb:minSelections",
+    "maxSelections": "fnb:maxSelections",
+
+    "options": "fnb:option",
+    "priceDelta": "schema:priceSpecification",
+
+    "itemRef": "schema:itemOffered",
+    "offerRef": "schema:offers",
+    "available": "schema:availability"
+  }
+}

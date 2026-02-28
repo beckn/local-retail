@@ -1,0 +1,45 @@
+openapi: 3.1.1
+info:
+  title: Food & Beverage — Item Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    FoodAndBeverageItemAttributes:
+      allOf:
+        - $ref: "../../RetailCoreItem/v2/attributes.yaml#/components/schemas/RetailCoreItemAttributes"
+        - type: object
+          additionalProperties: false
+          x-jsonld:
+            "@context": ./context.jsonld
+            "@type": fnb:FoodAndBeverageItemAttributes
+          description: >
+            Food & Beverage-specific extensions to RetailCoreItemAttributes.
+            Covers allergens, cuisine classification, and preparation guidance.
+
+          properties:
+
+            allergens:
+              type: array
+              description: >
+                List of known allergens present in the item.
+              items:
+                type: string
+
+            cuisine:
+              type: string
+              description: Cuisine classification (e.g., Italian, Indian, Mexican).
+
+            preparation:
+              type: object
+              additionalProperties: false
+              description: Preparation and storage guidance.
+              properties:
+                instructions:
+                  type: string
+                storage:
+                  type: string
+                shelfLife:
+                  type: string
+                  description: Shelf life expressed as ISO 8601 duration (e.g., P2D).

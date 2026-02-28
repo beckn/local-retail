@@ -1,0 +1,45 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-FARMFRESH-FLOUR-1KG",
+  "beckn:descriptor": {
+    "@type": "beckn:Descriptor",
+    "schema:name": "Organic Wheat Flour (1 kg)",
+    "beckn:shortDesc": "Stone-ground whole wheat flour",
+    "beckn:longDesc": "FarmFresh organic whole wheat flour. Stone-ground, unbleached.",
+    "schema:image": ["https://example.org/images/flour-1kg.png"]
+  },
+  "beckn:provider": {
+    "beckn:id": "PROV-FARMFRESH-001",
+    "beckn:descriptor": {
+      "@type": "beckn:Descriptor",
+      "schema:name": "FarmFresh Co-op"
+    }
+  },
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreItemAttributes",
+    "identity": {
+      "brand": "FarmFresh",
+      "originCountry": "IN"
+    },
+    "packagedGoodsDeclaration": {
+      "manufacturerOrPacker": {
+        "type": "PACKER",
+        "name": "FarmFresh Co-op",
+        "id": "FF-IND-01",
+        "address": "Bengaluru, Karnataka, IN"
+      },
+      "commonOrGenericName": "Organic Wheat Flour",
+      "netQuantity": {
+        "@type": "schema:QuantitativeValue",
+        "value": 1,
+        "unitText": "KG"
+      },
+      "manufacturePackingImportDate": {
+        "month": 2,
+        "year": 2026
+      }
+    }
+  }
+}

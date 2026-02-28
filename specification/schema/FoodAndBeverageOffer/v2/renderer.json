@@ -1,0 +1,22 @@
+{
+  "container": "beckn:Offer",
+  "attachAt": "beckn:offerAttributes",
+  "entity": "fnb:FoodAndBeverageOfferAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "{{beckn:id}}",
+      "subtitle": "Customizable",
+      "badges": [
+        "{{#beckn:offerAttributes.customization.groups}}Custom Options Available{{/beckn:offerAttributes.customization.groups}}"
+      ]
+    }
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "template": "<div class=\"beckn-card fnb-offer\">\n  <div class=\"beckn-card-header\">\n    <div class=\"beckn-title\">Offer {{beckn:id}}</div>\n  </div>\n\n  <div class=\"beckn-card-body\">\n    {{#beckn:offerAttributes.customization.groups}}\n      <div class=\"customization-group\">\n        <div class=\"group-title\">{{name}}</div>\n        <div class=\"group-selection\">Selection: {{selection}}</div>\n\n        {{#options}}\n          <div class=\"option-row\">\n            <span class=\"option-name\">{{name}}</span>\n            {{#priceDelta}}\n              <span class=\"option-price\">(+{{value}})</span>\n            {{/priceDelta}}\n          </div>\n        {{/options}}\n      </div>\n    {{/beckn:offerAttributes.customization.groups}}\n  </div>\n</div>"
+    }
+  }
+}

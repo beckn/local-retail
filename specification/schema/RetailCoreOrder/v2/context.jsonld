@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "retail": "https://beckn.org/schema/retail#",
+
+    "RetailCoreOrderAttributes": "retail:RetailCoreOrderAttributes",
+
+    "buyerInstructions": "schema:description",
+
+    "deliveryPreferences": "retail:deliveryPreferences",
+    "leaveAtDoor": "retail:leaveAtDoor",
+    "contactless": "retail:contactless",
+    "preferredTimeSlot": "retail:preferredTimeSlot",
+    "start": "schema:startDate",
+    "end": "schema:endDate",
+
+    "gift": "retail:gift",
+    "isGift": "retail:isGift",
+    "message": "schema:message",
+    "wrap": "retail:wrap",
+
+    "invoicePreferences": "retail:invoicePreferences",
+    "taxId": "retail:taxId",
+    "scheme": "retail:scheme",
+    "country": "schema:addressCountry",
+    "value": "schema:value",
+    "companyName": "schema:legalName",
+    "email": "schema:email",
+
+    "loyalty": "retail:loyalty",
+    "programId": "retail:programId",
+    "pointsRedeemed": "retail:pointsRedeemed",
+
+    "source": "retail:source",
+    "channel": "retail:channel",
+    "campaignId": "retail:campaignId"
+  }
+}

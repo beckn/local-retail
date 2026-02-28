@@ -1,0 +1,108 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Order Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+    RetailCoreOrderAttributes:
+      type: object
+      additionalProperties: false
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": retail:RetailCoreOrderAttributes
+      description: >
+        Retail-specific order-level attributes that extend core Beckn Order.
+        These attributes capture transaction-instance metadata relevant to
+        retail domains without duplicating core Order semantics.
+
+      properties:
+        buyerInstructions:
+          type: string
+          description: Special instructions provided by buyer for this order.
+
+        deliveryPreferences:
+          type: object
+          additionalProperties: false
+          description: >
+            Buyer-specified delivery handling preferences during negotiation.
+            Final confirmed schedule should be reflected in core Fulfillment.start/end.
+          properties:
+            leaveAtDoor:
+              type: boolean
+            contactless:
+              type: boolean
+            preferredTimeSlot:
+              type: object
+              additionalProperties: false
+              properties:
+                start:
+                  type: string
+                  format: date-time
+                end:
+                  type: string
+                  format: date-time
+
+        gift:
+          type: object
+          additionalProperties: false
+          properties:
+            isGift:
+              type: boolean
+            message:
+              type: string
+            wrap:
+              type: boolean
+
+        invoicePreferences:
+          type: object
+          additionalProperties: false
+          description: Buyer-provided invoicing details/preferences (if applicable).
+          properties:
+            taxId:
+              type: object
+              additionalProperties: false
+              description: >
+                Tax identifier for invoicing, expressed in a jurisdiction-neutral manner.
+                Examples: GSTIN (IN), VAT ID (EU/UK), TRN (AE), EIN (US).
+              required: [value]
+              properties:
+                scheme:
+                  type: string
+                  description: Identifier scheme (e.g., GSTIN, VAT, EIN, TRN, TIN).
+                country:
+                  type: string
+                  description: ISO 3166-1 alpha-2 country code (recommended).
+                value:
+                  type: string
+                  description: Tax identifier value.
+            companyName:
+              type: string
+              description: Legal name for invoice.
+            email:
+              type: string
+              format: email
+              description: Email to receive invoice.
+
+        loyalty:
+          type: object
+          additionalProperties: false
+          description: Loyalty / rewards program details.
+          properties:
+            programId:
+              type: string
+            pointsRedeemed:
+              type: number
+
+        source:
+          type: object
+          additionalProperties: false
+          description: >
+            Attribution / source metadata for the order (channel/campaign).
+          properties:
+            channel:
+              type: string
+              description: Acquisition / ordering channel identifier.
+            campaignId:
+              type: string
+              description: Campaign identifier if applicable.

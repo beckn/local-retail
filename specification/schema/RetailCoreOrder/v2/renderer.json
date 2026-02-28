@@ -1,0 +1,52 @@
+{
+  "container": "beckn:Order",
+  "attachAt": "beckn:orderAttributes",
+  "entity": "retail:RetailCoreOrderAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "Order {{beckn:orderNumber}}",
+      "subtitle": "Status: {{beckn:orderStatus}}",
+      "badges": [
+        "{{#beckn:orderAttributes.deliveryPreferences.contactless}}Contactless{{/beckn:orderAttributes.deliveryPreferences.contactless}}",
+        "{{#beckn:orderAttributes.deliveryPreferences.leaveAtDoor}}Leave at door{{/beckn:orderAttributes.deliveryPreferences.leaveAtDoor}}",
+        "{{#beckn:orderAttributes.gift.isGift}}Gift{{/beckn:orderAttributes.gift.isGift}}"
+      ]
+    },
+
+    "details": [
+      { "label": "Order ID", "path": "beckn:id" },
+      { "label": "Order Number", "path": "beckn:orderNumber" },
+      { "label": "Status", "path": "beckn:orderStatus" },
+      { "label": "Buyer instructions", "path": "beckn:orderAttributes.buyerInstructions" },
+
+      { "label": "Contactless", "path": "beckn:orderAttributes.deliveryPreferences.contactless" },
+      { "label": "Leave at door", "path": "beckn:orderAttributes.deliveryPreferences.leaveAtDoor" },
+      { "label": "Preferred slot start", "path": "beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.start" },
+      { "label": "Preferred slot end", "path": "beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.end" },
+
+      { "label": "Gift wrap", "path": "beckn:orderAttributes.gift.wrap" },
+      { "label": "Gift message", "path": "beckn:orderAttributes.gift.message" },
+
+      { "label": "Invoice company", "path": "beckn:orderAttributes.invoicePreferences.companyName" },
+      { "label": "Invoice email", "path": "beckn:orderAttributes.invoicePreferences.email" },
+      { "label": "Tax ID scheme", "path": "beckn:orderAttributes.invoicePreferences.taxId.scheme" },
+      { "label": "Tax ID country", "path": "beckn:orderAttributes.invoicePreferences.taxId.country" },
+      { "label": "Tax ID value", "path": "beckn:orderAttributes.invoicePreferences.taxId.value" },
+
+      { "label": "Loyalty program", "path": "beckn:orderAttributes.loyalty.programId" },
+      { "label": "Points redeemed", "path": "beckn:orderAttributes.loyalty.pointsRedeemed" },
+
+      { "label": "Source channel", "path": "beckn:orderAttributes.source.channel" },
+      { "label": "Campaign ID", "path": "beckn:orderAttributes.source.campaignId" }
+    ]
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "description": "Default Order preferences card (core + retail orderAttributes)",
+      "template": "<div class=\"beckn-card retail-order\">\n  <div class=\"beckn-card-header\">\n    <div class=\"beckn-title\">Order {{beckn:orderNumber}}</div>\n    <div class=\"beckn-subtitle\">Status: {{beckn:orderStatus}}</div>\n  </div>\n\n  <div class=\"beckn-badges\">\n    {{#beckn:orderAttributes.deliveryPreferences.contactless}}\n      <span class=\"beckn-badge\">Contactless</span>\n    {{/beckn:orderAttributes.deliveryPreferences.contactless}}\n    {{#beckn:orderAttributes.deliveryPreferences.leaveAtDoor}}\n      <span class=\"beckn-badge\">Leave at door</span>\n    {{/beckn:orderAttributes.deliveryPreferences.leaveAtDoor}}\n    {{#beckn:orderAttributes.gift.isGift}}\n      <span class=\"beckn-badge\">Gift</span>\n    {{/beckn:orderAttributes.gift.isGift}}\n  </div>\n\n  <div class=\"beckn-card-body\">\n    {{#beckn:orderAttributes.buyerInstructions}}\n      <div class=\"beckn-row\"><span class=\"label\">Instructions:</span> <span class=\"value\">{{beckn:orderAttributes.buyerInstructions}}</span></div>\n    {{/beckn:orderAttributes.buyerInstructions}}\n\n    {{#beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.start}}\n      <div class=\"beckn-row\"><span class=\"label\">Preferred slot:</span> <span class=\"value\">{{beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.start}} – {{beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.end}}</span></div>\n    {{/beckn:orderAttributes.deliveryPreferences.preferredTimeSlot.start}}\n\n    {{#beckn:orderAttributes.invoicePreferences.taxId.value}}\n      <div class=\"beckn-row\"><span class=\"label\">Tax ID:</span> <span class=\"value\">{{beckn:orderAttributes.invoicePreferences.taxId.scheme}} ({{beckn:orderAttributes.invoicePreferences.taxId.country}}) — {{beckn:orderAttributes.invoicePreferences.taxId.value}}</span></div>\n    {{/beckn:orderAttributes.invoicePreferences.taxId.value}}\n\n    {{#beckn:orderAttributes.gift.message}}\n      <div class=\"beckn-row\"><span class=\"label\">Gift message:</span> <span class=\"value\">{{beckn:orderAttributes.gift.message}}</span></div>\n    {{/beckn:orderAttributes.gift.message}}\n\n    {{#beckn:orderAttributes.loyalty.programId}}\n      <div class=\"beckn-row\"><span class=\"label\">Loyalty:</span> <span class=\"value\">{{beckn:orderAttributes.loyalty.programId}} (Redeemed: {{beckn:orderAttributes.loyalty.pointsRedeemed}})</span></div>\n    {{/beckn:orderAttributes.loyalty.programId}}\n  </div>\n</div>"
+    }
+  }
+}

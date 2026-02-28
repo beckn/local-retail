@@ -1,0 +1,20 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-APPLE-LOOSE",
+  "schema:name": "Fresh Red Apples",
+
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "groc:GroceryItemAttributes",
+
+    "identity": {
+      "brand": "Local Orchard",
+      "originCountry": "US"
+    },
+
+    "freshProduce": {
+      "netQuantityDeclaration": "Sold loose by weight"
+    }
+  }
+}

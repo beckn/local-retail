@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "@vocab": "https://beckn.org/vocab/retail/offer#",
+
+    "KM": "Kilometre",
+
+    "SELLER_PICKUP": "SellerPickup",
+    "BUYER_SHIP": "BuyerShip",
+    "DROP_OFF": "DropOff",
+
+    "BEFORE_CONFIRMATION": "BeforeConfirmation",
+    "BEFORE_PACKING": "BeforePacking",
+    "BEFORE_SHIPMENT": "BeforeShipment"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "@context": {
+    "@import": "../../RetailCoreItem/v2/context.jsonld",
+
+    "fnb": "https://beckn.org/schema/retail/fnb#",
+    "FoodAndBeverageItemAttributes": "fnb:FoodAndBeverageItemAttributes",
+
+    "allergens": "schema:allergen",
+    "cuisine": "schema:servesCuisine",
+
+    "preparation": "fnb:preparation",
+    "instructions": "schema:recipeInstructions",
+    "storage": "fnb:storageInstructions",
+    "shelfLife": "schema:duration"
+  }
+}

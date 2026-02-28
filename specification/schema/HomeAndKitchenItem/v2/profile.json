@@ -1,0 +1,28 @@
+{
+  "id": "home-kitchen-item-v2",
+  "title": "Home & Kitchen Item Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/HomeAndKitchenItemAttributes",
+
+  "indexing": {
+    "indexable": [
+      { "path": "schema:name", "source": "core" },
+      { "path": "beckn:itemAttributes.identity.brand", "source": "retail-core" },
+      { "path": "beckn:itemAttributes.usage.indoorOnly", "source": "pack" }
+    ],
+    "filterable": [
+      { "path": "beckn:itemAttributes.usage.indoorOnly", "source": "pack" },
+      { "path": "beckn:itemAttributes.usage.outdoorOnly", "source": "pack" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "schema:name",
+    "beckn:itemAttributes.identity.brand"
+  ]
+}

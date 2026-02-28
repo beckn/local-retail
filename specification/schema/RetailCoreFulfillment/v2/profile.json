@@ -1,0 +1,37 @@
+{
+  "id": "retail-core-fulfillment-v2",
+  "title": "Retail Core Fulfillment Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Fulfillment",
+  "attachAt": "beckn:fulfillmentAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/RetailCoreFulfillmentAttributes",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:fulfillmentType", "source": "core" },
+      { "path": "beckn:trackingAction", "source": "core" },
+
+      { "path": "beckn:fulfillmentAttributes.supportedFulfillmentTypes[*]", "source": "pack" },
+      { "path": "beckn:fulfillmentAttributes.sla.min", "source": "pack" },
+      { "path": "beckn:fulfillmentAttributes.sla.max", "source": "pack" },
+      { "path": "beckn:fulfillmentAttributes.sla.unitBasis", "source": "pack" },
+      { "path": "beckn:fulfillmentAttributes.handling[*]", "source": "pack" },
+      { "path": "beckn:fulfillmentAttributes.deliveryDetails.address.schema:postalCode", "source": "pack" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "beckn:fulfillmentAttributes.supportedFulfillmentTypes",
+    "beckn:fulfillmentAttributes.sla"
+  ],
+
+  "privacy": {
+    "pii": true,
+    "sensitiveFields": [
+      "beckn:fulfillmentAttributes.deliveryDetails"
+    ]
+  }
+}

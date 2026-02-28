@@ -1,0 +1,89 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Fulfillment Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    ########################################################################
+    # RetailCoreFulfillmentAttributes
+    ########################################################################
+    RetailCoreFulfillmentAttributes:
+      type: object
+      additionalProperties: false
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": retail:RetailCoreFulfillmentAttributes
+      description: >
+        Retail-specific fulfillment attributes extending Beckn core Fulfillment.
+        Covers delivery endpoint, operating schedule, SLA semantics and handling constraints.
+
+      properties:
+
+        supportedFulfillmentTypes:
+          type: array
+          items:
+            type: string
+            enum: [DELIVERY, PICKUP, DINE_IN]
+
+        deliveryDetails:
+          type: object
+          description: Delivery endpoint details for DELIVERY fulfillment type.
+          additionalProperties: false
+          properties:
+            address:
+              $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Location"
+            contact:
+              type: object
+              additionalProperties: false
+              properties:
+                name:
+                  type: string
+                phone:
+                  type: string
+
+        operatingHours:
+          type: array
+          description: Recurring store operating schedule.
+          items:
+            $ref: "../../RecurringSchedule/v2/attributes.yaml#/components/schemas/RecurringSchedule"
+
+        closures:
+          type: array
+          description: Explicit closure periods overriding operatingHours.
+          items:
+            $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/TimePeriod"
+
+        sla:
+          type: object
+          additionalProperties: false
+          description: >
+            Service level agreement for fulfillment.
+            Indicates expected time bounds from defined lifecycle event.
+          properties:
+            min:
+              type: string
+              description: Minimum fulfillment time (ISO 8601 duration).
+            max:
+              type: string
+              description: Maximum fulfillment time (ISO 8601 duration).
+            unitBasis:
+              type: string
+              enum: [ORDER_CONFIRMATION, PACKING_COMPLETE, DISPATCH]
+              description: Lifecycle event from which SLA is measured.
+
+        handling:
+          type: array
+          items:
+            type: string
+            enum:
+              - FRAGILE
+              - COLD_CHAIN
+              - TEMPERATURE_CONTROLLED
+              - HAZARDOUS
+              - OVERSIZED
+              - BULK
+              - HIGH_VALUE
+              - LIQUID
+              - PERISHABLE

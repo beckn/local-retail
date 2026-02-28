@@ -1,0 +1,77 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Order",
+  "beckn:id": "ORDER-1001",
+  "beckn:orderStatus": "CONFIRMED",
+  "beckn:orderNumber": "R-2026-1001",
+  "beckn:seller": "PROV-STORE-001",
+  "beckn:buyer": {
+    "@type": "beckn:Buyer",
+    "beckn:id": "BUYER-001"
+  },
+  "beckn:orderItems": [
+    {
+      "beckn:lineId": "LINE-1",
+      "beckn:orderedItem": "ITEM-FARMFRESH-FLOUR-1KG",
+      "beckn:quantity": {
+        "@type": "schema:QuantitativeValue",
+        "value": 1,
+        "unitText": "COUNT"
+      },
+      "beckn:acceptedOffer": {
+        "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+        "@type": "beckn:Offer",
+        "beckn:id": "OFFER-001"
+      }
+    }
+  ],
+  "beckn:payment": {
+    "@type": "beckn:Payment",
+    "schema:paymentStatus": "PaymentDue"
+  },
+  "beckn:fulfillment": {
+    "@type": "beckn:Fulfillment",
+    "beckn:id": "FUL-1001"
+  },
+  "beckn:orderAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreOrderAttributes",
+
+    "buyerInstructions": "Please call on arrival. Leave at the door if no response.",
+
+    "deliveryPreferences": {
+      "leaveAtDoor": true,
+      "contactless": true,
+      "preferredTimeSlot": {
+        "start": "2026-03-01T18:00:00+05:30",
+        "end": "2026-03-01T20:00:00+05:30"
+      }
+    },
+
+    "gift": {
+      "isGift": true,
+      "message": "Happy Birthday! 🎉",
+      "wrap": true
+    },
+
+    "invoicePreferences": {
+      "taxId": {
+        "scheme": "GSTIN",
+        "country": "IN",
+        "value": "29ABCDE1234F2Z5"
+      },
+      "companyName": "Example Pvt Ltd",
+      "email": "billing@example.com"
+    },
+
+    "loyalty": {
+      "programId": "LOYALTY-STAR-01",
+      "pointsRedeemed": 120
+    },
+
+    "source": {
+      "channel": "APP",
+      "campaignId": "CAMP-FESTIVE-2026"
+    }
+  }
+}

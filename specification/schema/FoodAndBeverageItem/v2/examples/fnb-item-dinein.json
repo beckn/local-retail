@@ -1,0 +1,25 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-PIZZA-MARGHERITA",
+  "schema:name": "Margherita Pizza",
+
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "fnb:FoodAndBeverageItemAttributes",
+
+    "identity": {
+      "brand": "Pizza Hut"
+    },
+
+    "cuisine": "Italian",
+
+    "allergens": ["Gluten", "Dairy"],
+
+    "preparation": {
+      "instructions": "Best consumed hot.",
+      "storage": "Refrigerate if not consumed within 2 hours.",
+      "shelfLife": "P1D"
+    }
+  }
+}

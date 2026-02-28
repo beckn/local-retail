@@ -1,0 +1,49 @@
+openapi: 3.1.1
+info:
+  title: Grocery — Item Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    GroceryItemAttributes:
+      allOf:
+        - $ref: "../../RetailCoreItem/v2/attributes.yaml#/components/schemas/RetailCoreItemAttributes"
+        - type: object
+          additionalProperties: false
+          x-jsonld:
+            "@context": ./context.jsonld
+            "@type": groc:GroceryItemAttributes
+          description: >
+            Grocery-specific extensions to RetailCoreItemAttributes.
+            Covers nutrition information and fresh produce declarations.
+
+          properties:
+
+            nutrition:
+              type: array
+              description: >
+                Nutrition facts per serving or per 100g/100ml.
+                Context of measurement may be specified via unit.
+              items:
+                type: object
+                additionalProperties: false
+                required: [nutrient, value]
+                properties:
+                  nutrient:
+                    type: string
+                    description: Nutrient name (e.g., Energy, Protein, Sodium).
+                  value:
+                    allOf:
+                      - $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Quantity"
+                    description: Nutrient value expressed as Beckn core Quantity.
+
+            freshProduce:
+              type: object
+              additionalProperties: false
+              description: >
+                Additional declaration applicable for unpackaged or loose produce.
+              properties:
+                netQuantityDeclaration:
+                  type: string
+                  description: Declared weight/quantity information for loose produce.

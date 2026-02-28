@@ -1,0 +1,56 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Offer",
+  "beckn:id": "OFFER-001",
+  "beckn:items": [
+    "ITEM-FARMFRESH-FLOUR-1KG"
+  ],
+  "beckn:price": {
+    "@type": "schema:PriceSpecification",
+    "schema:priceCurrency": "INR",
+    "schema:price": "110.00"
+  },
+  "beckn:eligibleRegion": [
+    {
+      "@type": "beckn:Location",
+      "beckn:id": "LOC-BLR-01"
+    }
+  ],
+  "beckn:offerAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreOfferAttributes",
+    "policies": {
+      "returns": {
+        "allowed": true,
+        "window": "P7D",
+        "method": "SELLER_PICKUP",
+        "conditions": "Unopened packaging required."
+      },
+      "cancellation": {
+        "allowed": true,
+        "window": "PT30M",
+        "cutoffEvent": "BEFORE_PACKING",
+        "fee": {
+          "type": "FIXED",
+          "value": 0
+        }
+      },
+      "replacement": {
+        "allowed": true,
+        "window": "P7D",
+        "method": "SELLER_PICKUP",
+        "conditions": "Only for damaged/wrong item delivered.",
+        "subjectToAvailability": true
+      }
+    },
+    "paymentConstraints": {
+      "codAvailable": true
+    },
+    "serviceability": {
+      "distanceConstraint": {
+        "maxDistance": 5,
+        "unit": "KM"
+      }
+    }
+  }
+}

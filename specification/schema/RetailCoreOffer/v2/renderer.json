@@ -1,0 +1,34 @@
+{
+  "container": "beckn:Offer",
+  "attachAt": "beckn:offerAttributes",
+  "entity": "retail:RetailCoreOfferAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "₹{{beckn:price.schema:price}} {{beckn:price.schema:priceCurrency}}",
+      "subtitle": "COD: {{beckn:offerAttributes.paymentConstraints.codAvailable}}",
+      "badges": [
+        "Returns: {{beckn:offerAttributes.policies.returns.allowed}}",
+        "Cancel: {{beckn:offerAttributes.policies.cancellation.allowed}}",
+        "Replace: {{beckn:offerAttributes.policies.replacement.allowed}}"
+      ]
+    },
+
+    "details": [
+      { "label": "Offer ID", "path": "beckn:id" },
+      { "label": "Eligible Regions", "path": "beckn:eligibleRegion[*].beckn:id" },
+      { "label": "Return Window", "path": "beckn:offerAttributes.policies.returns.window" },
+      { "label": "Cancellation Window", "path": "beckn:offerAttributes.policies.cancellation.window" },
+      { "label": "Replacement Window", "path": "beckn:offerAttributes.policies.replacement.window" },
+      { "label": "Max Distance", "path": "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance" }
+    ]
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "description": "Default Offer card (core + retail offerAttributes)",
+      "template": "<div class=\"beckn-card retail-offer\">\n  <div class=\"beckn-card-header\">\n    <div class=\"beckn-title\">₹{{beckn:price.schema:price}} {{beckn:price.schema:priceCurrency}}</div>\n    <div class=\"beckn-subtitle\">Offer: {{beckn:id}}</div>\n  </div>\n\n  <div class=\"beckn-badges\">\n    <span class=\"beckn-badge\">COD: {{beckn:offerAttributes.paymentConstraints.codAvailable}}</span>\n    <span class=\"beckn-badge\">Returns: {{beckn:offerAttributes.policies.returns.allowed}}</span>\n    <span class=\"beckn-badge\">Cancel: {{beckn:offerAttributes.policies.cancellation.allowed}}</span>\n    <span class=\"beckn-badge\">Replace: {{beckn:offerAttributes.policies.replacement.allowed}}</span>\n  </div>\n\n  <div class=\"beckn-card-body\">\n    {{#beckn:offerAttributes.policies.returns.window}}\n      <div class=\"beckn-row\"><span class=\"label\">Return window:</span> <span class=\"value\">{{beckn:offerAttributes.policies.returns.window}}</span></div>\n    {{/beckn:offerAttributes.policies.returns.window}}\n\n    {{#beckn:offerAttributes.serviceability.distanceConstraint.maxDistance}}\n      <div class=\"beckn-row\"><span class=\"label\">Max distance:</span> <span class=\"value\">{{beckn:offerAttributes.serviceability.distanceConstraint.maxDistance}} {{beckn:offerAttributes.serviceability.distanceConstraint.unit}}</span></div>\n    {{/beckn:offerAttributes.serviceability.distanceConstraint.maxDistance}}\n  </div>\n</div>"
+    }
+  }
+}

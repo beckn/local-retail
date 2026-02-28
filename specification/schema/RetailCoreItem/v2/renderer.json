@@ -1,0 +1,31 @@
+{
+  "container": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+  "entity": "retail:RetailCoreItemAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "{{beckn:descriptor.schema:name}}",
+      "subtitle": "{{beckn:itemAttributes.identity.brand}}",
+      "badges": [
+        "{{beckn:itemAttributes.food.classification}}"
+      ]
+    },
+    "details": [
+      { "label": "Item ID", "path": "beckn:id" },
+      { "label": "Provider", "path": "beckn:provider.beckn:id" },
+      { "label": "Origin", "path": "beckn:itemAttributes.identity.originCountry" },
+      { "label": "Weight", "path": "beckn:itemAttributes.physical.weight" },
+      { "label": "Volume", "path": "beckn:itemAttributes.physical.volume" },
+      { "label": "Net Quantity", "path": "beckn:itemAttributes.packagedGoodsDeclaration.netQuantity" }
+    ]
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "description": "Default Item card (core + retail itemAttributes)",
+      "template": "<div class=\"beckn-card retail-item\">\n  <div class=\"beckn-card-header\">\n    <h3 class=\"beckn-title\">{{beckn:descriptor.schema:name}}</h3>\n    <p class=\"beckn-subtitle\">{{beckn:itemAttributes.identity.brand}}</p>\n  </div>\n\n  <div class=\"beckn-badges\">\n    {{#beckn:itemAttributes.food.classification}}\n      <span class=\"beckn-badge\">{{beckn:itemAttributes.food.classification}}</span>\n    {{/beckn:itemAttributes.food.classification}}\n  </div>\n\n  <div class=\"beckn-card-body\">\n    {{#beckn:itemAttributes.identity.originCountry}}\n      <div class=\"beckn-row\"><span class=\"label\">Origin:</span> <span class=\"value\">{{beckn:itemAttributes.identity.originCountry}}</span></div>\n    {{/beckn:itemAttributes.identity.originCountry}}\n\n    {{#beckn:itemAttributes.physical.weight}}\n      <div class=\"beckn-row\"><span class=\"label\">Weight:</span> <span class=\"value\">{{beckn:itemAttributes.physical.weight.value}} {{beckn:itemAttributes.physical.weight.unitText}}</span></div>\n    {{/beckn:itemAttributes.physical.weight}}\n\n    {{#beckn:itemAttributes.physical.volume}}\n      <div class=\"beckn-row\"><span class=\"label\">Volume:</span> <span class=\"value\">{{beckn:itemAttributes.physical.volume.value}} {{beckn:itemAttributes.physical.volume.unitText}}</span></div>\n    {{/beckn:itemAttributes.physical.volume}}\n  </div>\n</div>"
+    }
+  }
+}

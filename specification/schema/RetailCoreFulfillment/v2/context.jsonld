@@ -1,0 +1,36 @@
+{
+  "@context": {
+
+    "@import": "../../RecurringSchedule/v2/context.jsonld"
+
+    "schema": "https://schema.org/",
+    "retail": "https://beckn.org/schema/retail#",
+
+    "RetailCoreFulfillmentAttributes": "retail:RetailCoreFulfillmentAttributes",
+
+    "supportedFulfillmentTypes": "retail:supportedFulfillmentTypes",
+
+    "deliveryDetails": "retail:deliveryDetails",
+    "address": "schema:address",
+    "contact": "schema:contactPoint",
+    "name": "schema:name",
+    "phone": "schema:telephone",
+
+    "operatingHours": "schema:openingHoursSpecification",
+    "OperatingSchedule": "retail:OperatingSchedule",
+    "daysOfWeek": "schema:dayOfWeek",
+    "timeRange": "retail:timeRange",
+    "start": "schema:startTime",
+    "end": "schema:endTime",
+    "holidays": "schema:date",
+
+    "closures": "retail:closures",
+
+    "sla": "retail:sla",
+    "min": "retail:minDuration",
+    "max": "retail:maxDuration",
+    "unitBasis": "retail:unitBasis",
+
+    "handling": "retail:handling"
+  }
+}

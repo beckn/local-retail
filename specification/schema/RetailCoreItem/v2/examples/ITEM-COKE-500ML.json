@@ -1,0 +1,38 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-COKE-500ML",
+  "beckn:descriptor": {
+    "@type": "beckn:Descriptor",
+    "schema:name": "Coca-Cola (500 ml)",
+    "beckn:shortDesc": "Soft drink bottle",
+    "schema:image": ["https://example.org/images/coke-500ml.png"]
+  },
+  "beckn:provider": {
+    "beckn:id": "PROV-STORE-001",
+    "beckn:descriptor": {
+      "@type": "beckn:Descriptor",
+      "schema:name": "City Supermart"
+    }
+  },
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreItemAttributes",
+    "identity": {
+      "brand": "Coca-Cola",
+      "originCountry": "IN"
+    },
+    "physical": {
+      "volume": {
+        "@type": "schema:QuantitativeValue",
+        "value": 500,
+        "unitText": "ML"
+      },
+      "weight": {
+        "@type": "schema:QuantitativeValue",
+        "value": 0.55,
+        "unitText": "KG"
+      }
+    }
+  }
+}

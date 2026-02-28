@@ -1,0 +1,19 @@
+{
+  "container": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+  "entity": "hk:HomeAndKitchenItemAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "{{schema:name}}",
+      "subtitle": "{{beckn:itemAttributes.identity.brand}}"
+    }
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "template": "<div class=\"beckn-card hk-item\">\n  <div class=\"beckn-title\">{{schema:name}}</div>\n  <div class=\"beckn-subtitle\">Brand: {{beckn:itemAttributes.identity.brand}}</div>\n\n  {{#beckn:itemAttributes.warranty.duration}}\n    <div class=\"beckn-row\">\n      <span class=\"label\">Warranty:</span>\n      <span class=\"value\">{{beckn:itemAttributes.warranty.duration}}</span>\n    </div>\n  {{/beckn:itemAttributes.warranty.duration}}\n</div>"
+    }
+  }
+}

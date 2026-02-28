@@ -1,0 +1,21 @@
+{
+  "id": "fnb-offer-v2",
+  "title": "Food & Beverage Offer Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Offer",
+  "attachAt": "beckn:offerAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/FoodAndBeverageOfferAttributes",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:id", "source": "core" },
+      { "path": "beckn:items[*]", "source": "core" },
+      { "path": "beckn:offerAttributes.customization.groups[*].code", "source": "pack" }
+    ]
+  },
+
+  "minimalForDiscovery": []
+}

@@ -1,0 +1,63 @@
+{
+  "id": "retail-core-item-v2",
+  "title": "Retail Core Item Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/RetailCoreItemAttributes",
+  "coreReference": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Item",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:id", "source": "core" },
+      { "path": "beckn:descriptor.schema:name", "source": "core" },
+      { "path": "beckn:descriptor.beckn:shortDesc", "source": "core" },
+      { "path": "beckn:descriptor.schema:image[*]", "source": "core" },
+      { "path": "beckn:provider.beckn:id", "source": "core" },
+
+      { "path": "beckn:itemAttributes.identity.brand", "source": "pack" },
+      { "path": "beckn:itemAttributes.identity.originCountry", "source": "pack" },
+      { "path": "beckn:itemAttributes.food.classification", "source": "pack" },
+
+      { "path": "beckn:itemAttributes.physical.weight", "source": "pack" },
+      { "path": "beckn:itemAttributes.physical.volume", "source": "pack" },
+      { "path": "beckn:itemAttributes.physical.dimensions.unit", "source": "pack" },
+      { "path": "beckn:itemAttributes.physical.dimensions.length", "source": "pack" },
+      { "path": "beckn:itemAttributes.physical.dimensions.breadth", "source": "pack" },
+      { "path": "beckn:itemAttributes.physical.dimensions.height", "source": "pack" },
+
+      { "path": "beckn:itemAttributes.packagedGoodsDeclaration.commonOrGenericName", "source": "pack" },
+      { "path": "beckn:itemAttributes.packagedGoodsDeclaration.netQuantity", "source": "pack" },
+
+      { "path": "beckn:itemAttributes.foodRegulatoryDeclaration.registrations[*].scheme", "source": "pack" },
+      { "path": "beckn:itemAttributes.foodRegulatoryDeclaration.registrations[*].id", "source": "pack" },
+
+      { "path": "beckn:itemAttributes.credentials[*].type", "source": "pack" },
+      { "path": "beckn:itemAttributes.credentials[*].uri", "source": "pack" }
+    ],
+
+    "filterable": [
+      { "path": "beckn:itemAttributes.identity.brand", "source": "pack" },
+      { "path": "beckn:itemAttributes.food.classification", "source": "pack" },
+      { "path": "beckn:provider.beckn:id", "source": "core" }
+    ],
+
+    "sortable": [
+      { "path": "beckn:descriptor.schema:name", "source": "core", "type": "string" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "beckn:id",
+    "beckn:descriptor.schema:name",
+    "beckn:itemAttributes.identity.brand"
+  ],
+
+  "privacy": {
+    "pii": false,
+    "sensitiveFields": []
+  }
+}

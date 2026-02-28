@@ -1,0 +1,34 @@
+{
+  "@context": {
+    "@vocab": "https://beckn.org/vocab/retail/item#",
+
+    "VEG": "Vegetarian",
+    "NON_VEG": "NonVegetarian",
+    "EGG": "Eggitarian",
+
+    "MANUFACTURER": "Manufacturer",
+    "PACKER": "Packer",
+
+    "BRAND_OWNER": "BrandOwner",
+    "SELLER": "Seller",
+    "IMPORTER": "Importer",
+
+    "CONTAINS": "Contains",
+    "MAY_CONTAIN": "MayContain",
+    "FREE_FROM": "FreeFrom",
+    "MAX_ALLOWED": "MaxAllowed",
+    "PERCENTAGE": "Percentage",
+    "CODE": "Code",
+
+    "MM": "Millimetre",
+    "CM": "Centimetre",
+    "M": "Metre",
+    "IN": "Inch",
+    "FT": "Foot",
+
+    "VC": "VerifiableCredential",
+    "CERTIFICATE": "Certificate",
+    "REGISTRY_ENTRY": "RegistryEntry",
+    "LICENSE": "License"
+  }
+}

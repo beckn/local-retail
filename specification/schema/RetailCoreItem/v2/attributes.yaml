@@ -1,0 +1,174 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Item Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+    RetailCoreItemAttributes:
+      type: object
+      additionalProperties: false
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": retail:RetailCoreItemAttributes
+
+      properties:
+
+        identity:
+          type: object
+          additionalProperties: false
+          properties:
+            brand:
+              type: string
+            originCountry:
+              type: string
+              description: ISO 3166-1 alpha-2 recommended
+
+        physical:
+          type: object
+          additionalProperties: false
+          properties:
+
+            weight:
+              allOf:
+                - $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Quantity"
+              description: Item weight using Beckn core Quantity.
+
+            volume:
+              allOf:
+                - $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Quantity"
+              description: Item volume (e.g., ML, L, CUBIC_CM).
+
+            dimensions:
+              type: object
+              additionalProperties: false
+              description: Physical dimensions expressed using a single unit.
+              required: [unit, length, breadth, height]
+              properties:
+                unit:
+                  type: string
+                  enum: [MM, CM, M, IN, FT]
+                length:
+                  type: number
+                breadth:
+                  type: number
+                height:
+                  type: number
+
+            appearance:
+              type: object
+              additionalProperties: false
+              properties:
+                color:
+                  type: string
+                material:
+                  type: string
+                finish:
+                  type: string
+
+        food:
+          type: object
+          additionalProperties: false
+          properties:
+            classification:
+              type: string
+              enum: [VEG, NON_VEG, EGG]
+
+        packagedGoodsDeclaration:
+          type: object
+          additionalProperties: false
+          description: Jurisdiction-neutral packaged goods declaration.
+          properties:
+            manufacturerOrPacker:
+              type: object
+              additionalProperties: false
+              required: [type, name]
+              properties:
+                type:
+                  type: string
+                  enum: [MANUFACTURER, PACKER]
+                name:
+                  type: string
+                id:
+                  type: string
+                address:
+                  type: string
+
+            commonOrGenericName:
+              type: string
+
+            netQuantity:
+              allOf:
+                - $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Quantity"
+
+            manufacturePackingImportDate:
+              type: object
+              additionalProperties: false
+              required: [month, year]
+              properties:
+                month:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                year:
+                  type: integer
+                  minimum: 1900
+
+        foodRegulatoryDeclaration:
+          type: object
+          additionalProperties: false
+          description: Jurisdiction-neutral food regulatory declarations.
+          properties:
+            registrations:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required: [scheme, id]
+                properties:
+                  scheme:
+                    type: string
+                  id:
+                    type: string
+                  role:
+                    type: string
+                    enum: [BRAND_OWNER, SELLER, IMPORTER, MANUFACTURER, PACKER]
+                  url:
+                    type: string
+                    format: uri
+
+            additives:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required: [type, value]
+                properties:
+                  type:
+                    type: string
+                    enum: [CONTAINS, MAY_CONTAIN, FREE_FROM, MAX_ALLOWED, PERCENTAGE, CODE]
+                  value:
+                    type: string
+                  quantity:
+                    allOf:
+                      - $ref: "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Quantity"
+                  notes:
+                    type: string
+
+        credentials:
+          type: array
+          description: External verifiable credentials or attestations.
+          items:
+            type: object
+            additionalProperties: false
+            required: [type, uri]
+            properties:
+              type:
+                type: string
+              uri:
+                type: string
+                format: uri
+              issuer:
+                type: string
+              id:
+                type: string

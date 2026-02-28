@@ -1,0 +1,38 @@
+{
+  "@context": {
+
+   "@import": "../../RecurringSchedule/v2/context.jsonld"
+   
+    "schema": "https://schema.org/",
+    "retail": "https://beckn.org/schema/retail#",
+
+    "RetailCoreOfferAttributes": "retail:RetailCoreOfferAttributes",
+
+    "policies": "retail:policies",
+
+    "returns": "retail:returns",
+    "cancellation": "retail:cancellation",
+    "replacement": "retail:replacement",
+
+    "allowed": "retail:allowed",
+    "window": "retail:window",
+    "method": "retail:method",
+
+    "restockingFee": "retail:restockingFee",
+    "fee": "retail:fee",
+    "conditions": "schema:description",
+
+    "cutoffEvent": "retail:cutoffEvent",
+    "subjectToAvailability": "retail:subjectToAvailability",
+    "serviceability": "retail:serviceability",
+
+    "distanceConstraint": "retail:distanceConstraint",
+    "maxDistance": "retail:maxDistance",
+    "unit": "schema:unitText",
+
+    "OperatingSchedule": "retail:OperatingSchedule",
+    "daysOfWeek": "schema:dayOfWeek",
+    "timeRange": "retail:timeRange",
+    "holidays": "schema:date"
+  }
+}

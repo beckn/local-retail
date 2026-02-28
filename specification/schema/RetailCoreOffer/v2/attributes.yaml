@@ -1,0 +1,154 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Offer Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    ########################################################################
+    # OFFER.ATTRIBUTES — RetailCoreOfferAttributes
+    ########################################################################
+    RetailCoreOfferAttributes:
+      type: object
+      additionalProperties: false
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": retail:RetailCoreOfferAttributes
+      properties:
+
+        policies:
+          type: object
+          additionalProperties: false
+          properties:
+
+            returns:
+              type: object
+              additionalProperties: false
+              description: Return policy applicable to the offer.
+              properties:
+                allowed:
+                  type: boolean
+                window:
+                  type: string
+                  description: >
+                    Return window as ISO 8601 duration (e.g., P7D). Interpreted from order delivery
+                    unless specified otherwise by profile.
+                method:
+                  type: string
+                  enum: [SELLER_PICKUP, BUYER_SHIP, DROP_OFF]
+                  description: Return handling method.
+                restockingFee:
+                  type: object
+                  additionalProperties: false
+                  description: Optional restocking fee applicable on return.
+                  properties:
+                    type:
+                      type: string
+                      enum: [PERCENTAGE, FIXED]
+                    value:
+                      type: number
+                conditions:
+                  type: string
+                  description: Optional textual conditions (e.g., unopened packaging required).
+
+            cancellation:
+              type: object
+              additionalProperties: false
+              description: Cancellation policy applicable to the offer.
+              properties:
+                allowed:
+                  type: boolean
+                window:
+                  type: string
+                  description: >
+                    Cancellation window as ISO 8601 duration (e.g., PT30M, P1D).
+                cutoffEvent:
+                  type: string
+                  enum: [BEFORE_CONFIRMATION, BEFORE_PACKING, BEFORE_SHIPMENT]
+                  description: Optional lifecycle cutoff for cancellation eligibility.
+                fee:
+                  type: object
+                  additionalProperties: false
+                  description: Optional cancellation fee.
+                  properties:
+                    type:
+                      type: string
+                      enum: [PERCENTAGE, FIXED]
+                    value:
+                      type: number
+
+            replacement:
+              type: object
+              additionalProperties: false
+              description: Replacement policy applicable to the offer.
+              properties:
+                allowed:
+                  type: boolean
+                window:
+                  type: string
+                  description: >
+                    Replacement window as ISO 8601 duration (e.g., P7D). Interpreted from order delivery
+                    unless specified otherwise by profile.
+                method:
+                  type: string
+                  enum: [SELLER_PICKUP, BUYER_SHIP, DROP_OFF]
+                  description: Replacement handling method.
+                conditions:
+                  type: string
+                  description: Optional conditions (e.g., damaged item only, wrong item delivered).
+                subjectToAvailability:
+                  type: boolean
+                  description: Indicates whether replacement depends on stock availability.
+
+        paymentConstraints:
+          type: object
+          additionalProperties: false
+          properties:
+            codAvailable:
+              type: boolean
+
+        serviceability:
+          type: object
+          additionalProperties: false
+          description: >
+            Additional serviceability constraints beyond geographic eligibility
+            (handled via core Offer.eligibleRegion).
+          properties:
+
+            distanceConstraint:
+              type: object
+              additionalProperties: false
+              description: Circular distance constraint from provider location.
+              properties:
+                maxDistance:
+                  type: number
+                unit:
+                  type: string
+                  enum: [KM]
+
+            timing:
+              type: array
+              description: Recurring schedule constraints for accepting orders.
+              items:
+                $ref: "../../RecurringSchedule/v2/attributes.yaml#/components/schemas/RecurringSchedule"
+
+        timeRange:
+          type: object
+          additionalProperties: false
+          description: Daily time window applicable on the specified days.
+          required: [start, end]
+          properties:
+            start:
+              type: string
+              format: time
+            end:
+              type: string
+              format: time
+
+        holidays:
+          type: array
+          description: Specific dates excluded from this schedule.
+          items:
+            type: string
+            format: date

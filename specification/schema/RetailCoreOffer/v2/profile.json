@@ -1,0 +1,57 @@
+{
+  "id": "retail-core-offer-v2",
+  "title": "Retail Core Offer Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Offer",
+  "attachAt": "beckn:offerAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/RetailCoreOfferAttributes",
+  "coreReference": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/attributes.yaml#/components/schemas/Offer",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:id", "source": "core" },
+      { "path": "beckn:items[*]", "source": "core" },
+      { "path": "beckn:price.schema:price", "source": "core" },
+      { "path": "beckn:price.schema:priceCurrency", "source": "core" },
+      { "path": "beckn:eligibleRegion[*].beckn:id", "source": "core" },
+
+      { "path": "beckn:offerAttributes.paymentConstraints.codAvailable", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.returns.allowed", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.returns.window", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.cancellation.allowed", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.cancellation.window", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.replacement.allowed", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.replacement.window", "source": "pack" },
+
+      { "path": "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance", "source": "pack" },
+      { "path": "beckn:offerAttributes.serviceability.timing[*].daysOfWeek[*]", "source": "pack" }
+    ],
+
+    "filterable": [
+      { "path": "beckn:offerAttributes.paymentConstraints.codAvailable", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.returns.allowed", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.cancellation.allowed", "source": "pack" },
+      { "path": "beckn:offerAttributes.policies.replacement.allowed", "source": "pack" },
+      { "path": "beckn:eligibleRegion[*].beckn:id", "source": "core" }
+    ],
+
+    "sortable": [
+      { "path": "beckn:price.schema:price", "source": "core", "type": "number" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "beckn:id",
+    "beckn:items",
+    "beckn:price",
+    "beckn:offerAttributes.paymentConstraints.codAvailable"
+  ],
+
+  "privacy": {
+    "pii": false,
+    "sensitiveFields": []
+  }
+}

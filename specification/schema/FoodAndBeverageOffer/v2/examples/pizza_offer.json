@@ -1,0 +1,35 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Offer",
+  "beckn:id": "OFFER-PIZZA-001",
+  "beckn:items": ["ITEM-PIZZA-BASE"],
+
+  "beckn:offerAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "fnb:FoodAndBeverageOfferAttributes",
+
+    "customization": {
+      "groups": [
+        {
+          "code": "SIZE",
+          "name": "Size",
+          "selection": "SINGLE_REQUIRED",
+          "options": [
+            { "code": "REG", "name": "Regular", "priceDelta": { "type": "FIXED", "value": 0 } },
+            { "code": "LRG", "name": "Large", "priceDelta": { "type": "FIXED", "value": 100 } }
+          ]
+        },
+        {
+          "code": "TOPPINGS",
+          "name": "Extra Toppings",
+          "selection": "MULTIPLE_OPTIONAL",
+          "maxSelections": 3,
+          "options": [
+            { "code": "OLIVES", "name": "Olives", "priceDelta": { "type": "FIXED", "value": 30 } },
+            { "code": "MUSHROOM", "name": "Mushroom", "priceDelta": { "type": "FIXED", "value": 40 } }
+          ]
+        }
+      ]
+    }
+  }
+}

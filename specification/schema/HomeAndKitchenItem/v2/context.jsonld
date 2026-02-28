@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@import": "../../RetailCoreItem/v2/context.jsonld",
+
+    "hk": "https://beckn.org/schema/retail/home-kitchen#",
+    "HomeAndKitchenItemAttributes": "hk:HomeAndKitchenItemAttributes",
+
+    "careInstructions": "schema:maintenanceDetails",
+
+    "installation": "hk:installation",
+    "required": "hk:installationRequired",
+    "providedBySeller": "hk:installationProvidedBySeller",
+    "notes": "schema:description",
+
+    "usage": "hk:usage",
+    "indoorOnly": "schema:isIndoorOnly",
+    "outdoorOnly": "schema:isOutdoorOnly",
+    "compatibleWith": "schema:isAccessoryOrSparePartFor",
+
+    "warranty": "schema:warranty",
+    "duration": "schema:duration",
+    "type": "schema:warrantyScope",
+    "terms": "schema:description"
+  }
+}

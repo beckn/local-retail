@@ -1,0 +1,42 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Offer",
+  "beckn:id": "OFFER-002",
+  "beckn:items": [
+    "ITEM-URBANLIVING-SIDETABLE-01"
+  ],
+  "beckn:price": {
+    "@type": "schema:PriceSpecification",
+    "schema:priceCurrency": "INR",
+    "schema:price": "1499.00"
+  },
+  "beckn:eligibleRegion": [
+    {
+      "@type": "beckn:Location",
+      "beckn:id": "LOC-BLR-02"
+    }
+  ],
+  "beckn:offerAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreOfferAttributes",
+    "paymentConstraints": {
+      "codAvailable": false
+    },
+    "serviceability": {
+      "distanceConstraint": {
+        "maxDistance": 8,
+        "unit": "KM"
+      },
+      "timing": [
+        {
+          "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI"],
+          "timeRange": {
+            "start": "09:00:00",
+            "end": "18:00:00"
+          },
+          "holidays": ["2026-03-08", "2026-03-29"]
+        }
+      ]
+    }
+  }
+}

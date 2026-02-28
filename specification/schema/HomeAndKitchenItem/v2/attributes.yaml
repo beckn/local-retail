@@ -1,0 +1,68 @@
+openapi: 3.1.1
+info:
+  title: Home & Kitchen — Item Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    HomeAndKitchenItemAttributes:
+      allOf:
+        - $ref: "../../RetailCoreItem/v2/attributes.yaml#/components/schemas/RetailCoreItemAttributes"
+        - type: object
+          additionalProperties: false
+          x-jsonld:
+            "@context": ./context.jsonld
+            "@type": hk:HomeAndKitchenItemAttributes
+          description: >
+            Home & Kitchen-specific extensions to RetailCoreItemAttributes.
+            Covers care, installation and usage environment guidance.
+
+          properties:
+
+            careInstructions:
+              type: string
+              description: Cleaning and maintenance guidance.
+
+            installation:
+              type: object
+              additionalProperties: false
+              description: Installation requirements and support information.
+              properties:
+                required:
+                  type: boolean
+                  description: Whether professional installation is required.
+                providedBySeller:
+                  type: boolean
+                  description: Whether seller provides installation.
+                notes:
+                  type: string
+
+            usage:
+              type: object
+              additionalProperties: false
+              description: Usage environment or compatibility constraints.
+              properties:
+                indoorOnly:
+                  type: boolean
+                outdoorOnly:
+                  type: boolean
+                compatibleWith:
+                  type: array
+                  items:
+                    type: string
+                  description: Compatible appliances or systems.
+
+            warranty:
+              type: object
+              additionalProperties: false
+              description: Warranty information at item level (if generic).
+              properties:
+                duration:
+                  type: string
+                  description: ISO 8601 duration (e.g., P1Y).
+                type:
+                  type: string
+                  enum: [MANUFACTURER, SELLER]
+                terms:
+                  type: string

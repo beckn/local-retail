@@ -1,0 +1,22 @@
+{
+  "container": "beckn:Fulfillment",
+  "attachAt": "beckn:fulfillmentAttributes",
+  "entity": "retail:RetailCoreFulfillmentAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "Fulfillment",
+      "subtitle": "Type: {{beckn:fulfillmentType}}",
+      "badges": [
+        "{{beckn:trackingAction}}"
+      ]
+    }
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "template": "<div class=\"beckn-card retail-fulfillment\">\n  <div class=\"beckn-card-header\">\n    <div class=\"beckn-title\">Fulfillment</div>\n    <div class=\"beckn-subtitle\">Type: {{beckn:fulfillmentType}}</div>\n  </div>\n\n  <div class=\"beckn-card-body\">\n    <div class=\"beckn-row\"><span class=\"label\">SLA:</span> <span class=\"value\">{{beckn:fulfillmentAttributes.sla.min}} – {{beckn:fulfillmentAttributes.sla.max}}</span></div>\n\n    {{#beckn:fulfillmentAttributes.deliveryDetails.address.schema:postalCode}}\n      <div class=\"beckn-row\"><span class=\"label\">Postal Code:</span> <span class=\"value\">{{beckn:fulfillmentAttributes.deliveryDetails.address.schema:postalCode}}</span></div>\n    {{/beckn:fulfillmentAttributes.deliveryDetails.address.schema:postalCode}}\n\n    {{#beckn:fulfillmentAttributes.handling}}\n      <div class=\"beckn-row\"><span class=\"label\">Handling:</span> <span class=\"value\">{{beckn:fulfillmentAttributes.handling}}</span></div>\n    {{/beckn:fulfillmentAttributes.handling}}\n  </div>\n</div>"
+    }
+  }
+}

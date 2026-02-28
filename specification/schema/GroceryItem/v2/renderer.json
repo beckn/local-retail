@@ -1,0 +1,19 @@
+{
+  "container": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+  "entity": "groc:GroceryItemAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "{{schema:name}}",
+      "subtitle": "{{beckn:itemAttributes.identity.brand}}"
+    }
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "template": "<div class=\"beckn-card grocery-item\">\n  <div class=\"beckn-title\">{{schema:name}}</div>\n  <div class=\"beckn-subtitle\">Brand: {{beckn:itemAttributes.identity.brand}}</div>\n\n  {{#beckn:itemAttributes.nutrition}}\n    <div class=\"beckn-row\">\n      <span class=\"label\">{{nutrient}}:</span>\n      <span class=\"value\">{{value.value}} {{value.unitText}}</span>\n    </div>\n  {{/beckn:itemAttributes.nutrition}}\n</div>"
+    }
+  }
+}

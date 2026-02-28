@@ -1,0 +1,50 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Fulfillment",
+  "beckn:id": "FUL-DEL-001",
+  "beckn:fulfillmentType": "Delivery",
+  "beckn:trackingAction": "Trackable",
+
+  "beckn:fulfillmentAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreFulfillmentAttributes",
+
+    "supportedFulfillmentTypes": ["DELIVERY"],
+
+    "deliveryDetails": {
+      "address": {
+        "@type": "schema:Place",
+        "schema:address": {
+          "@type": "schema:PostalAddress",
+          "schema:streetAddress": "221B Baker Street",
+          "schema:addressLocality": "London",
+          "schema:addressRegion": "London",
+          "schema:postalCode": "NW1 6XE",
+          "schema:addressCountry": "GB"
+        }
+      },
+      "contact": {
+        "name": "Sherlock Holmes",
+        "phone": "+44-7000-000000"
+      }
+    },
+
+    "operatingHours": [
+      {
+        "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI"],
+        "timeRange": {
+          "start": "09:00:00",
+          "end": "18:00:00"
+        }
+      }
+    ],
+
+    "sla": {
+      "min": "PT30M",
+      "max": "PT2H",
+      "unitBasis": "ORDER_CONFIRMATION"
+    },
+
+    "handling": ["COLD_CHAIN", "PERISHABLE"]
+  }
+}

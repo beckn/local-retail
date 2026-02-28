@@ -1,0 +1,19 @@
+{
+  "container": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+  "entity": "fnb:FoodAndBeverageItemAttributes",
+  "root": "$",
+
+  "templates": {
+    "card": {
+      "title": "{{schema:name}}",
+      "subtitle": "{{beckn:itemAttributes.cuisine}}"
+    }
+  },
+
+  "htmlTemplates": {
+    "card": {
+      "template": "<div class=\"beckn-card fnb-item\">\n  <div class=\"beckn-title\">{{schema:name}}</div>\n  <div class=\"beckn-subtitle\">Cuisine: {{beckn:itemAttributes.cuisine}}</div>\n\n  {{#beckn:itemAttributes.allergens}}\n    <div class=\"beckn-row\">\n      <span class=\"label\">Allergens:</span>\n      <span class=\"value\">{{beckn:itemAttributes.allergens}}</span>\n    </div>\n  {{/beckn:itemAttributes.allergens}}\n</div>"
+    }
+  }
+}

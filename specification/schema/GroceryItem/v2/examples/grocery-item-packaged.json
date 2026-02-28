@@ -1,0 +1,43 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-WHEAT-FLOUR-1KG",
+  "schema:name": "Whole Wheat Flour 1kg",
+
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "groc:GroceryItemAttributes",
+
+    "identity": {
+      "brand": "FarmFresh",
+      "originCountry": "IN"
+    },
+
+    "physical": {
+      "weight": {
+        "@type": "schema:QuantitativeValue",
+        "value": 1,
+        "unitText": "KG"
+      }
+    },
+
+    "nutrition": [
+      {
+        "nutrient": "Energy",
+        "value": {
+          "@type": "schema:QuantitativeValue",
+          "value": 364,
+          "unitText": "KCAL"
+        }
+      },
+      {
+        "nutrient": "Protein",
+        "value": {
+          "@type": "schema:QuantitativeValue",
+          "value": 13,
+          "unitText": "G"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://beckn.org/vocab/retail/fulfillment#",
+
+    "DELIVERY": "Delivery",
+    "PICKUP": "Pickup",
+    "DINE_IN": "DineIn",
+
+    "MON": "Monday",
+    "TUE": "Tuesday",
+    "WED": "Wednesday",
+    "THU": "Thursday",
+    "FRI": "Friday",
+    "SAT": "Saturday",
+    "SUN": "Sunday",
+
+    "ORDER_CONFIRMATION": "OrderConfirmation",
+    "PACKING_COMPLETE": "PackingComplete",
+    "DISPATCH": "Dispatch",
+
+    "FRAGILE": "Fragile",
+    "COLD_CHAIN": "ColdChain",
+    "TEMPERATURE_CONTROLLED": "TemperatureControlled",
+    "HAZARDOUS": "Hazardous",
+    "OVERSIZED": "Oversized",
+    "BULK": "Bulk",
+    "HIGH_VALUE": "HighValue",
+    "LIQUID": "Liquid",
+    "PERISHABLE": "Perishable"
+  }
+}

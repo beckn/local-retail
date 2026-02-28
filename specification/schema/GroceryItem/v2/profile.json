@@ -1,0 +1,34 @@
+{
+  "id": "grocery-item-v2",
+  "title": "Grocery Item Attributes",
+  "version": "2.0.0",
+
+  "type": "AttributePack",
+  "extends": "beckn:Item",
+  "attachAt": "beckn:itemAttributes",
+
+  "packSchema": "./attributes.yaml#/components/schemas/GroceryItemAttributes",
+
+  "indexing": {
+    "indexable": [
+      { "path": "beckn:id", "source": "core" },
+      { "path": "schema:name", "source": "core" },
+
+      { "path": "beckn:itemAttributes.identity.brand", "source": "retail-core" },
+      { "path": "beckn:itemAttributes.physical.weight", "source": "retail-core" },
+
+      { "path": "beckn:itemAttributes.nutrition[*].nutrient", "source": "pack" }
+    ],
+    "filterable": [
+      { "path": "beckn:itemAttributes.identity.brand", "source": "retail-core" }
+    ],
+    "sortable": [
+      { "path": "schema:name", "source": "core" }
+    ]
+  },
+
+  "minimalForDiscovery": [
+    "schema:name",
+    "beckn:itemAttributes.identity.brand"
+  ]
+}

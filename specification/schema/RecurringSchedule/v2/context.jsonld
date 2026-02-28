@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "retail": "https://beckn.org/schema/retail#",
+
+    "RecurringSchedule": "retail:RecurringSchedule",
+
+    "days": "schema:dayOfWeek",
+    "timeRange": "retail:timeRange",
+    "start": "schema:startTime",
+    "end": "schema:endTime",
+    "holidays": "schema:validThrough",
+    "timezone": "schema:timeZone"
+  }
+}

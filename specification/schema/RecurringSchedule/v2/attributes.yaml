@@ -1,0 +1,46 @@
+openapi: 3.1.1
+info:
+  title: Retail Common Schemas
+  version: 1.0.0
+
+components:
+  schemas:
+
+    RecurringSchedule:
+      type: object
+      additionalProperties: false
+      description: >
+        Defines a recurring temporal schedule such as operating hours or
+        serviceability timing windows. Supports day-based recurrence and
+        optional holiday exclusions.
+
+      properties:
+        days:
+          type: array
+          description: Days of week on which the schedule applies.
+          items:
+            type: string
+            enum: [MON, TUE, WED, THU, FRI, SAT, SUN]
+
+        timeRange:
+          type: object
+          additionalProperties: false
+          description: Daily time window for applicable days.
+          properties:
+            start:
+              type: string
+              format: time
+            end:
+              type: string
+              format: time
+
+        holidays:
+          type: array
+          description: Specific dates excluded from this schedule.
+          items:
+            type: string
+            format: date
+
+        timezone:
+          type: string
+          description: IANA timezone identifier (e.g., Asia/Kolkata).

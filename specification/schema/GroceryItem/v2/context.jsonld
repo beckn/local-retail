@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "@import": "../../RetailCoreItem/v2/context.jsonld",
+
+    "groc": "https://beckn.org/schema/retail/grocery#",
+    "GroceryItemAttributes": "groc:GroceryItemAttributes",
+
+    "nutrition": "groc:nutrition",
+    "nutrient": "schema:name",
+    "value": "schema:value",
+
+    "freshProduce": "groc:freshProduce",
+    "netQuantityDeclaration": "groc:netQuantityDeclaration"
+  }
+}

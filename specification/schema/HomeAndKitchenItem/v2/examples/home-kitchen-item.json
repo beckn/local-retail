@@ -1,0 +1,32 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Item",
+  "beckn:id": "ITEM-DINING-TABLE-001",
+  "schema:name": "Oak Wood Dining Table",
+
+  "beckn:itemAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "hk:HomeAndKitchenItemAttributes",
+
+    "identity": {
+      "brand": "Urban Living",
+      "originCountry": "SE"
+    },
+
+    "usage": {
+      "indoorOnly": true
+    },
+
+    "installation": {
+      "required": true,
+      "providedBySeller": true,
+      "notes": "Assembly included at delivery."
+    },
+
+    "warranty": {
+      "duration": "P1Y",
+      "type": "MANUFACTURER",
+      "terms": "Covers manufacturing defects only."
+    }
+  }
+}

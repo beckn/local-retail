@@ -1,0 +1,95 @@
+openapi: 3.1.1
+info:
+  title: Food & Beverage — Offer Attributes (v2)
+  version: 2.0.0
+
+components:
+  schemas:
+
+    FoodAndBeverageOfferAttributes:
+      allOf:
+        - $ref: "../../RetailCoreOffer/v2/attributes.yaml#/components/schemas/RetailCoreOfferAttributes"
+        - type: object
+          additionalProperties: false
+          x-jsonld:
+            "@context": ./context.jsonld
+            "@type": fnb:FoodAndBeverageOfferAttributes
+          description: >
+            Food & Beverage-specific extensions to RetailCoreOfferAttributes.
+            Covers structured customization groups for dynamic configuration.
+
+          properties:
+
+            customization:
+              type: object
+              additionalProperties: false
+              properties:
+                groups:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/CustomizationGroup"
+
+    ########################################################################
+
+    CustomizationGroup:
+      type: object
+      additionalProperties: false
+      required: [code, selection, options]
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+
+        selection:
+          type: string
+          enum:
+            - SINGLE_REQUIRED
+            - SINGLE_OPTIONAL
+            - MULTIPLE_OPTIONAL
+
+        minSelections:
+          type: integer
+        maxSelections:
+          type: integer
+
+        options:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/CustomizationOption"
+
+    ########################################################################
+
+    CustomizationOption:
+      type: object
+      additionalProperties: false
+      required: [code, name]
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+
+        priceDelta:
+          type: object
+          additionalProperties: false
+          description: Incremental price change relative to base offer.
+          properties:
+            type:
+              type: string
+              enum: [FIXED, PERCENTAGE]
+            value:
+              type: number
+
+        itemRef:
+          type: string
+          description: Optional reference to an Item ID.
+
+        offerRef:
+          type: string
+          description: Optional reference to an Offer ID.
+
+        available:
+          type: boolean
+          default: true

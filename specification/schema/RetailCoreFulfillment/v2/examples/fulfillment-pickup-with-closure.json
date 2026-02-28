@@ -1,0 +1,40 @@
+{
+  "@context": "https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/main/schema/core/v2/context.jsonld",
+  "@type": "beckn:Fulfillment",
+  "beckn:id": "FUL-PICK-002",
+  "beckn:fulfillmentType": "Pickup",
+  "beckn:trackingAction": "NotTrackable",
+
+  "beckn:fulfillmentAttributes": {
+    "@context": "../context.jsonld",
+    "@type": "retail:RetailCoreFulfillmentAttributes",
+
+    "supportedFulfillmentTypes": ["PICKUP"],
+
+    "operatingHours": [
+      {
+        "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
+        "timeRange": {
+          "start": "10:00:00",
+          "end": "20:00:00"
+        }
+      }
+    ],
+
+    "closures": [
+      {
+        "@type": "beckn:TimePeriod",
+        "schema:startDate": "2026-12-25T00:00:00Z",
+        "schema:endDate": "2026-12-26T00:00:00Z"
+      }
+    ],
+
+    "sla": {
+      "min": "PT1H",
+      "max": "PT4H",
+      "unitBasis": "PACKING_COMPLETE"
+    },
+
+    "handling": ["FRAGILE", "HIGH_VALUE"]
+  }
+}
