@@ -1,12 +1,44 @@
 ---
-title: "Beckn Protocol Specification"
-metaTitle: "API Specification for Beckn Network Developers"
+title: "Beckn Protocol - Retail"
+metaTitle: "Schema and Documentation for Beckn v2 networks"
 ---
 
-## Release History
+# Beckn Retail v2 — Schema and Documentation for Beckn v2 networks
 
-| Domain                | Version   |    Release Date       |
-|-----------------------|-----------|-----------------------|
-| [Fast Moving Consumer Goods](https://github.com/beckn/local-retail/v0-base-ref/fast-moving-consumer-goods)   |  0.9.1  |    June 22, 2021      |
-| [Food and Beverages](https://github.com/beckn/local-retail/v0-base-ref/food-and-beverages)   |  0.9.1  |    June 22, 2021      |
-| [Local Retail](https://github.com/beckn/local-retail/v0-base-ref/food-and-beverages)   |  0.9.1  |    June 22, 2021      |
+This repository contains the reference schemas, documentation, and supporting artifacts for the **Retail v2 extensions of Beckn Protocol v2**.
+
+It serves as:
+- A canonical home for Retail schema definitions  
+- A staging area for iterative evolution before upstream proposals  
+- A reference implementation guide for network participants  
+- A repository for scripts, automations, validation tooling, and examples  
+
+---
+
+## Repository Structure
+
+| Folder | Description |
+|--------|------------|
+| `schema/` | Retail v2 attribute schemas (RetailCore + vertical schemas) |
+| `docs/` | Implementation guides, architectural notes, and design decisions |
+
+---
+
+## Changelog
+
+| Version | Date | Description |
+|---------|------|------------|
+| v2.0.0 | Initial check-in | Retail v2 schema family (RetailCore + Grocery + F&B + Home & Kitchen + RecurringSchedule) |
+
+---
+
+## Contribution
+
+Contributions, issue reports, and review feedback are welcome.  
+Please raise a discussion or submit a PR with clear context.
+
+---
+
+## License
+
+This project is licensed under the terms specified in [`LICENSE.md`](./LICENSE.md).
