@@ -1,0 +1,280 @@
+{
+  "info": {
+    "_postman_id": "af1908c9-e52e-4722-a6c8-46bd4590bb07",
+    "name": "BAP:retail",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "discover",
+      "item": [
+        {
+          "name": "discover",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"discover\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"intent\": {\n      \"textSearch\": \"Margherita Pizza near MG Road Bangalore\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/discover",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "discover"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "item": [
+        {
+          "name": "select",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"select\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"contract\": {\n      \"@type\": \"beckn:Contract\",\n      \"participants\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"arjun.sharma@pizza-app.example.com\",\n          \"role\": \"consumer\",\n          \"displayName\": \"Arjun Sharma\",\n          \"telephone\": \"+919876543210\",\n          \"email\": \"arjun.sharma@example.com\"\n        },\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"provider-roma-blr-mgroad-001\",\n          \"role\": \"provider\",\n          \"displayName\": \"Pizzeria Roma — MG Road\"\n        }\n      ],\n      \"items\": [\n        {\n          \"lineId\": \"line-001\",\n          \"itemId\": \"item-margherita-regular\",\n          \"quantity\": {\n            \"unitCode\": \"EA\",\n            \"unitQuantity\": 2\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"Fulfillment\",\n          \"id\": \"fulfillment-delivery-001\",\n          \"mode\": {\n            \"@context\": \"https://schema.beckn.io/\",\n            \"@type\": \"beckn:FulfillmentMode\",\n            \"descriptor\": {\n              \"@type\": \"beckn:Descriptor\",\n              \"name\": \"Home Delivery\"\n            },\n            \"modeAttributes\": {\n              \"@context\": \"https://schema.beckn.io/retail/\",\n              \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n              \"supportedFulfillmentTypes\": [\n                \"DELIVERY\"\n              ],\n              \"deliveryDetails\": {\n                \"address\": {\n                  \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                  \"addressLocality\": \"Bangalore\",\n                  \"addressRegion\": \"Karnataka\",\n                  \"postalCode\": \"560001\",\n                  \"addressCountry\": \"IN\"\n                },\n                \"contact\": {\n                  \"name\": \"Arjun Sharma\",\n                  \"phone\": \"+919876543210\"\n                }\n              }\n            }\n          },\n          \"participants\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:Participant\",\n              \"id\": \"arjun.sharma@pizza-app.example.com\",\n              \"role\": \"recipient\"\n            }\n          ],\n          \"stages\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:FulfillmentStage\",\n              \"id\": \"stage-delivery\",\n              \"end\": {\n                \"@context\": \"https://schema.beckn.io/\",\n                \"@type\": \"beckn:FulfillmentStageEndpoint\",\n                \"location\": {\n                  \"@type\": \"Location\",\n                  \"geo\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                      77.5946,\n                      12.9716\n                    ]\n                  },\n                  \"address\": {\n                    \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                    \"addressLocality\": \"Bangalore\",\n                    \"addressRegion\": \"Karnataka\",\n                    \"postalCode\": \"560001\",\n                    \"addressCountry\": \"IN\"\n                  }\n                }\n              }\n            }\n          ]\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/select",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "select"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "init",
+      "item": [
+        {
+          "name": "init",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"init\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"contract\": {\n      \"@type\": \"beckn:Contract\",\n      \"participants\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"arjun.sharma@pizza-app.example.com\",\n          \"role\": \"consumer\",\n          \"displayName\": \"Arjun Sharma\",\n          \"telephone\": \"+919876543210\",\n          \"email\": \"arjun.sharma@example.com\"\n        },\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"provider-roma-blr-mgroad-001\",\n          \"role\": \"provider\",\n          \"displayName\": \"Pizzeria Roma — MG Road\"\n        }\n      ],\n      \"items\": [\n        {\n          \"lineId\": \"line-001\",\n          \"itemId\": \"item-margherita-regular\",\n          \"quantity\": {\n            \"unitCode\": \"EA\",\n            \"unitQuantity\": 2\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"Fulfillment\",\n          \"id\": \"fulfillment-delivery-001\",\n          \"mode\": {\n            \"@context\": \"https://schema.beckn.io/\",\n            \"@type\": \"beckn:FulfillmentMode\",\n            \"descriptor\": {\n              \"@type\": \"beckn:Descriptor\",\n              \"name\": \"Home Delivery\"\n            },\n            \"modeAttributes\": {\n              \"@context\": \"https://schema.beckn.io/retail/\",\n              \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n              \"supportedFulfillmentTypes\": [\n                \"DELIVERY\"\n              ],\n              \"deliveryDetails\": {\n                \"address\": {\n                  \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                  \"addressLocality\": \"Bangalore\",\n                  \"addressRegion\": \"Karnataka\",\n                  \"postalCode\": \"560001\",\n                  \"addressCountry\": \"IN\"\n                },\n                \"contact\": {\n                  \"name\": \"Arjun Sharma\",\n                  \"phone\": \"+919876543210\"\n                }\n              }\n            }\n          },\n          \"participants\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:Participant\",\n              \"id\": \"arjun.sharma@pizza-app.example.com\",\n              \"role\": \"recipient\",\n              \"displayName\": \"Arjun Sharma\",\n              \"telephone\": \"+919876543210\",\n              \"email\": \"arjun.sharma@example.com\"\n            }\n          ],\n          \"stages\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:FulfillmentStage\",\n              \"id\": \"stage-delivery\",\n              \"end\": {\n                \"@context\": \"https://schema.beckn.io/\",\n                \"@type\": \"beckn:FulfillmentStageEndpoint\",\n                \"location\": {\n                  \"@type\": \"Location\",\n                  \"geo\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                      77.5946,\n                      12.9716\n                    ]\n                  },\n                  \"address\": {\n                    \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                    \"addressLocality\": \"Bangalore\",\n                    \"addressRegion\": \"Karnataka\",\n                    \"postalCode\": \"560001\",\n                    \"addressCountry\": \"IN\"\n                  }\n                }\n              }\n            }\n          ],\n          \"fulfillmentAttributes\": {\n            \"@context\": \"https://schema.beckn.io/retail/\",\n            \"@type\": \"retail:RetailCoreOrderAttributes\",\n            \"deliveryPreferences\": {\n              \"leaveAtDoor\": false,\n              \"contactless\": false\n            }\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/init",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "init"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "confirm",
+      "item": [
+        {
+          "name": "confirm",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"confirm\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"contract\": {\n      \"@type\": \"beckn:Contract\",\n      \"participants\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"arjun.sharma@pizza-app.example.com\",\n          \"role\": \"consumer\",\n          \"displayName\": \"Arjun Sharma\",\n          \"telephone\": \"+919876543210\",\n          \"email\": \"arjun.sharma@example.com\"\n        },\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"provider-roma-blr-mgroad-001\",\n          \"role\": \"provider\",\n          \"displayName\": \"Pizzeria Roma — MG Road\"\n        }\n      ],\n      \"items\": [\n        {\n          \"lineId\": \"line-001\",\n          \"itemId\": \"item-margherita-regular\",\n          \"quantity\": {\n            \"unitCode\": \"EA\",\n            \"unitQuantity\": 2\n          },\n          \"price\": {\n            \"currency\": \"INR\",\n            \"value\": 598,\n            \"components\": [\n              {\n                \"type\": \"UNIT\",\n                \"value\": 299,\n                \"currency\": \"INR\",\n                \"description\": \"Unit price per Margherita Pizza\"\n              }\n            ]\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"Fulfillment\",\n          \"id\": \"fulfillment-delivery-001\",\n          \"mode\": {\n            \"@context\": \"https://schema.beckn.io/\",\n            \"@type\": \"beckn:FulfillmentMode\",\n            \"descriptor\": {\n              \"@type\": \"beckn:Descriptor\",\n              \"name\": \"Home Delivery\"\n            },\n            \"modeAttributes\": {\n              \"@context\": \"https://schema.beckn.io/retail/\",\n              \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n              \"supportedFulfillmentTypes\": [\n                \"DELIVERY\"\n              ],\n              \"deliveryDetails\": {\n                \"address\": {\n                  \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                  \"addressLocality\": \"Bangalore\",\n                  \"addressRegion\": \"Karnataka\",\n                  \"postalCode\": \"560001\",\n                  \"addressCountry\": \"IN\"\n                },\n                \"contact\": {\n                  \"name\": \"Arjun Sharma\",\n                  \"phone\": \"+919876543210\"\n                }\n              }\n            }\n          },\n          \"participants\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:Participant\",\n              \"id\": \"arjun.sharma@pizza-app.example.com\",\n              \"role\": \"recipient\"\n            }\n          ],\n          \"stages\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:FulfillmentStage\",\n              \"id\": \"stage-pickup\",\n              \"start\": {\n                \"@context\": \"https://schema.beckn.io/\",\n                \"@type\": \"beckn:FulfillmentStageEndpoint\",\n                \"location\": {\n                  \"@type\": \"Location\",\n                  \"geo\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                      77.5946,\n                      12.9716\n                    ]\n                  }\n                },\n                \"time\": {\n                  \"start\": \"2026-03-10T08:30:00.000Z\",\n                  \"end\": \"2026-03-10T08:35:00.000Z\"\n                }\n              },\n              \"end\": {\n                \"@context\": \"https://schema.beckn.io/\",\n                \"@type\": \"beckn:FulfillmentStageEndpoint\",\n                \"location\": {\n                  \"@type\": \"Location\",\n                  \"geo\": {\n                    \"type\": \"Point\",\n                    \"coordinates\": [\n                      77.5946,\n                      12.9716\n                    ]\n                  },\n                  \"address\": {\n                    \"streetAddress\": \"Apt 204, Sunrise Heights, 12 MG Road\",\n                    \"addressLocality\": \"Bangalore\",\n                    \"addressRegion\": \"Karnataka\",\n                    \"postalCode\": \"560001\",\n                    \"addressCountry\": \"IN\"\n                  }\n                },\n                \"time\": {\n                  \"start\": \"2026-03-10T08:40:00.000Z\",\n                  \"end\": \"2026-03-10T09:00:00.000Z\"\n                }\n              }\n            }\n          ]\n        }\n      ],\n      \"contractValue\": {\n        \"currency\": \"INR\",\n        \"value\": 638,\n        \"components\": [\n          {\n            \"type\": \"UNIT\",\n            \"value\": 598,\n            \"currency\": \"INR\",\n            \"description\": \"2x Margherita Pizza\"\n          },\n          {\n            \"type\": \"DELIVERY\",\n            \"value\": 40,\n            \"currency\": \"INR\",\n            \"description\": \"Delivery fee\"\n          }\n        ]\n      },\n      \"entitlements\": [\n        {\n          \"descriptor\": {\n            \"@type\": \"beckn:Descriptor\",\n            \"name\": \"Payment Reference\",\n            \"shortDesc\": \"UPI transaction UTR#202603100001\"\n          },\n          \"type\": \"PAYMENT_PROOF\",\n          \"id\": \"UTR202603100001\"\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/confirm",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "item": [
+        {
+          "name": "status",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"status\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"order\": {\n      \"id\": \"f7a8b9c0-d1e2-4f3a-b5c6-789012345678\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/status",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "cancel",
+      "item": [
+        {
+          "name": "cancel",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"cancel\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"contract\": {\n      \"@type\": \"beckn:Contract\",\n      \"id\": \"f7a8b9c0-d1e2-4f3a-b5c6-789012345678\",\n      \"participants\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"arjun.sharma@pizza-app.example.com\",\n          \"role\": \"consumer\",\n          \"displayName\": \"Arjun Sharma\"\n        },\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"beckn:Participant\",\n          \"id\": \"provider-roma-blr-mgroad-001\",\n          \"role\": \"provider\",\n          \"displayName\": \"Pizzeria Roma — MG Road\"\n        }\n      ],\n      \"items\": [\n        {\n          \"lineId\": \"line-001\",\n          \"itemId\": \"item-margherita-regular\",\n          \"quantity\": {\n            \"unitCode\": \"EA\",\n            \"unitQuantity\": 2\n          }\n        }\n      ],\n      \"fulfillments\": [\n        {\n          \"@context\": \"https://schema.beckn.io/\",\n          \"@type\": \"Fulfillment\",\n          \"id\": \"fulfillment-delivery-001\",\n          \"mode\": {\n            \"@context\": \"https://schema.beckn.io/\",\n            \"@type\": \"beckn:FulfillmentMode\",\n            \"descriptor\": {\n              \"@type\": \"beckn:Descriptor\",\n              \"name\": \"Home Delivery\"\n            }\n          },\n          \"participants\": [\n            {\n              \"@context\": \"https://schema.beckn.io/\",\n              \"@type\": \"beckn:Participant\",\n              \"id\": \"arjun.sharma@pizza-app.example.com\",\n              \"role\": \"recipient\"\n            }\n          ]\n        }\n      ],\n      \"entitlements\": [\n        {\n          \"descriptor\": {\n            \"@type\": \"beckn:Descriptor\",\n            \"name\": \"Cancellation Reason\",\n            \"shortDesc\": \"Changed mind before preparation started\"\n          },\n          \"type\": \"CANCELLATION_REASON\",\n          \"id\": \"REASON-CHANGE-OF-MIND\"\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/cancel",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "support",
+      "item": [
+        {
+          "name": "support",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"context\": {\n    \"action\": \"support\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"network_id\": \"beckn:retail-network:in\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"version\": \"{{version}}\",\n    \"ttl\": \"PT30S\"\n  },\n  \"message\": {\n    \"supportRequest\": {\n      \"@context\": \"https://schema.beckn.io/\",\n      \"@type\": \"Support\",\n      \"orderId\": \"f7a8b9c0-d1e2-4f3a-b5c6-789012345678\",\n      \"callbackPhone\": \"+919876543210\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{bap_adapter_url}}/support",
+              "host": [
+                "{{bap_adapter_url}}"
+              ],
+              "path": [
+                "support"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "version",
+      "value": "2.0.0"
+    },
+    {
+      "key": "bap_id",
+      "value": "sandbox.food-finder.com"
+    },
+    {
+      "key": "bap_uri",
+      "value": "http://onix-bap:8081/bap/receiver"
+    },
+    {
+      "key": "bpp_id",
+      "value": "sandbox.open-kitchen.com"
+    },
+    {
+      "key": "bpp_uri",
+      "value": "http://onix-bpp:8082/bpp/receiver"
+    },
+    {
+      "key": "transaction_id",
+      "value": "b2bb2763-8342-4c0b-a32a-2bc6a9dab8f2"
+    },
+    {
+      "key": "bap_adapter_url",
+      "value": "http://localhost:8081/bap/caller"
+    }
+  ]
+}
