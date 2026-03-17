@@ -43,12 +43,16 @@ modules:
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
             encrPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             encrPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
-          schemaValidator:
-            id: schemav2validator
-            config:
-              type: url
-              location: https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/rfc-beckn-spec-design-Mar-13/api/v2.0.0/beckn.yaml
-              cacheTTL: "3600"
+        schemaValidator:
+          id: schemav2validator
+          config:
+            type: url
+            location: https://raw.githubusercontent.com/beckn/protocol-specifications-v2/refs/heads/rfc-beckn-spec-design-Mar-13/api/v2.0.0/beckn.yaml
+            cacheTTL: "3600"
+            extendedSchema_enabled: "true"
+            extendedSchema_cacheTTL: "86400"
+            extendedSchema_maxCacheSize: "100"
+            extendedSchema_downloadTimeout: "30"
         cache:
           id: cache
           config:
@@ -67,6 +71,7 @@ modules:
       steps:
         - validateSign
         - addRoute
+        - validateSchema
   
   - name: bapTxnCaller
     path: /bap/caller/
@@ -94,12 +99,16 @@ modules:
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
             encrPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             encrPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
-          schemaValidator:
-            id: schemav2validator
-            config:
-              type: url
-              location: https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/api/beckn.yaml
-              cacheTTL: "3600"
+        schemaValidator:
+          id: schemav2validator
+          config:
+            type: url
+            location: https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/api/beckn.yaml
+            cacheTTL: "3600"
+            extendedSchema_enabled: "true"
+            extendedSchema_cacheTTL: "86400"
+            extendedSchema_maxCacheSize: "100"
+            extendedSchema_downloadTimeout: "30"
         cache:
           id: cache
           config:
@@ -118,4 +127,5 @@ modules:
       steps:
         - addRoute
         - sign
+        - validateSchema
   
