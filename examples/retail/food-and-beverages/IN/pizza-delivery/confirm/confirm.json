@@ -1,15 +1,15 @@
 {
   "$schema": "https://schema.beckn.io/ConfirmAction/v2.0",
-  "context": {
-    "action": "beckn/confirm",
-    "bapId": "pizza-app.example.com",
-    "bapUri": "https://pizza-app.example.com/beckn",
-    "bppId": "pizzeria-roma.example.com",
-    "bppUri": "https://pizzeria-roma.example.com/beckn",
-    "messageId": "d4e5f6a7-b8c9-0123-def0-234567890123",
-    "networkId": "beckn:retail-network:in",
+    "context": {
+    "action": "confirm",
+    "bap_id": "pizza-app.example.com",
+    "bap_uri": "https://pizza-app.example.com/beckn",
+    "bpp_id": "pizzeria-roma.example.com",
+    "bpp_uri": "https://pizzeria-roma.example.com/beckn",
+    "message_id": "d4e5f6a7-b8c9-0123-def0-234567890123",
+    "network_id": "beckn:retail-network:in",
     "timestamp": "2026-03-10T08:03:00.000Z",
-    "transactionId": "txn-0001-2026-retail-pizza",
+    "transaction_id": "txn-0001-2026-retail-pizza",
     "version": "2.0.0",
     "ttl": "PT30S"
   },

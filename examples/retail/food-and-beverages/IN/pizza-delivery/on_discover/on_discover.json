@@ -1,14 +1,14 @@
 {
-  "context": {
-    "action": "beckn/on_discover",
-    "bapId": "food-app.example.com",
-    "bapUri": "https://food-app.example.com/beckn",
-    "bppId": "zomato.com",
-    "bppUri": "https://zomato.com/beckn",
-    "messageId": "d9f1a2b3-c4d5-6789-ef01-234567890abc",
-    "networkId": "beckn:retail-network:in",
+    "context": {
+    "action": "on_discover",
+    "bap_id": "food-app.example.com",
+    "bap_uri": "https://food-app.example.com/beckn",
+    "bpp_id": "zomato.com",
+    "bpp_uri": "https://zomato.com/beckn",
+    "message_id": "d9f1a2b3-c4d5-6789-ef01-234567890abc",
+    "network_id": "beckn:retail-network:in",
     "timestamp": "2026-03-10T08:00:01.300Z",
-    "transactionId": "txn-0001-2026-dominos-pizza",
+    "transaction_id": "txn-0001-2026-dominos-pizza",
     "version": "2.0.0",
     "ttl": "PT30S"
   },
