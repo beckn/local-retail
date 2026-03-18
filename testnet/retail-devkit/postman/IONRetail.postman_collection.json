@@ -1,0 +1,254 @@
+{
+  "info": {
+    "_postman_id": "58273cfa-d44d-4f96-9ae3-3ac0b23ce9dc",
+    "name": "ION Retail",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8677993"
+  },
+  "item": [
+    {
+      "name": "discover",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "\n{\n\"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"discover\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\", \n    \"schema_context\": [\n     \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld#GroceryItem\"\n   ]\n },\n \"message\": {\n   \"text_search\": \"tea\"\n }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bap_adapter_url}}/discover",
+          "host": [
+            "{{bap_adapter_url}}"
+          ],
+          "path": [
+            "discover"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "select",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"select\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\"\n  },\n  \"message\": {\n    \"order\": {\n     \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n     \"@type\": \"beckn:Order\",\n     \"beckn:orderStatus\": \"CREATED\",\n     \"beckn:seller\": \"P1\",\n     \"beckn:buyer\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Buyer\",\n       \"beckn:id\": \"B1\"\n     },\n     \"beckn:orderItems\": [\n       {\n         \"beckn:orderedItem\": \"I1\",\n         \"beckn:quantity\": {\n           \"unitQuantity\": 2\n         }\n       }\n     ],\n     \"beckn:fulfillment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Fulfillment\",\n       \"beckn:mode\": \"DELIVERY\",\n\n\n       \"beckn:deliveryAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n         \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n         \"deliveryDetails\": {\n           \"address\": {\n             \"@type\": \"beckn:Location\",\n             \"geo\": {\n               \"type\": \"Point\",\n               \"coordinates\": [77.9283, 12.4535]\n             },\n             \"address\": {\n               \"postalCode\": \"560001\",\n               \"addressCountry\": \"IND\"\n             }\n           }\n         }\n       }\n     }\n    }\n  }\n}\n  ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bap_adapter_url}}/select",
+          "host": [
+            "{{bap_adapter_url}}"
+          ],
+          "path": [
+            "select"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "on_select",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n        \"version\": \"{{version}}\",\n        \"action\": \"on_select\",\n        \"timestamp\": \"{{$isoTimestamp}}\",\n        \"message_id\": \"{{$guid}}\",\n        \"transaction_id\": \"{{transaction_id}}\",\n        \"bap_id\": \"{{bap_id}}\",\n        \"bap_uri\": \"{{bap_uri}}\",\n        \"bpp_id\": \"{{bpp_id}}\",\n        \"bpp_uri\": \"{{bpp_uri}}\",\n        \"ttl\": \"PT30S\",\n        \"domain\": \"{{domain}}\"\n    },\n    \"message\": {\n        \"order\": {\n            \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n            \"@type\": \"beckn:Order\",\n            \"beckn:orderStatus\": \"CREATED\",\n            \"beckn:seller\": \"P1\",\n            \"beckn:buyer\": {\n                \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n                \"@type\": \"beckn:Buyer\",\n                \"beckn:id\": \"B1\"\n            },\n            \"beckn:orderItems\": [\n                {\n                    \"beckn:orderedItem\": \"I1\",\n                    \"beckn:quantity\": {\n                        \"unitQuantity\": 2\n                    },\n                    \"beckn:price\": {\n                        \"currency\": \"INR\",\n                        \"value\": 340.0,\n                        \"components\": [\n                            {\n                                \"type\": \"UNIT\",\n                                \"value\": 170.0,\n                                \"currency\": \"INR\"\n                            }\n                        ]\n                    }\n                }\n            ],\n            \"beckn:fulfillment\": {\n                \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n                \"@type\": \"beckn:Fulfillment\",\n                \"beckn:id\": \"F1\",\n                \"beckn:mode\": \"DELIVERY\",\n                \"beckn:deliveryAttributes\": {\n                    \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n                    \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n                    \"supportedFulfillmentTypes\": [\n                        \"DELIVERY\"\n                    ],\n                    \"sla\": {\n                        \"min\": \"PT60M\",\n                        \"max\": \"PT60M\",\n                        \"unitBasis\": \"ORDER_CONFIRMATION\"\n                    }\n                }\n            },\n            \"beckn:orderValue\": {\n                \"currency\": \"INR\",\n                \"value\": 424.0,\n                \"components\": [\n                    {\n                        \"type\": \"UNIT\",\n                        \"value\": 170.0,\n                        \"currency\": \"INR\",\n                        \"description\": \"Item price (Atta, quantity 1)\"\n                    },\n                    {\n                        \"type\": \"DELIVERY\",\n                        \"value\": 50.0,\n                        \"currency\": \"INR\",\n                        \"description\": \"Delivery charges\"\n                    },\n                    {\n                        \"type\": \"TAX\",\n                        \"value\": 9.0,\n                        \"currency\": \"INR\",\n                        \"description\": \"Tax on fulfillment\"\n                    },\n                    {\n                        \"type\": \"FEE\",\n                        \"value\": 25.0,\n                        \"currency\": \"INR\",\n                        \"description\": \"Packing charges\"\n                    }\n                ]\n            }\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bpp_adapter_url}}/on_select",
+          "host": [
+            "{{bpp_adapter_url}}"
+          ],
+          "path": [
+            "on_select"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "init",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"init\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\"\n  },\n  \"message\": {\n        \"order\": {\n     \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n     \"@type\": \"beckn:Order\",\n     \"beckn:orderStatus\": \"CREATED\",\n     \"beckn:seller\": \"P1\",\n     \"beckn:buyer\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Buyer\",\n       \"beckn:id\": \"Buyer1\",\n       \"beckn:displayName\": \"buyer\",\n       \"beckn:telephone\": \"9886098860\",\n       \"beckn:email\": \"nobody@nomail.com\",\n       \"beckn:taxID\": \"XXXXXXXXXXXXXXX\",\n       \"beckn:buyerAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n         \"@type\": \"beckn:BuyerAttributes\",\n         \"address\": {\n           \"streetAddress\": \"my building name or house #, my street name\",\n           \"addressLocality\": \"Bengaluru\",\n           \"addressRegion\": \"Karnataka\",\n           \"postalCode\": \"560037\",\n           \"addressCountry\": \"IND\"\n         }\n       }\n     },\n\n     \"beckn:orderItems\": [\n       {\n         \"beckn:orderedItem\": \"I1\",\n         \"beckn:quantity\": {\n           \"unitQuantity\": 2\n         }\n       }\n     ],\n\n\n     \"beckn:fulfillment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Fulfillment\",\n       \"beckn:id\": \"F1\",\n       \"beckn:mode\": \"DELIVERY\",\n\n\n       \"beckn:deliveryAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n         \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n         \"supportedFulfillmentTypes\": [\"DELIVERY\"],\n         \"deliveryDetails\": {\n           \"address\": {\n             \"@type\": \"beckn:Location\",\n             \"geo\": {\n               \"type\": \"Point\",\n               \"coordinates\": [77.9283, 12.4535]\n             },\n             \"address\": {\n               \"streetAddress\": \"my building name or house #, my street name\",\n               \"addressLocality\": \"Bengaluru\",\n               \"addressRegion\": \"Karnataka\",\n               \"postalCode\": \"560037\",\n               \"addressCountry\": \"IND\"\n             }\n           }\n         }\n       }\n     }\n   }\n  }\n}\n  ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bap_adapter_url}}/init",
+          "host": [
+            "{{bap_adapter_url}}"
+          ],
+          "path": [
+            "init"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "on_init",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"on_init\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\"\n  },\n  \"message\": {\n  \"order\": {\n     \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n     \"@type\": \"beckn:Order\",\n     \"beckn:orderStatus\": \"CREATED\",\n     \"beckn:seller\": \"P1\",\n     \"beckn:buyer\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Buyer\",\n       \"beckn:id\": \"B1\",\n       \"beckn:displayName\": \"buyer\",\n       \"beckn:telephone\": \"9886098860\",\n       \"beckn:email\": \"nobody@nomail.com\",\n       \"beckn:taxID\": \"XXXXXXXXXXXXXXX\",\n       \"beckn:buyerAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n         \"@type\": \"BuyerAddress\",\n         \"address\": {\n           \"streetAddress\": \"my building name or house #, my street name\",\n           \"addressLocality\": \"Bengaluru\",\n           \"addressRegion\": \"Karnataka\",\n           \"postalCode\": \"560037\",\n           \"addressCountry\": \"IND\"\n         }\n       }\n     },\n\n\n     \"beckn:orderItems\": [\n       {\n         \"beckn:orderedItem\": \"I1\",\n         \"beckn:quantity\": {\n           \"unitQuantity\": 2\n         },\n         \"beckn:price\": {\n           \"currency\": \"INR\",\n           \"value\": 340.0,\n           \"components\": [\n             {\n               \"type\": \"UNIT\",\n               \"value\": 170.0,\n               \"currency\": \"INR\"\n             }\n           ]\n         }\n       }\n     ],\n\n\n     \"beckn:fulfillment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Fulfillment\",\n       \"beckn:id\": \"F1\",\n       \"beckn:mode\": \"DELIVERY\",\n\n\n       \"beckn:deliveryAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n         \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n         \"supportedFulfillmentTypes\": [\"DELIVERY\"],\n         \"deliveryDetails\": {\n           \"address\": {\n             \"@type\": \"beckn:Location\",\n             \"geo\": {\n               \"type\": \"Point\",\n               \"coordinates\": [77.9283, 12.4535]\n             },\n             \"address\": {\n               \"streetAddress\": \"my building name or house #, my street name\",\n               \"addressLocality\": \"Bengaluru\",\n               \"addressRegion\": \"Karnataka\",\n               \"postalCode\": \"560037\",\n               \"addressCountry\": \"IND\"\n             }\n           }\n         }\n       }\n     },\n\n\n     \"beckn:orderValue\": {\n       \"currency\": \"INR\",\n       \"value\": 424.0,\n       \"components\": [\n         {\n           \"type\": \"UNIT\",\n           \"value\": 340.0,\n           \"currency\": \"INR\",\n           \"description\": \"Item price (Atta, quantity 2)\"\n         },\n         {\n           \"type\": \"DELIVERY\",\n           \"value\": 50.0,\n           \"currency\": \"INR\",\n           \"description\": \"Delivery charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 9.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on fulfillment\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 25.0,\n           \"currency\": \"INR\",\n           \"description\": \"Packing charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 0.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on item\"\n         },\n         {\n           \"type\": \"DISCOUNT\",\n           \"value\": -10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Discount\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Convenience fee\"\n         }\n       ]\n     },\n\n\n     \"beckn:payment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Payment\",\n       \"beckn:id\": \"payment-T2\",\n       \"beckn:amount\": {\n         \"currency\": \"INR\",\n         \"value\": 424.0\n       },\n       \"beckn:beneficiary\": \"BAP\",\n       \"beckn:paymentStatus\": \"INITIATED\",\n       \"beckn:paymentAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/PaymentSettlement/v1/context.jsonld\",\n         \"@type\": \"PaymentSettlement\",\n         \"settlementAccounts\": [\n           {\n             \"beneficiaryId\": \"snp.com\",\n             \"accountHolderName\": \"xxxxx\",\n             \"accountNumber\": \"XXXXXXXXXX\",\n             \"ifscCode\": \"XXXXXXXXX\",\n             \"bankName\": \"xxxx\",\n             \"vpa\": \"gft@oksbi\"\n           }\n         ]\n       }\n     }\n   }\n\n  }\n}\n  ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bpp_adapter_url}}/on_init",
+          "host": [
+            "{{bpp_adapter_url}}"
+          ],
+          "path": [
+            "on_init"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "confirm",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"confirm\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\"\n  },\n  \"message\": {\n       \"order\": {\n     \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n     \"@type\": \"beckn:Order\",\n\n\n     \"beckn:id\": \"O1\",\n     \"beckn:orderStatus\": \"CREATED\",\n     \"beckn:seller\": \"P1\",\n\n\n     \"beckn:buyer\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Buyer\",\n       \"beckn:id\": \"B1\",\n       \"beckn:displayName\": \"buyer\",\n       \"beckn:telephone\": \"9886098860\",\n       \"beckn:email\": \"nobody@nomail.com\",\n       \"beckn:taxID\": \"XXXXXXXXXXXXXXX\",\n       \"beckn:buyerAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n         \"@type\": \"BuyerAddress\",\n         \"address\": {\n           \"streetAddress\": \"my building name or house #, my street name\",\n           \"addressLocality\": \"Bengaluru\",\n           \"addressRegion\": \"Karnataka\",\n           \"postalCode\": \"560037\",\n           \"addressCountry\": \"IND\"\n         }\n       }\n     },\n\n\n     \"beckn:orderItems\": [\n       {\n         \"beckn:orderedItem\": \"I1\",\n         \"beckn:quantity\": {\n           \"unitQuantity\": 2\n         }\n       }\n     ],\n\n\n     \"beckn:fulfillment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Fulfillment\",\n       \"beckn:id\": \"F1\",\n       \"beckn:mode\": \"DELIVERY\",\n\n\n       \"beckn:deliveryAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n         \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n\n\n         \"supportedFulfillmentTypes\": [\"DELIVERY\"],\n\n\n         \"sla\": {\n           \"min\": \"PT60M\",\n           \"max\": \"PT60M\",\n           \"unitBasis\": \"ORDER_CONFIRMATION\"\n         },\n\n\n         \"deliveryDetails\": {\n           \"address\": {\n             \"@type\": \"beckn:Location\",\n             \"geo\": {\n               \"type\": \"Point\",\n               \"coordinates\": [77.9283, 12.4535]\n             },\n             \"address\": {\n               \"streetAddress\": \"my building name or house #, my street name\",\n               \"addressLocality\": \"Bengaluru\",\n               \"addressRegion\": \"Karnataka\",\n               \"postalCode\": \"560037\",\n               \"addressCountry\": \"IND\"\n             }\n           }\n         }\n       }\n     },\n\n\n     \"beckn:orderValue\": {\n       \"currency\": \"INR\",\n       \"value\": 424.0,\n       \"components\": [\n         {\n           \"type\": \"UNIT\",\n           \"value\": 340.0,\n           \"currency\": \"INR\",\n           \"description\": \"Item price (Atta, quantity 2)\"\n         },\n         {\n           \"type\": \"DELIVERY\",\n           \"value\": 50.0,\n           \"currency\": \"INR\",\n           \"description\": \"Delivery charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 9.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on fulfillment\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 25.0,\n           \"currency\": \"INR\",\n           \"description\": \"Packing charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 0.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on item\"\n         },\n         {\n           \"type\": \"DISCOUNT\",\n           \"value\": -10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Discount\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Convenience fee\"\n         }\n       ]\n     },\n\n\n     \"beckn:payment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Payment\",\n       \"beckn:id\": \"payment-T2\",\n       \"beckn:amount\": {\n         \"currency\": \"INR\",\n         \"value\": 424.0\n       },\n       \"beckn:txnRef\": \"3937\",\n       \"beckn:beneficiary\": \"BAP\",\n       \"beckn:paymentStatus\": \"COMPLETED\",\n       \"beckn:paymentAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/PaymentSettlement/v1/context.jsonld\",\n         \"@type\": \"PaymentSettlement\",\n         \"settlementAccounts\": [\n           {\n             \"beneficiaryId\": \"snp.com\",\n             \"accountHolderName\": \"xxxxx\",\n             \"accountNumber\": \"XXXXXXXXXX\",\n             \"ifscCode\": \"XXXXXXXXX\",\n             \"bankName\": \"xxxx\",\n             \"vpa\": \"gft@oksbi\"\n           }\n         ]\n       }\n     }\n   }\n\n  }\n}\n  ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bap_adapter_url}}/confirm",
+          "host": [
+            "{{bap_adapter_url}}"
+          ],
+          "path": [
+            "confirm"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "on_confirm",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"context\": {\n    \"version\": \"{{version}}\",\n    \"action\": \"on_confirm\",\n    \"timestamp\": \"{{$isoTimestamp}}\",\n    \"message_id\": \"{{$guid}}\",\n    \"transaction_id\": \"{{transaction_id}}\",\n    \"bap_id\": \"{{bap_id}}\",\n    \"bap_uri\": \"{{bap_uri}}\",\n    \"bpp_id\": \"{{bpp_id}}\",\n    \"bpp_uri\": \"{{bpp_uri}}\",\n    \"ttl\": \"PT30S\",\n    \"domain\": \"{{domain}}\"\n  },\n  \"message\": {\n     \"order\": {\n     \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n     \"@type\": \"beckn:Order\",\n\n\n     \"beckn:id\": \"O1\",\n     \"beckn:orderStatus\": \"CONFIRMED\",\n     \"beckn:seller\": \"P1\",\n\n\n     \"beckn:buyer\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Buyer\",\n       \"beckn:id\": \"B1\",\n       \"beckn:displayName\": \"buyer\",\n       \"beckn:telephone\": \"9886098860\",\n       \"beckn:email\": \"nobody@nomail.com\",\n       \"beckn:taxID\": \"XXXXXXXXXXXXXXX\",\n       \"beckn:buyerAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n         \"@type\": \"BuyerAddress\",\n         \"address\": {\n           \"streetAddress\": \"my building name or house #, my street name\",\n           \"addressLocality\": \"Bengaluru\",\n           \"addressRegion\": \"Karnataka\",\n           \"postalCode\": \"560037\",\n           \"addressCountry\": \"IND\"\n         }\n       }\n     },\n\n\n     \"beckn:orderItems\": [\n       {\n         \"beckn:orderedItem\": \"I1\",\n         \"beckn:quantity\": {\n           \"unitQuantity\": 2\n         },\n         \"beckn:price\": {\n           \"currency\": \"INR\",\n           \"value\": 340.0,\n           \"components\": [\n             {\n               \"type\": \"UNIT\",\n               \"value\": 170.0,\n               \"currency\": \"INR\"\n             }\n           ]\n         }\n       }\n     ],\n\n\n     \"beckn:fulfillment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Fulfillment\",\n       \"beckn:id\": \"F1\",\n       \"beckn:mode\": \"DELIVERY\",\n       \"beckn:fulfillmentStatus\": \"PENDING\",\n\n\n       \"beckn:deliveryAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/devkit/schema/RetailCoreFulfillment/v2/context.jsonld\",\n         \"@type\": \"retail:RetailCoreFulfillmentAttributes\",\n         \"supportedFulfillmentTypes\": [\"DELIVERY\"],\n         \"sla\": {\n           \"min\": \"PT60M\",\n           \"max\": \"PT60M\",\n           \"unitBasis\": \"ORDER_CONFIRMATION\"\n         },\n\n\n         \"deliveryDetails\": {\n           \"address\": {\n             \"@type\": \"beckn:Location\",\n             \"geo\": {\n               \"type\": \"Point\",\n               \"coordinates\": [77.9283, 12.4535]\n             },\n             \"address\": {\n               \"streetAddress\": \"my building name or house #, my street name\",\n               \"addressLocality\": \"Bengaluru\",\n               \"addressRegion\": \"Karnataka\",\n               \"postalCode\": \"560037\",\n               \"addressCountry\": \"IND\"\n             }\n           }\n         }\n       }\n     },\n\n\n     \"beckn:orderValue\": {\n       \"currency\": \"INR\",\n       \"value\": 424.0,\n       \"components\": [\n         {\n           \"type\": \"UNIT\",\n           \"value\": 340.0,\n           \"currency\": \"INR\",\n           \"description\": \"Item price (Atta, quantity 2)\"\n         },\n         {\n           \"type\": \"DELIVERY\",\n           \"value\": 50.0,\n           \"currency\": \"INR\",\n           \"description\": \"Delivery charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 9.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on fulfillment\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 25.0,\n           \"currency\": \"INR\",\n           \"description\": \"Packing charges\"\n         },\n         {\n           \"type\": \"TAX\",\n           \"value\": 0.0,\n           \"currency\": \"INR\",\n           \"description\": \"Tax on item\"\n         },\n         {\n           \"type\": \"DISCOUNT\",\n           \"value\": -10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Discount\"\n         },\n         {\n           \"type\": \"FEE\",\n           \"value\": 10.0,\n           \"currency\": \"INR\",\n           \"description\": \"Convenience fee\"\n         }\n       ]\n     },\n\n\n     \"beckn:payment\": {\n       \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/core/v2/context.jsonld\",\n       \"@type\": \"beckn:Payment\",\n       \"beckn:id\": \"payment-T2\",\n       \"beckn:amount\": {\n         \"currency\": \"INR\",\n         \"value\": 415.0\n       },\n       \"beckn:txnRef\": \"3937\",\n       \"beckn:beneficiary\": \"BAP\",\n       \"beckn:paymentStatus\": \"COMPLETED\",\n       \"beckn:paymentAttributes\": {\n         \"@context\": \"https://raw.githubusercontent.com/beckn/protocol-specifications-new/refs/heads/main/schema/PaymentSettlement/v1/context.jsonld\",\n         \"@type\": \"PaymentSettlement\",\n         \"settlementAccounts\": [\n           {\n             \"beneficiaryId\": \"snp.com\",\n             \"accountHolderName\": \"xxxxx\",\n             \"accountNumber\": \"XXXXXXXXXX\",\n             \"ifscCode\": \"XXXXXXXXX\",\n             \"bankName\": \"xxxx\",\n             \"vpa\": \"gft@oksbi\"\n           }\n         ]\n       }\n     }\n   }\n\n\n  }\n}\n  ",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bpp_adapter_url}}/on_confirm",
+          "host": [
+            "{{bpp_adapter_url}}"
+          ],
+          "path": [
+            "on_confirm"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "domain",
+      "value": "beckn:ion:retail:1.0"
+    },
+    {
+      "key": "version",
+      "value": "2.0.0"
+    },
+    {
+      "key": "bap_id",
+      "value": "sandbox.food-finder.com"
+    },
+    {
+      "key": "bap_uri",
+      "value": "http://onix-bap:8081/bap/receiver"
+    },
+    {
+      "key": "bpp_id",
+      "value": "sandbox.open-kitchen.com"
+    },
+    {
+      "key": "bpp_uri",
+      "value": "http://onix-bpp:8082/bpp/receiver"
+    },
+    {
+      "key": "transaction_id",
+      "value": "b2bb2763-8342-4c0b-a32a-2bc6a9dab8f2"
+    },
+    {
+      "key": "bap_adapter_url",
+      "value": "http://localhost:8081/bap/caller"
+    },
+    {
+      "key": "bpp_adapter_url",
+      "value": "http://localhost:8082/bpp/caller"
+    }
+  ]
+}
