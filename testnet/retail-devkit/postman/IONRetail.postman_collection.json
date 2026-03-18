@@ -216,7 +216,7 @@
   "variable": [
     {
       "key": "domain",
-      "value": "beckn:dataset:ddm:1.0.0"
+      "value": "beckn:ion:retail:1.0"
     },
     {
       "key": "version",
@@ -224,7 +224,7 @@
     },
     {
       "key": "bap_id",
-      "value": "ev-charging.sandbox1.com"
+      "value": "sandbox.food-finder.com"
     },
     {
       "key": "bap_uri",
@@ -232,7 +232,7 @@
     },
     {
       "key": "bpp_id",
-      "value": "ev-charging.sandbox2.com"
+      "value": "sandbox.open-kitchen.com"
     },
     {
       "key": "bpp_uri",
@@ -248,7 +248,7 @@
     },
     {
       "key": "bpp_adapter_url",
-      "value": ""
+      "value": "http://localhost:8082/bpp/caller"
     }
   ]
 }
