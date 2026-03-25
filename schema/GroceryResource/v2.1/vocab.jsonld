@@ -1,0 +1,30 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "groc": "https://schema.beckn.io/GroceryResource#",
+    "GroceryResourceAttributes": {
+      "@id": "groc:GroceryResourceAttributes",
+      "@type": "@vocab"
+    },
+    "nutrition": {
+      "@id": "groc:nutrition",
+      "@type": "@vocab"
+    },
+    "nutrient": {
+      "@id": "groc:nutrient",
+      "@type": "xsd:string"
+    },
+    "nutritionValue": {
+      "@id": "groc:nutritionValue",
+      "@type": "@vocab"
+    },
+    "freshProduce": {
+      "@id": "groc:freshProduce",
+      "@type": "@vocab"
+    },
+    "netQuantityDeclaration": {
+      "@id": "groc:netQuantityDeclaration",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "context": {
+    "domain": "ONDC:RET10",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_confirm",
+    "core_version": "1.2.0",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com/protocol",
+    "bpp_id": "bpp.example.com",
+    "bpp_uri": "https://bpp.example.com/protocol",
+    "transaction_id": "txn-003",
+    "message_id": "msg-003",
+    "timestamp": "2026-03-25T11:00:00Z"
+  },
+  "message": {
+    "contract": {
+      "id": "contract-001",
+      "descriptor": {
+        "name": "Grocery Order #ORD-2026-00123",
+        "short_desc": "Fresh vegetables and dairy products"
+      },
+      "commitments": [
+        {
+          "id": "commit-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "res-vegetables-001"
+            }
+          ],
+          "offer": {
+            "id": "offer-001"
+          }
+        }
+      ],
+      "contractAttributes": {
+        "@context": "https://schema.beckn.io/RetailContract/v2.1/context.jsonld",
+        "@type": "rcca:RetailContract",
+        "buyerInstructions": "Please ring the doorbell twice and wait. Leave the order outside the door if no one answers.",
+        "deliveryPreferences": {
+          "leaveAtDoor": true,
+          "contactless": true,
+          "preferredTimeSlot": {
+            "start": "2026-03-25T18:00:00Z",
+            "end": "2026-03-25T20:00:00Z"
+          }
+        },
+        "gift": {
+          "isGift": false,
+          "message": "",
+          "wrap": false
+        },
+        "invoicePreferences": {
+          "taxId": {
+            "scheme": "GST",
+            "country": "IN",
+            "value": "18AABCT1234H1Z0"
+          },
+          "companyName": "ABC Private Limited",
+          "email": "accounts@abcpvt.com"
+        },
+        "loyalty": {
+          "programId": "FRESHMART-LOYALTY-001",
+          "pointsRedeemed": 250
+        },
+        "source": {
+          "channel": "mobile_app",
+          "campaignId": "SPRING_OFFER_2026"
+        }
+      }
+    }
+  }
+}

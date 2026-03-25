@@ -1,0 +1,48 @@
+{
+  "version": "2.1.0",
+  "schema_version": "2.1.0",
+  "domain": "HomeAndKitchenResource",
+  "container": "resourceAttributes",
+  "renderers": [
+    {
+      "field": "installation.required",
+      "type": "boolean",
+      "display_name": "Installation Required",
+      "priority": 1
+    },
+    {
+      "field": "installation.providedBySeller",
+      "type": "boolean",
+      "display_name": "Installation Offered by Seller",
+      "priority": 2
+    },
+    {
+      "field": "warranty.duration",
+      "type": "text",
+      "display_name": "Warranty Period",
+      "priority": 3
+    },
+    {
+      "field": "warranty.type",
+      "type": "badge",
+      "display_name": "Warranty Type",
+      "priority": 4
+    },
+    {
+      "field": "usage.indoorOnly",
+      "type": "text",
+      "display_name": "Indoor Use Only",
+      "priority": 5,
+      "format": {
+        "template": "{{#usage.indoorOnly}}Yes{{/usage.indoorOnly}}{{^usage.indoorOnly}}No{{/usage.indoorOnly}}"
+      }
+    },
+    {
+      "field": "careInstructions",
+      "type": "text",
+      "display_name": "Care Instructions",
+      "priority": 6
+    }
+  ],
+  "summary_template": "Installation: {{#installation.required}}Yes{{/installation.required}}{{^installation.required}}No{{/installation.required}} | Warranty: {{warranty.duration}} {{warranty.type}}"
+}

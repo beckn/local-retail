@@ -1,0 +1,93 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld"
+  },
+  "@graph": [
+    {
+      "@id": "rcsa:RetailSettlement",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Retail Core Settlement Attributes",
+      "rdfs:comment": "Schema for retail settlement discharge records. Minimal by design since retail settlements are typically handled by payment gateways.",
+      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
+    },
+    {
+      "@id": "rcsa:gateway",
+      "@type": "rdf:Property",
+      "rdfs:label": "Gateway",
+      "rdfs:comment": "Payment gateway information including transaction details and reference",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "rcsa:Gateway"
+    },
+    {
+      "@id": "rcsa:Gateway",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Payment Gateway",
+      "rdfs:comment": "Information about the payment processing gateway",
+      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
+    },
+    {
+      "@id": "rcsa:name",
+      "@type": "rdf:Property",
+      "rdfs:label": "Gateway Name",
+      "rdfs:comment": "Name of the payment gateway provider (e.g., Razorpay, PayPal, Stripe)",
+      "rdfs:domain": "rcsa:Gateway",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rcsa:transactionId",
+      "@type": "rdf:Property",
+      "rdfs:label": "Transaction ID",
+      "rdfs:comment": "Unique transaction identifier issued by the payment gateway",
+      "rdfs:domain": "rcsa:Gateway",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rcsa:url",
+      "@type": "rdf:Property",
+      "rdfs:label": "Gateway URL",
+      "rdfs:comment": "URL for accessing transaction details or receipt from the payment gateway",
+      "rdfs:domain": "rcsa:Gateway",
+      "rdfs:range": "xsd:anyURI"
+    },
+    {
+      "@id": "rcsa:method",
+      "@type": "rdf:Property",
+      "rdfs:label": "Settlement Method",
+      "rdfs:comment": "Method by which the settlement was discharged: ONLINE, BANK_TRANSFER, COD_COLLECTION, or ESCROW_RELEASE",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rcsa:settledAt",
+      "@type": "rdf:Property",
+      "rdfs:label": "Settled At",
+      "rdfs:comment": "ISO 8601 timestamp indicating when the settlement was discharged",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "xsd:dateTime"
+    },
+    {
+      "@id": "rcsa:settledAmount",
+      "@type": "rdf:Property",
+      "rdfs:label": "Settled Amount",
+      "rdfs:comment": "Monetary amount that was settled or discharged",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "rcsa:currency",
+      "@type": "rdf:Property",
+      "rdfs:label": "Currency",
+      "rdfs:comment": "ISO 4217 currency code for the settled amount",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rcsa:reconciliationId",
+      "@type": "rdf:Property",
+      "rdfs:label": "Reconciliation ID",
+      "rdfs:comment": "Unique identifier for tracking multi-party settlement reconciliation and batch processing",
+      "rdfs:domain": "rcsa:RetailSettlement",
+      "rdfs:range": "xsd:string"
+    }
+  ]
+}

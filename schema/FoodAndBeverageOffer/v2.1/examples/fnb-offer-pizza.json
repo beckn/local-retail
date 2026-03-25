@@ -1,0 +1,207 @@
+{
+  "context": {
+    "domain": "food-and-beverage",
+    "country": "IN",
+    "city": "ONDC:std:city:Mumbai",
+    "action": "on_discover",
+    "core_version": "2.0.0",
+    "bap_id": "buyer.ondc.org",
+    "bap_uri": "https://buyer.ondc.org",
+    "bpp_id": "restaurant.sarpinos.ondc.org",
+    "bpp_uri": "https://restaurant.sarpinos.ondc.org",
+    "transaction_id": "rest456",
+    "message_id": "msg-rest-002",
+    "timestamp": "2026-03-25T18:45:00Z",
+    "version": "2.0.0"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@type": "beckn:Catalog",
+        "id": "catalog:sarpinos:002",
+        "descriptor": {
+          "@type": "beckn:Descriptor",
+          "name": "Sarpino's Pizzeria Custom Pizzas"
+        },
+        "provider": {
+          "id": "provider:sarpinos:001",
+          "descriptor": {
+            "@type": "beckn:Descriptor",
+            "name": "Sarpino's Pizzeria - Bandra",
+            "images": [
+              {
+                "@type": "beckn:Image",
+                "url": "https://example.com/sarpinos-logo.jpg"
+              }
+            ]
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Resource",
+            "id": "resource:sarpinos:margherita:custom",
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Margherita Pizza",
+              "shortDesc": "Classic Italian pizza - customize size and add toppings"
+            },
+            "category": "Pizzas",
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld",
+              "@type": "fnbr:FoodAndBeverageResourceAttributes",
+              "identity": {
+                "brand": "Sarpino's Pizzeria",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitQuantity": 350,
+                  "unitCode": "GRAM"
+                }
+              },
+              "food": {
+                "classification": "VEG"
+              },
+              "allergens": [
+                "GLUTEN",
+                "DAIRY"
+              ],
+              "cuisine": "Italian",
+              "preparation": {
+                "instructions": "Freshly baked thin-crust pizza with mozzarella and basil, baked in wood-fired oven",
+                "storage": "Serve immediately",
+                "shelfLife": "PT30M"
+              }
+            }
+          }
+        ],
+        "offers": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Offer",
+            "id": "offer:sarpinos:margherita:custom",
+            "resourceIds": ["resource:sarpinos:margherita:custom"],
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Margherita Pizza - Customizable"
+            },
+            "offerAttributes": {
+              "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld",
+              "@type": "fnbo:FoodAndBeverageOfferAttributes",
+              "customization": {
+                "groups": [
+                  {
+                    "code": "SIZE",
+                    "name": "Pizza Size",
+                    "selection": "SINGLE_REQUIRED",
+                    "options": [
+                      {
+                        "code": "SMALL",
+                        "name": "Small - 8 inch",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 0
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "MEDIUM",
+                        "name": "Medium - 10 inch",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 100
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "LARGE",
+                        "name": "Large - 12 inch",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 200
+                        },
+                        "available": true
+                      }
+                    ]
+                  },
+                  {
+                    "code": "TOPPINGS",
+                    "name": "Extra Toppings",
+                    "selection": "MULTIPLE_OPTIONAL",
+                    "minSelections": 0,
+                    "maxSelections": 4,
+                    "options": [
+                      {
+                        "code": "CHEESE",
+                        "name": "Extra Cheese",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 50
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "MUSHROOM",
+                        "name": "Fresh Mushroom",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 40
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "BELLPEPPER",
+                        "name": "Bell Pepper",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 35
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "PEPPERONI",
+                        "name": "Pepperoni",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 60
+                        },
+                        "available": false
+                      }
+                    ]
+                  },
+                  {
+                    "code": "SAUCE",
+                    "name": "Extra Sauce",
+                    "selection": "SINGLE_OPTIONAL",
+                    "options": [
+                      {
+                        "code": "GARLIC",
+                        "name": "Garlic Sauce",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 20
+                        },
+                        "available": true
+                      },
+                      {
+                        "code": "BBQSAUCE",
+                        "name": "BBQ Sauce",
+                        "priceDelta": {
+                          "type": "FIXED",
+                          "value": 20
+                        },
+                        "available": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

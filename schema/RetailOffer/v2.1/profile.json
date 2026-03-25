@@ -1,0 +1,23 @@
+{
+  "id": "https://schema.beckn.io/RetailOffer/v2.1",
+  "name": "Retail Core Offer Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailOffer"],
+  "discovery_fields": ["policies.returns.allowed", "policies.cancellation.allowed", "paymentConstraints.codAvailable"],
+  "indexable_paths": [
+    "beckn:offerAttributes.policies.returns.allowed",
+    "beckn:offerAttributes.policies.cancellation.allowed",
+    "beckn:offerAttributes.paymentConstraints.codAvailable",
+    "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance"
+  ],
+  "filterable_paths": [
+    "beckn:offerAttributes.policies.returns.allowed",
+    "beckn:offerAttributes.paymentConstraints.codAvailable"
+  ],
+  "sortable_paths": [
+    "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance"
+  ],
+  "privacy_notes": []
+}

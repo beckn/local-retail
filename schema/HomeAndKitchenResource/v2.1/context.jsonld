@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
+    "HomeAndKitchenResourceAttributes": "hkr:HomeAndKitchenResourceAttributes",
+    "careInstructions": "hkr:careInstructions",
+    "installation": "hkr:installation",
+    "installationRequired": "hkr:installationRequired",
+    "installationProvidedBySeller": "hkr:installationProvidedBySeller",
+    "installationNotes": "hkr:installationNotes",
+    "usage": "hkr:usage",
+    "indoorOnly": "hkr:indoorOnly",
+    "outdoorOnly": "hkr:outdoorOnly",
+    "compatibleWith": "hkr:compatibleWith",
+    "warranty": "hkr:warranty",
+    "warrantyDuration": "hkr:warrantyDuration",
+    "warrantyType": "hkr:warrantyType",
+    "warrantyTerms": "hkr:warrantyTerms"
+  }
+}

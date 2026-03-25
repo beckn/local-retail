@@ -1,0 +1,68 @@
+openapi: 3.1.1
+info:
+  title: Retail — Food and Beverage Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Food and beverage-specific resource attributes for prepared foods, cuisine, and allergens.
+    Migrated from FoodAndBeverageItem (v2) to the v2.1 generalised model.
+    Extends RetailResource via allOf to add allergens, cuisine, and preparation properties.
+    NOTE: Fields like resourceId, lineId, offerId, quantity, price from v2 FoodAndBeverageItem
+    have moved to RetailCommitment in v2.1 (not in resourceAttributes).
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    FoodAndBeverageResourceAttributes:
+      type: object
+      additionalProperties: false
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": fnbr:FoodAndBeverageResourceAttributes
+      allOf:
+        - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
+        - type: object
+          properties:
+            allergens:
+              type: array
+              items:
+                type: string
+                enum:
+                  - GLUTEN
+                  - NUTS
+                  - DAIRY
+                  - EGGS
+                  - SOY
+                  - SHELLFISH
+                  - FISH
+                  - SESAME
+              description: List of allergens present in the food item
+              x-jsonld:
+                "@id": "fnbr:allergens"
+            cuisine:
+              type: string
+              description: Cuisine type (e.g., Italian, Indian, Mexican, American, Chinese, Mediterranean, Japanese)
+              x-jsonld:
+                "@id": "fnbr:cuisine"
+            preparation:
+              type: object
+              additionalProperties: false
+              properties:
+                instructions:
+                  type: string
+                  description: Preparation instructions or special handling notes
+                  x-jsonld:
+                    "@id": "fnbr:preparationInstructions"
+                storage:
+                  type: string
+                  description: Storage instructions (e.g., "Refrigerate at 4°C", "Keep frozen")
+                  x-jsonld:
+                    "@id": "fnbr:storageInstructions"
+                shelfLife:
+                  type: string
+                  description: Shelf life as ISO 8601 duration (e.g., "P7D" for 7 days)
+                  x-jsonld:
+                    "@id": "fnbr:shelfLife"
+              description: Preparation, storage, and shelf life information
+              x-jsonld:
+                "@id": "fnbr:preparation"

@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "rcpa": "https://schema.beckn.io/RetailPerformance#",
+    "PerformanceAttributes": "rcpa:PerformanceAttributes",
+    "PerformanceMode": "rcpa:PerformanceMode",
+    "OperatingHour": "rcpa:OperatingHour",
+    "Closure": "rcpa:Closure",
+    "SLAUnitBasis": "rcpa:SLAUnitBasis",
+    "HandlingType": "rcpa:HandlingType",
+    "DISPATCH": "rcpa:DISPATCH",
+    "ORDER_CONFIRMATION": "rcpa:ORDER_CONFIRMATION",
+    "PACKING_COMPLETE": "rcpa:PACKING_COMPLETE",
+    "supportedPerformanceModes": {
+      "@id": "rcpa:supportedPerformanceModes"
+    },
+    "deliveryDetails": {
+      "@id": "rcpa:deliveryDetails"
+    },
+    "address": {
+      "@id": "rcpa:address"
+    },
+    "contact": {
+      "@id": "rcpa:contact"
+    },
+    "contactName": {
+      "@id": "rcpa:contactName"
+    },
+    "contactPhone": {
+      "@id": "rcpa:contactPhone"
+    },
+    "operatingHours": {
+      "@id": "rcpa:operatingHours"
+    },
+    "daysOfWeek": {
+      "@id": "rcpa:daysOfWeek"
+    },
+    "timeRange": {
+      "@id": "rcpa:timeRange"
+    },
+    "startTime": {
+      "@id": "rcpa:startTime"
+    },
+    "endTime": {
+      "@id": "rcpa:endTime"
+    },
+    "closures": {
+      "@id": "rcpa:closures"
+    },
+    "closureStartDate": {
+      "@id": "rcpa:closureStartDate"
+    },
+    "closureEndDate": {
+      "@id": "rcpa:closureEndDate"
+    },
+    "sla": {
+      "@id": "rcpa:sla"
+    },
+    "minDuration": {
+      "@id": "rcpa:minDuration"
+    },
+    "maxDuration": {
+      "@id": "rcpa:maxDuration"
+    },
+    "slaUnitBasis": {
+      "@id": "rcpa:slaUnitBasis"
+    },
+    "handling": {
+      "@id": "rcpa:handling"
+    },
+    "installationScheduling": {
+      "@id": "rcpa:installationScheduling"
+    },
+    "installationAvailable": {
+      "@id": "rcpa:installationAvailable"
+    },
+    "proposedInstallationDate": {
+      "@id": "rcpa:proposedInstallationDate"
+    },
+    "installationNotes": {
+      "@id": "rcpa:installationNotes"
+    }
+  }
+}

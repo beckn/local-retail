@@ -1,0 +1,71 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Settlement Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Minimal retail settlement discharge records.
+    NEW in v2.1. Attaches to beckn:Settlement via settlementAttributes.
+
+components:
+  schemas:
+    RetailSettlement:
+      type: object
+      additionalProperties: false
+      x-beckn-container: settlementAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": rcsa:RetailSettlement
+      required:
+        - "@context"
+        - "@type"
+        - method
+        - settledAt
+        - settledAmount
+        - currency
+      properties:
+        "@context":
+          type: string
+          format: uri
+          const: "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld"
+          x-jsonld-id: "rcsa:@context"
+        "@type":
+          type: string
+          const: "rcsa:RetailSettlement"
+          x-jsonld-id: "rcsa:@type"
+        gateway:
+          type: object
+          additionalProperties: false
+          description: Payment gateway details
+          x-jsonld-id: "rcsa:gateway"
+          required: [name, transactionId]
+          properties:
+            name:
+              type: string
+              x-jsonld-id: "rcsa:gatewayName"
+            transactionId:
+              type: string
+              x-jsonld-id: "rcsa:gatewayTransactionId"
+            url:
+              type: string
+              format: uri
+              x-jsonld-id: "rcsa:gatewayUrl"
+        method:
+          type: string
+          enum: [ONLINE, BANK_TRANSFER, COD_COLLECTION, ESCROW_RELEASE]
+          x-jsonld-id: "rcsa:method"
+        settledAt:
+          type: string
+          format: date-time
+          x-jsonld-id: "rcsa:settledAt"
+        settledAmount:
+          type: number
+          x-jsonld-id: "rcsa:settledAmount"
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: "^[A-Z]{3}$"
+          x-jsonld-id: "rcsa:currency"
+        reconciliationId:
+          type: string
+          description: Multi-party settlement reconciliation identifier
+          x-jsonld-id: "rcsa:reconciliationId"

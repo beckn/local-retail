@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rccna": "https://schema.beckn.io/RetailConsideration#",
+    "@context": {
+      "@id": "rccna:@context"
+    },
+    "@type": {
+      "@id": "rccna:@type"
+    },
+    "RetailConsideration": "rccna:RetailConsideration",
+    "PaymentMethod": "rccna:PaymentMethod",
+    "BreakupItem": "rccna:BreakupItem",
+    "BreakupType": "rccna:BreakupType",
+    "LoyaltyPointsApplied": "rccna:LoyaltyPointsApplied",
+    "paymentMethods": {
+      "@id": "rccna:paymentMethods"
+    },
+    "currency": {
+      "@id": "rccna:currency"
+    },
+    "breakup": {
+      "@id": "rccna:breakup"
+    },
+    "breakupTitle": {
+      "@id": "rccna:breakupTitle"
+    },
+    "breakupAmount": {
+      "@id": "rccna:breakupAmount"
+    },
+    "breakupType": {
+      "@id": "rccna:breakupType"
+    },
+    "totalAmount": {
+      "@id": "rccna:totalAmount"
+    },
+    "loyaltyPointsApplied": {
+      "@id": "rccna:loyaltyPointsApplied"
+    },
+    "programId": {
+      "@id": "rccna:programId"
+    },
+    "pointsUsed": {
+      "@id": "rccna:pointsUsed"
+    },
+    "monetaryEquivalent": {
+      "@id": "rccna:monetaryEquivalent"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+openapi: 3.1.1
+info:
+  title: RetailContract Schema
+  version: "2.1.0"
+  description: Contract-level buyer preferences and terms for retail transactions
+  x-jsonld-context: ./context.jsonld
+  x-jsonld-vocab: ./vocab.jsonld
+
+paths: {}
+
+components:
+  schemas:
+    RetailContract:
+      type: object
+      description: Container for retail contract attributes (migrated from v2 orderAttributes)
+      additionalProperties: false
+      x-beckn-container: contractAttributes
+      x-jsonld:
+        "@type": "rcca:RetailContract"
+        "@context": ./context.jsonld
+      properties:
+        "@context":
+          x-jsonld-id: "rcca:@context"
+        "@type":
+          x-jsonld-id: "rcca:@type"
+        buyerInstructions:
+          type: string
+          description: Free-text instructions from buyer to provider
+          x-jsonld-id: "rcca:buyerInstructions"
+        deliveryPreferences:
+          type: object
+          description: Buyer delivery preferences and constraints
+          x-jsonld-id: "rcca:deliveryPreferences"
+          properties:
+            leaveAtDoor:
+              type: boolean
+              description: Permission to leave delivery at door without signature
+              x-jsonld-id: "rcca:leaveAtDoor"
+            contactless:
+              type: boolean
+              description: Request for contactless delivery
+              x-jsonld-id: "rcca:contactless"
+            preferredTimeSlot:
+              type: object
+              description: Preferred delivery time window
+              x-jsonld-id: "rcca:preferredTimeSlot"
+              properties:
+                start:
+                  type: string
+                  format: date-time
+                  description: Start of preferred delivery window
+                  x-jsonld-id: "rcca:timeSlotStart"
+                end:
+                  type: string
+                  format: date-time
+                  description: End of preferred delivery window
+                  x-jsonld-id: "rcca:timeSlotEnd"
+        gift:
+          type: object
+          description: Gift-related attributes and preferences
+          x-jsonld-id: "rcca:gift"
+          properties:
+            isGift:
+              type: boolean
+              description: Whether this order is being sent as a gift
+              x-jsonld-id: "rcca:isGift"
+            message:
+              type: string
+              description: Gift message to include
+              x-jsonld-id: "rcca:giftMessage"
+            wrap:
+              type: boolean
+              description: Whether to include gift wrapping
+              x-jsonld-id: "rcca:giftWrap"
+        invoicePreferences:
+          type: object
+          description: Invoice and billing preferences
+          x-jsonld-id: "rcca:invoicePreferences"
+          properties:
+            taxId:
+              type: object
+              description: Tax identification details
+              x-jsonld-id: "rcca:taxId"
+              required:
+                - value
+              properties:
+                scheme:
+                  type: string
+                  description: Tax ID scheme (e.g., GST, VAT, PAN)
+                  x-jsonld-id: "rcca:taxIdScheme"
+                country:
+                  type: string
+                  pattern: '^[A-Z]{2}$'
+                  description: ISO 3166-1 alpha-2 country code
+                  x-jsonld-id: "rcca:taxIdCountry"
+                value:
+                  type: string
+                  description: Tax ID value (required)
+                  x-jsonld-id: "rcca:taxIdValue"
+            companyName:
+              type: string
+              description: Company name for invoice
+              x-jsonld-id: "rcca:invoiceCompanyName"
+            email:
+              type: string
+              format: email
+              description: Email address for invoice delivery
+              x-jsonld-id: "rcca:invoiceEmail"
+        loyalty:
+          type: object
+          description: Loyalty program participation and rewards
+          x-jsonld-id: "rcca:loyalty"
+          properties:
+            programId:
+              type: string
+              description: Loyalty program identifier
+              x-jsonld-id: "rcca:loyaltyProgramId"
+            pointsRedeemed:
+              type: number
+              minimum: 0
+              description: Number of loyalty points redeemed in this transaction
+              x-jsonld-id: "rcca:pointsRedeemed"
+        source:
+          type: object
+          description: Transaction source and marketing attribution
+          x-jsonld-id: "rcca:source"
+          properties:
+            channel:
+              type: string
+              description: Channel through which transaction was sourced (e.g., web, mobile, api)
+              x-jsonld-id: "rcca:sourceChannel"
+            campaignId:
+              type: string
+              description: Marketing campaign identifier
+              x-jsonld-id: "rcca:campaignId"

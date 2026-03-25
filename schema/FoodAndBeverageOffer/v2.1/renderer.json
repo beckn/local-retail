@@ -1,0 +1,19 @@
+{
+  "version": "2.1.0",
+  "schema_version": "2.1.0",
+  "domain": "FoodAndBeverageOffer",
+  "container": "offerAttributes",
+  "renderers": [
+    {
+      "field": "customization.groups",
+      "type": "accordion",
+      "display_name": "Customization Options",
+      "priority": 1,
+      "format": {
+        "group_label_template": "{{name}} ({{selection}})",
+        "option_template": "{{name}} {{#priceDelta}}({{#priceDelta.type}}{{priceDelta.type}}{{/priceDelta.type}} {{#priceDelta.value}}+{{priceDelta.value}}{{/priceDelta.value}}){{/priceDelta}}"
+      }
+    }
+  ],
+  "summary_template": "Customization groups: {{customization.groups.length}}"
+}

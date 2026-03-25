@@ -1,0 +1,93 @@
+{
+  "context": {
+    "domain": "grocery",
+    "country": "IN",
+    "city": "ONDC:std:city:Delhi",
+    "action": "on_discover",
+    "core_version": "2.0.0",
+    "bap_id": "buyer.ondc.org",
+    "bap_uri": "https://buyer.ondc.org",
+    "bpp_id": "seller.freshmarket.ondc.org",
+    "bpp_uri": "https://seller.freshmarket.ondc.org",
+    "transaction_id": "xyz789",
+    "message_id": "msg789",
+    "timestamp": "2026-03-25T09:15:00Z",
+    "version": "2.0.0"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@type": "beckn:Catalog",
+        "id": "catalog:freshmarket:001",
+        "descriptor": {
+          "@type": "beckn:Descriptor",
+          "name": "Fresh Produce Daily"
+        },
+        "provider": {
+          "id": "provider:freshmarket:001",
+          "descriptor": {
+            "@type": "beckn:Descriptor",
+            "name": "City Fresh Market",
+            "images": [
+              {
+                "@type": "beckn:Image",
+                "url": "https://example.com/freshmarket-logo.jpg"
+              }
+            ]
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Resource",
+            "id": "resource:apples:red:001",
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Fresh Red Apples",
+              "shortDesc": "Crisp red apples - sweet and fresh - per kg",
+              "images": [
+                {
+                  "@type": "beckn:Image",
+                  "url": "https://example.com/red-apples.jpg"
+                }
+              ]
+            },
+            "category": "Fresh Produce",
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld",
+              "@type": "groc:GroceryResourceAttributes",
+              "identity": {
+                "brand": "Organic Valley",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitQuantity": 1,
+                  "unitCode": "KG"
+                },
+                "appearance": {
+                  "color": "Red"
+                }
+              },
+              "food": {
+                "classification": "VEG"
+              },
+              "freshProduce": {
+                "netQuantityDeclaration": "1 kg"
+              }
+            }
+          }
+        ],
+        "offers": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Offer",
+            "id": "offer:apples:red:001",
+            "resourceIds": ["resource:apples:red:001"]
+          }
+        ]
+      }
+    ]
+  }
+}

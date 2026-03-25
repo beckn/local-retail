@@ -1,0 +1,56 @@
+openapi: 3.1.1
+info:
+  title: Retail — Grocery Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Grocery-specific resource attributes for packaged foods and fresh produce.
+    Migrated from GroceryItem (v2) to the v2.1 generalised model.
+    Extends RetailResource via allOf to add nutrition and fresh produce properties.
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    GroceryResourceAttributes:
+      type: object
+      additionalProperties: false
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": groc:GroceryResourceAttributes
+      allOf:
+        - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
+        - type: object
+          properties:
+            nutrition:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                required: [nutrient, value]
+                properties:
+                  nutrient:
+                    type: string
+                    description: Name of the nutrient (e.g., Energy, Protein, Carbohydrates, Fat, Fiber, Sodium)
+                    x-jsonld:
+                      "@id": "groc:nutrient"
+                  value:
+                    allOf:
+                      - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+                    description: Nutrient value using Beckn core Quantity (unitQuantity, unitCode per 100g or serving)
+                    x-jsonld:
+                      "@id": "groc:nutritionValue"
+              description: Array of nutrition facts (per 100g or serving size)
+              x-jsonld:
+                "@id": "groc:nutrition"
+            freshProduce:
+              type: object
+              additionalProperties: false
+              properties:
+                netQuantityDeclaration:
+                  type: string
+                  description: Net quantity declaration for fresh produce (e.g., "1 kg", "500g", "5 units")
+                  x-jsonld:
+                    "@id": "groc:netQuantityDeclaration"
+              description: Fresh produce-specific attributes (harvested, bulk items without standard packaging)
+              x-jsonld:
+                "@id": "groc:freshProduce"

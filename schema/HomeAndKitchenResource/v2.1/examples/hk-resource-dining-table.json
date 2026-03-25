@@ -1,0 +1,118 @@
+{
+  "context": {
+    "domain": "home-and-kitchen",
+    "country": "IN",
+    "city": "ONDC:std:city:Bangalore",
+    "action": "on_discover",
+    "core_version": "2.0.0",
+    "bap_id": "buyer.ondc.org",
+    "bap_uri": "https://buyer.ondc.org",
+    "bpp_id": "furniture.store.ondc.org",
+    "bpp_uri": "https://furniture.store.ondc.org",
+    "transaction_id": "furn123",
+    "message_id": "msg-furn-001",
+    "timestamp": "2026-03-25T14:20:00Z",
+    "version": "2.0.0"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@type": "beckn:Catalog",
+        "id": "catalog:furniture:001",
+        "descriptor": {
+          "@type": "beckn:Descriptor",
+          "name": "Premium Wooden Furniture"
+        },
+        "provider": {
+          "id": "provider:furniture:001",
+          "descriptor": {
+            "@type": "beckn:Descriptor",
+            "name": "WoodCraft Furniture Store",
+            "images": [
+              {
+                "@type": "beckn:Image",
+                "url": "https://example.com/woodcraft-logo.jpg"
+              }
+            ]
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Resource",
+            "id": "resource:dining:oak:table:001",
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Oak Wood Dining Table",
+              "shortDesc": "Premium 6-seater oak wood dining table with matte finish - 180cm length",
+              "images": [
+                {
+                  "@type": "beckn:Image",
+                  "url": "https://example.com/oak-dining-table.jpg"
+                }
+              ]
+            },
+            "category": "Dining Tables",
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld",
+              "@type": "hkr:HomeAndKitchenResourceAttributes",
+              "identity": {
+                "brand": "WoodCraft",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitQuantity": 45,
+                  "unitCode": "KG"
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 180,
+                  "breadth": 90,
+                  "height": 76
+                },
+                "appearance": {
+                  "color": "Natural oak brown",
+                  "material": "Oak wood",
+                  "finish": "Matte lacquer"
+                }
+              },
+              "careInstructions": "Wipe with a dry, soft cloth regularly. For spills, use a slightly damp cloth and dry immediately. Avoid prolonged exposure to direct sunlight and extreme humidity. Use furniture polish or beeswax quarterly to maintain the finish. Do not place hot items directly on the surface.",
+              "installation": {
+                "required": true,
+                "providedBySeller": true,
+                "notes": "Professional assembly recommended. Delivery includes assembly kit, hardware, and installation service at no extra cost. Typical installation time: 2-3 hours."
+              },
+              "usage": {
+                "indoorOnly": true,
+                "compatibleWith": [
+                  "standard 4-6 wooden dining chairs",
+                  "standard electrical outlet for pendant lights (if custom ordered)",
+                  "floor space minimum 3m x 3m"
+                ]
+              },
+              "warranty": {
+                "duration": "P3Y",
+                "type": "MANUFACTURER",
+                "terms": "3-year warranty covers defects in materials and craftsmanship. Excludes damage from accidents, misuse, improper maintenance, or natural wood movement (color variation, minor warping within acceptable limits). Does not cover water damage or staining from spills."
+              }
+            }
+          }
+        ],
+        "offers": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Offer",
+            "id": "offer:dining:oak:table:001",
+            "resourceIds": ["resource:dining:oak:table:001"],
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Oak Wood Dining Table - 180cm with Installation"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

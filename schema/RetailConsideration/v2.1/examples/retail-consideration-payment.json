@@ -1,0 +1,117 @@
+{
+  "context": {
+    "domain": "nic2008:5241",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_confirm",
+    "core_version": "0.9.4",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com",
+    "bpp_id": "bpp.grocery.com",
+    "bpp_uri": "https://bpp.grocery.com",
+    "transaction_id": "txn-001-grocery-payment",
+    "message_id": "msg-002-confirm",
+    "timestamp": "2026-03-25T14:30:00Z",
+    "ttl": "PT30M"
+  },
+  "message": {
+    "contract": {
+      "id": "contract-002",
+      "status": {
+        "descriptor": {
+          "code": "CONFIRMED"
+        }
+      },
+      "commitments": [
+        {
+          "id": "cmt-002",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "r-002"
+            }
+          ],
+          "offer": {
+            "id": "o-002"
+          }
+        }
+      ],
+      "consideration": [
+        {
+          "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld",
+          "@type": "beckn:MonetaryConsideration",
+          "id": "cons-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "considerationAttributes": {
+            "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld",
+            "@type": "rccna:RetailConsideration",
+            "paymentMethods": [
+              "UPI",
+              "COD",
+              "DEBIT",
+              "WALLET",
+              "PREPAID"
+            ],
+            "currency": "INR",
+            "breakup": [
+              {
+                "title": "Vegetables & Fruits",
+                "amount": 450.00,
+                "type": "BASE_PRICE"
+              },
+              {
+                "title": "Dairy Products",
+                "amount": 320.00,
+                "type": "BASE_PRICE"
+              },
+              {
+                "title": "Staples",
+                "amount": 680.00,
+                "type": "BASE_PRICE"
+              },
+              {
+                "title": "SGST (5%)",
+                "amount": 72.50,
+                "type": "TAX"
+              },
+              {
+                "title": "Delivery Charge",
+                "amount": 49.00,
+                "type": "DELIVERY_CHARGE"
+              },
+              {
+                "title": "Packing Charge",
+                "amount": 20.00,
+                "type": "PACKING_CHARGE"
+              },
+              {
+                "title": "Loyalty Discount",
+                "amount": -75.00,
+                "type": "DISCOUNT"
+              },
+              {
+                "title": "Convenience Fee",
+                "amount": 5.00,
+                "type": "CONVENIENCE_FEE"
+              }
+            ],
+            "totalAmount": 1521.50,
+            "loyaltyPointsApplied": {
+              "programId": "LP-FRESHMART-001",
+              "pointsUsed": 150,
+              "monetaryEquivalent": 75.00
+            }
+          }
+        }
+      ]
+    }
+  }
+}

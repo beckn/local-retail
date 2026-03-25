@@ -1,0 +1,56 @@
+{
+  "name": "RetailContract",
+  "namespace": "https://schema.beckn.io/RetailContract#",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "version": "2.1.0",
+  "description": "Contract-level buyer preferences and terms for retail transactions",
+  "indexable_attributes": [
+    "contractAttributes.source.channel",
+    "contractAttributes.source.campaignId",
+    "contractAttributes.loyalty.programId",
+    "contractAttributes.invoicePreferences.taxId.country",
+    "contractAttributes.gift.isGift"
+  ],
+  "filterable_attributes": [
+    {
+      "path": "contractAttributes.source.channel",
+      "type": "string",
+      "operators": ["equals", "contains"]
+    },
+    {
+      "path": "contractAttributes.gift.isGift",
+      "type": "boolean"
+    },
+    {
+      "path": "contractAttributes.deliveryPreferences.contactless",
+      "type": "boolean"
+    },
+    {
+      "path": "contractAttributes.deliveryPreferences.leaveAtDoor",
+      "type": "boolean"
+    },
+    {
+      "path": "contractAttributes.loyalty.pointsRedeemed",
+      "type": "number",
+      "operators": ["greater_than", "less_than", "equals"]
+    },
+    {
+      "path": "contractAttributes.invoicePreferences.taxId.country",
+      "type": "string",
+      "format": "iso-3166-1-alpha2"
+    }
+  ],
+  "contextual_attributes": [
+    "contractAttributes.buyerInstructions",
+    "contractAttributes.deliveryPreferences.preferredTimeSlot",
+    "contractAttributes.gift",
+    "contractAttributes.invoicePreferences",
+    "contractAttributes.source"
+  ],
+  "migration_notes": {
+    "from_version": "2.0.0",
+    "status": "direct_migration",
+    "description": "All fields carried over directly from v2 RetailCoreOrderAttributes without structural changes"
+  }
+}

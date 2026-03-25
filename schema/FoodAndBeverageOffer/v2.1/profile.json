@@ -1,0 +1,21 @@
+{
+  "id": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1",
+  "name": "Food and Beverage Offer Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["FoodAndBeverageOfferAttributes"],
+  "discovery_fields": ["customization.groups[].name"],
+  "indexable_paths": [
+    "beckn:offerAttributes.customization.groups[].code",
+    "beckn:offerAttributes.customization.groups[].name",
+    "beckn:offerAttributes.customization.groups[].options[].code",
+    "beckn:offerAttributes.customization.groups[].options[].name"
+  ],
+  "filterable_paths": [
+    "beckn:offerAttributes.customization.groups[].code",
+    "beckn:offerAttributes.customization.groups[].options[].code"
+  ],
+  "sortable_paths": [],
+  "privacy_notes": []
+}

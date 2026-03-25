@@ -1,0 +1,171 @@
+openapi: 3.1.1
+info:
+  title: RetailPerformance Schema
+  version: "2.1.0"
+  description: Performance execution and delivery capability declarations for retail fulfillment
+  x-jsonld-context: ./context.jsonld
+  x-jsonld-vocab: ./vocab.jsonld
+
+paths: {}
+
+components:
+  schemas:
+    RetailPerformance:
+      type: object
+      description: Container for retail performance execution attributes (migrated from v2 fulfillmentAttributes)
+      additionalProperties: false
+      x-beckn-container: performanceAttributes
+      x-jsonld:
+        "@type": "rcpa:RetailPerformance"
+        "@context": ./context.jsonld
+      required:
+        - supportedPerformanceModes
+      properties:
+        supportedPerformanceModes:
+          type: array
+          description: Array of performance modes supported by the provider
+          x-jsonld-id: "rcpa:supportedPerformanceModes"
+          items:
+            type: string
+            enum: [DELIVERY, PICKUP, SERVICE]
+            x-jsonld-id: "rcpa:PerformanceMode"
+        deliveryDetails:
+          type: object
+          description: Delivery address and contact information
+          x-jsonld-id: "rcpa:deliveryDetails"
+          required:
+            - address
+            - contact
+          properties:
+            address:
+              $ref: '../../v2.0.0/beckn.yaml#/components/schemas/Address'
+              x-jsonld-id: "rcpa:address"
+            contact:
+              type: object
+              x-jsonld-id: "rcpa:contact"
+              required:
+                - name
+                - phone
+              properties:
+                name:
+                  type: string
+                  x-jsonld-id: "rcpa:contactName"
+                phone:
+                  type: string
+                  x-jsonld-id: "rcpa:contactPhone"
+        operatingHours:
+          type: array
+          description: Operating hours schedule with days and time ranges
+          x-jsonld-id: "rcpa:operatingHours"
+          items:
+            type: object
+            x-jsonld-id: "rcpa:OperatingHour"
+            required:
+              - daysOfWeek
+              - timeRange
+            properties:
+              daysOfWeek:
+                type: array
+                description: Days of week (0=Sunday, 6=Saturday)
+                x-jsonld-id: "rcpa:daysOfWeek"
+                items:
+                  type: integer
+                  minimum: 0
+                  maximum: 6
+              timeRange:
+                type: object
+                x-jsonld-id: "rcpa:timeRange"
+                required:
+                  - start
+                  - end
+                properties:
+                  start:
+                    type: string
+                    pattern: '^([01][0-9]|2[0-3]):[0-5][0-9]$'
+                    description: Start time in HH:MM format
+                    x-jsonld-id: "rcpa:startTime"
+                  end:
+                    type: string
+                    pattern: '^([01][0-9]|2[0-3]):[0-5][0-9]$'
+                    description: End time in HH:MM format
+                    x-jsonld-id: "rcpa:endTime"
+        closures:
+          type: array
+          description: Closure periods with start and end dates
+          x-jsonld-id: "rcpa:closures"
+          items:
+            type: object
+            x-jsonld-id: "rcpa:Closure"
+            required:
+              - startDate
+              - endDate
+            properties:
+              startDate:
+                type: string
+                format: date-time
+                description: Closure start date-time
+                x-jsonld-id: "rcpa:closureStartDate"
+              endDate:
+                type: string
+                format: date-time
+                description: Closure end date-time
+                x-jsonld-id: "rcpa:closureEndDate"
+        sla:
+          type: object
+          description: Service Level Agreement with duration and basis
+          x-jsonld-id: "rcpa:sla"
+          required:
+            - min
+            - max
+            - unitBasis
+          properties:
+            min:
+              type: string
+              pattern: '^P[0-9DT]*[HMS]$'
+              description: Minimum duration in ISO 8601 format
+              x-jsonld-id: "rcpa:minDuration"
+            max:
+              type: string
+              pattern: '^P[0-9DT]*[HMS]$'
+              description: Maximum duration in ISO 8601 format
+              x-jsonld-id: "rcpa:maxDuration"
+            unitBasis:
+              type: string
+              enum: [ORDER_CONFIRMATION, PACKING_COMPLETE, DISPATCH]
+              x-jsonld-id: "rcpa:SLAUnitBasis"
+        handling:
+          type: array
+          description: Array of handling requirements and capabilities
+          x-jsonld-id: "rcpa:handling"
+          items:
+            type: string
+            enum:
+              - FRAGILE
+              - COLD_CHAIN
+              - TEMPERATURE_CONTROLLED
+              - HAZARDOUS
+              - OVERSIZED
+              - BULK
+              - HIGH_VALUE
+              - LIQUID
+              - PERISHABLE
+            x-jsonld-id: "rcpa:HandlingType"
+        installationScheduling:
+          type: object
+          description: Installation scheduling capability for home and kitchen items
+          x-jsonld-id: "rcpa:installationScheduling"
+          required:
+            - available
+          properties:
+            available:
+              type: boolean
+              x-jsonld-id: "rcpa:installationAvailable"
+            scheduledDate:
+              type: string
+              format: date-time
+              description: Proposed installation date-time
+              x-jsonld-id: "rcpa:proposedInstallationDate"
+            notes:
+              type: string
+              description: Additional installation notes
+              x-jsonld-id: "rcpa:installationNotes"

@@ -1,0 +1,101 @@
+{
+  "context": {
+    "domain": "food-and-beverage",
+    "country": "IN",
+    "city": "ONDC:std:city:Mumbai",
+    "action": "on_discover",
+    "core_version": "2.0.0",
+    "bap_id": "buyer.ondc.org",
+    "bap_uri": "https://buyer.ondc.org",
+    "bpp_id": "restaurant.sarpinos.ondc.org",
+    "bpp_uri": "https://restaurant.sarpinos.ondc.org",
+    "transaction_id": "rest123",
+    "message_id": "msg-rest-001",
+    "timestamp": "2026-03-25T18:45:00Z",
+    "version": "2.0.0"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@type": "beckn:Catalog",
+        "id": "catalog:sarpinos:001",
+        "descriptor": {
+          "@type": "beckn:Descriptor",
+          "name": "Sarpino's Pizzeria Menu"
+        },
+        "provider": {
+          "id": "provider:sarpinos:001",
+          "descriptor": {
+            "@type": "beckn:Descriptor",
+            "name": "Sarpino's Pizzeria - Bandra",
+            "images": [
+              {
+                "@type": "beckn:Image",
+                "url": "https://example.com/sarpinos-logo.jpg"
+              }
+            ]
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Resource",
+            "id": "resource:sarpinos:margherita:001",
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Margherita Pizza",
+              "shortDesc": "Classic Italian pizza with fresh mozzarella and basil - available for dine-in",
+              "images": [
+                {
+                  "@type": "beckn:Image",
+                  "url": "https://example.com/margherita-pizza.jpg"
+                }
+              ]
+            },
+            "category": "Pizzas",
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld",
+              "@type": "fnbr:FoodAndBeverageResourceAttributes",
+              "identity": {
+                "brand": "Sarpino's Pizzeria",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitQuantity": 350,
+                  "unitCode": "GRAM"
+                }
+              },
+              "food": {
+                "classification": "VEG"
+              },
+              "allergens": [
+                "GLUTEN",
+                "DAIRY"
+              ],
+              "cuisine": "Italian",
+              "preparation": {
+                "instructions": "Freshly baked thin-crust pizza topped with tomato sauce, fresh mozzarella, fresh basil leaves, and olive oil. Baked in a wood-fired oven at 300°C.",
+                "storage": "Serve immediately while hot",
+                "shelfLife": "PT30M"
+              }
+            }
+          }
+        ],
+        "offers": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Offer",
+            "id": "offer:sarpinos:margherita:001",
+            "resourceIds": ["resource:sarpinos:margherita:001"],
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Regular Margherita - Dine-in"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

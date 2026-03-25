@@ -1,0 +1,97 @@
+openapi: 3.1.1
+info:
+  title: Retail — Home and Kitchen Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Home and kitchen-specific resource attributes for furniture, appliances, and household products.
+    Migrated from HomeAndKitchenItem (v2) to the v2.1 generalised model.
+    Extends RetailResource via allOf to add care, installation, usage, and warranty properties.
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    HomeAndKitchenResourceAttributes:
+      type: object
+      additionalProperties: false
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": hkr:HomeAndKitchenResourceAttributes
+      allOf:
+        - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
+        - type: object
+          properties:
+            careInstructions:
+              type: string
+              description: Care and maintenance instructions for the product (e.g., cleaning, treatment)
+              x-jsonld:
+                "@id": "hkr:careInstructions"
+            installation:
+              type: object
+              additionalProperties: false
+              properties:
+                required:
+                  type: boolean
+                  description: Whether installation is required for this product
+                  x-jsonld:
+                    "@id": "hkr:installationRequired"
+                providedBySeller:
+                  type: boolean
+                  description: Whether the seller provides installation service (capability declaration only; scheduling is in performanceAttributes)
+                  x-jsonld:
+                    "@id": "hkr:installationProvidedBySeller"
+                notes:
+                  type: string
+                  description: General notes about installation requirements, e.g., "Assembly required", "Professional installation recommended"
+                  x-jsonld:
+                    "@id": "hkr:installationNotes"
+              description: Installation capability declaration. Execution scheduling (time slots, availability) belongs in RetailPerformance.installationScheduling.
+              x-jsonld:
+                "@id": "hkr:installation"
+            usage:
+              type: object
+              additionalProperties: false
+              properties:
+                indoorOnly:
+                  type: boolean
+                  description: Whether this product is suitable only for indoor use
+                  x-jsonld:
+                    "@id": "hkr:indoorOnly"
+                outdoorOnly:
+                  type: boolean
+                  description: Whether this product is suitable only for outdoor use
+                  x-jsonld:
+                    "@id": "hkr:outdoorOnly"
+                compatibleWith:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of compatible product types, materials, or standard specifications (e.g., "120V electrical outlet", "standard doorway width 36 inches")
+                  x-jsonld:
+                    "@id": "hkr:compatibleWith"
+              description: Usage context and compatibility information
+              x-jsonld:
+                "@id": "hkr:usage"
+            warranty:
+              type: object
+              additionalProperties: false
+              properties:
+                duration:
+                  type: string
+                  description: Warranty duration as ISO 8601 duration (e.g., "P1Y" for 1 year, "P5Y" for 5 years)
+                  x-jsonld:
+                    "@id": "hkr:warrantyDuration"
+                type:
+                  type: string
+                  enum: [MANUFACTURER, SELLER]
+                  description: Type of warranty (MANUFACTURER warranty or SELLER warranty)
+                  x-jsonld:
+                    "@id": "hkr:warrantyType"
+                terms:
+                  type: string
+                  description: Warranty terms and conditions (e.g., coverage details, exclusions)
+                  x-jsonld:
+                    "@id": "hkr:warrantyTerms"
+              description: Warranty information
+              x-jsonld:
+                "@id": "hkr:warranty"

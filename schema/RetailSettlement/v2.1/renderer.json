@@ -1,0 +1,107 @@
+{
+  "name": "RetailSettlement",
+  "version": "2.1.0",
+  "templates": {
+    "html": {
+      "description": "Compact HTML rendering of retail settlement attributes",
+      "template": "<div class=\"settlement-attributes\">\n  <div class=\"settlement-status\">\n    <strong>Settlement Status:</strong> Settled\n  </div>\n  <div class=\"settlement-amount\">\n    <strong>Amount Settled:</strong> {{currency}} {{settledAmount}}\n  </div>\n  <div class=\"settlement-method\">\n    <strong>Method:</strong> {{method}}\n  </div>\n  <div class=\"settlement-timestamp\">\n    <strong>Settled At:</strong> {{settledAt}}\n  </div>\n  {{#if gateway}}\n  <div class=\"gateway-info\">\n    <strong>Gateway:</strong> {{gateway.name}}\n    {{#if gateway.transactionId}}\n    <br><small>Transaction ID: {{gateway.transactionId}}</small>\n    {{/if}}\n  </div>\n  {{/if}}\n</div>"
+    },
+    "html_detail": {
+      "description": "Detailed HTML rendering with full settlement information",
+      "template": "<div class=\"settlement-attributes-detail\">\n  <h3>Settlement Record</h3>\n  \n  <section class=\"settlement-summary\">\n    <h4>Settlement Summary</h4>\n    <table class=\"settlement-table\">\n      <tr>\n        <th>Status</th>\n        <td><span class=\"status-badge settled\">Settled</span></td>\n      </tr>\n      <tr>\n        <th>Method</th>\n        <td><span class=\"method-badge\">{{method}}</span></td>\n      </tr>\n      <tr>\n        <th>Amount</th>\n        <td class=\"amount-value\">{{currency}} {{settledAmount}}</td>\n      </tr>\n      <tr>\n        <th>Settlement Date/Time</th>\n        <td>{{formatDateTime settledAt}}</td>\n      </tr>\n    </table>\n  </section>\n  \n  {{#if gateway}}\n  <section class=\"gateway-section\">\n    <h4>Payment Gateway Information</h4>\n    <table class=\"gateway-table\">\n      <tr>\n        <th>Gateway Provider</th>\n        <td><strong>{{gateway.name}}</strong></td>\n      </tr>\n      <tr>\n        <th>Transaction ID</th>\n        <td class=\"transaction-id\">\n          <code>{{gateway.transactionId}}</code>\n          {{#if gateway.url}}\n          <a href=\"{{gateway.url}}\" target=\"_blank\" class=\"gateway-link\">View in Gateway</a>\n          {{/if}}\n        </td>\n      </tr>\n      {{#if gateway.url}}\n      <tr>\n        <th>Gateway URL</th>\n        <td><a href=\"{{gateway.url}}\" target=\"_blank\">{{gateway.url}}</a></td>\n      </tr>\n      {{/if}}\n    </table>\n  </section>\n  {{/if}}\n  \n  {{#if reconciliationId}}\n  <section class=\"reconciliation-section\">\n    <h4>Reconciliation Information</h4>\n    <div class=\"reconciliation-details\">\n      <p><strong>Reconciliation ID:</strong> <code>{{reconciliationId}}</code></p>\n      <p><small>Used for tracking multi-party settlement and batch processing</small></p>\n    </div>\n  </section>\n  {{/if}}\n  \n  <section class=\"settlement-footer\">\n    <div class=\"settlement-reference\">\n      <small>Settlement Record Generated: {{currentDate}}</small>\n    </div>\n  </section>\n</div>"
+    }
+  },
+  "styles": {
+    "settlement-attributes": {
+      "padding": "12px",
+      "border": "1px solid #4caf50",
+      "border-radius": "4px",
+      "background-color": "#f1f8e9"
+    },
+    "settlement-status": {
+      "font-size": "14px",
+      "color": "#2e7d32",
+      "font-weight": "bold",
+      "padding": "8px 0"
+    },
+    "settlement-amount": {
+      "font-size": "18px",
+      "font-weight": "bold",
+      "color": "#1b5e20",
+      "padding": "8px 0"
+    },
+    "settlement-method": {
+      "font-size": "14px",
+      "color": "#558b2f",
+      "padding": "4px 0"
+    },
+    "settlement-timestamp": {
+      "font-size": "12px",
+      "color": "#689f38",
+      "padding": "4px 0"
+    },
+    "status-badge": {
+      "display": "inline-block",
+      "padding": "4px 8px",
+      "border-radius": "3px",
+      "font-size": "12px",
+      "font-weight": "500"
+    },
+    "status-badge.settled": {
+      "background-color": "#c8e6c9",
+      "color": "#1b5e20"
+    },
+    "method-badge": {
+      "display": "inline-block",
+      "background-color": "#c8e6c9",
+      "color": "#1b5e20",
+      "padding": "4px 8px",
+      "border-radius": "3px",
+      "font-size": "12px",
+      "font-weight": "500"
+    },
+    "gateway-section": {
+      "margin-top": "12px",
+      "padding": "8px",
+      "background-color": "#e8f5e9",
+      "border-left": "4px solid #4caf50",
+      "border-radius": "4px"
+    },
+    "reconciliation-section": {
+      "margin-top": "12px",
+      "padding": "8px",
+      "background-color": "#e3f2fd",
+      "border-left": "4px solid #1976d2",
+      "border-radius": "4px"
+    },
+    "settlement-table": {
+      "width": "100%",
+      "border-collapse": "collapse",
+      "font-size": "14px"
+    },
+    "gateway-table": {
+      "width": "100%",
+      "border-collapse": "collapse",
+      "font-size": "14px"
+    },
+    "transaction-id": {
+      "font-family": "monospace",
+      "background-color": "#fafafa",
+      "padding": "4px"
+    },
+    "amount-value": {
+      "color": "#2e7d32",
+      "font-weight": "bold",
+      "font-size": "16px"
+    },
+    "gateway-link": {
+      "margin-left": "8px",
+      "padding": "2px 6px",
+      "background-color": "#4caf50",
+      "color": "white",
+      "text-decoration": "none",
+      "border-radius": "3px",
+      "font-size": "12px"
+    }
+  }
+}

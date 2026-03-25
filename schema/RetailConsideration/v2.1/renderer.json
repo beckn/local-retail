@@ -1,0 +1,64 @@
+{
+  "name": "RetailConsideration",
+  "version": "2.1.0",
+  "templates": {
+    "html": {
+      "description": "Compact HTML rendering of retail consideration attributes",
+      "template": "<div class=\"consideration-attributes\">\n  <div class=\"consideration-amount\">\n    <strong>Total Amount:</strong> {{currency}} {{totalAmount}}\n  </div>\n  {{#if paymentMethods}}\n  <div class=\"payment-methods\">\n    <strong>Payment Methods:</strong>\n    <ul>\n      {{#each paymentMethods}}\n      <li>{{this}}</li>\n      {{/each}}\n    </ul>\n  </div>\n  {{/if}}\n  {{#if breakup}}\n  <div class=\"breakup-summary\">\n    <strong>Charge Breakdown:</strong>\n    <ul>\n      {{#each breakup}}\n      <li>{{title}}: {{../currency}} {{amount}} ({{type}})</li>\n      {{/each}}\n    </ul>\n  </div>\n  {{/if}}\n  {{#if loyaltyPointsApplied}}\n  <div class=\"loyalty-applied\">\n    <strong>Loyalty Points:</strong> {{loyaltyPointsApplied.pointsUsed}} points ({{loyaltyPointsApplied.monetaryEquivalent}} {{currency}} equivalent)\n  </div>\n  {{/if}}\n</div>"
+    },
+    "html_detail": {
+      "description": "Detailed HTML rendering with full information",
+      "template": "<div class=\"consideration-attributes-detail\">\n  <h3>Consideration Details</h3>\n  <section class=\"monetary-section\">\n    <h4>Monetary Amount</h4>\n    <table class=\"consideration-table\">\n      <tr>\n        <th>Currency</th>\n        <td>{{currency}}</td>\n      </tr>\n      <tr>\n        <th>Total Amount</th>\n        <td class=\"amount-value\">{{totalAmount}}</td>\n      </tr>\n    </table>\n  </section>\n  \n  {{#if paymentMethods}}\n  <section class=\"payment-section\">\n    <h4>Accepted Payment Methods</h4>\n    <div class=\"payment-methods-detail\">\n      {{#each paymentMethods}}\n      <span class=\"payment-badge\">{{this}}</span>\n      {{/each}}\n    </div>\n  </section>\n  {{/if}}\n  \n  {{#if breakup}}\n  <section class=\"breakup-section\">\n    <h4>Detailed Breakup</h4>\n    <table class=\"breakup-table\">\n      <thead>\n        <tr>\n          <th>Item</th>\n          <th>Type</th>\n          <th>Amount</th>\n        </tr>\n      </thead>\n      <tbody>\n        {{#each breakup}}\n        <tr class=\"breakup-row {{toLowerCase type}}\">\n          <td>{{title}}</td>\n          <td><span class=\"type-badge\">{{type}}</span></td>\n          <td class=\"amount-cell\">{{../currency}} {{amount}}</td>\n        </tr>\n        {{/each}}\n      </tbody>\n      <tfoot>\n        <tr class=\"total-row\">\n          <td colspan=\"2\"><strong>Total</strong></td>\n          <td class=\"amount-cell\"><strong>{{../currency}} {{totalAmount}}</strong></td>\n        </tr>\n      </tfoot>\n    </table>\n  </section>\n  {{/if}}\n  \n  {{#if loyaltyPointsApplied}}\n  <section class=\"loyalty-section\">\n    <h4>Loyalty Rewards Applied</h4>\n    <div class=\"loyalty-details\">\n      <p><strong>Program:</strong> {{loyaltyPointsApplied.programId}}</p>\n      <p><strong>Points Used:</strong> {{loyaltyPointsApplied.pointsUsed}}</p>\n      <p><strong>Monetary Value:</strong> {{currency}} {{loyaltyPointsApplied.monetaryEquivalent}}</p>\n    </div>\n  </section>\n  {{/if}}\n</div>"
+    }
+  },
+  "styles": {
+    "consideration-attributes": {
+      "padding": "12px",
+      "border": "1px solid #e0e0e0",
+      "border-radius": "4px",
+      "background-color": "#fafafa"
+    },
+    "consideration-amount": {
+      "font-size": "18px",
+      "font-weight": "bold",
+      "color": "#1a73e8",
+      "padding": "8px 0"
+    },
+    "payment-methods": {
+      "margin-top": "12px",
+      "padding-top": "12px",
+      "border-top": "1px solid #e0e0e0"
+    },
+    "payment-badge": {
+      "display": "inline-block",
+      "background-color": "#e3f2fd",
+      "color": "#1565c0",
+      "padding": "4px 8px",
+      "margin-right": "4px",
+      "border-radius": "3px",
+      "font-size": "12px",
+      "font-weight": "500"
+    },
+    "breakup-section": {
+      "margin-top": "12px",
+      "padding-top": "12px",
+      "border-top": "1px solid #e0e0e0"
+    },
+    "breakup-table": {
+      "width": "100%",
+      "border-collapse": "collapse",
+      "font-size": "14px"
+    },
+    "loyalty-section": {
+      "margin-top": "12px",
+      "padding": "8px",
+      "background-color": "#fff3e0",
+      "border-left": "4px solid #f57c00",
+      "border-radius": "4px"
+    },
+    "amount-value": {
+      "color": "#2e7d32",
+      "font-weight": "bold"
+    }
+  }
+}

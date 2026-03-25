@@ -1,0 +1,76 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
+    "FoodAndBeverageOfferAttributes": {
+      "@id": "fnbo:FoodAndBeverageOfferAttributes",
+      "@type": "@vocab"
+    },
+    "customization": {
+      "@id": "fnbo:customization",
+      "@type": "@vocab"
+    },
+    "customizationGroups": {
+      "@id": "fnbo:customizationGroups",
+      "@type": "@vocab",
+      "@container": "@list"
+    },
+    "customizationGroupCode": {
+      "@id": "fnbo:customizationGroupCode",
+      "@type": "xsd:string"
+    },
+    "customizationGroupName": {
+      "@id": "fnbo:customizationGroupName",
+      "@type": "xsd:string"
+    },
+    "customizationSelection": {
+      "@id": "fnbo:customizationSelection",
+      "@type": "xsd:string"
+    },
+    "minSelections": {
+      "@id": "fnbo:minSelections",
+      "@type": "xsd:integer"
+    },
+    "maxSelections": {
+      "@id": "fnbo:maxSelections",
+      "@type": "xsd:integer"
+    },
+    "options": {
+      "@id": "fnbo:options",
+      "@type": "@vocab",
+      "@container": "@list"
+    },
+    "optionCode": {
+      "@id": "fnbo:optionCode",
+      "@type": "xsd:string"
+    },
+    "optionName": {
+      "@id": "fnbo:optionName",
+      "@type": "xsd:string"
+    },
+    "priceDelta": {
+      "@id": "fnbo:priceDelta",
+      "@type": "@vocab"
+    },
+    "priceDeltaType": {
+      "@id": "fnbo:priceDeltaType",
+      "@type": "xsd:string"
+    },
+    "priceDeltaValue": {
+      "@id": "fnbo:priceDeltaValue",
+      "@type": "xsd:number"
+    },
+    "itemRef": {
+      "@id": "fnbo:itemRef",
+      "@type": "xsd:string"
+    },
+    "offerRef": {
+      "@id": "fnbo:offerRef",
+      "@type": "xsd:string"
+    },
+    "available": {
+      "@id": "fnbo:available",
+      "@type": "xsd:boolean"
+    }
+  }
+}

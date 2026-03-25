@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rcra": "https://schema.beckn.io/RetailResource#"
+  },
+  "@graph": [
+    {
+      "@id": "rcra:FoodClassification",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Food Classification",
+      "rdfs:comment": "Classification of food items by dietary category"
+    },
+    { "@id": "rcra:VEG", "@type": "rcra:FoodClassification", "rdfs:label": "Vegetarian", "rdfs:comment": "Contains no animal products" },
+    { "@id": "rcra:NON_VEG", "@type": "rcra:FoodClassification", "rdfs:label": "Non-Vegetarian", "rdfs:comment": "Contains animal products" },
+    { "@id": "rcra:EGG", "@type": "rcra:FoodClassification", "rdfs:label": "Egg", "rdfs:comment": "Contains egg but no other animal products" },
+    {
+      "@id": "rcra:DimensionUnit",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Dimension Unit",
+      "rdfs:comment": "Unit of measure for physical dimensions"
+    },
+    { "@id": "rcra:MM", "@type": "rcra:DimensionUnit", "rdfs:label": "Millimetres" },
+    { "@id": "rcra:CM", "@type": "rcra:DimensionUnit", "rdfs:label": "Centimetres" },
+    { "@id": "rcra:M", "@type": "rcra:DimensionUnit", "rdfs:label": "Metres" },
+    { "@id": "rcra:IN", "@type": "rcra:DimensionUnit", "rdfs:label": "Inches" },
+    { "@id": "rcra:FT", "@type": "rcra:DimensionUnit", "rdfs:label": "Feet" },
+    {
+      "@id": "rcra:ManufacturerOrPackerType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Manufacturer or Packer Type",
+      "rdfs:comment": "Role of the entity in packaged goods production"
+    },
+    { "@id": "rcra:MANUFACTURER", "@type": "rcra:ManufacturerOrPackerType", "rdfs:label": "Manufacturer" },
+    { "@id": "rcra:PACKER", "@type": "rcra:ManufacturerOrPackerType", "rdfs:label": "Packer" },
+    {
+      "@id": "rcra:RegistrationRole",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Registration Role",
+      "rdfs:comment": "Role under food regulatory registration"
+    },
+    { "@id": "rcra:BRAND_OWNER", "@type": "rcra:RegistrationRole", "rdfs:label": "Brand Owner" },
+    { "@id": "rcra:SELLER", "@type": "rcra:RegistrationRole", "rdfs:label": "Seller" },
+    { "@id": "rcra:IMPORTER", "@type": "rcra:RegistrationRole", "rdfs:label": "Importer" },
+    { "@id": "rcra:MANUFACTURER", "@type": "rcra:RegistrationRole", "rdfs:label": "Manufacturer" },
+    { "@id": "rcra:PACKER", "@type": "rcra:RegistrationRole", "rdfs:label": "Packer" },
+    {
+      "@id": "rcra:AdditiveType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Additive Disclosure Type",
+      "rdfs:comment": "Type of additive disclosure on packaged goods"
+    },
+    { "@id": "rcra:CONTAINS", "@type": "rcra:AdditiveType", "rdfs:label": "Contains" },
+    { "@id": "rcra:MAY_CONTAIN", "@type": "rcra:AdditiveType", "rdfs:label": "May Contain" },
+    { "@id": "rcra:FREE_FROM", "@type": "rcra:AdditiveType", "rdfs:label": "Free From" },
+    { "@id": "rcra:MAX_ALLOWED", "@type": "rcra:AdditiveType", "rdfs:label": "Maximum Allowed" },
+    { "@id": "rcra:PERCENTAGE", "@type": "rcra:AdditiveType", "rdfs:label": "Percentage" },
+    { "@id": "rcra:CODE", "@type": "rcra:AdditiveType", "rdfs:label": "Code" }
+  ]
+}

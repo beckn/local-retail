@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rccma": "https://schema.beckn.io/RetailCommitment#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
+      "@id": "rccma:CommitmentAttributes",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Commitment Attributes",
+      "rdfs:comment": "Container for per-commitment line-item details including references, quantity, and pricing (NEW in v2.1 - previously scattered in v2 FoodAndBeverageItem)"
+    },
+    {
+      "@id": "rccma:lineId",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Line ID",
+      "rdfs:comment": "Unique line reference identifier within the parent contract"
+    },
+    {
+      "@id": "rccma:resourceId",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Resource ID",
+      "rdfs:comment": "Reference to the Resource (catalog item/product) being committed"
+    },
+    {
+      "@id": "rccma:offerId",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Offer ID",
+      "rdfs:comment": "Reference to the Offer under which this commitment was made (enables offer-specific pricing/terms)"
+    },
+    {
+      "@id": "rccma:quantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Quantity",
+      "rdfs:comment": "Quantity and unit of measurement for the committed resource"
+    },
+    {
+      "@id": "rccma:unitCode",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Unit Code",
+      "rdfs:comment": "Standard unit code (e.g., EA=each, KG=kilogram, L=liter, M=meter, BOX=box)"
+    },
+    {
+      "@id": "rccma:unitQuantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Unit Quantity",
+      "rdfs:comment": "Numeric quantity in the specified unit (must be greater than or equal to zero)"
+    },
+    {
+      "@id": "rccma:price",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Price",
+      "rdfs:comment": "Price specification for this commitment including currency, amount, and modifiers (references Beckn core PriceSpecification)"
+    },
+    {
+      "@id": "rccma:specialInstructions",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Special Instructions",
+      "rdfs:comment": "Per-item buyer notes and special handling instructions (e.g., 'no onions', 'extra hot', 'cut into wedges')"
+    }
+  ]
+}

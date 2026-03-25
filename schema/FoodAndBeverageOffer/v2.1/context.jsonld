@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
+    "FoodAndBeverageOfferAttributes": "fnbo:FoodAndBeverageOfferAttributes",
+    "customization": "fnbo:customization",
+    "customizationGroups": "fnbo:customizationGroups",
+    "customizationGroupCode": "fnbo:customizationGroupCode",
+    "customizationGroupName": "fnbo:customizationGroupName",
+    "customizationSelection": "fnbo:customizationSelection",
+    "minSelections": "fnbo:minSelections",
+    "maxSelections": "fnbo:maxSelections",
+    "options": "fnbo:options",
+    "optionCode": "fnbo:optionCode",
+    "optionName": "fnbo:optionName",
+    "priceDelta": "fnbo:priceDelta",
+    "priceDeltaType": "fnbo:priceDeltaType",
+    "priceDeltaValue": "fnbo:priceDeltaValue",
+    "itemRef": "fnbo:itemRef",
+    "offerRef": "fnbo:offerRef",
+    "available": "fnbo:available"
+  }
+}

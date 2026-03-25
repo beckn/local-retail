@@ -1,0 +1,178 @@
+{
+  "name": "RetailContract",
+  "version": "2.1.0",
+  "description": "Renderer configuration for contract attributes display",
+  "card_template": {
+    "layout": "grid",
+    "sections": [
+      {
+        "type": "header",
+        "content": {
+          "title": "Order Details",
+          "subtitle": "Buyer preferences and special instructions"
+        }
+      },
+      {
+        "type": "section",
+        "layout": "columns",
+        "items": [
+          {
+            "label": "Gift",
+            "value": "contractAttributes.gift.isGift",
+            "icon": "gift",
+            "display": "badge"
+          },
+          {
+            "label": "Channel",
+            "value": "contractAttributes.source.channel",
+            "icon": "shopping-cart"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "label": "Instructions",
+        "value": "contractAttributes.buyerInstructions",
+        "truncate": 100
+      }
+    ]
+  },
+  "detail_template": {
+    "layout": "vertical",
+    "sections": [
+      {
+        "type": "section",
+        "title": "Special Instructions",
+        "fields": [
+          {
+            "label": "Buyer Instructions",
+            "path": "contractAttributes.buyerInstructions",
+            "type": "text_block"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Delivery Preferences",
+        "fields": [
+          {
+            "label": "Leave at Door",
+            "path": "contractAttributes.deliveryPreferences.leaveAtDoor",
+            "type": "boolean_badge"
+          },
+          {
+            "label": "Contactless Delivery",
+            "path": "contractAttributes.deliveryPreferences.contactless",
+            "type": "boolean_badge"
+          },
+          {
+            "label": "Preferred Time Slot",
+            "path": "contractAttributes.deliveryPreferences.preferredTimeSlot",
+            "type": "time_range",
+            "conditional": "contractAttributes.deliveryPreferences.preferredTimeSlot"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Gift Information",
+        "fields": [
+          {
+            "label": "Is Gift",
+            "path": "contractAttributes.gift.isGift",
+            "type": "boolean_badge"
+          },
+          {
+            "label": "Gift Message",
+            "path": "contractAttributes.gift.message",
+            "type": "text_block",
+            "conditional": "contractAttributes.gift.isGift"
+          },
+          {
+            "label": "Gift Wrap",
+            "path": "contractAttributes.gift.wrap",
+            "type": "boolean_badge",
+            "conditional": "contractAttributes.gift.isGift"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Invoice Preferences",
+        "fields": [
+          {
+            "label": "Tax ID Scheme",
+            "path": "contractAttributes.invoicePreferences.taxId.scheme",
+            "type": "text"
+          },
+          {
+            "label": "Tax ID Country",
+            "path": "contractAttributes.invoicePreferences.taxId.country",
+            "type": "text"
+          },
+          {
+            "label": "Tax ID Value",
+            "path": "contractAttributes.invoicePreferences.taxId.value",
+            "type": "text",
+            "sensitive": true
+          },
+          {
+            "label": "Company Name",
+            "path": "contractAttributes.invoicePreferences.companyName",
+            "type": "text"
+          },
+          {
+            "label": "Invoice Email",
+            "path": "contractAttributes.invoicePreferences.email",
+            "type": "email"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Loyalty Program",
+        "fields": [
+          {
+            "label": "Program ID",
+            "path": "contractAttributes.loyalty.programId",
+            "type": "text"
+          },
+          {
+            "label": "Points Redeemed",
+            "path": "contractAttributes.loyalty.pointsRedeemed",
+            "type": "number",
+            "suffix": "pts"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Source Attribution",
+        "fields": [
+          {
+            "label": "Source Channel",
+            "path": "contractAttributes.source.channel",
+            "type": "badge",
+            "styling": {
+              "color_map": {
+                "web": "primary",
+                "mobile": "info",
+                "app": "secondary",
+                "api": "success",
+                "social": "warning",
+                "email": "danger"
+              }
+            }
+          },
+          {
+            "label": "Campaign ID",
+            "path": "contractAttributes.source.campaignId",
+            "type": "text"
+          }
+        ]
+      }
+    ]
+  },
+  "html": "<div class='rcca-container'><div class='rcca-header'><h2>Contract Details</h2></div><div class='rcca-summary'>{#contractAttributes.buyerInstructions}<p><strong>Instructions:</strong> {buyerInstructions}</p>{/contractAttributes.buyerInstructions}<p><strong>Gift:</strong> {contractAttributes.gift.isGift}</p><p><strong>Channel:</strong> {contractAttributes.source.channel}</p></div></div>",
+  "html_detail": "<div class='rcca-detail'><section><h3>Special Instructions</h3><p>{contractAttributes.buyerInstructions}</p></section><section><h3>Delivery Preferences</h3><p><strong>Leave at Door:</strong> {contractAttributes.deliveryPreferences.leaveAtDoor}</p><p><strong>Contactless:</strong> {contractAttributes.deliveryPreferences.contactless}</p>{#contractAttributes.deliveryPreferences.preferredTimeSlot}<p><strong>Time Slot:</strong> {preferredTimeSlot.start} to {preferredTimeSlot.end}</p>{/contractAttributes.deliveryPreferences.preferredTimeSlot}</section><section><h3>Gift Information</h3><p><strong>Is Gift:</strong> {contractAttributes.gift.isGift}</p>{#contractAttributes.gift.message}<p><strong>Message:</strong> {message}</p>{/contractAttributes.gift.message}{#contractAttributes.gift.wrap}<p><strong>Gift Wrap:</strong> {wrap}</p>{/contractAttributes.gift.wrap}</section><section><h3>Invoice</h3><p><strong>Tax Scheme:</strong> {contractAttributes.invoicePreferences.taxId.scheme}</p><p><strong>Tax Country:</strong> {contractAttributes.invoicePreferences.taxId.country}</p><p><strong>Company:</strong> {contractAttributes.invoicePreferences.companyName}</p><p><strong>Email:</strong> {contractAttributes.invoicePreferences.email}</p></section><section><h3>Loyalty</h3><p><strong>Program:</strong> {contractAttributes.loyalty.programId}</p><p><strong>Points Redeemed:</strong> {contractAttributes.loyalty.pointsRedeemed}</p></section><section><h3>Source</h3><p><strong>Channel:</strong> {contractAttributes.source.channel}</p><p><strong>Campaign:</strong> {contractAttributes.source.campaignId}</p></section></div>"
+}

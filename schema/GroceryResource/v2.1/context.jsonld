@@ -1,0 +1,14 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "groc": "https://schema.beckn.io/GroceryResource#",
+    "GroceryResourceAttributes": "groc:GroceryResourceAttributes",
+    "nutrition": "groc:nutrition",
+    "nutrient": "groc:nutrient",
+    "nutritionValue": "groc:nutritionValue",
+    "freshProduce": "groc:freshProduce",
+    "netQuantityDeclaration": "groc:netQuantityDeclaration"
+  }
+}

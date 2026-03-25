@@ -1,0 +1,183 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Offer Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Cross-vertical offer attributes for retail domains.
+    Carries commercial terms, policies, and serviceability constraints.
+    Attaches to beckn:Offer via offerAttributes.
+
+components:
+  schemas:
+    RetailOffer:
+      type: object
+      additionalProperties: false
+      x-beckn-container: offerAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": rcoa:RetailOffer
+      required:
+        - "@context"
+        - "@type"
+      properties:
+        "@context":
+          type: string
+          format: uri
+          const: "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld"
+          x-jsonld-id: "rcoa:@context"
+        "@type":
+          type: string
+          const: "rcoa:RetailOffer"
+          x-jsonld-id: "rcoa:@type"
+        policies:
+          type: object
+          additionalProperties: false
+          properties:
+            returns:
+              type: object
+              additionalProperties: false
+              properties:
+                allowed:
+                  type: boolean
+                  x-jsonld-id: "rcoa:returnAllowed"
+                window:
+                  type: string
+                  description: ISO 8601 duration
+                  x-jsonld-id: "rcoa:returnWindow"
+                method:
+                  type: string
+                  enum: [SELLER_PICKUP, BUYER_SHIP, DROP_OFF]
+                  x-jsonld-id: "rcoa:returnMethod"
+                restockingFee:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    type:
+                      type: string
+                      enum: [PERCENTAGE, FIXED]
+                      x-jsonld-id: "rcoa:restockingFeeType"
+                    value:
+                      type: number
+                      x-jsonld-id: "rcoa:restockingFeeValue"
+                  x-jsonld-id: "rcoa:restockingFee"
+                conditions:
+                  type: string
+                  x-jsonld-id: "rcoa:returnConditions"
+              x-jsonld-id: "rcoa:returns"
+            cancellation:
+              type: object
+              additionalProperties: false
+              properties:
+                allowed:
+                  type: boolean
+                  x-jsonld-id: "rcoa:cancellationAllowed"
+                window:
+                  type: string
+                  description: ISO 8601 duration
+                  x-jsonld-id: "rcoa:cancellationWindow"
+                cutoffEvent:
+                  type: string
+                  enum: [BEFORE_CONFIRMATION, BEFORE_PACKING, BEFORE_SHIPMENT]
+                  x-jsonld-id: "rcoa:cancellationCutoffEvent"
+                fee:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    type:
+                      type: string
+                      enum: [PERCENTAGE, FIXED]
+                    value:
+                      type: number
+                  x-jsonld-id: "rcoa:cancellationFee"
+              x-jsonld-id: "rcoa:cancellation"
+            replacement:
+              type: object
+              additionalProperties: false
+              properties:
+                allowed:
+                  type: boolean
+                  x-jsonld-id: "rcoa:replacementAllowed"
+                window:
+                  type: string
+                  description: ISO 8601 duration
+                  x-jsonld-id: "rcoa:replacementWindow"
+                method:
+                  type: string
+                  enum: [SELLER_PICKUP, BUYER_SHIP, DROP_OFF]
+                  x-jsonld-id: "rcoa:replacementMethod"
+                conditions:
+                  type: string
+                  x-jsonld-id: "rcoa:replacementConditions"
+                subjectToAvailability:
+                  type: boolean
+                  x-jsonld-id: "rcoa:replacementSubjectToAvailability"
+              x-jsonld-id: "rcoa:replacement"
+          x-jsonld-id: "rcoa:policies"
+        paymentConstraints:
+          type: object
+          additionalProperties: false
+          properties:
+            codAvailable:
+              type: boolean
+              x-jsonld-id: "rcoa:codAvailable"
+          x-jsonld-id: "rcoa:paymentConstraints"
+        serviceability:
+          type: object
+          additionalProperties: false
+          properties:
+            distanceConstraint:
+              type: object
+              additionalProperties: false
+              properties:
+                maxDistance:
+                  type: number
+                  x-jsonld-id: "rcoa:maxDistance"
+                unit:
+                  type: string
+                  enum: [KM]
+                  x-jsonld-id: "rcoa:distanceUnit"
+              x-jsonld-id: "rcoa:distanceConstraint"
+            timing:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  daysOfWeek:
+                    type: array
+                    items:
+                      type: string
+                    x-jsonld-id: "rcoa:daysOfWeek"
+                  timeRange:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      start:
+                        type: string
+                        x-jsonld-id: "rcoa:timingStart"
+                      end:
+                        type: string
+                        x-jsonld-id: "rcoa:timingEnd"
+                    x-jsonld-id: "rcoa:timeRange"
+              x-jsonld-id: "rcoa:timing"
+          x-jsonld-id: "rcoa:serviceability"
+        timeRange:
+          type: object
+          additionalProperties: false
+          required: [start, end]
+          properties:
+            start:
+              type: string
+              description: "HH:MM format"
+              x-jsonld-id: "rcoa:offerTimeStart"
+            end:
+              type: string
+              description: "HH:MM format"
+              x-jsonld-id: "rcoa:offerTimeEnd"
+          x-jsonld-id: "rcoa:timeRange"
+        holidays:
+          type: array
+          items:
+            type: string
+            format: date
+          x-jsonld-id: "rcoa:holidays"

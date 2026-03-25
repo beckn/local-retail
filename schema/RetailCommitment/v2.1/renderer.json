@@ -1,0 +1,145 @@
+{
+  "name": "RetailCommitment",
+  "version": "2.1.0",
+  "description": "Renderer configuration for commitment attributes display",
+  "card_template": {
+    "layout": "grid",
+    "sections": [
+      {
+        "type": "header",
+        "content": {
+          "title": "Line Item",
+          "subtitle": "Commitment details"
+        }
+      },
+      {
+        "type": "section",
+        "layout": "columns",
+        "items": [
+          {
+            "label": "Line",
+            "value": "commitmentAttributes.lineId",
+            "icon": "tag"
+          },
+          {
+            "label": "Resource",
+            "value": "commitmentAttributes.resourceId",
+            "icon": "package"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "layout": "columns",
+        "items": [
+          {
+            "label": "Quantity",
+            "value": "commitmentAttributes.quantity.unitQuantity",
+            "suffix": "commitmentAttributes.quantity.unitCode"
+          },
+          {
+            "label": "Price",
+            "value": "commitmentAttributes.price.amount",
+            "prefix": "commitmentAttributes.price.currency"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "label": "Instructions",
+        "value": "commitmentAttributes.specialInstructions",
+        "truncate": 80,
+        "conditional": "commitmentAttributes.specialInstructions"
+      }
+    ]
+  },
+  "detail_template": {
+    "layout": "vertical",
+    "sections": [
+      {
+        "type": "section",
+        "title": "Commitment Reference",
+        "fields": [
+          {
+            "label": "Line ID",
+            "path": "commitmentAttributes.lineId",
+            "type": "text",
+            "monospace": true
+          },
+          {
+            "label": "Resource ID",
+            "path": "commitmentAttributes.resourceId",
+            "type": "text",
+            "monospace": true
+          },
+          {
+            "label": "Offer ID",
+            "path": "commitmentAttributes.offerId",
+            "type": "text",
+            "monospace": true
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Quantity",
+        "fields": [
+          {
+            "label": "Unit",
+            "path": "commitmentAttributes.quantity.unitCode",
+            "type": "text"
+          },
+          {
+            "label": "Amount",
+            "path": "commitmentAttributes.quantity.unitQuantity",
+            "type": "number",
+            "display_format": "0.##"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Pricing",
+        "fields": [
+          {
+            "label": "Currency",
+            "path": "commitmentAttributes.price.currency",
+            "type": "text"
+          },
+          {
+            "label": "Amount",
+            "path": "commitmentAttributes.price.amount",
+            "type": "number",
+            "display_format": "0.00"
+          },
+          {
+            "label": "Estimated Value",
+            "path": "commitmentAttributes.price.estimatedValue",
+            "type": "number",
+            "conditional": "commitmentAttributes.price.estimatedValue"
+          },
+          {
+            "label": "Maximum Value",
+            "path": "commitmentAttributes.price.maximumValue",
+            "type": "number",
+            "conditional": "commitmentAttributes.price.maximumValue"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Special Instructions",
+        "fields": [
+          {
+            "label": "Instructions",
+            "path": "commitmentAttributes.specialInstructions",
+            "type": "text_block",
+            "conditional": "commitmentAttributes.specialInstructions"
+          }
+        ]
+      }
+    ]
+  },
+  "html": "<div class='rccma-container'><div class='rccma-line'><span class='line-id'>{commitmentAttributes.lineId}</span><span class='resource-id'>{commitmentAttributes.resourceId}</span></div><div class='rccma-quantity'><strong>{commitmentAttributes.quantity.unitQuantity}</strong> {commitmentAttributes.quantity.unitCode}</div><div class='rccma-price'>{commitmentAttributes.price.currency} {commitmentAttributes.price.amount}</div>{#commitmentAttributes.specialInstructions}<div class='rccma-instructions'><em>Note: {specialInstructions}</em></div>{/commitmentAttributes.specialInstructions}</div>",
+  "html_detail": "<div class='rccma-detail'><section><h3>Commitment</h3><p><strong>Line:</strong> <code>{commitmentAttributes.lineId}</code></p><p><strong>Resource:</strong> <code>{commitmentAttributes.resourceId}</code></p><p><strong>Offer:</strong> <code>{commitmentAttributes.offerId}</code></p></section><section><h3>Quantity</h3><p>{commitmentAttributes.quantity.unitQuantity} {commitmentAttributes.quantity.unitCode}</p></section><section><h3>Pricing</h3><p><strong>Amount:</strong> {commitmentAttributes.price.currency} {commitmentAttributes.price.amount}</p>{#commitmentAttributes.price.estimatedValue}<p><strong>Estimated:</strong> {commitmentAttributes.price.estimatedValue}</p>{/commitmentAttributes.price.estimatedValue}{#commitmentAttributes.price.maximumValue}<p><strong>Maximum:</strong> {commitmentAttributes.price.maximumValue}</p>{/commitmentAttributes.price.maximumValue}</section>{#commitmentAttributes.specialInstructions}<section><h3>Special Instructions</h3><p>{commitmentAttributes.specialInstructions}</p></section>{/commitmentAttributes.specialInstructions}</div>"
+}

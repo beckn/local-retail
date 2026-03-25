@@ -1,0 +1,15 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
+    "FoodAndBeverageResourceAttributes": "fnbr:FoodAndBeverageResourceAttributes",
+    "allergens": "fnbr:allergens",
+    "cuisine": "fnbr:cuisine",
+    "preparation": "fnbr:preparation",
+    "preparationInstructions": "fnbr:preparationInstructions",
+    "storageInstructions": "fnbr:storageInstructions",
+    "shelfLife": "fnbr:shelfLife"
+  }
+}

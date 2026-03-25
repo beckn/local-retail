@@ -1,0 +1,207 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Resource Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Cross-vertical base resource attributes for retail domains.
+    Migrated from RetailCoreItemAttributes (v2) to the v2.1 generalised model.
+    Attaches to beckn:Resource via resourceAttributes.
+
+components:
+  schemas:
+    RetailResource:
+      type: object
+      additionalProperties: false
+      x-beckn-container: resourceAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": rcra:RetailResource
+      required:
+        - "@context"
+        - "@type"
+      properties:
+        "@context":
+          type: string
+          format: uri
+          const: "https://schema.beckn.io/RetailResource/v2.1/context.jsonld"
+          x-jsonld-id: "rcra:@context"
+        "@type":
+          type: string
+          const: "rcra:RetailResource"
+          x-jsonld-id: "rcra:@type"
+        identity:
+          type: object
+          additionalProperties: false
+          x-jsonld-id: "rcra:identity"
+          properties:
+            brand:
+              type: string
+              x-jsonld-id: "rcra:brand"
+            originCountry:
+              type: string
+              description: ISO 3166-1 alpha-2 recommended
+              x-jsonld-id: "rcra:originCountry"
+        physical:
+          type: object
+          additionalProperties: false
+          properties:
+            weight:
+              allOf:
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+              description: Resource weight using Beckn core Quantity
+              x-jsonld-id: "rcra:weight"
+            volume:
+              allOf:
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+              description: Resource volume using Beckn core Quantity
+              x-jsonld-id: "rcra:volume"
+            dimensions:
+              type: object
+              additionalProperties: false
+              description: Physical dimensions using a single unit of measure
+              required: [unit, length, breadth, height]
+              properties:
+                unit:
+                  type: string
+                  enum: [MM, CM, M, IN, FT]
+                  x-jsonld-id: "rcra:dimensionUnit"
+                length:
+                  type: number
+                  x-jsonld-id: "rcra:length"
+                breadth:
+                  type: number
+                  x-jsonld-id: "rcra:breadth"
+                height:
+                  type: number
+                  x-jsonld-id: "rcra:height"
+            appearance:
+              type: object
+              additionalProperties: false
+              properties:
+                color:
+                  type: string
+                  x-jsonld-id: "rcra:color"
+                material:
+                  type: string
+                  x-jsonld-id: "rcra:material"
+                finish:
+                  type: string
+                  x-jsonld-id: "rcra:finish"
+          x-jsonld-id: "rcra:physical"
+        food:
+          type: object
+          additionalProperties: false
+          properties:
+            classification:
+              type: string
+              enum: [VEG, NON_VEG, EGG]
+              x-jsonld-id: "rcra:foodClassification"
+          x-jsonld-id: "rcra:food"
+        packagedGoodsDeclaration:
+          type: object
+          additionalProperties: false
+          properties:
+            manufacturerOrPacker:
+              type: object
+              additionalProperties: false
+              properties:
+                type:
+                  type: string
+                  enum: [MANUFACTURER, PACKER]
+                  x-jsonld-id: "rcra:manufacturerOrPackerType"
+                name:
+                  type: string
+                  x-jsonld-id: "rcra:manufacturerOrPackerName"
+                id:
+                  type: string
+                  x-jsonld-id: "rcra:manufacturerOrPackerId"
+                address:
+                  type: string
+                  x-jsonld-id: "rcra:manufacturerOrPackerAddress"
+            commonOrGenericName:
+              type: string
+              x-jsonld-id: "rcra:commonOrGenericName"
+            netQuantity:
+              allOf:
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+              x-jsonld-id: "rcra:netQuantity"
+            manufacturePackingImportDate:
+              type: object
+              additionalProperties: false
+              properties:
+                month:
+                  type: integer
+                  minimum: 1
+                  maximum: 12
+                year:
+                  type: integer
+                  minimum: 1900
+              x-jsonld-id: "rcra:manufacturePackingImportDate"
+          x-jsonld-id: "rcra:packagedGoodsDeclaration"
+        foodRegulatoryDeclaration:
+          type: object
+          additionalProperties: false
+          properties:
+            registrations:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  scheme:
+                    type: string
+                    x-jsonld-id: "rcra:registrationScheme"
+                  id:
+                    type: string
+                    x-jsonld-id: "rcra:registrationId"
+                  role:
+                    type: string
+                    enum: [BRAND_OWNER, SELLER, IMPORTER, MANUFACTURER, PACKER]
+                    x-jsonld-id: "rcra:registrationRole"
+                  url:
+                    type: string
+                    format: uri
+                    x-jsonld-id: "rcra:registrationUrl"
+              x-jsonld-id: "rcra:registrations"
+            additives:
+              type: array
+              items:
+                type: object
+                additionalProperties: false
+                properties:
+                  type:
+                    type: string
+                    enum: [CONTAINS, MAY_CONTAIN, FREE_FROM, MAX_ALLOWED, PERCENTAGE, CODE]
+                    x-jsonld-id: "rcra:additiveType"
+                  value:
+                    type: string
+                    x-jsonld-id: "rcra:additiveValue"
+                  quantity:
+                    type: string
+                    x-jsonld-id: "rcra:additiveQuantity"
+                  notes:
+                    type: string
+                    x-jsonld-id: "rcra:additiveNotes"
+              x-jsonld-id: "rcra:additives"
+          x-jsonld-id: "rcra:foodRegulatoryDeclaration"
+        credentials:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [uri]
+            properties:
+              type:
+                type: string
+                x-jsonld-id: "rcra:credentialType"
+              uri:
+                type: string
+                format: uri
+                x-jsonld-id: "rcra:credentialUri"
+              issuer:
+                type: string
+                x-jsonld-id: "rcra:credentialIssuer"
+              id:
+                type: string
+                x-jsonld-id: "rcra:credentialId"
+          x-jsonld-id: "rcra:credentials"

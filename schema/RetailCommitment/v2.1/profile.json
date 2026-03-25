@@ -1,0 +1,63 @@
+{
+  "name": "RetailCommitment",
+  "namespace": "https://schema.beckn.io/RetailCommitment#",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "version": "2.1.0",
+  "description": "Line-item commitment details for retail contracts",
+  "indexable_attributes": [
+    "commitmentAttributes.lineId",
+    "commitmentAttributes.resourceId",
+    "commitmentAttributes.offerId",
+    "commitmentAttributes.quantity.unitCode"
+  ],
+  "filterable_attributes": [
+    {
+      "path": "commitmentAttributes.lineId",
+      "type": "string",
+      "operators": ["equals", "contains"]
+    },
+    {
+      "path": "commitmentAttributes.resourceId",
+      "type": "string",
+      "operators": ["equals", "contains"]
+    },
+    {
+      "path": "commitmentAttributes.offerId",
+      "type": "string",
+      "operators": ["equals"]
+    },
+    {
+      "path": "commitmentAttributes.quantity.unitCode",
+      "type": "string",
+      "operators": ["equals"]
+    },
+    {
+      "path": "commitmentAttributes.quantity.unitQuantity",
+      "type": "number",
+      "operators": ["greater_than", "less_than", "equals"]
+    }
+  ],
+  "contextual_attributes": [
+    "commitmentAttributes.price",
+    "commitmentAttributes.specialInstructions"
+  ],
+  "new_in_version": "2.1",
+  "notes": {
+    "migration_status": "new_schema",
+    "description": "In v2, per-commitment fields (resourceId, lineId, offerId, quantity, price) were awkwardly placed in domain-specific items like FoodAndBeverageItem. In v2.1, they properly belong in a dedicated CommitmentAttributes schema that can attach to any Commitment entity.",
+    "common_unit_codes": [
+      "EA - each",
+      "KG - kilogram",
+      "L - liter",
+      "M - meter",
+      "M2 - square meter",
+      "M3 - cubic meter",
+      "BOX - box",
+      "BAG - bag",
+      "DOZEN - dozen",
+      "PAIR - pair",
+      "SET - set"
+    ]
+  }
+}

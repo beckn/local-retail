@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rcsa": "https://schema.beckn.io/RetailSettlement#",
+    "@context": {
+      "@id": "rcsa:@context"
+    },
+    "@type": {
+      "@id": "rcsa:@type"
+    },
+    "RetailSettlement": "rcsa:RetailSettlement",
+    "SettlementMethod": "rcsa:SettlementMethod",
+    "Gateway": "rcsa:Gateway",
+    "gateway": {
+      "@id": "rcsa:gateway"
+    },
+    "gatewayName": {
+      "@id": "rcsa:gatewayName"
+    },
+    "gatewayTransactionId": {
+      "@id": "rcsa:gatewayTransactionId"
+    },
+    "gatewayUrl": {
+      "@id": "rcsa:gatewayUrl"
+    },
+    "method": {
+      "@id": "rcsa:method"
+    },
+    "settledAt": {
+      "@id": "rcsa:settledAt"
+    },
+    "settledAmount": {
+      "@id": "rcsa:settledAmount"
+    },
+    "currency": {
+      "@id": "rcsa:currency"
+    },
+    "reconciliationId": {
+      "@id": "rcsa:reconciliationId"
+    }
+  }
+}

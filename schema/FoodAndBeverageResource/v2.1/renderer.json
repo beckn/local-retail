@@ -1,0 +1,36 @@
+{
+  "version": "2.1.0",
+  "schema_version": "2.1.0",
+  "domain": "FoodAndBeverageResource",
+  "container": "resourceAttributes",
+  "renderers": [
+    {
+      "field": "cuisine",
+      "type": "text",
+      "display_name": "Cuisine",
+      "priority": 1
+    },
+    {
+      "field": "allergens",
+      "type": "list",
+      "display_name": "Allergens",
+      "priority": 2,
+      "format": {
+        "item_template": "{{.}}"
+      }
+    },
+    {
+      "field": "preparation.shelfLife",
+      "type": "text",
+      "display_name": "Shelf Life",
+      "priority": 3
+    },
+    {
+      "field": "preparation.storageInstructions",
+      "type": "text",
+      "display_name": "Storage",
+      "priority": 4
+    }
+  ],
+  "summary_template": "{{cuisine}} | Allergens: {{allergens.length}} | Shelf: {{preparation.shelfLife}}"
+}

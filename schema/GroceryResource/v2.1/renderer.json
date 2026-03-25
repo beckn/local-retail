@@ -1,0 +1,24 @@
+{
+  "version": "2.1.0",
+  "schema_version": "2.1.0",
+  "domain": "GroceryResource",
+  "container": "resourceAttributes",
+  "renderers": [
+    {
+      "field": "nutrition",
+      "type": "list",
+      "display_name": "Nutrition Facts",
+      "priority": 1,
+      "format": {
+        "item_template": "{{nutrient}}: {{value.unitQuantity}} {{value.unitCode}}"
+      }
+    },
+    {
+      "field": "freshProduce.netQuantityDeclaration",
+      "type": "text",
+      "display_name": "Net Quantity",
+      "priority": 2
+    }
+  ],
+  "summary_template": "Nutrition: {{nutrition.length}} facts | Fresh: {{#freshProduce}}Yes{{/freshProduce}}{{^freshProduce}}No{{/freshProduce}}"
+}

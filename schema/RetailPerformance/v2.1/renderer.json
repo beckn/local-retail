@@ -1,0 +1,207 @@
+{
+  "name": "RetailPerformance",
+  "version": "2.1.0",
+  "description": "Renderer configuration for performance attributes display",
+  "card_template": {
+    "layout": "grid",
+    "sections": [
+      {
+        "type": "header",
+        "content": {
+          "title": "Performance Capabilities",
+          "subtitle": "Fulfillment modes and delivery specifications"
+        }
+      },
+      {
+        "type": "badges",
+        "data": "performanceAttributes.supportedPerformanceModes",
+        "styling": {
+          "variant": "outlined",
+          "color_map": {
+            "DELIVERY": "primary",
+            "PICKUP": "secondary",
+            "SERVICE": "success"
+          }
+        }
+      },
+      {
+        "type": "metrics",
+        "layout": "columns",
+        "items": [
+          {
+            "label": "Min SLA",
+            "value": "performanceAttributes.sla.min",
+            "icon": "clock"
+          },
+          {
+            "label": "Max SLA",
+            "value": "performanceAttributes.sla.max",
+            "icon": "hourglass-end"
+          }
+        ]
+      },
+      {
+        "type": "tags",
+        "label": "Handling Capabilities",
+        "data": "performanceAttributes.handling",
+        "styling": {
+          "variant": "filled",
+          "size": "small"
+        }
+      }
+    ]
+  },
+  "detail_template": {
+    "layout": "vertical",
+    "sections": [
+      {
+        "type": "section",
+        "title": "Performance Modes",
+        "fields": [
+          {
+            "label": "Supported Modes",
+            "path": "performanceAttributes.supportedPerformanceModes",
+            "type": "list",
+            "display": "comma-separated"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Delivery Information",
+        "fields": [
+          {
+            "label": "Address",
+            "path": "performanceAttributes.deliveryDetails.address",
+            "type": "address_block"
+          },
+          {
+            "label": "Contact Name",
+            "path": "performanceAttributes.deliveryDetails.contact.name",
+            "type": "text"
+          },
+          {
+            "label": "Contact Phone",
+            "path": "performanceAttributes.deliveryDetails.contact.phone",
+            "type": "phone"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Operating Hours",
+        "fields": [
+          {
+            "label": "Hours",
+            "path": "performanceAttributes.operatingHours",
+            "type": "schedule_table",
+            "columns": [
+              {
+                "header": "Days",
+                "path": "daysOfWeek",
+                "format": "day_names"
+              },
+              {
+                "header": "Time Range",
+                "path": "timeRange",
+                "format": "time_range_display"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Closures",
+        "fields": [
+          {
+            "label": "Closure Periods",
+            "path": "performanceAttributes.closures",
+            "type": "timeline",
+            "items": {
+              "start_date": "startDate",
+              "end_date": "endDate"
+            }
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Service Level Agreement",
+        "fields": [
+          {
+            "label": "Minimum Duration",
+            "path": "performanceAttributes.sla.min",
+            "type": "duration"
+          },
+          {
+            "label": "Maximum Duration",
+            "path": "performanceAttributes.sla.max",
+            "type": "duration"
+          },
+          {
+            "label": "SLA Unit Basis",
+            "path": "performanceAttributes.sla.unitBasis",
+            "type": "badge",
+            "styling": {
+              "color_map": {
+                "ORDER_CONFIRMATION": "info",
+                "PACKING_COMPLETE": "warning",
+                "DISPATCH": "success"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Handling Capabilities",
+        "fields": [
+          {
+            "label": "Supported Handling Types",
+            "path": "performanceAttributes.handling",
+            "type": "tag_list",
+            "styling": {
+              "color_map": {
+                "FRAGILE": "danger",
+                "COLD_CHAIN": "info",
+                "TEMPERATURE_CONTROLLED": "info",
+                "HAZARDOUS": "danger",
+                "OVERSIZED": "warning",
+                "BULK": "primary",
+                "HIGH_VALUE": "warning",
+                "LIQUID": "info",
+                "PERISHABLE": "danger"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "title": "Installation Services",
+        "fields": [
+          {
+            "label": "Installation Available",
+            "path": "performanceAttributes.installationScheduling.available",
+            "type": "boolean_badge"
+          },
+          {
+            "label": "Proposed Installation Date",
+            "path": "performanceAttributes.installationScheduling.scheduledDate",
+            "type": "datetime",
+            "conditional": "performanceAttributes.installationScheduling.available"
+          },
+          {
+            "label": "Installation Notes",
+            "path": "performanceAttributes.installationScheduling.notes",
+            "type": "text",
+            "conditional": "performanceAttributes.installationScheduling.available"
+          }
+        ]
+      }
+    ]
+  },
+  "html": "<div class='rcpa-container'><div class='rcpa-header'><h2>Performance Capabilities</h2></div><div class='rcpa-modes'><strong>Modes:</strong> {performanceAttributes.supportedPerformanceModes}</div><div class='rcpa-sla'><strong>SLA:</strong> {performanceAttributes.sla.min} - {performanceAttributes.sla.max}</div><div class='rcpa-handling'><strong>Handling:</strong> {performanceAttributes.handling}</div></div>",
+  "html_detail": "<div class='rcpa-detail'><section><h3>Delivery Details</h3><p><strong>Address:</strong> {performanceAttributes.deliveryDetails.address}</p><p><strong>Contact:</strong> {performanceAttributes.deliveryDetails.contact.name} ({performanceAttributes.deliveryDetails.contact.phone})</p></section><section><h3>Operating Hours</h3><ul>{#performanceAttributes.operatingHours}<li>Days: {daysOfWeek}, {timeRange.start} - {timeRange.end}</li>{/performanceAttributes.operatingHours}</ul></section><section><h3>Closures</h3><ul>{#performanceAttributes.closures}<li>{startDate} to {endDate}</li>{/performanceAttributes.closures}</ul></section><section><h3>Service Level Agreement</h3><p><strong>Min:</strong> {performanceAttributes.sla.min}, <strong>Max:</strong> {performanceAttributes.sla.max}, <strong>Basis:</strong> {performanceAttributes.sla.unitBasis}</p></section><section><h3>Handling Capabilities</h3><p>{performanceAttributes.handling}</p></section><section><h3>Installation</h3><p><strong>Available:</strong> {performanceAttributes.installationScheduling.available}</p><p><strong>Scheduled:</strong> {performanceAttributes.installationScheduling.scheduledDate}</p><p><strong>Notes:</strong> {performanceAttributes.installationScheduling.notes}</p></section></div>"
+}

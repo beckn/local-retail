@@ -1,0 +1,228 @@
+{
+  "context": {
+    "domain": "ONDC:RET10",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_discover",
+    "core_version": "1.2.0",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com/protocol",
+    "bpp_id": "bpp.example.com",
+    "bpp_uri": "https://bpp.example.com/protocol",
+    "transaction_id": "txn-001",
+    "message_id": "msg-001",
+    "timestamp": "2026-03-25T10:30:00Z"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "id": "cat-001",
+        "descriptor": {
+          "name": "Fresh Groceries Catalog",
+          "short_desc": "Daily essentials and fresh produce",
+          "long_desc": "Complete range of fresh groceries delivered to your doorstep daily"
+        },
+        "provider": {
+          "id": "prov-001",
+          "descriptor": {
+            "name": "FreshMart",
+            "short_desc": "Daily grocery delivery",
+            "images": [
+              {
+                "url": "https://example.com/logo.png"
+              }
+            ]
+          },
+          "address": {
+            "door": "123",
+            "street": "MG Road",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "country": "IND",
+            "areaCode": "560001"
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+            "@type": "rcra:RetailResource",
+            "id": "res-tata-salt-001",
+            "descriptor": {
+              "name": "Tata Salt",
+              "short_desc": "Iodized cooking salt",
+              "long_desc": "Premium quality iodized salt fortified with iodine for healthy living",
+              "images": [
+                {
+                  "url": "https://example.com/tata-salt.jpg"
+                }
+              ]
+            },
+            "price": {
+              "currency": "INR",
+              "value": 15
+            },
+            "quantity": {
+              "unitCode": "KG",
+              "unitQuantity": 1
+            },
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+              "@type": "rcra:RetailResource",
+              "identity": {
+                "brand": "Tata Salt",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitCode": "KG",
+                  "unitQuantity": 1
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 15,
+                  "breadth": 10,
+                  "height": 20
+                },
+                "appearance": {
+                  "color": "white",
+                  "material": "salt",
+                  "finish": "crystalline"
+                }
+              },
+              "packagedGoodsDeclaration": {
+                "manufacturerOrPacker": {
+                  "type": "MANUFACTURER",
+                  "name": "Tata Chemicals Limited",
+                  "id": "TCL-001",
+                  "address": "Mumbai, Maharashtra, India"
+                },
+                "commonOrGenericName": "Iodized Salt",
+                "netQuantity": {
+                  "unitCode": "KG",
+                  "unitQuantity": 1
+                },
+                "manufacturePackingImportDate": {
+                  "month": 2,
+                  "year": 2026
+                }
+              },
+              "foodRegulatoryDeclaration": {
+                "registrations": [
+                  {
+                    "scheme": "FSSAI",
+                    "id": "10015012000100",
+                    "role": "MANUFACTURER",
+                    "url": "https://fssai.gov.in"
+                  }
+                ],
+                "additives": [
+                  {
+                    "type": "CONTAINS",
+                    "value": "Iodine",
+                    "quantity": "0.05%",
+                    "notes": "Added as potassium iodide"
+                  }
+                ]
+              },
+              "credentials": [
+                {
+                  "type": "FSSAI_LICENSE",
+                  "uri": "https://example.com/fssai-cert.pdf",
+                  "issuer": "Food Safety and Standards Authority of India",
+                  "id": "FSSAI-TCL-001"
+                }
+              ]
+            }
+          },
+          {
+            "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+            "@type": "rcra:RetailResource",
+            "id": "res-amul-milk-001",
+            "descriptor": {
+              "name": "Amul Full Cream Milk",
+              "short_desc": "Fresh pasteurized milk",
+              "long_desc": "Rich and nutritious full cream milk delivered fresh daily",
+              "images": [
+                {
+                  "url": "https://example.com/amul-milk.jpg"
+                }
+              ]
+            },
+            "price": {
+              "currency": "INR",
+              "value": 28
+            },
+            "quantity": {
+              "unitCode": "L",
+              "unitQuantity": 1
+            },
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+              "@type": "rcra:RetailResource",
+              "identity": {
+                "brand": "Amul",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "volume": {
+                  "unitCode": "L",
+                  "unitQuantity": 1
+                },
+                "appearance": {
+                  "color": "white",
+                  "material": "dairy",
+                  "finish": "liquid"
+                }
+              },
+              "food": {
+                "classification": "NON_VEG"
+              },
+              "packagedGoodsDeclaration": {
+                "manufacturerOrPacker": {
+                  "type": "MANUFACTURER",
+                  "name": "Gujarat Cooperative Milk Marketing Federation Ltd",
+                  "id": "GCMMF-001",
+                  "address": "Anand, Gujarat, India"
+                },
+                "commonOrGenericName": "Pasteurized Full Cream Milk",
+                "netQuantity": {
+                  "unitCode": "L",
+                  "unitQuantity": 1
+                },
+                "manufacturePackingImportDate": {
+                  "month": 3,
+                  "year": 2026
+                }
+              },
+              "foodRegulatoryDeclaration": {
+                "registrations": [
+                  {
+                    "scheme": "FSSAI",
+                    "id": "10015043000005",
+                    "role": "MANUFACTURER",
+                    "url": "https://fssai.gov.in"
+                  }
+                ],
+                "additives": [
+                  {
+                    "type": "FREE_FROM",
+                    "value": "Preservatives",
+                    "notes": "No artificial preservatives added"
+                  }
+                ]
+              },
+              "credentials": [
+                {
+                  "type": "FSSAI_LICENSE",
+                  "uri": "https://example.com/amul-fssai.pdf",
+                  "issuer": "Food Safety and Standards Authority of India",
+                  "id": "FSSAI-GCMMF-001"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

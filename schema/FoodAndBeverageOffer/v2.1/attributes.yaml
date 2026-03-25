@@ -1,0 +1,132 @@
+openapi: 3.1.1
+info:
+  title: Retail — Food and Beverage Offer Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Food and beverage-specific offer attributes for prepared foods with customization options.
+    Migrated from FoodAndBeverageOffer (v2) to the v2.1 generalised model.
+    Extends RetailOffer via allOf to add customization groups and options.
+    Attaches to beckn:Offer via offerAttributes.
+
+components:
+  schemas:
+    FoodAndBeverageOfferAttributes:
+      type: object
+      additionalProperties: false
+      x-beckn-container: offerAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": fnbo:FoodAndBeverageOfferAttributes
+      allOf:
+        - $ref: "../../RetailOffer/v2.1/attributes.yaml#/components/schemas/RetailOffer"
+        - type: object
+          properties:
+            customization:
+              type: object
+              additionalProperties: false
+              required: [groups]
+              properties:
+                groups:
+                  type: array
+                  minItems: 1
+                  items:
+                    type: object
+                    additionalProperties: false
+                    required: [code, selection, options]
+                    properties:
+                      code:
+                        type: string
+                        description: Unique code for the customization group (e.g., SIZE, TOPPINGS, SAUCE)
+                        x-jsonld:
+                          "@id": "fnbo:customizationGroupCode"
+                      name:
+                        type: string
+                        description: Human-readable name for the customization group (e.g., "Pizza Size", "Extra Toppings")
+                        x-jsonld:
+                          "@id": "fnbo:customizationGroupName"
+                      selection:
+                        type: string
+                        enum:
+                          - SINGLE_REQUIRED
+                          - SINGLE_OPTIONAL
+                          - MULTIPLE_OPTIONAL
+                        description: >
+                          Selection constraint for this group.
+                          SINGLE_REQUIRED: customer must select exactly one option.
+                          SINGLE_OPTIONAL: customer may select zero or one option.
+                          MULTIPLE_OPTIONAL: customer may select zero or more options.
+                        x-jsonld:
+                          "@id": "fnbo:customizationSelection"
+                      minSelections:
+                        type: integer
+                        minimum: 0
+                        description: Minimum number of options that must be selected (for MULTIPLE_OPTIONAL)
+                        x-jsonld:
+                          "@id": "fnbo:minSelections"
+                      maxSelections:
+                        type: integer
+                        minimum: 1
+                        description: Maximum number of options that may be selected (for MULTIPLE_OPTIONAL)
+                        x-jsonld:
+                          "@id": "fnbo:maxSelections"
+                      options:
+                        type: array
+                        minItems: 1
+                        items:
+                          type: object
+                          additionalProperties: false
+                          required: [code, name]
+                          properties:
+                            code:
+                              type: string
+                              description: Unique code for the option within this group (e.g., SMALL, MEDIUM, LARGE for SIZE)
+                              x-jsonld:
+                                "@id": "fnbo:optionCode"
+                            name:
+                              type: string
+                              description: Human-readable name for the option (e.g., "Small - 8 inch", "Extra Cheese")
+                              x-jsonld:
+                                "@id": "fnbo:optionName"
+                            priceDelta:
+                              type: object
+                              additionalProperties: false
+                              properties:
+                                type:
+                                  type: string
+                                  enum: [FIXED, PERCENTAGE]
+                                  description: Price delta type. FIXED = absolute amount, PERCENTAGE = percent of base price
+                                  x-jsonld:
+                                    "@id": "fnbo:priceDeltaType"
+                                value:
+                                  type: number
+                                  description: Price delta value (positive or negative)
+                                  x-jsonld:
+                                    "@id": "fnbo:priceDeltaValue"
+                              description: Price adjustment for selecting this option
+                              x-jsonld:
+                                "@id": "fnbo:priceDelta"
+                            itemRef:
+                              type: string
+                              description: Reference to a beckn:Resource if this option represents a distinct item
+                              x-jsonld:
+                                "@id": "fnbo:itemRef"
+                            offerRef:
+                              type: string
+                              description: Reference to a beckn:Offer if this option represents a distinct offer
+                              x-jsonld:
+                                "@id": "fnbo:offerRef"
+                            available:
+                              type: boolean
+                              default: true
+                              description: Whether this option is currently available
+                              x-jsonld:
+                                "@id": "fnbo:available"
+                        description: Array of available options for this customization group
+                        x-jsonld:
+                          "@id": "fnbo:options"
+                  description: Customization groups (SIZE, TOPPINGS, SAUCE, etc.)
+                  x-jsonld:
+                    "@id": "fnbo:customizationGroups"
+              description: Customization options and groups for this F&B offer
+              x-jsonld:
+                "@id": "fnbo:customization"

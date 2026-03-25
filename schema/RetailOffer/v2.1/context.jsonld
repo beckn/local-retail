@@ -1,0 +1,121 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rcoa": "https://schema.beckn.io/RetailOffer#",
+    "@context": {
+      "@id": "rcoa:@context"
+    },
+    "@type": {
+      "@id": "rcoa:@type"
+    },
+    "RetailOffer": "rcoa:RetailOffer",
+    "ReturnMethod": "rcoa:ReturnMethod",
+    "CancellationCutoffEvent": "rcoa:CancellationCutoffEvent",
+    "FeeType": "rcoa:FeeType",
+    "OfferType": "rcoa:OfferType",
+    "policies": {
+      "@id": "rcoa:policies"
+    },
+    "returns": {
+      "@id": "rcoa:returns"
+    },
+    "returnAllowed": {
+      "@id": "rcoa:returnAllowed"
+    },
+    "returnWindow": {
+      "@id": "rcoa:returnWindow"
+    },
+    "returnMethod": {
+      "@id": "rcoa:returnMethod"
+    },
+    "restockingFee": {
+      "@id": "rcoa:restockingFee"
+    },
+    "restockingFeeType": {
+      "@id": "rcoa:restockingFeeType"
+    },
+    "restockingFeeValue": {
+      "@id": "rcoa:restockingFeeValue"
+    },
+    "returnConditions": {
+      "@id": "rcoa:returnConditions"
+    },
+    "cancellation": {
+      "@id": "rcoa:cancellation"
+    },
+    "cancellationAllowed": {
+      "@id": "rcoa:cancellationAllowed"
+    },
+    "cancellationWindow": {
+      "@id": "rcoa:cancellationWindow"
+    },
+    "cancellationCutoffEvent": {
+      "@id": "rcoa:cancellationCutoffEvent"
+    },
+    "cancellationFee": {
+      "@id": "rcoa:cancellationFee"
+    },
+    "replacement": {
+      "@id": "rcoa:replacement"
+    },
+    "replacementAllowed": {
+      "@id": "rcoa:replacementAllowed"
+    },
+    "replacementWindow": {
+      "@id": "rcoa:replacementWindow"
+    },
+    "replacementMethod": {
+      "@id": "rcoa:replacementMethod"
+    },
+    "replacementConditions": {
+      "@id": "rcoa:replacementConditions"
+    },
+    "replacementSubjectToAvailability": {
+      "@id": "rcoa:replacementSubjectToAvailability"
+    },
+    "paymentConstraints": {
+      "@id": "rcoa:paymentConstraints"
+    },
+    "codAvailable": {
+      "@id": "rcoa:codAvailable"
+    },
+    "serviceability": {
+      "@id": "rcoa:serviceability"
+    },
+    "distanceConstraint": {
+      "@id": "rcoa:distanceConstraint"
+    },
+    "maxDistance": {
+      "@id": "rcoa:maxDistance"
+    },
+    "distanceUnit": {
+      "@id": "rcoa:distanceUnit"
+    },
+    "timing": {
+      "@id": "rcoa:timing"
+    },
+    "daysOfWeek": {
+      "@id": "rcoa:daysOfWeek"
+    },
+    "timeRange": {
+      "@id": "rcoa:timeRange"
+    },
+    "timingStart": {
+      "@id": "rcoa:timingStart"
+    },
+    "timingEnd": {
+      "@id": "rcoa:timingEnd"
+    },
+    "offerTimeStart": {
+      "@id": "rcoa:offerTimeStart"
+    },
+    "offerTimeEnd": {
+      "@id": "rcoa:offerTimeEnd"
+    },
+    "holidays": {
+      "@id": "rcoa:holidays"
+    }
+  }
+}

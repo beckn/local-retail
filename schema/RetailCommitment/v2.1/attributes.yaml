@@ -1,0 +1,72 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Commitment Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Per-commitment line-level details for retail contracts.
+    NEW in v2.1 — fields extracted from FoodAndBeverageItem v2.
+    Attaches to beckn:Commitment via commitmentAttributes.
+
+components:
+  schemas:
+    RetailCommitment:
+      type: object
+      additionalProperties: false
+      x-beckn-container: commitmentAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": "rccma:RetailCommitment"
+      required:
+        - "@context"
+        - "@type"
+        - lineId
+        - resourceId
+        - quantity
+      properties:
+        "@context":
+          type: string
+          format: uri
+          const: "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld"
+          x-jsonld-id: "rccma:@context"
+        "@type":
+          type: string
+          const: "rccma:RetailCommitment"
+          x-jsonld-id: "rccma:@type"
+        lineId:
+          type: string
+          description: Line reference identifier within the contract
+          x-jsonld-id: "rccma:lineId"
+        resourceId:
+          type: string
+          description: Reference to the Resource being committed
+          x-jsonld-id: "rccma:resourceId"
+        offerId:
+          type: string
+          description: Reference to the Offer under which this commitment was made
+          x-jsonld-id: "rccma:offerId"
+        quantity:
+          type: object
+          additionalProperties: false
+          description: Quantity with unit code and unit quantity
+          x-jsonld-id: "rccma:quantity"
+          required:
+            - unitQuantity
+          properties:
+            unitCode:
+              type: string
+              description: Unit of measurement (e.g., EA, KG, L)
+              x-jsonld-id: "rccma:unitCode"
+            unitQuantity:
+              type: number
+              minimum: 0
+              description: Numeric quantity in the specified unit
+              x-jsonld-id: "rccma:unitQuantity"
+        price:
+          allOf:
+            - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/PriceSpecification"
+          description: Price specification for this line item commitment
+          x-jsonld-id: "rccma:price"
+        specialInstructions:
+          type: string
+          description: Per-line buyer notes (e.g., "no onions", "extra spicy")
+          x-jsonld-id: "rccma:specialInstructions"

@@ -1,0 +1,116 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld"
+  },
+  "@graph": [
+    {
+      "@id": "rccna:RetailConsideration",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Retail Core Consideration Attributes",
+      "rdfs:comment": "Schema for retail monetary consideration attributes. Intentionally thin since retail transactions are overwhelmingly monetary.",
+      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+    },
+    {
+      "@id": "rccna:paymentMethods",
+      "@type": "rdf:Property",
+      "rdfs:label": "Payment Methods",
+      "rdfs:comment": "Array of payment methods accepted for this consideration",
+      "rdfs:domain": "rccna:RetailConsideration",
+      "rdfs:range": "rdf:list"
+    },
+    {
+      "@id": "rccna:currency",
+      "@type": "rdf:Property",
+      "rdfs:label": "Currency",
+      "rdfs:comment": "ISO 4217 currency code for the monetary amounts",
+      "rdfs:domain": "rccna:RetailConsideration",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rccna:breakup",
+      "@type": "rdf:Property",
+      "rdfs:label": "Breakup",
+      "rdfs:comment": "Breakdown of charges, taxes, discounts, and fees",
+      "rdfs:domain": "rccna:RetailConsideration",
+      "rdfs:range": "rdf:list"
+    },
+    {
+      "@id": "rccna:BreakupItem",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Breakup Item",
+      "rdfs:comment": "Individual item in the charge breakup",
+      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+    },
+    {
+      "@id": "rccna:title",
+      "@type": "rdf:Property",
+      "rdfs:label": "Title",
+      "rdfs:comment": "Title or description of the charge",
+      "rdfs:domain": "rccna:BreakupItem",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rccna:amount",
+      "@type": "rdf:Property",
+      "rdfs:label": "Amount",
+      "rdfs:comment": "Monetary amount for this charge",
+      "rdfs:domain": "rccna:BreakupItem",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "rccna:type",
+      "@type": "rdf:Property",
+      "rdfs:label": "Type",
+      "rdfs:comment": "Type of charge: BASE_PRICE, TAX, DISCOUNT, DELIVERY_CHARGE, PACKING_CHARGE, CONVENIENCE_FEE, or OTHER",
+      "rdfs:domain": "rccna:BreakupItem",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rccna:totalAmount",
+      "@type": "rdf:Property",
+      "rdfs:label": "Total Amount",
+      "rdfs:comment": "Total monetary amount for this consideration",
+      "rdfs:domain": "rccna:RetailConsideration",
+      "rdfs:range": "xsd:decimal"
+    },
+    {
+      "@id": "rccna:loyaltyPointsApplied",
+      "@type": "rdf:Property",
+      "rdfs:label": "Loyalty Points Applied",
+      "rdfs:comment": "Loyalty points applied as non-monetary consideration",
+      "rdfs:domain": "rccna:RetailConsideration",
+      "rdfs:range": "rccna:LoyaltyPointsApplied"
+    },
+    {
+      "@id": "rccna:LoyaltyPointsApplied",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Loyalty Points Applied",
+      "rdfs:comment": "Details of loyalty points applied to a transaction",
+      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+    },
+    {
+      "@id": "rccna:programId",
+      "@type": "rdf:Property",
+      "rdfs:label": "Program ID",
+      "rdfs:comment": "Unique identifier of the loyalty program",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied",
+      "rdfs:range": "xsd:string"
+    },
+    {
+      "@id": "rccna:pointsUsed",
+      "@type": "rdf:Property",
+      "rdfs:label": "Points Used",
+      "rdfs:comment": "Number of loyalty points used in this transaction",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied",
+      "rdfs:range": "xsd:integer"
+    },
+    {
+      "@id": "rccna:monetaryEquivalent",
+      "@type": "rdf:Property",
+      "rdfs:label": "Monetary Equivalent",
+      "rdfs:comment": "Monetary value equivalent of the loyalty points applied",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied",
+      "rdfs:range": "xsd:decimal"
+    }
+  ]
+}

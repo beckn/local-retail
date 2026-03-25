@@ -1,0 +1,40 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rccma": "https://schema.beckn.io/RetailCommitment#",
+    "@context": {
+      "@id": "rccma:@context"
+    },
+    "@type": {
+      "@id": "rccma:@type"
+    },
+    "CommitmentAttributes": "rccma:RetailCommitment",
+    "RetailCommitment": "rccma:RetailCommitment",
+    "lineId": {
+      "@id": "rccma:lineId"
+    },
+    "resourceId": {
+      "@id": "rccma:resourceId"
+    },
+    "offerId": {
+      "@id": "rccma:offerId"
+    },
+    "quantity": {
+      "@id": "rccma:quantity"
+    },
+    "unitCode": {
+      "@id": "rccma:unitCode"
+    },
+    "unitQuantity": {
+      "@id": "rccma:unitQuantity"
+    },
+    "price": {
+      "@id": "rccma:price"
+    },
+    "specialInstructions": {
+      "@id": "rccma:specialInstructions"
+    }
+  }
+}

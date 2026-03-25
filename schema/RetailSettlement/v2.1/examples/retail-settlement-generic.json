@@ -1,0 +1,87 @@
+{
+  "context": {
+    "domain": "nic2008:5241",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_confirm",
+    "core_version": "0.9.4",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com",
+    "bpp_id": "bpp.grocery.com",
+    "bpp_uri": "https://bpp.grocery.com",
+    "transaction_id": "txn-001-grocery-settlement",
+    "message_id": "msg-003-confirm",
+    "timestamp": "2026-03-25T14:35:00Z",
+    "ttl": "PT30M"
+  },
+  "message": {
+    "contract": {
+      "id": "contract-003",
+      "status": {
+        "descriptor": {
+          "code": "CONFIRMED"
+        }
+      },
+      "commitments": [
+        {
+          "id": "cmt-003",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "r-003"
+            }
+          ],
+          "offer": {
+            "id": "o-003"
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+          "@type": "beckn:MonetaryTransfer",
+          "id": "settlement-001",
+          "status": "COMPLETE",
+          "settlementAttributes": {
+            "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+            "@type": "rcsa:RetailSettlement",
+            "gateway": {
+              "name": "Razorpay",
+              "transactionId": "pay_MCc84uIdnDItrQ",
+              "url": "https://api.razorpay.com/v1/payments/pay_MCc84uIdnDItrQ"
+            },
+            "method": "ONLINE",
+            "settledAt": "2026-03-25T14:35:30Z",
+            "settledAmount": 1521.50,
+            "currency": "INR",
+            "reconciliationId": "RECON-BATCH-20260325-001"
+          }
+        },
+        {
+          "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+          "@type": "beckn:MonetaryTransfer",
+          "id": "settlement-002",
+          "status": "COMPLETE",
+          "settlementAttributes": {
+            "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+            "@type": "rcsa:RetailSettlement",
+            "gateway": {
+              "name": "UPI Bank Transfer",
+              "transactionId": "UPI-TXN-20260325-2547891",
+              "url": "https://upi.provider.com/status/UPI-TXN-20260325-2547891"
+            },
+            "method": "BANK_TRANSFER",
+            "settledAt": "2026-03-25T16:20:00Z",
+            "settledAmount": 1450.00,
+            "currency": "INR",
+            "reconciliationId": "RECON-BATCH-20260325-002"
+          }
+        }
+      ]
+    }
+  }
+}

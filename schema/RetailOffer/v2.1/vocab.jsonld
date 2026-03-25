@@ -1,0 +1,34 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rcoa": "https://schema.beckn.io/RetailOffer#"
+  },
+  "@graph": [
+    {
+      "@id": "rcoa:ReturnMethod",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Return Method",
+      "rdfs:comment": "Method by which a return is fulfilled"
+    },
+    { "@id": "rcoa:SELLER_PICKUP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Seller Pickup", "rdfs:comment": "Seller arranges pickup from the buyer" },
+    { "@id": "rcoa:BUYER_SHIP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Buyer Ship", "rdfs:comment": "Buyer ships the item back to the seller" },
+    { "@id": "rcoa:DROP_OFF", "@type": "rcoa:ReturnMethod", "rdfs:label": "Drop Off", "rdfs:comment": "Buyer drops off at a designated location" },
+    {
+      "@id": "rcoa:CancellationCutoffEvent",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Cancellation Cutoff Event",
+      "rdfs:comment": "Event after which cancellation is no longer free"
+    },
+    { "@id": "rcoa:BEFORE_CONFIRMATION", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Confirmation" },
+    { "@id": "rcoa:BEFORE_PACKING", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Packing" },
+    { "@id": "rcoa:BEFORE_SHIPMENT", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Shipment" },
+    {
+      "@id": "rcoa:FeeType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Fee Type",
+      "rdfs:comment": "Whether a fee is calculated as a percentage or fixed amount"
+    },
+    { "@id": "rcoa:PERCENTAGE", "@type": "rcoa:FeeType", "rdfs:label": "Percentage" },
+    { "@id": "rcoa:FIXED", "@type": "rcoa:FeeType", "rdfs:label": "Fixed Amount" }
+  ]
+}

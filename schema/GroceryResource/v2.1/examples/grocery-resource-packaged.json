@@ -1,0 +1,130 @@
+{
+  "context": {
+    "domain": "grocery",
+    "country": "IN",
+    "city": "ONDC:std:city:Bangalore",
+    "action": "on_discover",
+    "core_version": "2.0.0",
+    "bap_id": "buyer.ondc.org",
+    "bap_uri": "https://buyer.ondc.org",
+    "bpp_id": "seller.grocer.ondc.org",
+    "bpp_uri": "https://seller.grocer.ondc.org",
+    "transaction_id": "abc123",
+    "message_id": "msg456",
+    "timestamp": "2026-03-25T10:30:00Z",
+    "version": "2.0.0"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@type": "beckn:Catalog",
+        "id": "catalog:grocer:001",
+        "descriptor": {
+          "@type": "beckn:Descriptor",
+          "name": "Aashirvaad Staples"
+        },
+        "provider": {
+          "id": "provider:grocer:001",
+          "descriptor": {
+            "@type": "beckn:Descriptor",
+            "name": "Metro Grocery Store",
+            "images": [
+              {
+                "@type": "beckn:Image",
+                "url": "https://example.com/provider-logo.jpg"
+              }
+            ]
+          }
+        },
+        "resources": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Resource",
+            "id": "resource:aashirvaad:wheat:001",
+            "descriptor": {
+              "@type": "beckn:Descriptor",
+              "name": "Aashirvaad Whole Wheat Flour",
+              "shortDesc": "Premium whole wheat flour - 1kg",
+              "images": [
+                {
+                  "@type": "beckn:Image",
+                  "url": "https://example.com/aashirvaad-flour.jpg"
+                }
+              ]
+            },
+            "category": "Staple Foods",
+            "resourceAttributes": {
+              "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld",
+              "@type": "groc:GroceryResourceAttributes",
+              "identity": {
+                "brand": "Aashirvaad",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "unitQuantity": 1,
+                  "unitCode": "KG"
+                }
+              },
+              "food": {
+                "classification": "VEG"
+              },
+              "packagedGoodsDeclaration": {
+                "manufacturerOrPacker": {
+                  "type": "MANUFACTURER",
+                  "name": "ITC Limited",
+                  "id": "MFG:ITC:12345",
+                  "address": "Mumbai, India"
+                },
+                "commonOrGenericName": "Whole Wheat Flour",
+                "netQuantity": {
+                  "unitQuantity": 1,
+                  "unitCode": "KG"
+                }
+              },
+              "nutrition": [
+                {
+                  "nutrient": "Energy",
+                  "value": {
+                    "unitQuantity": 350,
+                    "unitCode": "KCAL"
+                  }
+                },
+                {
+                  "nutrient": "Protein",
+                  "value": {
+                    "unitQuantity": 10,
+                    "unitCode": "GRAM"
+                  }
+                },
+                {
+                  "nutrient": "Carbohydrates",
+                  "value": {
+                    "unitQuantity": 70,
+                    "unitCode": "GRAM"
+                  }
+                },
+                {
+                  "nutrient": "Fiber",
+                  "value": {
+                    "unitQuantity": 5,
+                    "unitCode": "GRAM"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "offers": [
+          {
+            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@type": "beckn:Offer",
+            "id": "offer:aashirvaad:wheat:001",
+            "resourceIds": ["resource:aashirvaad:wheat:001"]
+          }
+        ]
+      }
+    ]
+  }
+}

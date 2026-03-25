@@ -1,8 +1,0 @@
-{
-  "@context": {
-    "@vocab": "https://beckn.org/vocab/retail/home-kitchen/item#",
-
-    "MANUFACTURER": "ManufacturerWarranty",
-    "SELLER": "SellerWarranty"
-  }
-}

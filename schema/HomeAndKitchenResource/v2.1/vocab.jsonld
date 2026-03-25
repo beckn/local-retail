@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
+    "HomeAndKitchenResourceAttributes": {
+      "@id": "hkr:HomeAndKitchenResourceAttributes",
+      "@type": "@vocab"
+    },
+    "careInstructions": {
+      "@id": "hkr:careInstructions",
+      "@type": "xsd:string"
+    },
+    "installation": {
+      "@id": "hkr:installation",
+      "@type": "@vocab"
+    },
+    "installationRequired": {
+      "@id": "hkr:installationRequired",
+      "@type": "xsd:boolean"
+    },
+    "installationProvidedBySeller": {
+      "@id": "hkr:installationProvidedBySeller",
+      "@type": "xsd:boolean"
+    },
+    "installationNotes": {
+      "@id": "hkr:installationNotes",
+      "@type": "xsd:string"
+    },
+    "usage": {
+      "@id": "hkr:usage",
+      "@type": "@vocab"
+    },
+    "indoorOnly": {
+      "@id": "hkr:indoorOnly",
+      "@type": "xsd:boolean"
+    },
+    "outdoorOnly": {
+      "@id": "hkr:outdoorOnly",
+      "@type": "xsd:boolean"
+    },
+    "compatibleWith": {
+      "@id": "hkr:compatibleWith",
+      "@type": "xsd:string",
+      "@container": "@list"
+    },
+    "warranty": {
+      "@id": "hkr:warranty",
+      "@type": "@vocab"
+    },
+    "warrantyDuration": {
+      "@id": "hkr:warrantyDuration",
+      "@type": "xsd:string"
+    },
+    "warrantyType": {
+      "@id": "hkr:warrantyType",
+      "@type": "xsd:string"
+    },
+    "warrantyTerms": {
+      "@id": "hkr:warrantyTerms",
+      "@type": "xsd:string"
+    }
+  }
+}

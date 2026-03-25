@@ -1,0 +1,83 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Consideration Attributes (v2.1)
+  version: 2.1.0
+  description: >
+    Minimal retail monetary consideration attributes.
+    NEW in v2.1. Attaches to beckn:Consideration via considerationAttributes.
+
+components:
+  schemas:
+    RetailConsideration:
+      type: object
+      additionalProperties: false
+      x-beckn-container: considerationAttributes
+      x-jsonld:
+        "@context": ./context.jsonld
+        "@type": rccna:RetailConsideration
+      required:
+        - "@context"
+        - "@type"
+        - currency
+        - totalAmount
+      properties:
+        "@context":
+          type: string
+          format: uri
+          const: "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld"
+          x-jsonld-id: "rccna:@context"
+        "@type":
+          type: string
+          const: "rccna:RetailConsideration"
+          x-jsonld-id: "rccna:@type"
+        paymentMethods:
+          type: array
+          description: Payment methods accepted
+          x-jsonld-id: "rccna:paymentMethods"
+          items:
+            type: string
+            enum: [PREPAID, COD, CREDIT, DEBIT, UPI, WALLET, NET_BANKING, BNPL]
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          pattern: "^[A-Z]{3}$"
+          x-jsonld-id: "rccna:currency"
+        breakup:
+          type: array
+          description: Breakdown of charges and taxes
+          x-jsonld-id: "rccna:breakup"
+          items:
+            type: object
+            additionalProperties: false
+            required: [title, amount, type]
+            properties:
+              title:
+                type: string
+                x-jsonld-id: "rccna:breakupTitle"
+              amount:
+                type: number
+                x-jsonld-id: "rccna:breakupAmount"
+              type:
+                type: string
+                enum: [BASE_PRICE, TAX, DISCOUNT, DELIVERY_CHARGE, PACKING_CHARGE, CONVENIENCE_FEE, OTHER]
+                x-jsonld-id: "rccna:breakupType"
+        totalAmount:
+          type: number
+          description: Total monetary amount
+          x-jsonld-id: "rccna:totalAmount"
+        loyaltyPointsApplied:
+          type: object
+          additionalProperties: false
+          description: Non-monetary consideration via loyalty points
+          x-jsonld-id: "rccna:loyaltyPointsApplied"
+          required: [programId, pointsUsed, monetaryEquivalent]
+          properties:
+            programId:
+              type: string
+              x-jsonld-id: "rccna:programId"
+            pointsUsed:
+              type: integer
+              x-jsonld-id: "rccna:pointsUsed"
+            monetaryEquivalent:
+              type: number
+              x-jsonld-id: "rccna:monetaryEquivalent"

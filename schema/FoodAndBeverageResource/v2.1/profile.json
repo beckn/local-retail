@@ -1,0 +1,22 @@
+{
+  "id": "https://schema.beckn.io/FoodAndBeverageResource/v2.1",
+  "name": "Food and Beverage Resource Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["FoodAndBeverageResourceAttributes"],
+  "discovery_fields": ["cuisine", "allergens"],
+  "indexable_paths": [
+    "beckn:resourceAttributes.cuisine",
+    "beckn:resourceAttributes.allergens",
+    "beckn:resourceAttributes.preparation.shelfLife"
+  ],
+  "filterable_paths": [
+    "beckn:resourceAttributes.cuisine",
+    "beckn:resourceAttributes.allergens"
+  ],
+  "sortable_paths": [],
+  "privacy_notes": [
+    "Allergen information is critical for consumer safety and must be accurate and discoverable"
+  ]
+}

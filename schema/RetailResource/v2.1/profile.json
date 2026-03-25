@@ -1,0 +1,23 @@
+{
+  "id": "https://schema.beckn.io/RetailResource/v2.1",
+  "name": "Retail Core Resource Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailResource"],
+  "discovery_fields": ["identity.brand", "identity.originCountry", "food.classification"],
+  "indexable_paths": [
+    "beckn:resourceAttributes.identity.brand",
+    "beckn:resourceAttributes.identity.originCountry",
+    "beckn:resourceAttributes.food.classification",
+    "beckn:resourceAttributes.physical.weight"
+  ],
+  "filterable_paths": [
+    "beckn:resourceAttributes.identity.brand",
+    "beckn:resourceAttributes.food.classification"
+  ],
+  "sortable_paths": [],
+  "privacy_notes": [
+    "foodRegulatoryDeclaration.registrations[].id may contain business-sensitive registration numbers"
+  ]
+}

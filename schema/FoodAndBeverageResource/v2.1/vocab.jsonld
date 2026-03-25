@@ -1,0 +1,35 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
+    "FoodAndBeverageResourceAttributes": {
+      "@id": "fnbr:FoodAndBeverageResourceAttributes",
+      "@type": "@vocab"
+    },
+    "allergens": {
+      "@id": "fnbr:allergens",
+      "@type": "@vocab",
+      "@container": "@list"
+    },
+    "cuisine": {
+      "@id": "fnbr:cuisine",
+      "@type": "xsd:string"
+    },
+    "preparation": {
+      "@id": "fnbr:preparation",
+      "@type": "@vocab"
+    },
+    "preparationInstructions": {
+      "@id": "fnbr:preparationInstructions",
+      "@type": "xsd:string"
+    },
+    "storageInstructions": {
+      "@id": "fnbr:storageInstructions",
+      "@type": "xsd:string"
+    },
+    "shelfLife": {
+      "@id": "fnbr:shelfLife",
+      "@type": "xsd:string"
+    }
+  }
+}

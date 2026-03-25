@@ -1,0 +1,195 @@
+{
+  "context": {
+    "domain": "ONDC:RET10",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_confirm",
+    "core_version": "1.2.0",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com/protocol",
+    "bpp_id": "bpp.example.com",
+    "bpp_uri": "https://bpp.example.com/protocol",
+    "transaction_id": "txn-004",
+    "message_id": "msg-004",
+    "timestamp": "2026-03-25T11:15:00Z"
+  },
+  "message": {
+    "contract": {
+      "id": "contract-002",
+      "descriptor": {
+        "name": "Order #ORD-2026-00124",
+        "short_desc": "Multi-item grocery order"
+      },
+      "commitments": [
+        {
+          "id": "commit-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "res-tata-salt-001",
+              "descriptor": {
+                "name": "Tata Salt 1kg"
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-001",
+            "descriptor": {
+              "name": "25% off on Vegetables"
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld",
+            "@type": "rccma:RetailCommitment",
+            "lineId": "line-001",
+            "resourceId": "res-tata-salt-001",
+            "offerId": "offer-001",
+            "quantity": {
+              "unitCode": "KG",
+              "unitQuantity": 2
+            },
+            "price": {
+              "currency": "INR",
+              "consideredValue": 30,
+              "components": [
+                {
+                  "lineId": "price-001",
+                  "lineSummary": "2kg Tata Salt @ Rs.15/kg",
+                  "value": 30,
+                  "currency": "INR",
+                  "quantity": {
+                    "unitCode": "KG",
+                    "unitQuantity": 2
+                  }
+                },
+                {
+                  "lineId": "discount-001",
+                  "lineSummary": "Bulk purchase discount",
+                  "value": -5,
+                  "currency": "INR"
+                }
+              ]
+            },
+            "specialInstructions": "Avoid any rough handling"
+          }
+        },
+        {
+          "id": "commit-002",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "res-amul-milk-001",
+              "descriptor": {
+                "name": "Amul Full Cream Milk 1L"
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-002",
+            "descriptor": {
+              "name": "Buy 2 Get 1 Free on Dairy Products"
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld",
+            "@type": "rccma:RetailCommitment",
+            "lineId": "line-002",
+            "resourceId": "res-amul-milk-001",
+            "offerId": "offer-002",
+            "quantity": {
+              "unitCode": "L",
+              "unitQuantity": 3
+            },
+            "price": {
+              "currency": "INR",
+              "consideredValue": 56,
+              "components": [
+                {
+                  "lineId": "price-002",
+                  "lineSummary": "3L Amul Milk (2 paid + 1 free) @ Rs.28/L",
+                  "value": 84,
+                  "currency": "INR",
+                  "quantity": {
+                    "unitCode": "L",
+                    "unitQuantity": 3
+                  }
+                },
+                {
+                  "lineId": "promo-001",
+                  "lineSummary": "Buy 2 Get 1 Free promo",
+                  "value": -28,
+                  "currency": "INR"
+                }
+              ]
+            },
+            "specialInstructions": "Keep refrigerated during delivery"
+          }
+        },
+        {
+          "id": "commit-003",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "res-tomato-001",
+              "descriptor": {
+                "name": "Fresh Tomatoes"
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-001",
+            "descriptor": {
+              "name": "25% off on Vegetables"
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld",
+            "@type": "rccma:RetailCommitment",
+            "lineId": "line-003",
+            "resourceId": "res-tomato-001",
+            "offerId": "offer-001",
+            "quantity": {
+              "unitCode": "KG",
+              "unitQuantity": 2.5
+            },
+            "price": {
+              "currency": "INR",
+              "consideredValue": 75,
+              "components": [
+                {
+                  "lineId": "price-003",
+                  "lineSummary": "2.5kg Fresh Tomatoes @ Rs.40/kg",
+                  "value": 100,
+                  "currency": "INR",
+                  "quantity": {
+                    "unitCode": "KG",
+                    "unitQuantity": 2.5
+                  }
+                },
+                {
+                  "lineId": "discount-002",
+                  "lineSummary": "Seasonal discount (25% off)",
+                  "value": -25,
+                  "currency": "INR"
+                }
+              ]
+            },
+            "specialInstructions": "Ripe but firm tomatoes preferred, no overripe ones"
+          }
+        }
+      ]
+    }
+  }
+}

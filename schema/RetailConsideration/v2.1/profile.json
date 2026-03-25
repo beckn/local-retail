@@ -1,0 +1,50 @@
+{
+  "name": "RetailConsideration",
+  "title": "Retail Core Consideration Attributes",
+  "description": "Beckn v2.1 schema for retail monetary consideration attributes",
+  "namespace_prefix": "rccna",
+  "namespace_uri": "https://schema.beckn.io/RetailConsideration#",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "container": "considerationAttributes",
+  "root_schema": "RetailConsideration",
+  "version": "2.1.0",
+  "schema_file": "attributes.yaml",
+  "context_file": "context.jsonld",
+  "vocab_file": "vocab.jsonld",
+  "renderer_file": "renderer.json",
+  "metadata": {
+    "author": "Beckn Foundation",
+    "license": "CC-BY-3.0",
+    "domain": "retail",
+    "created": "2026-03-25",
+    "updated": "2026-03-25"
+  },
+  "extensions": {
+    "paymentMethods": {
+      "type": "enum",
+      "values": [
+        "PREPAID",
+        "COD",
+        "CREDIT",
+        "DEBIT",
+        "UPI",
+        "WALLET",
+        "NET_BANKING",
+        "BNPL"
+      ]
+    },
+    "breakupTypes": {
+      "type": "enum",
+      "values": [
+        "BASE_PRICE",
+        "TAX",
+        "DISCOUNT",
+        "DELIVERY_CHARGE",
+        "PACKING_CHARGE",
+        "CONVENIENCE_FEE",
+        "OTHER"
+      ]
+    }
+  }
+}

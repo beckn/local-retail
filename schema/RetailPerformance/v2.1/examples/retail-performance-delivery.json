@@ -1,0 +1,117 @@
+{
+  "context": {
+    "domain": "nic2008:5241",
+    "country": "IND",
+    "city": "std:080",
+    "action": "on_confirm",
+    "core_version": "0.9.4",
+    "bap_id": "bap.example.com",
+    "bap_uri": "https://bap.example.com",
+    "bpp_id": "bpp.grocery.com",
+    "bpp_uri": "https://bpp.grocery.com",
+    "transaction_id": "txn-001-grocery-delivery",
+    "message_id": "msg-001-confirm",
+    "timestamp": "2026-03-25T14:30:00Z",
+    "ttl": "PT30M"
+  },
+  "message": {
+    "contract": {
+      "id": "contract-001",
+      "status": {
+        "descriptor": {
+          "code": "CONFIRMED"
+        }
+      },
+      "commitments": [
+        {
+          "id": "cmt-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "r-001"
+            }
+          ],
+          "offer": {
+            "id": "o-001"
+          }
+        }
+      ],
+      "performance": [
+        {
+          "id": "perf-001",
+          "performanceAttributes": {
+            "@context": "https://schema.beckn.io/RetailPerformance/v2.1/context.jsonld",
+            "@type": "rcpa:RetailPerformance",
+            "supportedPerformanceModes": [
+              "DELIVERY",
+              "PICKUP"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "name": "FreshMart Grocery Store",
+                "building": "Plot 123",
+                "street": "Koramangala 5th Block",
+                "city": "Bangalore",
+                "state": "KA",
+                "country": "IND",
+                "areaCode": "560034"
+              },
+              "contact": {
+                "name": "Raj Kumar",
+                "phone": "+919876543210"
+              }
+            },
+            "operatingHours": [
+              {
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ],
+                "timeRange": {
+                  "start": "07:00",
+                  "end": "22:00"
+                }
+              },
+              {
+                "daysOfWeek": [
+                  0,
+                  6
+                ],
+                "timeRange": {
+                  "start": "08:00",
+                  "end": "23:00"
+                }
+              }
+            ],
+            "closures": [
+              {
+                "startDate": "2026-08-15T00:00:00Z",
+                "endDate": "2026-08-15T23:59:59Z"
+              }
+            ],
+            "sla": {
+              "min": "PT30M",
+              "max": "PT2H",
+              "unitBasis": "ORDER_CONFIRMATION"
+            },
+            "handling": [
+              "PERISHABLE",
+              "COLD_CHAIN",
+              "FRAGILE"
+            ],
+            "installationScheduling": {
+              "available": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

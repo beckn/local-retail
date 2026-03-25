@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "rcca": "https://schema.beckn.io/RetailContract#",
+    "@context": {
+      "@id": "rcca:@context"
+    },
+    "@type": {
+      "@id": "rcca:@type"
+    },
+    "ContractAttributes": "rcca:ContractAttributes",
+    "buyerInstructions": {
+      "@id": "rcca:buyerInstructions"
+    },
+    "deliveryPreferences": {
+      "@id": "rcca:deliveryPreferences"
+    },
+    "leaveAtDoor": {
+      "@id": "rcca:leaveAtDoor"
+    },
+    "contactless": {
+      "@id": "rcca:contactless"
+    },
+    "preferredTimeSlot": {
+      "@id": "rcca:preferredTimeSlot"
+    },
+    "timeSlotStart": {
+      "@id": "rcca:timeSlotStart"
+    },
+    "timeSlotEnd": {
+      "@id": "rcca:timeSlotEnd"
+    },
+    "gift": {
+      "@id": "rcca:gift"
+    },
+    "isGift": {
+      "@id": "rcca:isGift"
+    },
+    "giftMessage": {
+      "@id": "rcca:giftMessage"
+    },
+    "giftWrap": {
+      "@id": "rcca:giftWrap"
+    },
+    "invoicePreferences": {
+      "@id": "rcca:invoicePreferences"
+    },
+    "taxId": {
+      "@id": "rcca:taxId"
+    },
+    "taxIdScheme": {
+      "@id": "rcca:taxIdScheme"
+    },
+    "taxIdCountry": {
+      "@id": "rcca:taxIdCountry"
+    },
+    "taxIdValue": {
+      "@id": "rcca:taxIdValue"
+    },
+    "invoiceCompanyName": {
+      "@id": "rcca:invoiceCompanyName"
+    },
+    "invoiceEmail": {
+      "@id": "rcca:invoiceEmail"
+    },
+    "loyalty": {
+      "@id": "rcca:loyalty"
+    },
+    "loyaltyProgramId": {
+      "@id": "rcca:loyaltyProgramId"
+    },
+    "pointsRedeemed": {
+      "@id": "rcca:pointsRedeemed"
+    },
+    "source": {
+      "@id": "rcca:source"
+    },
+    "sourceChannel": {
+      "@id": "rcca:sourceChannel"
+    },
+    "campaignId": {
+      "@id": "rcca:campaignId"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rcra": "https://schema.beckn.io/RetailResource#",
+    "@context": {
+      "@id": "rcra:@context"
+    },
+    "@type": {
+      "@id": "rcra:@type"
+    },
+    "RetailResource": "rcra:RetailResource",
+    "FoodClassification": "rcra:FoodClassification",
+    "DimensionUnit": "rcra:DimensionUnit",
+    "ManufacturerOrPackerType": "rcra:ManufacturerOrPackerType",
+    "RegistrationRole": "rcra:RegistrationRole",
+    "AdditiveType": "rcra:AdditiveType",
+    "identity": {
+      "@id": "rcra:identity"
+    },
+    "dimensions": {
+      "@id": "rcra:dimensions"
+    },
+    "manufacturerOrPacker": {
+      "@id": "rcra:manufacturerOrPacker"
+    },
+    "brand": {
+      "@id": "rcra:brand"
+    },
+    "originCountry": {
+      "@id": "rcra:originCountry"
+    },
+    "physical": {
+      "@id": "rcra:physical"
+    },
+    "weight": {
+      "@id": "rcra:weight"
+    },
+    "volume": {
+      "@id": "rcra:volume"
+    },
+    "dimensionUnit": {
+      "@id": "rcra:dimensionUnit"
+    },
+    "length": {
+      "@id": "rcra:length"
+    },
+    "breadth": {
+      "@id": "rcra:breadth"
+    },
+    "height": {
+      "@id": "rcra:height"
+    },
+    "appearance": {
+      "@id": "rcra:appearance"
+    },
+    "color": {
+      "@id": "rcra:color"
+    },
+    "material": {
+      "@id": "rcra:material"
+    },
+    "finish": {
+      "@id": "rcra:finish"
+    },
+    "food": {
+      "@id": "rcra:food"
+    },
+    "foodClassification": {
+      "@id": "rcra:foodClassification"
+    },
+    "packagedGoodsDeclaration": {
+      "@id": "rcra:packagedGoodsDeclaration"
+    },
+    "manufacturerOrPackerType": {
+      "@id": "rcra:manufacturerOrPackerType"
+    },
+    "manufacturerOrPackerName": {
+      "@id": "rcra:manufacturerOrPackerName"
+    },
+    "manufacturerOrPackerId": {
+      "@id": "rcra:manufacturerOrPackerId"
+    },
+    "manufacturerOrPackerAddress": {
+      "@id": "rcra:manufacturerOrPackerAddress"
+    },
+    "commonOrGenericName": {
+      "@id": "rcra:commonOrGenericName"
+    },
+    "netQuantity": {
+      "@id": "rcra:netQuantity"
+    },
+    "manufacturePackingImportDate": {
+      "@id": "rcra:manufacturePackingImportDate"
+    },
+    "foodRegulatoryDeclaration": {
+      "@id": "rcra:foodRegulatoryDeclaration"
+    },
+    "registrations": {
+      "@id": "rcra:registrations"
+    },
+    "registrationScheme": {
+      "@id": "rcra:registrationScheme"
+    },
+    "registrationId": {
+      "@id": "rcra:registrationId"
+    },
+    "registrationRole": {
+      "@id": "rcra:registrationRole"
+    },
+    "registrationUrl": {
+      "@id": "rcra:registrationUrl"
+    },
+    "additives": {
+      "@id": "rcra:additives"
+    },
+    "additiveType": {
+      "@id": "rcra:additiveType"
+    },
+    "additiveValue": {
+      "@id": "rcra:additiveValue"
+    },
+    "additiveQuantity": {
+      "@id": "rcra:additiveQuantity"
+    },
+    "additiveNotes": {
+      "@id": "rcra:additiveNotes"
+    },
+    "credentials": {
+      "@id": "rcra:credentials"
+    },
+    "credentialType": {
+      "@id": "rcra:credentialType"
+    },
+    "credentialUri": {
+      "@id": "rcra:credentialUri"
+    },
+    "credentialIssuer": {
+      "@id": "rcra:credentialIssuer"
+    },
+    "credentialId": {
+      "@id": "rcra:credentialId"
+    }
+  }
+}

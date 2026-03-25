@@ -1,0 +1,40 @@
+{
+  "name": "RetailSettlement",
+  "title": "Retail Core Settlement Attributes",
+  "description": "Beckn v2.1 schema for retail settlement discharge records",
+  "namespace_prefix": "rcsa",
+  "namespace_uri": "https://schema.beckn.io/RetailSettlement#",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "container": "settlementAttributes",
+  "root_schema": "RetailSettlement",
+  "version": "2.1.0",
+  "schema_file": "attributes.yaml",
+  "context_file": "context.jsonld",
+  "vocab_file": "vocab.jsonld",
+  "renderer_file": "renderer.json",
+  "metadata": {
+    "author": "Beckn Foundation",
+    "license": "CC-BY-3.0",
+    "domain": "retail",
+    "created": "2026-03-25",
+    "updated": "2026-03-25"
+  },
+  "extensions": {
+    "settlementMethods": {
+      "type": "enum",
+      "values": [
+        "ONLINE",
+        "BANK_TRANSFER",
+        "COD_COLLECTION",
+        "ESCROW_RELEASE"
+      ],
+      "descriptions": {
+        "ONLINE": "Real-time online settlement through payment gateway",
+        "BANK_TRANSFER": "Settlement via bank transfer to merchant account",
+        "COD_COLLECTION": "Collection of cash and settlement with seller",
+        "ESCROW_RELEASE": "Release of funds held in escrow account"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "https://schema.beckn.io/HomeAndKitchenResource/v2.1",
+  "name": "Home and Kitchen Resource Attributes",
+  "version": "2.1.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["HomeAndKitchenResourceAttributes"],
+  "discovery_fields": ["installation.required", "warranty.duration", "usage.indoorOnly"],
+  "indexable_paths": [
+    "beckn:resourceAttributes.installation.required",
+    "beckn:resourceAttributes.installation.providedBySeller",
+    "beckn:resourceAttributes.warranty.type",
+    "beckn:resourceAttributes.warranty.duration",
+    "beckn:resourceAttributes.usage.indoorOnly",
+    "beckn:resourceAttributes.usage.outdoorOnly"
+  ],
+  "filterable_paths": [
+    "beckn:resourceAttributes.installation.required",
+    "beckn:resourceAttributes.warranty.type",
+    "beckn:resourceAttributes.usage.indoorOnly",
+    "beckn:resourceAttributes.usage.outdoorOnly"
+  ],
+  "sortable_paths": [
+    "beckn:resourceAttributes.warranty.duration"
+  ],
+  "privacy_notes": [
+    "Care instructions for some products may reference proprietary treatments or brand-specific products"
+  ]
+}
