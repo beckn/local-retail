@@ -1,0 +1,86 @@
+{
+  "context": {
+    "domain": "localretail:shopping",
+    "location": {
+      "country": {
+        "code": "FRA"
+      },
+      "city": {
+        "code": "std:33"
+      }
+    },
+    "action": "init",
+    "version": "1.1.0",
+    "bap_id": "osm-bap-id",
+    "bap_uri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bpp_id": "osm-bpp-id",
+    "bpp_uri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "message_id": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transaction_id": "8100d125-76a7-4588-88be-81b97657cd09",
+    "timestamp": "2023-11-06T09:41:09.708Z"
+  },
+  "message": {
+    "order": {
+      "provider": {
+        "id": "4c291e58-1bcb-4a5c-a2cf-17f0e3365421"
+      },
+      "items": [
+        {
+          "id": "d4186a6d-4f62-4925-9ec5-83a1eb45b7cb",
+          "quantity": {
+            "selected": {
+              "count": 1
+            }
+          }
+        }
+      ],
+      "fulfillments": [
+        {
+          "id": "2",
+          "stops": [
+            {
+              "location": {
+                "gps": "13.2008459,77.708736",
+                "address": "15 Rue Du Soleil, Paris, France",
+                "city": {
+                  "name": "Paris"
+                },
+                "state": {
+                  "name": "Paris"
+                },
+                "country": {
+                  "code": "FRA"
+                },
+                "area_code": "75020"
+              },
+              "contact": {
+                "phone": "0612345678",
+                "email": "lisa.k@gmail.com"
+              }
+            }
+          ],
+          "customer": {
+            "person": {
+              "name": "Lisa K"
+            },
+            "contact": {
+              "phone": "0612345678"
+            }
+          }
+        }
+      ],
+      "billing": {
+        "name": "Lisa K",
+        "phone": "0612345678",
+        "email": "lisa.k@gmail.com",
+        "address": "15 Rue Du Soleil, Paris, France",
+        "city": {
+          "name": "Paris"
+        },
+        "state": {
+          "name": "Paris"
+        }
+      }
+    }
+  }
+}
