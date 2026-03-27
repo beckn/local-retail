@@ -1,0 +1,502 @@
+{
+  "info": {
+    "_postman_id": "47ab8a1a-60fc-4d14-94a6-9f63708bcf67",
+    "name": "Beckn-2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2592938"
+  },
+  "item": [
+    {
+      "name": "Catalg Service",
+      "item": [
+        {
+          "name": "Subscription",
+          "item": [
+            {
+              "name": "Subscription API - Grocery",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/subscription\",\n        \"messageId\": \"a1eabf26-29f5-4a01-9d4e-4c5c9d1a3d99\",\n        \"transactionId\": \"2b4d69aa-22e4-4c78-9f56-5a7b9e2b2099\",\n        \"timestamp\": \"2026-03-26T10:00:00.000Z\",\n        \"bapId\": \"bap.myapp.in\",\n        \"bapUri\": \"http://catalog-publish:8080/catalog/push\"\n    },\n    \"message\": {\n        \"subscription\": {\n            \"networkIds\": [\n                \"retail-grocery\"\n            ],\n            \"schemaTypes\": [\n                \"GroceryItem\"\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{catalog-host}}/beckn/catalog/subscription",
+                  "host": [
+                    "{{catalog-host}}"
+                  ],
+                  "path": [
+                    "beckn",
+                    "catalog",
+                    "subscription"
+                  ]
+                },
+                "description": "Generated from cURL: curl --location 'http://localhost:3000/beckn/catalog/subscriptions' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"id\": \"ev-charging-root-sub-001\",\n    \"subscriber\": {\n        \"name\": \"EV Discovery Service\",\n        \"type\": \"NFO\",\n        \"url\": \"http://on-discovery-api:3000\"\n    },\n    \"networks\": [\n        {\n            \"id\": \"ev-charging\",\n            \"name\": \"EV Charging Network\"\n        }\n    ],\n    \"schema_types\": [\n        \"ChargingService\"\n    ],\n    \"callback_url\": \"http://on-discovery-api:3000/on_discover\"\n}'"
+              },
+              "response": []
+            },
+            {
+              "name": "Read Subscription",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{catalog-host}}/beckn/catalog/subscription/:id",
+                  "host": [
+                    "{{catalog-host}}"
+                  ],
+                  "path": [
+                    "beckn",
+                    "catalog",
+                    "subscription",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "511231b0-7d9e-4ba2-bb6a-84bca3d609f9"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Subscription",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{catalog-host}}/beckn/catalog/subscription/:id",
+                  "host": [
+                    "{{catalog-host}}"
+                  ],
+                  "path": [
+                    "beckn",
+                    "catalog",
+                    "subscription",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "7c62f1dc-d323-46e9-bce5-203012b52d2b"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "List Subsciptions for Subscriber",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{catalog-host}}/beckn/catalog/subscriptions?subscriberId=ec94cad1-b703-4a29-9215-283139e715f8",
+                  "host": [
+                    "{{catalog-host}}"
+                  ],
+                  "path": [
+                    "beckn",
+                    "catalog",
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "key": "subscriberId",
+                      "value": "ec94cad1-b703-4a29-9215-283139e715f8"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Catalog Publish",
+          "item": [
+            {
+              "name": "Catalog Master",
+              "item": [
+                {
+                  "name": "Publish - Grocery",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "{{Authorization}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/publish\",\n        \"timestamp\": \"2026-03-24T10:30:05Z\",\n        \"transactionId\": \"11111111-1111-1111-1111-111111111111\",\n        \"messageId\": \"22222222-2222-2222-2222-222222222222\",\n        \"bapId\": \"catalg.beckn.org\",\n        \"bapUri\": \"https://catalg.beckn.org/api\",\n        \"bppId\": \"bpp.freshmart.in\",\n        \"bppUri\": \"https://catalg.beckn.org/api\",\n        \"networkId\": \"retail-grocery\"\n    },\n    \"message\": {\n        \"catalogs\": [\n            {\n                \"id\": \"CAT-GROCERY-MASTER-002\",\n                \"descriptor\": {\n                    \"name\": \"FreshMart Grocery Master Catalog\",\n                    \"shortDesc\": \"Provider-agnostic grocery item definitions\"\n                },\n                \"provider\": {\n                    \"id\": \"PROV-FRESHMART-01\",\n                    \"descriptor\": {\n                        \"name\": \"FreshMart Pvt Ltd\"\n                    }\n                },\n                \"publishDirectives\": {\n                    \"catalogType\": \"master\"\n                },\n                \"resources\": [\n                    {\n                        \"@context\": \"https://schema.beckn.io/Resource/v2.0\",\n                        \"@type\": \"beckn:Resource\",\n                        \"id\": \"ITEM-GROCERY-COFFEE-MASTER-002\",\n                        \"descriptor\": {\n                            \"name\": \"Generic Coffee Powder\",\n                            \"shortDesc\": \"Master definition for coffee powders (instant / filter)\",\n                            \"longDesc\": \"Provider-agnostic master definition for coffee powders. Captures generic attributes like commodity name and dietary classification; brand-specific details live in regular overlays.\"\n                        },\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"category\": \"BEVERAGES\",\n                            \"commonOrGenericNameOfCommodity\": \"Coffee Powder\",\n                            \"dietaryClassification\": \"veg\",\n                            \"netQuantityOrMeasureInPackage\": {\n                                \"unitQuantity\": 12,\n                                \"unitText\": \"kg\",\n                                \"unitCode\": \"KGM\"\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Resource/v2.0\",\n                        \"@type\": \"beckn:Resource\",\n                        \"id\": \"ITEM-GROCERY-TEA-MASTER-002\",\n                        \"descriptor\": {\n                            \"name\": \"Generic Tea Powder\",\n                            \"shortDesc\": \"Master definition for tea powders (leaf / green / blended)\",\n                            \"longDesc\": \"Provider-agnostic master definition for tea powders. Captures generic attributes like commodity name and dietary classification; brand-specific details live in regular overlays.\"\n                        },\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"category\": \"BEVERAGES\",\n                            \"commonOrGenericNameOfCommodity\": \"Tea Powder\",\n                            \"dietaryClassification\": \"veg\",\n                            \"netQuantityOrMeasureInPackage\": {\n                                \"unitQuantity\": 10,\n                                \"unitText\": \"kg\",\n                                \"unitCode\": \"KGM\"\n                            }\n                        }\n                    }\n                ]\n            }\n        ]\n    }\n}"
+                    },
+                    "url": {
+                      "raw": "{{catalog-host}}/beckn/catalog/publish",
+                      "host": [
+                        "{{catalog-host}}"
+                      ],
+                      "path": [
+                        "beckn",
+                        "catalog",
+                        "publish"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Read - Master Resource",
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/master_search\",\n        \"timestamp\": \"2026-03-04T10:00:00Z\",\n        \"messageId\": \"msg-uuid\",\n        \"transactionId\": \"txn-uuid\",\n        \"bapId\": \"bpp.techmart.com\",\n        \"bapUri\": {{BapUri}}\n    },\n    \"message\": {\n        \"filters\": {\n            \"networkId\": [\n                \"retail-grocery\"\n            ],\n            \"schemaTypes\": [\n                \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld#GroceryItem\"\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{catalg-master-host}}/catalog/master/search",
+                      "host": [
+                        "{{catalg-master-host}}"
+                      ],
+                      "path": [
+                        "catalog",
+                        "master",
+                        "search"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Read By ID",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{catalg-master-host}}/catalog/master/ITEM-GROCERY-COFFEE-MASTER-002",
+                      "host": [
+                        "{{catalg-master-host}}"
+                      ],
+                      "path": [
+                        "catalog",
+                        "master",
+                        "ITEM-GROCERY-COFFEE-MASTER-002"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Read Master Resources",
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{catalg-master-host}}/catalog/master/schemaTypes",
+                      "host": [
+                        "{{catalg-master-host}}"
+                      ],
+                      "path": [
+                        "catalog",
+                        "master",
+                        "schemaTypes"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Catalog Regular",
+              "item": [
+                {
+                  "name": "Publish Regular - Grocery",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "{{Authorization}}",
+                        "disabled": true
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/publish\",\n        \"timestamp\": \"2026-03-24T10:30:05Z\",\n        \"transactionId\": \"2b4d69aa-22e4-4c78-9f56-5a7b9e2b2002\",\n        \"messageId\": \"a1eabf26-29f5-4a01-9d4e-4c5c9d1a3d02\",\n        \"bapId\": \"catalg.beckn.org\",\n        \"bapUri\": \"https://catalg.beckn.org/api\",\n        \"bppId\": \"bpp.freshmart.in\",\n        \"bppUri\": \"https://catalg.beckn.org/api\",\n        \"networkId\": \"retail-grocery\"\n    },\n    \"message\": {\n        \"catalogs\": [\n            {\n                \"id\": \"CAT-GROCERY-FRESHMART-002\",\n                \"descriptor\": {\n                    \"name\": \"FreshMart Grocery Catalog\",\n                    \"shortDesc\": \"Daily essentials \\u2014 grains, vegetables & dairy\"\n                },\n                \"provider\": {\n                    \"id\": \"PROV-FRESHMART-01\",\n                    \"descriptor\": {\n                        \"name\": \"FreshMart Pvt Ltd\"\n                    },\n                    \"availableAt\": [\n                        {\n                            \"geo\": {\n                                \"type\": \"Point\",\n                                \"coordinates\": [\n                                    77.6401,\n                                    12.9116\n                                ]\n                            },\n                            \"address\": {\n                                \"streetAddress\": \"27th Main Rd, Sector 2, HSR Layout\",\n                                \"addressLocality\": \"Bengaluru\",\n                                \"addressRegion\": \"Karnataka\",\n                                \"postalCode\": \"560102\",\n                                \"addressCountry\": \"IN\"\n                            }\n                        }\n                    ]\n                },\n                \"resources\": [\n                    {\n                        \"id\": \"ITEM-GROCERY-BRU-COFFEE-002\",\n                        \"descriptor\": {\n                            \"name\": \"Bru Gold Instant Coffee Powder\",\n                            \"shortDesc\": \"Rich and aromatic instant coffee powder, 200g\",\n                            \"longDesc\": \"Bru Gold is a premium blend of coffee and chicory, crafted for those who love a rich, flavourful cup. Made from handpicked coffee beans roasted to perfection, this instant coffee powder dissolves quickly to give you a smooth, aromatic brew every time. Whether you prefer your coffee black or with milk, Bru Gold delivers a satisfying coffee experience. Perfect for filter coffee, cappuccino, or a classic South Indian style coffee.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://www.jiomart.com/images/product/original/599173064/599173064.jpg\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-FRESHMART-01\",\n                            \"descriptor\": {\n                                \"name\": \"FreshMart Pvt Ltd\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.1,\n                            \"ratingCount\": 18200,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        77.6401,\n                                        12.9116\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"27th Main Rd, Sector 2, HSR Layout\",\n                                    \"addressLocality\": \"Bengaluru\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"560102\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Hindustan Unilever Limited\",\n                                \"id\": \"HUL-KA-1001\",\n                                \"address\": {\n                                    \"streetAddress\": \"HUL House, 165-166 Backbay Reclamation\",\n                                    \"addressLocality\": \"Mumbai\",\n                                    \"addressRegion\": \"Maharashtra\",\n                                    \"postalCode\": \"400020\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 1,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-NESCAFE-002\",\n                        \"descriptor\": {\n                            \"name\": \"Nescafe Classic Instant Coffee\",\n                            \"shortDesc\": \"Pure soluble coffee, bold and rich, 100g\",\n                            \"longDesc\": \"Nescafe Classic is made from 100% pure coffee beans, carefully selected and roasted to deliver a bold, rich flavour in every cup. This instant coffee dissolves instantly in hot or cold water, making it ideal for a quick coffee fix anytime. The deep roast brings out natural coffee aromas that energise your mornings. Loved by coffee enthusiasts across India, Nescafe Classic is the trusted choice for a consistently great cup of coffee.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://m.media-amazon.com/images/S/aplus-media/vc/bb6a0196-cad0-4395-b85e-134ef725c0f7._CR0,0,1251,1251_PT0_SX300__.png\",\n                                    \"mimeType\": \"image/png\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-MYSORE-MART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Mysore Mart Pvt Ltd\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.1,\n                            \"ratingCount\": 32500,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        76.6394,\n                                        12.2958\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"12 Sayyaji Rao Road, Devaraja Market\",\n                                    \"addressLocality\": \"Mysore\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"570001\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Nestle India Limited\",\n                                \"id\": \"NESTLE-KA-2002\",\n                                \"address\": {\n                                    \"streetAddress\": \"100/101 World Trade Centre, Barakhamba Lane\",\n                                    \"addressLocality\": \"New Delhi\",\n                                    \"addressRegion\": \"Delhi\",\n                                    \"postalCode\": \"110001\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 2,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-TATA-TEA-002\",\n                        \"descriptor\": {\n                            \"name\": \"Tata Tea Premium Leaf\",\n                            \"shortDesc\": \"Strong and fresh tea powder, 500g\",\n                            \"longDesc\": \"Tata Tea Premium is a carefully blended tea made from the finest tea leaves sourced from the lush gardens of Assam and Darjeeling. Its strong, invigorating brew and fresh aroma make it the perfect start to your day. The unique blend of long and short tea leaves ensures a rich, full-bodied cup with a bright golden colour. Ideal for making masala chai, ginger tea, or a simple refreshing cup of plain tea. Tata Tea Premium is the most trusted tea brand in Indian households.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&q=80\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-MYSORE-MART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Mysore Mart Pvt Ltd\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.4,\n                            \"ratingCount\": 27800,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        76.6527,\n                                        12.3116\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"45 Ashoka Road, Nazarbad\",\n                                    \"addressLocality\": \"Mysore\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"570010\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Tata Consumer Products Limited\",\n                                \"id\": \"TATA-KA-3003\",\n                                \"address\": {\n                                    \"streetAddress\": \"1 Bishop Lefroy Road\",\n                                    \"addressLocality\": \"Kolkata\",\n                                    \"addressRegion\": \"West Bengal\",\n                                    \"postalCode\": \"700020\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 1,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-CCCD-COFFEE-002\",\n                        \"descriptor\": {\n                            \"name\": \"Continental Xtra Instant Coffee Powder\",\n                            \"shortDesc\": \"Bold south Indian filter coffee powder \\u2014 coffee and chicory blend, 200g\",\n                            \"longDesc\": \"Continental Xtra Instant Coffee Powder is the go-to coffee for authentic South Indian filter coffee lovers. This classic coffee-chicory blend is known for its exceptional bold strength and deep, roasted aroma. It brews into a dark, full-bodied cup of coffee that pairs beautifully with hot milk to make the iconic tumbler-davara coffee. Continental Xtra instant coffee dissolves instantly, making it easy to prepare a perfect cup of South Indian coffee every morning. Whether you are a daily coffee drinker or an occasional coffee enthusiast, Continental Xtra coffee powder delivers the rich, robust flavour of freshly brewed filter coffee in seconds. A top-rated instant coffee brand trusted by coffee lovers across South India for over three decades.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"category\": {\n                            \"codeValue\": \"INSTANT_COFFEE\",\n                            \"name\": \"Instant Coffee\"\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-KORAMANGALA-STORE-01\",\n                            \"descriptor\": {\n                                \"name\": \"Koramangala Grocery Hub\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.1,\n                            \"ratingCount\": 14200,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        77.6245,\n                                        12.9352\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"80 Feet Road, Koramangala 4th Block\",\n                                    \"addressLocality\": \"Bengaluru\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"560034\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        77.6408,\n                                        12.9784\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"100 Feet Road, Indiranagar\",\n                                    \"addressLocality\": \"Bengaluru\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"560038\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"productType\": \"Instant Coffee Powder\",\n                            \"beverageType\": \"Coffee\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Continental Coffee Pvt Ltd\",\n                                \"id\": \"CCL-KA-4004\",\n                                \"address\": {\n                                    \"streetAddress\": \"Continental House, Vittal Mallya Road\",\n                                    \"addressLocality\": \"Bengaluru\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"560001\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"commonOrGenericNameOfCommodity\": \"Instant Coffee and Chicory Powder\",\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 2,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-DAVIDOFF-002\",\n                        \"descriptor\": {\n                            \"name\": \"Davidoff Fine Aroma Instant Coffee\",\n                            \"shortDesc\": \"Premium mild Arabica instant coffee with a refined aroma, 100g\",\n                            \"longDesc\": \"Davidoff Fine Aroma Instant Coffee is a premium coffee experience for the discerning coffee drinker. Crafted from carefully selected high-altitude Arabica coffee beans, this instant coffee delivers a smooth, mild, and subtly sweet cup with a distinctively refined aroma. Unlike regular instant coffee, Davidoff Fine Aroma is less bitter and more fragrant \\u2014 the moment you open the jar, the fine coffee aroma fills the room. Each sip of this premium coffee is a sensory journey: light-bodied, aromatic, and satisfying. Perfect for those who prefer a sophisticated, European-style coffee over strong espresso. Davidoff coffee is trusted globally for its commitment to quality and the art of great coffee. Ideal as a morning coffee, afternoon coffee, or any-time coffee for those who appreciate nuance.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&q=80\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"category\": {\n                            \"codeValue\": \"INSTANT_COFFEE\",\n                            \"name\": \"Instant Coffee\"\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-CHENNAI-SUPERMART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Chennai Supermart\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.6,\n                            \"ratingCount\": 8900,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        80.2707,\n                                        13.0827\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"Anna Salai, Teynampet\",\n                                    \"addressLocality\": \"Chennai\",\n                                    \"addressRegion\": \"Tamil Nadu\",\n                                    \"postalCode\": \"600018\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"productType\": \"Instant Coffee\",\n                            \"beverageType\": \"Coffee\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Jacobs Douwe Egberts\",\n                                \"id\": \"JDE-TN-5005\",\n                                \"address\": {\n                                    \"streetAddress\": \"JDE House, Mount Road\",\n                                    \"addressLocality\": \"Chennai\",\n                                    \"addressRegion\": \"Tamil Nadu\",\n                                    \"postalCode\": \"600002\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 3,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial flavours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-WAGH-BAKRI-002\",\n                        \"descriptor\": {\n                            \"name\": \"Wagh Bakri Premium Leaf Tea\",\n                            \"shortDesc\": \"Aromatic Assam-Nilgiri blend premium leaf tea, 500g\",\n                            \"longDesc\": \"Wagh Bakri Premium Leaf Tea is a carefully crafted blend of fresh tea leaves sourced from the finest gardens of Assam and the Nilgiris. The result is a beautifully balanced cup of tea \\u2014 neither too strong nor too mild \\u2014 that is perfect for all tea lovers. The distinctive golden brew and refreshing aroma keep you energised throughout the day. Great for masala chai, ginger tea, plain morning tea, or iced tea. Wagh Bakri has been one of India's most trusted and loved tea brands for generations, with a legacy of delivering consistent quality and freshness in every cup of tea.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://www.bbassets.com/media/uploads/p/xl/30009197_5-wagh-bakri-premium-leaf-tea.jpg\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"category\": {\n                            \"codeValue\": \"LEAF_TEA\",\n                            \"name\": \"Leaf Tea\"\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-HYDERABAD-FRESH-01\",\n                            \"descriptor\": {\n                                \"name\": \"Hyderabad Fresh Mart\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.5,\n                            \"ratingCount\": 21300,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        78.4867,\n                                        17.385\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"Banjara Hills Road No. 12\",\n                                    \"addressLocality\": \"Hyderabad\",\n                                    \"addressRegion\": \"Telangana\",\n                                    \"postalCode\": \"500034\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"productType\": \"Leaf Tea\",\n                            \"beverageType\": \"Tea\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Wagh Bakri Tea Group\",\n                                \"id\": \"WB-TG-6006\",\n                                \"address\": {\n                                    \"streetAddress\": \"Wagh Bakri House, Ellis Bridge\",\n                                    \"addressLocality\": \"Ahmedabad\",\n                                    \"addressRegion\": \"Gujarat\",\n                                    \"postalCode\": \"380006\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"commonOrGenericNameOfCommodity\": \"Premium Leaf Tea\",\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 2,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    },\n                    {\n                        \"id\": \"ITEM-GROCERY-GREEN-TEA-002\",\n                        \"descriptor\": {\n                            \"name\": \"Lipton Green Tea Bags\",\n                            \"shortDesc\": \"Light refreshing antioxidant-rich green tea bags, 25 bags\",\n                            \"longDesc\": \"Lipton Green Tea Bags are made from hand-picked young tea leaves that are gently processed to lock in their natural antioxidants and delicate grassy flavour. Each green tea bag brews in just 2 minutes into a light, clean, and refreshing cup with a subtle floral note. Lipton Green Tea is naturally rich in antioxidants and a healthier alternative to regular chai. A great morning or evening tea that supports wellness without compromising on taste. Available in convenient, individually sealed tea bags so every cup is as fresh as the first. Best enjoyed as plain green tea or with a slice of lemon for an uplifting herbal tea experience.\",\n                            \"mediaFile\": [\n                                {\n                                    \"uri\": \"https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=400&q=80\",\n                                    \"mimeType\": \"image/jpeg\",\n                                    \"label\": \"Product image\"\n                                }\n                            ]\n                        },\n                        \"category\": {\n                            \"codeValue\": \"GREEN_TEA\",\n                            \"name\": \"Green Tea\"\n                        },\n                        \"provider\": {\n                            \"id\": \"PROV-MYSORE-MART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Mysore Mart Pvt Ltd\"\n                            }\n                        },\n                        \"rating\": {\n                            \"ratingValue\": 4.2,\n                            \"ratingCount\": 19700,\n                            \"bestRating\": 5,\n                            \"worstRating\": 1\n                        },\n                        \"availableAt\": [\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        76.6394,\n                                        12.2958\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"12 Sayyaji Rao Road, Devaraja Market\",\n                                    \"addressLocality\": \"Mysore\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"570001\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            {\n                                \"@type\": \"beckn:Location\",\n                                \"geo\": {\n                                    \"type\": \"Point\",\n                                    \"coordinates\": [\n                                        76.6527,\n                                        12.3116\n                                    ]\n                                },\n                                \"address\": {\n                                    \"streetAddress\": \"45 Ashoka Road, Nazarbad\",\n                                    \"addressLocality\": \"Mysore\",\n                                    \"addressRegion\": \"Karnataka\",\n                                    \"postalCode\": \"570010\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            }\n                        ],\n                        \"resourceAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryItem/v1/context.jsonld\",\n                            \"@type\": \"GroceryItem\",\n                            \"productType\": \"Green Tea Bags\",\n                            \"beverageType\": \"Green Tea\",\n                            \"manufacturerOrPacker\": {\n                                \"type\": \"manufacturer\",\n                                \"name\": \"Unilever India Exports Limited\",\n                                \"id\": \"LIPTON-KA-7007\",\n                                \"address\": {\n                                    \"streetAddress\": \"HUL House, 165-166 Backbay Reclamation\",\n                                    \"addressLocality\": \"Mumbai\",\n                                    \"addressRegion\": \"Maharashtra\",\n                                    \"postalCode\": \"400020\",\n                                    \"addressCountry\": \"IN\"\n                                }\n                            },\n                            \"commonOrGenericNameOfCommodity\": \"Green Tea Bags\",\n                            \"manufacturePackingImportDate\": {\n                                \"month\": 1,\n                                \"year\": 2026\n                            },\n                            \"additivesInfo\": \"No artificial colours, no preservatives\"\n                        }\n                    }\n                ],\n                \"offers\": [\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-BREAKFAST-BUNDLE-002\",\n                        \"descriptor\": {\n                            \"name\": \"Coffee Lovers Bundle\",\n                            \"shortDesc\": \"Bru Gold + Nescafe Classic at 15% off - your morning coffee essentials\"\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-BRU-COFFEE-002\",\n                            \"ITEM-GROCERY-NESCAFE-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-FRESHMART-01\",\n                            \"descriptor\": {\n                                \"name\": \"FreshMart Pvt Ltd\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 97.75,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"15%\",\n                                \"originalPrice\": 115\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-STAPLES-SAVER-002\",\n                        \"descriptor\": {\n                            \"name\": \"Hot Beverages Pack\",\n                            \"shortDesc\": \"Nescafe Classic + Tata Tea Premium combo - 10% off on your daily beverages\"\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-NESCAFE-002\",\n                            \"ITEM-GROCERY-TATA-TEA-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-FRESHMART-01\",\n                            \"descriptor\": {\n                                \"name\": \"FreshMart Pvt Ltd\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 304.2,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"10%\",\n                                \"originalPrice\": 338\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-CONTINENTAL-DEAL-002\",\n                        \"descriptor\": {\n                            \"name\": \"Continental Coffee Offer\",\n                            \"shortDesc\": \"5% off on Continental Xtra Instant Coffee Powder\"\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-CCCD-COFFEE-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-KORAMANGALA-STORE-01\",\n                            \"descriptor\": {\n                                \"name\": \"Koramangala Store\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 190,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"5%\",\n                                \"originalPrice\": 200\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-DAVIDOFF-DEAL-002\",\n                        \"descriptor\": {\n                            \"name\": \"Davidoff Premium Coffee Offer\",\n                            \"shortDesc\": \"5% off on Davidoff Fine Aroma Instant Coffee\"\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-DAVIDOFF-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-CHENNAI-SUPERMART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Chennai Supermart\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 475,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"5%\",\n                                \"originalPrice\": 500\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-WAGH-BAKRI-DEAL-002\",\n                        \"descriptor\": {\n                            \"name\": \"Wagh Bakri Tea Offer\",\n                            \"shortDesc\": \"5% off on Wagh Bakri Premium Leaf Tea\"\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-WAGH-BAKRI-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-HYDERABAD-FRESH-01\",\n                            \"descriptor\": {\n                                \"name\": \"Hyderabad Fresh Store\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 237.5,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"5%\",\n                                \"originalPrice\": 250\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    },\n                    {\n                        \"@context\": \"https://schema.beckn.io/Offer/v2.1/context.jsonld\",\n                        \"@type\": \"beckn:Offer\",\n                        \"id\": \"OFFER-GROCERY-LIPTON-DEAL-002\",\n                        \"descriptor\": {\n                            \"name\": \"Lipton Green Tea Offer\"\n                            // \"shortDesc\": \"10% off on Lipton Green Tea Bags\",\n                        },\n                        \"resourceIds\": [\n                            \"ITEM-GROCERY-GREEN-TEA-002\"\n                        ],\n                        \"provider\": {\n                            \"id\": \"PROV-MYSORE-MART-01\",\n                            \"descriptor\": {\n                                \"name\": \"Mysore Mart\"\n                            }\n                        },\n                        \"validity\": {\n                            \"startDate\": \"2026-03-04T00:00:00Z\",\n                            \"endDate\": \"2026-03-31T23:59:59Z\"\n                        },\n                        \"offerAttributes\": {\n                            \"@context\": \"https://becknprotocol.io/schema/GroceryOffer/v1/context.jsonld\",\n                            \"@type\": \"GroceryOffer\",\n                            \"priceSpecification\": {\n                                \"price\": 142.5,\n                                \"priceCurrency\": \"INR\",\n                                \"discount\": \"5%\",\n                                \"originalPrice\": 150\n                            },\n                            \"eligibleQuantity\": {\n                                \"minOrderQuantity\": 1\n                            },\n                            \"tariffModel\": \"FLAT_DISCOUNT\",\n                            \"buyerFinderFee\": {\n                                \"feeType\": \"PERCENTAGE\",\n                                \"feeValue\": 2\n                            }\n                        }\n                    }\n                ],\n                \"publishDirectives\": {\n                    \"catalogType\": \"regular\"\n                    // \"resourceDirectives\": [\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-BRU-COFFEE-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-COFFEE-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-NESCAFE-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-COFFEE-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-CCCD-COFFEE-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-COFFEE-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-DAVIDOFF-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-COFFEE-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-TATA-TEA-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-TEA-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-WAGH-BAKRI-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-TEA-MASTER-002\"\n                    //         }\n                    //     },\n                    //     {\n                    //         \"resourceId\": \"ITEM-GROCERY-GREEN-TEA-002\",\n                    //         \"extends\": {\n                    //             \"masterResourceId\": \"ITEM-GROCERY-TEA-MASTER-002\"\n                    //         }\n                    //     }\n                    // ]\n                }\n            }\n        ]\n    }\n}"
+                    },
+                    "url": {
+                      "raw": "{{catalog-host}}/beckn/catalog/publish",
+                      "host": [
+                        "{{catalog-host}}"
+                      ],
+                      "path": [
+                        "beckn",
+                        "catalog",
+                        "publish"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Catalog Pull",
+              "item": [
+                {
+                  "name": "Full mode pull",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/pull\",\n        \"messageId\": \"11111111-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\n        \"transactionId\": \"22222222-aaaa-aaaa-aaaa-aaaaaaaaaaaa\",\n        \"timestamp\": \"2026-03-26T12:00:00Z\",\n        \"bapId\": \"bap.test.in\",\n        \"bapUri\": \"{{BapUri}}\"\n    },\n    \"message\": {\n        \"mode\": \"FULL\",\n        \"filters\": {\n            \"networkIds\": [\n                \"retail-grocery\"\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{catalog-host}}/catalog/pull",
+                      "host": [
+                        "{{catalog-host}}"
+                      ],
+                      "path": [
+                        "catalog",
+                        "pull"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Incremental Pull",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"catalog/pull\",\n        \"messageId\": \"55555555-cccc-cccc-cccc-cccccccccccc\",\n        \"transactionId\": \"66666666-cccc-cccc-cccc-cccccccccccc\",\n        \"timestamp\": \"2026-03-19T12:10:00Z\",\n        \"bapId\": \"bap.homediscovery.in\",\n        \"bapUri\": \"{{BapUri}}\"\n    },\n    \"message\": {\n        \"mode\": \"INCREMENTAL\",\n        \"fromDate\": \"2026-03-19T10:00:00Z\",\n        \"toDate\": \"2026-03-26T12:00:00Z\",\n        \"filters\": {\n            \"schemaTypes\": [\n                \"GroceryItem\"\n            ]\n        }\n    }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{catalog-host}}/catalog/pull",
+                      "host": [
+                        "{{catalog-host}}"
+                      ],
+                      "path": [
+                        "catalog",
+                        "pull"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Discovery Service",
+      "item": [
+        {
+          "name": "Discover - Text Search",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"discover\",\n        \"timestamp\": \"2024-01-15T10:30:00Z\",\n        \"messageId\": \"bb9f86db-9a3d-4e9c-8c11-81c8f1a7b901\",\n        \"transactionId\": \"f9d1e7f3-5f1a-4d23-9f10-31b72c0b0c01\",\n        \"bapId\": \"bap.example.com\",\n        \"bapUri\": \"https://bap.example.com\",\n        \"networkId\": \"retail-grocery\",\n        \"schemaContext\": []\n    },\n    \"message\": {\n        \"intent\": {\n            \"textSearch\": \"assam darjeeling tea\"\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "{{discover_host}}/beckn/discover",
+              "host": [
+                "{{discover_host}}"
+              ],
+              "path": [
+                "beckn",
+                "discover"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Discover - Spatial Query",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"discover\",\n        \"timestamp\": \"2024-01-15T10:30:00Z\",\n        \"messageId\": \"bb9f86db-9a3d-4e9c-8c11-81c8f1a7b901\",\n        \"transactionId\": \"f9d1e7f3-5f1a-4d23-9f10-31b72c0b0c01\",\n        \"bapId\": \"bap.example.com\",\n        \"bapUri\": \"\",\n        \"networkId\": \"retail-grocery\",\n        \"schemaContext\": []\n    },\n    \"message\": {\n        \"intent\": {\n            \"spatial\": [\n                {\n                    \"op\": \"s_dwithin\",\n                    \"targets\": \"$.catalogs[*].resources[*].availableAt[*].geo\",\n                    \"geometry\": {\n                        \"type\": \"Point\",\n                        \"coordinates\": [\n                            76.6527,\n                            12.3116\n                        ]\n                    },\n                    \"distanceMeters\": 1000\n                }\n            ]\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "{{discover_host}}/beckn/discover",
+              "host": [
+                "{{discover_host}}"
+              ],
+              "path": [
+                "beckn",
+                "discover"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Discover - JSONPath",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"version\": \"2.0.0\",\n        \"action\": \"discover\",\n        \"timestamp\": \"2026-03-26T12:00:00Z\",\n        \"messageId\": \"bb9f86db-9a3d-4e9c-8c11-81c8f1a7b901\",\n        \"transactionId\": \"f9d1e7f3-5f1a-4d23-9f10-31b72c0b0c01\",\n        \"bapId\": \"bap.example.com\",\n        \"bapUri\": \"https://bap.example.com\",\n        \"networkId\": \"retail-grocery\",\n        \"schemaContext\": []\n    },\n    \"message\": {\n        \"intent\": {\n            \"filters\": {\n                \"type\": \"jsonpath\",\n                \"expression\": \"$.catalogs[*].offers[*] ? (@.offerAttributes.tariffModel == 'FLAT_DISCOUNT' && @.offerAttributes.priceSpecification.price < 100)\"\n            }\n        }\n    }\n}"
+            },
+            "url": {
+              "raw": "{{discover_host}}/beckn/discover",
+              "host": [
+                "{{discover_host}}"
+              ],
+              "path": [
+                "beckn",
+                "discover"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "catalog-host",
+      "value": "https://fabric.nfh.global",
+      "description": "Beckn Catalg service host (catalog publish, subscription)"
+    },
+    {
+      "key": "discover-host",
+      "value": "https://34.14.221.66.sslip.io/"
+    },
+    {
+      "key": "BapUri",
+      "value": "",
+      "description": "BAP callback push URL (uppercase alias)"
+    },
+    {
+      "key": "BppUri",
+      "value": "",
+      "description": "BPP catalog push URI"
+    },
+    {
+      "key": "catalg-master-host",
+      "value": "https://fabric.nfh.global",
+      "description": "Beckn Catalg master resource service host"
+    },
+    {
+      "key": "discover_host",
+      "value": "https://34.14.221.66.sslip.io/",
+      "description": "Beckn Discovr service host (discover endpoint)"
+    },
+    {
+      "key": "catalg-host",
+      "value": ""
+    },
+    {
+      "key": "bapPushUri",
+      "value": "https://34.14.221.66.sslip.io/catalog/push"
+    }
+  ]
+}
