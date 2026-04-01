@@ -1,0 +1,194 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "init",
+    "domain": "Beckn.one/testnet",
+    "timestamp": "2023-11-06T09:45:40.407Z",
+    "messageId": "06f49c01-65b7-4754-8b37-ab4e33688154",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "farm-fresh-bap-id",
+    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bppId": "farm-fresh-bpp-subId",
+    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "ttl": "PT30S"
+  },
+  "message": {
+    "contract": {
+      "status": {
+        "code": "DRAFT"
+      },
+      "participants": [
+        {
+          "id": "provider-venky-bazaar",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
+            "@type": "Participant",
+            "telephone": "+91 9876543210"
+          }
+        },
+        {
+          "id": "buyer-motiur-rehman",
+          "descriptor": {
+            "name": "Motiur Rehman"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
+            "@type": "Participant",
+            "email": "nc.rehman@gmail.com",
+            "telephone": "+919191223433"
+          }
+        }
+      ],
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow"
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ],
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow"
+            },
+            "provider": {
+              "id": "provider-venky-bazaar",
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
+            },
+            "offerAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@type": "RetailOffer",
+              "policies": {
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": [
+                "2026-01-26",
+                "2026-08-15",
+                "2026-12-25"
+              ]
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@type": "RetailCommitment",
+            "lineId": "LINE-001",
+            "resourceId": "item-flask-mh500-yellow",
+            "quantity": {
+              "unitCode": "EA",
+              "unitQuantity": 2
+            }
+          }
+        }
+      ],
+      "performance": [
+        {
+          "id": "f1",
+          "status": {
+            "code": "PENDING"
+          },
+          "commitmentIds": [
+            "commitment-flask-001"
+          ],
+          "performanceAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@type": "PerformanceAttributes",
+            "supportedPerformanceModes": [
+              "DELIVERY"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "streetAddress": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block",
+                "addressLocality": "Gangamuthanahalli",
+                "addressRegion": "Karnataka",
+                "postalCode": "560300",
+                "addressCountry": "IND"
+              },
+              "contact": {
+                "name": "Motiur Rehman",
+                "phone": "+919246394908"
+              }
+            },
+            "operatingHours": [
+              {
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "timeRange": {
+                  "start": "09:00",
+                  "end": "21:00"
+                }
+              }
+            ],
+            "installationScheduling": {
+              "available": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

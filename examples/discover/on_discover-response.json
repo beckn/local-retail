@@ -1,0 +1,158 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "on_discover",
+    "domain": "Beckn.one/testnet",
+    "timestamp": "2023-11-06T09:41:09.708Z",
+    "messageId": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "farm-fresh-bap-id",
+    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bppId": "farm-fresh-bpp-subId",
+    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "catalogs": [
+      {
+        "id": "catalog-hbo-001",
+        "descriptor": {
+          "name": "HBO",
+          "shortDesc": "Electronics and home goods catalog"
+        },
+        "provider": {
+          "id": "provider-venky-bazaar",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          }
+        },
+        "validity": {
+          "startDate": "2023-01-01T00:00:00Z",
+          "endDate": "2023-12-31T23:59:59Z"
+        },
+        "resources": [
+          {
+            "id": "item-flask-mh500-yellow",
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle",
+              "shortDesc": "InstaCuppa Stainless Steel Thermos Flask Water Bottle with Sports Sipper Lid, Double Walled Vacuum Insulation",
+              "longDesc": "<div> <ul> <li>ULTRA MODERN DESIGN - Our thermos bottle is crafted with a unique and modern design. Gone are the days of old and boring flasks. Guaranteed to impress your colleagues, friends & family.</li> <li>ADVANCED TEMPERATURE CONTROL – A double-wall, vacuum-insulated design helps lock in heat for up to 12 hours and cold for up to 24!</li> <li>ELIMINATES CONDENSATION – Offering improved grip and control, these innovative dual-layer bottles offer a slip-resistant surface that's free of sweat and condensation..</li> <li>LEAK-PROOF and ECO-FRIENDLY – Remove, and clean, the large, screw on lid provides faster access to water inside and won't spill a drop even when it's tipped upside or put in your gym bag.</li> <li>The distress quilted jacket is a versatile fashion choice you can wear on any occasion. A style essential piece for Women which will reveal your strong sense of personality</li> </ul> <div> <p><b>Product Details</b></p> <ul> <li>Advanced Temperature Retention.This thermos water bottle ensures your beverages will remain hot or cold for a long time.Hot for up to 12 hours.Cold for up to 24 hours.</li> <li>Retains Original Flavors.Vacuum insulation ensures this travel thermos water bottle is airtight and retains the original flavor of your beverages.Also, this bottle is B.P.A Free.</li> <li>Premium Quality Materials.This stylish bottle is a double-walled vacuum insulated and made from premium 304-grade stainless steel - which makes this flask bottle.</li> </ul> </div>",
+              "mediaFile": [
+                {
+                  "label": "Product Image",
+                  "mimeType": "image/jpeg",
+                  "uri": "https://tourism-bpp-infra2.becknprotocol.io/attachments/view/253.jpg"
+                }
+              ]
+            },
+            "resourceAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld",
+              "@type": "RetailResource",
+              "identity": {
+                "brand": "InstaCuppa",
+                "originCountry": "IN"
+              },
+              "physical": {
+                "weight": {
+                  "value": 350,
+                  "unit": "G"
+                },
+                "volume": {
+                  "value": 500,
+                  "unit": "ML"
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 25,
+                  "breadth": 7,
+                  "height": 7
+                },
+                "appearance": {
+                  "color": "Yellow",
+                  "material": "Stainless Steel",
+                  "finish": "Matte"
+                }
+              },
+              "packagedGoodsDeclaration": {
+                "manufacturerOrPacker": {
+                  "type": "MANUFACTURER",
+                  "name": "InstaCuppa India Pvt Ltd",
+                  "address": "Bangalore, Karnataka, IN"
+                },
+                "commonOrGenericName": "Stainless Steel Vacuum Flask",
+                "netQuantity": {
+                  "value": 500,
+                  "unit": "ML"
+                }
+              }
+            }
+          }
+        ],
+        "offers": [
+          {
+            "id": "offer-flask-mh500-yellow",
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow"
+            },
+            "resourceIds": ["item-flask-mh500-yellow"],
+            "provider": {
+              "id": "provider-venky-bazaar",
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
+            },
+            "validity": {
+              "startDate": "2023-01-01T00:00:00Z",
+              "endDate": "2023-12-31T23:59:59Z"
+            },
+            "offerAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@type": "RetailOffer",
+              "policies": {
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": ["2026-01-26", "2026-08-15", "2026-12-25"]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "on_support",
+    "domain": "Beckn.one/testnet",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "messageId": "1f507212-23fe-4acc-a34e-d25b459ad105",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "farm-fresh-bap-id",
+    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bppId": "farm-fresh-bpp-subId",
+    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "support": {
+      "orderId": "894789-43954",
+      "descriptor": {
+        "code": "ORDER_SUPPORT",
+        "name": "Order Support"
+      },
+      "channels": [
+        {
+          "@context": "https://schema.beckn.io/",
+          "@type": "beckn:SupportChannel",
+          "type": "PHONE",
+          "value": "+91 9876543298",
+          "hours": "24/7"
+        },
+        {
+          "@context": "https://schema.beckn.io/",
+          "@type": "beckn:SupportChannel",
+          "type": "EMAIL",
+          "value": "abcd.support@support.com",
+          "hours": "24/7"
+        },
+        {
+          "@context": "https://schema.beckn.io/",
+          "@type": "beckn:SupportChannel",
+          "type": "WEB",
+          "value": "https://support.example.com",
+          "hours": "24/7"
+        },
+        {
+          "@context": "https://schema.beckn.io/",
+          "@type": "beckn:SupportChannel",
+          "type": "CHAT",
+          "value": "https://support.example.com/chat",
+          "hours": "24/7"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "on_status",
+    "domain": "Beckn.one/testnet",
+    "timestamp": "2023-11-06T14:45:33.210Z",
+    "messageId": "d9b3e5f2-0e4c-5f9b-c2d7-6g3e9b4f8c01",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "farm-fresh-bap-id",
+    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bppId": "farm-fresh-bpp-subId",
+    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "contract": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "status": {
+        "code": "COMPLETE"
+      },
+      "participants": [
+        {
+          "id": "provider-venky-bazaar",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
+            "@type": "Participant",
+            "telephone": "+91 9876543210"
+          }
+        },
+        {
+          "id": "buyer-motiur-rehman",
+          "descriptor": {
+            "name": "Motiur Rehman"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
+            "@type": "Participant",
+            "email": "nc.rehman@gmail.com",
+            "telephone": "+919191223433"
+          }
+        }
+      ],
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "CLOSED"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow",
+              "descriptor": {
+                "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle"
+              },
+              "resourceAttributes": {
+                "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld",
+                "@type": "RetailResource",
+                "identity": {
+                  "brand": "InstaCuppa",
+                  "originCountry": "IN"
+                },
+                "physical": {
+                  "weight": {
+                    "value": 350,
+                    "unit": "G"
+                  },
+                  "volume": {
+                    "value": 500,
+                    "unit": "ML"
+                  },
+                  "appearance": {
+                    "color": "Yellow",
+                    "material": "Stainless Steel",
+                    "finish": "Matte"
+                  }
+                },
+                "packagedGoodsDeclaration": {
+                  "manufacturerOrPacker": {
+                    "type": "MANUFACTURER",
+                    "name": "InstaCuppa India Pvt Ltd",
+                    "address": "Bangalore, Karnataka, IN"
+                  },
+                  "commonOrGenericName": "Stainless Steel Vacuum Flask",
+                  "netQuantity": {
+                    "value": 500,
+                    "unit": "ML"
+                  }
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ],
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle"
+            },
+            "provider": {
+              "id": "provider-venky-bazaar",
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
+            },
+            "offerAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@type": "RetailOffer",
+              "policies": {
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": [
+                "2026-01-26",
+                "2026-08-15",
+                "2026-12-25"
+              ]
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@type": "RetailCommitment",
+            "lineId": "LINE-001",
+            "resourceId": "item-flask-mh500-yellow",
+            "offerId": "offer-flask-mh500-yellow",
+            "quantity": {
+              "unitCode": "EA",
+              "unitQuantity": 2
+            },
+            "price": {
+              "value": 1200,
+              "currency": "INR"
+            },
+            "specialInstructions": "Please ensure bubble wrap packaging"
+          }
+        }
+      ],
+      "consideration": [
+        {
+          "id": "consideration-001",
+          "status": {
+            "code": "AGREED"
+          },
+          "considerationAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailConsideration/v2.1/context.jsonld",
+            "@type": "RetailConsideration",
+            "currency": "INR",
+            "totalAmount": 3000.0,
+            "breakup": [
+              {
+                "title": "Item price (2 × ₹1200)",
+                "amount": 2400.0,
+                "type": "BASE_PRICE"
+              },
+              {
+                "title": "Taxes",
+                "amount": 600.0,
+                "type": "TAX"
+              }
+            ],
+            "paymentMethods": [
+              "PREPAID",
+              "COD",
+              "UPI"
+            ]
+          }
+        }
+      ],
+      "performance": [
+        {
+          "id": "f1",
+          "status": {
+            "code": "DELIVERED"
+          },
+          "commitmentIds": [
+            "commitment-flask-001"
+          ],
+          "performanceAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@type": "PerformanceAttributes",
+            "supportedPerformanceModes": [
+              "DELIVERY"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "streetAddress": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block",
+                "addressLocality": "Gangamuthanahalli",
+                "addressRegion": "Karnataka",
+                "postalCode": "560300",
+                "addressCountry": "IND"
+              },
+              "contact": {
+                "name": "Motiur Rehman",
+                "phone": "+919246394908"
+              }
+            },
+            "sla": {
+              "min": "PT2H",
+              "max": "PT4H",
+              "unitBasis": "ORDER_CONFIRMATION"
+            },
+            "handling": [
+              "FRAGILE"
+            ],
+            "operatingHours": [
+              {
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "timeRange": {
+                  "start": "09:00",
+                  "end": "21:00"
+                }
+              }
+            ],
+            "installationScheduling": {
+              "available": false
+            }
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "id": "settlement-upi",
+          "considerationId": "consideration-001",
+          "status": "COMPLETE",
+          "settlementAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailSettlement/v2.1/context.jsonld",
+            "@type": "RetailSettlement",
+            "method": "ONLINE",
+            "settledAmount": 3000,
+            "currency": "INR",
+            "settledAt": "2023-11-06T10:00:00.000Z",
+            "gateway": {
+              "name": "Razorpay",
+              "transactionId": "raz816863816313"
+            },
+            "reconciliationId": "REC-VB-20231106-001"
+          }
+        }
+      ],
+      "contractAttributes": {
+        "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld",
+        "@type": "ContractAttributes",
+        "buyerInstructions": "Please handle with care",
+        "deliveryPreferences": {
+          "leaveAtDoor": false,
+          "contactless": true,
+          "preferredTimeSlot": {
+            "start": "2023-11-06T14:00:00Z",
+            "end": "2023-11-06T18:00:00Z"
+          }
+        },
+        "gift": {
+          "isGift": false
+        },
+        "invoicePreferences": {
+          "taxId": {
+            "scheme": "GSTIN",
+            "country": "IN",
+            "value": "29ABCDE1234F1Z5"
+          },
+          "companyName": "Rehman Enterprises",
+          "email": "nc.rehman@gmail.com"
+        },
+        "source": {
+          "channel": "mobile-app",
+          "campaignId": "DIWALI2023"
+        },
+        "loyalty": {
+          "programId": "VB-REWARDS-2023",
+          "pointsRedeemed": 0
+        }
+      }
+    }
+  }
+}

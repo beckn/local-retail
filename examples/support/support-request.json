@@ -1,0 +1,24 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "support",
+    "domain": "Beckn.one/testnet",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "messageId": "1f507212-23fe-4acc-a34e-d25b459ad105",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "farm-fresh-bap-id",
+    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
+    "bppId": "farm-fresh-bpp-subId",
+    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+    "ttl": "PT10M"
+  },
+  "message": {
+    "support": {
+      "orderId": "894789-43954",
+      "descriptor": {
+        "code": "ORDER_SUPPORT",
+        "name": "Order Support Request"
+      }
+    }
+  }
+}
