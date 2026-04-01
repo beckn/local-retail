@@ -2,22 +2,22 @@
   "context": {
     "version": "2.0.0",
     "action": "catalog/publish",
-    "domain": "Beckn.one/testnet",
     "timestamp": "2023-11-06T08:00:00.000Z",
     "messageId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     "transactionId": "pub-txn-001-venky-bazaar",
-    "bapId": "farm-fresh-bap-id",
-    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bppId": "farm-fresh-bpp-subId",
-    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "ttl": "PT30S"
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT30S",
+    "networkId": "beckn.one/testnet"
   },
   "message": {
     "catalogs": [
       {
         "id": "catalog-hbo-001",
-        "bppId": "farm-fresh-bpp-subId",
-        "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
+        "bppId": "bpp.example.com",
+        "bppUri": "http://onix-bpp:8082/bpp/receiver",
         "descriptor": {
           "name": "HBO",
           "shortDesc": "Electronics and home goods catalog"
@@ -54,10 +54,25 @@
                 "originCountry": "IN"
               },
               "physical": {
-                "weight": { "value": 350, "unit": "G" },
-                "volume": { "value": 500, "unit": "ML" },
-                "dimensions": { "unit": "CM", "length": 25, "breadth": 7, "height": 7 },
-                "appearance": { "color": "Yellow", "material": "Stainless Steel", "finish": "Matte" }
+                "weight": {
+                  "value": 350,
+                  "unit": "G"
+                },
+                "volume": {
+                  "value": 500,
+                  "unit": "ML"
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 25,
+                  "breadth": 7,
+                  "height": 7
+                },
+                "appearance": {
+                  "color": "Yellow",
+                  "material": "Stainless Steel",
+                  "finish": "Matte"
+                }
               },
               "packagedGoodsDeclaration": {
                 "manufacturerOrPacker": {
@@ -66,7 +81,10 @@
                   "address": "Bangalore, Karnataka, IN"
                 },
                 "commonOrGenericName": "Stainless Steel Vacuum Flask",
-                "netQuantity": { "value": 500, "unit": "ML" }
+                "netQuantity": {
+                  "value": 500,
+                  "unit": "ML"
+                }
               }
             }
           },
@@ -91,10 +109,25 @@
                 "originCountry": "IN"
               },
               "physical": {
-                "weight": { "value": 440, "unit": "G" },
-                "volume": { "value": 20, "unit": "L" },
-                "dimensions": { "unit": "CM", "length": 45, "breadth": 28, "height": 18 },
-                "appearance": { "color": "Blue", "material": "Polyester 150D", "finish": "Matte" }
+                "weight": {
+                  "value": 440,
+                  "unit": "G"
+                },
+                "volume": {
+                  "value": 20,
+                  "unit": "L"
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 45,
+                  "breadth": 28,
+                  "height": 18
+                },
+                "appearance": {
+                  "color": "Blue",
+                  "material": "Polyester 150D",
+                  "finish": "Matte"
+                }
               },
               "packagedGoodsDeclaration": {
                 "manufacturerOrPacker": {
@@ -127,9 +160,20 @@
                 "originCountry": "CN"
               },
               "physical": {
-                "weight": { "value": 2800, "unit": "G" },
-                "dimensions": { "unit": "CM", "length": 80, "breadth": 52, "height": 85 },
-                "appearance": { "color": "Grey/Orange", "material": "Steel frame / Polyester 600D" }
+                "weight": {
+                  "value": 2800,
+                  "unit": "G"
+                },
+                "dimensions": {
+                  "unit": "CM",
+                  "length": 80,
+                  "breadth": 52,
+                  "height": 85
+                },
+                "appearance": {
+                  "color": "Grey/Orange",
+                  "material": "Steel frame / Polyester 600D"
+                }
               },
               "packagedGoodsDeclaration": {
                 "manufacturerOrPacker": {
@@ -148,10 +192,14 @@
             "descriptor": {
               "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow"
             },
-            "resourceIds": ["item-flask-mh500-yellow"],
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ],
             "provider": {
               "id": "provider-venky-bazaar",
-              "descriptor": { "name": "Venky.Mahadevan@Bazaar" }
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
             },
             "validity": {
               "startDate": "2023-01-01T00:00:00Z",
@@ -161,17 +209,46 @@
               "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
               "@type": "RetailOffer",
               "policies": {
-                "returns": { "allowed": true, "window": "P7D", "method": "SELLER_PICKUP" },
-                "cancellation": { "allowed": true, "window": "PT2H", "cutoffEvent": "BEFORE_PACKING" },
-                "replacement": { "allowed": true, "window": "P7D", "method": "SELLER_PICKUP", "subjectToAvailability": true }
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
               },
-              "paymentConstraints": { "codAvailable": true },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
               "serviceability": {
-                "distanceConstraint": { "maxDistance": 15, "unit": "KM" },
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
                 "timing": [
                   {
-                    "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
-                    "timeRange": { "start": "09:00", "end": "21:00" }
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
                   }
                 ]
               }
@@ -182,10 +259,14 @@
             "descriptor": {
               "name": "Hiking Backpack NH100 20L — Blue"
             },
-            "resourceIds": ["item-backpack-nh100-20l"],
+            "resourceIds": [
+              "item-backpack-nh100-20l"
+            ],
             "provider": {
               "id": "provider-venky-bazaar",
-              "descriptor": { "name": "Venky.Mahadevan@Bazaar" }
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
             },
             "validity": {
               "startDate": "2023-01-01T00:00:00Z",
@@ -195,17 +276,46 @@
               "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
               "@type": "RetailOffer",
               "policies": {
-                "returns": { "allowed": true, "window": "P10D", "method": "SELLER_PICKUP" },
-                "cancellation": { "allowed": true, "window": "PT4H", "cutoffEvent": "BEFORE_PACKING" },
-                "replacement": { "allowed": true, "window": "P10D", "method": "SELLER_PICKUP", "subjectToAvailability": true }
+                "returns": {
+                  "allowed": true,
+                  "window": "P10D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT4H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P10D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
               },
-              "paymentConstraints": { "codAvailable": true },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
               "serviceability": {
-                "distanceConstraint": { "maxDistance": 15, "unit": "KM" },
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
                 "timing": [
                   {
-                    "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
-                    "timeRange": { "start": "09:00", "end": "21:00" }
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
                   }
                 ]
               }
@@ -216,10 +326,14 @@
             "descriptor": {
               "name": "Folding Camping Chair — Grey/Orange"
             },
-            "resourceIds": ["item-chair-camping-fold"],
+            "resourceIds": [
+              "item-chair-camping-fold"
+            ],
             "provider": {
               "id": "provider-venky-bazaar",
-              "descriptor": { "name": "Venky.Mahadevan@Bazaar" }
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
             },
             "validity": {
               "startDate": "2023-01-01T00:00:00Z",
@@ -229,17 +343,42 @@
               "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
               "@type": "RetailOffer",
               "policies": {
-                "returns": { "allowed": true, "window": "P7D", "method": "SELLER_PICKUP" },
-                "cancellation": { "allowed": true, "window": "PT2H", "cutoffEvent": "BEFORE_PACKING" },
-                "replacement": { "allowed": false }
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": false
+                }
               },
-              "paymentConstraints": { "codAvailable": false },
+              "paymentConstraints": {
+                "codAvailable": false
+              },
               "serviceability": {
-                "distanceConstraint": { "maxDistance": 20, "unit": "KM" },
+                "distanceConstraint": {
+                  "maxDistance": 20,
+                  "unit": "KM"
+                },
                 "timing": [
                   {
-                    "daysOfWeek": ["MON", "TUE", "WED", "THU", "FRI", "SAT"],
-                    "timeRange": { "start": "10:00", "end": "20:00" }
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT"
+                    ],
+                    "timeRange": {
+                      "start": "10:00",
+                      "end": "20:00"
+                    }
                   }
                 ]
               }

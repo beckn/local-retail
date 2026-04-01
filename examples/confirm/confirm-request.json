@@ -2,15 +2,15 @@
   "context": {
     "version": "2.0.0",
     "action": "confirm",
-    "domain": "Beckn.one/testnet",
     "timestamp": "2023-11-06T10:14:10.280Z",
     "messageId": "58d0a142-68e3-48d9-92e8-fbc791e44949",
     "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
-    "bapId": "farm-fresh-bap-id",
-    "bapUri": "https://55a6-124-123-32-28.ngrok-free.app",
-    "bppId": "farm-fresh-bpp-subId",
-    "bppUri": "https://4e21-124-123-32-28.ngrok-free.app",
-    "ttl": "PT30S"
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT30S",
+    "networkId": "beckn.one/testnet"
   },
   "message": {
     "contract": {
