@@ -24,9 +24,12 @@
             "name": "Venky.Mahadevan@Bazaar"
           },
           "participantAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
-            "@type": "Participant",
-            "telephone": "+91 9876543210"
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
+            "@type": "Provider",
+            "descriptor": {
+              "name": "Venky.Mahadevan@Bazaar",
+              "shortDesc": "Multi-category retail store specializing in electronics and home goods"
+            }
           }
         },
         {
@@ -35,10 +38,28 @@
             "name": "Motiur Rehman"
           },
           "participantAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Participant/v2.0/context.jsonld",
-            "@type": "Participant",
-            "email": "nc.rehman@gmail.com",
-            "telephone": "+919191223433"
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Consumer/v2.0/context.jsonld",
+            "@type": "Consumer",
+            "role": "buyer",
+            "person": {
+              "@context": "https://schema.beckn.io/",
+              "@type": "beckn:Person",
+              "id": "buyer-motiur-rehman",
+              "name": "Motiur Rehman",
+              "email": "nc.rehman@gmail.com",
+              "telephone": "+919191223433",
+              "address": {
+                "streetAddress": "42, MG Road",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560001",
+                "addressCountry": "IN"
+              },
+              "knowsLanguage": [
+                "en",
+                "hi"
+              ]
+            }
           }
         }
       ],
