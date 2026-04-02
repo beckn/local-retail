@@ -1,0 +1,85 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "update",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "messageId": "090adec2-696d-47c9-8452-797a91e7bebc",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT10M",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "contract": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "performance": [
+        {
+          "id": "f1",
+          "performanceAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@type": "PerformanceAttributes",
+            "supportedPerformanceModes": [
+              "DELIVERY"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "streetAddress": "78, Koramangala 5th Block",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560095",
+                "addressCountry": "IND"
+              },
+              "contact": {
+                "name": "Motiur Rehman",
+                "phone": "+91-8056475647"
+              }
+            },
+            "operatingHours": [
+              {
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "timeRange": {
+                  "start": "09:00",
+                  "end": "21:00"
+                }
+              }
+            ],
+            "installationScheduling": {
+              "available": false
+            }
+          }
+        }
+      ],
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow"
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "confirm",
+    "timestamp": "2023-11-06T10:14:10.280Z",
+    "messageId": "58d0a142-68e3-48d9-92e8-fbc791e44949",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT30S",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "contract": {
+      "id": "order-flask-20231106-001",
+      "status": {
+        "code": "DRAFT"
+      },
+      "participants": [
+        {
+          "id": "provider-venky-bazaar",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
+            "@type": "Provider",
+            "descriptor": {
+              "name": "Venky.Mahadevan@Bazaar",
+              "shortDesc": "Multi-category retail store specializing in electronics and home goods"
+            }
+          }
+        },
+        {
+          "id": "buyer-motiur-rehman",
+          "descriptor": {
+            "name": "Motiur Rehman"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Consumer/v2.0/context.jsonld",
+            "@type": "Consumer",
+            "role": "buyer",
+            "person": {
+              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
+              "@type": "Person",
+              "id": "buyer-motiur-rehman",
+              "name": "Motiur Rehman",
+              "email": "nc.rehman@gmail.com",
+              "telephone": "+919191223433",
+              "address": {
+                "streetAddress": "42, MG Road",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560001",
+                "addressCountry": "IN"
+              },
+              "knowsLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          }
+        }
+      ],
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow"
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ],
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow"
+            },
+            "provider": {
+              "id": "provider-venky-bazaar",
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
+            },
+            "offerAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@type": "RetailOffer",
+              "policies": {
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": [
+                "2026-01-26",
+                "2026-08-15",
+                "2026-12-25"
+              ]
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@type": "RetailCommitment",
+            "lineId": "LINE-001",
+            "resourceId": "item-flask-mh500-yellow",
+            "quantity": {
+              "unitCode": "EA",
+              "unitQuantity": 2
+            }
+          }
+        }
+      ],
+      "performance": [
+        {
+          "id": "f1",
+          "status": {
+            "code": "PENDING"
+          },
+          "commitmentIds": [
+            "commitment-flask-001"
+          ],
+          "performanceAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@type": "PerformanceAttributes",
+            "supportedPerformanceModes": [
+              "DELIVERY"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "streetAddress": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block",
+                "addressLocality": "Gangamuthanahalli",
+                "addressRegion": "Karnataka",
+                "postalCode": "560300",
+                "addressCountry": "IND"
+              },
+              "contact": {
+                "name": "Motiur Rehman",
+                "phone": "+919246394908"
+              }
+            },
+            "operatingHours": [
+              {
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ],
+                "timeRange": {
+                  "start": "09:00",
+                  "end": "21:00"
+                }
+              }
+            ],
+            "installationScheduling": {
+              "available": false
+            }
+          }
+        }
+      ],
+      "settlements": [
+        {
+          "id": "settlement-upi",
+          "considerationId": "consideration-001",
+          "status": "COMMITTED",
+          "settlementAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailSettlement/v2.1/context.jsonld",
+            "@type": "RetailSettlement",
+            "method": "ONLINE",
+            "settledAmount": 3000,
+            "currency": "INR",
+            "settledAt": "2023-11-06T10:00:00.000Z",
+            "gateway": {
+              "name": "Razorpay",
+              "transactionId": "raz816863816313"
+            },
+            "reconciliationId": "REC-VB-20231106-001"
+          }
+        }
+      ]
+    }
+  }
+}

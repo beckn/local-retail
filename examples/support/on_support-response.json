@@ -1,0 +1,50 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "on_support",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "messageId": "1f507212-23fe-4acc-a34e-d25b459ad105",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT10M",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "support": {
+      "orderId": "894789-43954",
+      "descriptor": {
+        "code": "ORDER_SUPPORT",
+        "name": "Order Support"
+      },
+      "channels": [
+        {
+          "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/SupportInfo/v2.1/context.jsonld",
+          "@type": "SupportInfo",
+          "telephone": "+91 9876543298",
+          "hoursAvailable": "24/7"
+        },
+        {
+          "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/SupportInfo/v2.1/context.jsonld",
+          "@type": "SupportInfo",
+          "email": "abcd.support@support.com",
+          "hoursAvailable": "24/7"
+        },
+        {
+          "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/SupportInfo/v2.1/context.jsonld",
+          "@type": "SupportInfo",
+          "url": "https://support.example.com",
+          "hoursAvailable": "24/7"
+        },
+        {
+          "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/SupportInfo/v2.1/context.jsonld",
+          "@type": "SupportInfo",
+          "chat": "https://support.example.com/chat",
+          "hoursAvailable": "24/7"
+        }
+      ]
+    }
+  }
+}

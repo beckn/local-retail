@@ -1,0 +1,26 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "catalog/on_publish",
+    "timestamp": "2023-11-06T08:00:02.340Z",
+    "messageId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "transactionId": "pub-txn-001-venky-bazaar",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT30S",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "results": [
+      {
+        "catalogId": "catalog-hbo-001",
+        "status": "ACCEPTED",
+        "stats": {
+          "itemCount": 3
+        }
+      }
+    ]
+  }
+}

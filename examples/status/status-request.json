@@ -1,0 +1,51 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "status",
+    "timestamp": "2023-11-06T10:14:10.295Z",
+    "messageId": "b8c1e69c-fbbc-439b-a5de-2adcc74fa0da",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT10M",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "contract": {
+      "id": "b989c9a9-f603-4d44-b38d-26fd72286b38",
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "ACTIVE"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow"
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ]
+          },
+          "commitmentAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@type": "RetailCommitment",
+            "lineId": "LINE-001",
+            "resourceId": "item-flask-mh500-yellow",
+            "quantity": {
+              "unitCode": "EA",
+              "unitQuantity": 2
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "on_select",
+    "timestamp": "2023-11-06T09:44:47.229Z",
+    "messageId": "6d098f3a-4873-4b2e-935e-e4d6be92eb01",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "bppId": "bpp.example.com",
+    "bppUri": "http://onix-bpp:8082/bpp/receiver",
+    "ttl": "PT10M",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "contract": {
+      "status": {
+        "code": "DRAFT"
+      },
+      "participants": [
+        {
+          "id": "provider-venky-bazaar",
+          "descriptor": {
+            "name": "Venky.Mahadevan@Bazaar"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
+            "@type": "Provider",
+            "descriptor": {
+              "name": "Venky.Mahadevan@Bazaar",
+              "shortDesc": "Multi-category retail store specializing in electronics and home goods"
+            }
+          }
+        },
+        {
+          "id": "buyer-motiur-rehman",
+          "descriptor": {
+            "name": "Motiur Rehman"
+          },
+          "participantAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Consumer/v2.0/context.jsonld",
+            "@type": "Consumer",
+            "role": "buyer",
+            "person": {
+              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
+              "@type": "Person",
+              "id": "buyer-motiur-rehman",
+              "name": "Motiur Rehman",
+              "email": "nc.rehman@gmail.com",
+              "telephone": "+919191223433",
+              "address": {
+                "streetAddress": "42, MG Road",
+                "addressLocality": "Bangalore",
+                "addressRegion": "Karnataka",
+                "postalCode": "560001",
+                "addressCountry": "IN"
+              },
+              "knowsLanguage": [
+                "en",
+                "hi"
+              ]
+            }
+          }
+        }
+      ],
+      "commitments": [
+        {
+          "id": "commitment-flask-001",
+          "status": {
+            "descriptor": {
+              "code": "DRAFT"
+            }
+          },
+          "resources": [
+            {
+              "id": "item-flask-mh500-yellow",
+              "descriptor": {
+                "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle"
+              },
+              "resourceAttributes": {
+                "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld",
+                "@type": "RetailResource",
+                "identity": {
+                  "brand": "InstaCuppa",
+                  "originCountry": "IN"
+                },
+                "physical": {
+                  "weight": {
+                    "value": 350,
+                    "unit": "G"
+                  },
+                  "volume": {
+                    "value": 500,
+                    "unit": "ML"
+                  },
+                  "appearance": {
+                    "color": "Yellow",
+                    "material": "Stainless Steel",
+                    "finish": "Matte"
+                  }
+                },
+                "packagedGoodsDeclaration": {
+                  "manufacturerOrPacker": {
+                    "type": "MANUFACTURER",
+                    "name": "InstaCuppa India Pvt Ltd",
+                    "address": "Bangalore, Karnataka, IN"
+                  },
+                  "commonOrGenericName": "Stainless Steel Vacuum Flask",
+                  "netQuantity": {
+                    "value": 500,
+                    "unit": "ML"
+                  }
+                }
+              }
+            }
+          ],
+          "offer": {
+            "id": "offer-flask-mh500-yellow",
+            "resourceIds": [
+              "item-flask-mh500-yellow"
+            ],
+            "descriptor": {
+              "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle"
+            },
+            "provider": {
+              "id": "provider-venky-bazaar",
+              "descriptor": {
+                "name": "Venky.Mahadevan@Bazaar"
+              }
+            },
+            "offerAttributes": {
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@type": "RetailOffer",
+              "policies": {
+                "returns": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP"
+                },
+                "cancellation": {
+                  "allowed": true,
+                  "window": "PT2H",
+                  "cutoffEvent": "BEFORE_PACKING"
+                },
+                "replacement": {
+                  "allowed": true,
+                  "window": "P7D",
+                  "method": "SELLER_PICKUP",
+                  "subjectToAvailability": true
+                }
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": [
+                "2026-01-26",
+                "2026-08-15",
+                "2026-12-25"
+              ]
+            }
+          },
+          "commitmentAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@type": "RetailCommitment",
+            "lineId": "LINE-001",
+            "resourceId": "item-flask-mh500-yellow",
+            "offerId": "offer-flask-mh500-yellow",
+            "quantity": {
+              "unitCode": "EA",
+              "unitQuantity": 2
+            },
+            "price": {
+              "value": 1200,
+              "currency": "INR"
+            },
+            "specialInstructions": "Please ensure bubble wrap packaging"
+          }
+        }
+      ],
+      "consideration": [
+        {
+          "id": "consideration-001",
+          "status": {
+            "code": "QUOTED"
+          },
+          "considerationAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailConsideration/v2.1/context.jsonld",
+            "@type": "RetailConsideration",
+            "currency": "INR",
+            "totalAmount": 3000.0,
+            "breakup": [
+              {
+                "title": "Item price (2 × ₹1200)",
+                "amount": 2400.0,
+                "type": "BASE_PRICE"
+              },
+              {
+                "title": "Taxes",
+                "amount": 600.0,
+                "type": "TAX"
+              }
+            ],
+            "paymentMethods": [
+              "PREPAID",
+              "COD",
+              "UPI"
+            ]
+          }
+        }
+      ],
+      "performance": [
+        {
+          "id": "f1",
+          "status": {
+            "code": "PENDING"
+          },
+          "commitmentIds": [
+            "commitment-flask-001"
+          ],
+          "performanceAttributes": {
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@type": "PerformanceAttributes",
+            "supportedPerformanceModes": [
+              "DELIVERY"
+            ],
+            "deliveryDetails": {
+              "address": {
+                "streetAddress": "123, Terminal 1, Kempegowda Int'l Airport Rd, A - Block",
+                "addressLocality": "Gangamuthanahalli",
+                "addressRegion": "Karnataka",
+                "postalCode": "560300",
+                "addressCountry": "IND"
+              },
+              "contact": {
+                "name": "Motiur Rehman",
+                "phone": "+919246394908"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

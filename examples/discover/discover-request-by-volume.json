@@ -1,0 +1,36 @@
+{
+  "context": {
+    "version": "2.0.0",
+    "action": "discover",
+    "timestamp": "2023-11-06T09:41:09.673Z",
+    "messageId": "6104c0a3-d1d1-4ded-aaa4-76e4caf727ce",
+    "transactionId": "8100d125-76a7-4588-88be-81b97657cd09",
+    "bapId": "bap.example.com",
+    "bapUri": "http://onix-bap:8081/bap/receiver",
+    "ttl": "PT30S",
+    "networkId": "beckn.one/testnet"
+  },
+  "message": {
+    "intent": {
+      "textSearch": "water bottle",
+      "filters": {
+        "type": "jsonpath",
+        "expression": "$[?(@.resourceAttributes.physical.volume.value >= 500 && @.resourceAttributes.physical.volume.unit == 'ML')]"
+      },
+      "spatial": [
+        {
+          "op": "S_DWITHIN",
+          "targets": "$['provider']['availableAt'][*]['geo']",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              77.596316,
+              12.909955
+            ]
+          },
+          "distanceMeters": 50000
+        }
+      ]
+    }
+  }
+}
