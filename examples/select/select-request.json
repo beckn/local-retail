@@ -42,8 +42,8 @@
             "@type": "Consumer",
             "role": "buyer",
             "person": {
-              "@context": "https://schema.beckn.io/",
-              "@type": "beckn:Person",
+              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
+              "@type": "Person",
               "id": "buyer-motiur-rehman",
               "name": "Motiur Rehman",
               "email": "nc.rehman@gmail.com",
