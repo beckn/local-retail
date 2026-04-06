@@ -1,29 +1,17 @@
 {
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "schema": "https://schema.org/",
     "beckn": "https://schema.beckn.io/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "rcra": "https://schema.beckn.io/RetailResource#",
-    "groc": "https://schema.beckn.io/GroceryResource#",
-    "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
-    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
-    "rcoa": "https://schema.beckn.io/RetailOffer#",
-    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
-    "rcpa": "https://schema.beckn.io/RetailPerformance#",
-    "rcca": "https://schema.beckn.io/RetailContract#",
-    "rccma": "https://schema.beckn.io/RetailCommitment#",
-    "rccna": "https://schema.beckn.io/RetailConsideration#",
-    "rcsa": "https://schema.beckn.io/RetailSettlement#",
-    "rsp": "https://schema.beckn.io/RetailSchemaPack#"
+    "schema": "https://schema.org/"
   },
   "@graph": [
     {
-      "@id": "rsp:RetailSchemaPack",
+      "@id": "beckn:RetailSchemaPack",
       "@type": "owl:Ontology",
       "rdfs:label": "Beckn Retail Schema Pack v2.1",
       "rdfs:comment": "Unified ontology bridge for Retail Core and domain extensions in Beckn v2.1.",
@@ -43,171 +31,168 @@
       ]
     },
     {
-      "@id": "rsp:RetailCoreSchema",
+      "@id": "beckn:RetailCoreSchema",
       "@type": "rdfs:Class",
       "rdfs:label": "Retail Core Schema",
       "rdfs:comment": "Cross-vertical base schemas used across all retail sub-domains."
     },
     {
-      "@id": "rsp:RetailDomainExtensionSchema",
+      "@id": "beckn:RetailDomainExtensionSchema",
       "@type": "rdfs:Class",
       "rdfs:label": "Retail Domain Extension Schema",
       "rdfs:comment": "Sub-vertical schemas extending the retail core."
     },
     {
-      "@id": "rsp:extendsSchema",
+      "@id": "beckn:extendsSchema",
       "@type": "rdf:Property",
       "rdfs:label": "extends schema",
       "rdfs:comment": "Links an extension schema to the core schema it extends.",
-      "rdfs:domain": "rsp:RetailDomainExtensionSchema",
-      "rdfs:range": "rsp:RetailCoreSchema"
+      "rdfs:domain": "beckn:RetailDomainExtensionSchema",
+      "rdfs:range": "beckn:RetailCoreSchema"
     },
     {
-      "@id": "rsp:container",
+      "@id": "beckn:container",
       "@type": "rdf:Property",
       "rdfs:label": "container",
       "rdfs:comment": "Container slot in Beckn generalized payload where this schema applies.",
       "rdfs:range": "xsd:string"
     },
     {
-      "@id": "rcra:RetailResource",
+      "@id": "beckn:RetailResource",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "resourceAttributes"
     },
     {
-      "@id": "rcoa:RetailOffer",
+      "@id": "beckn:RetailOffer",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "offerAttributes"
     },
     {
-      "@id": "rcpa:PerformanceAttributes",
+      "@id": "beckn:PerformanceAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "performanceAttributes"
     },
     {
-      "@id": "rcca:ContractAttributes",
+      "@id": "beckn:ContractAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "contractAttributes"
     },
     {
-      "@id": "rccma:RetailCommitment",
+      "@id": "beckn:RetailCommitment",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
-      "rsp:container": "commitmentAttributes"
+      "rsp:container": "commitmentAttributes",
+      "owl:equivalentClass": "beckn:CommitmentAttributes"
     },
     {
-      "@id": "rccna:RetailConsideration",
+      "@id": "beckn:RetailConsideration",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "considerationAttributes"
     },
     {
-      "@id": "rcsa:RetailSettlement",
+      "@id": "beckn:RetailSettlement",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailCoreSchema"
+        "beckn:RetailCoreSchema"
       ],
       "rsp:container": "settlementAttributes"
     },
     {
-      "@id": "groc:GroceryResourceAttributes",
+      "@id": "beckn:GroceryResourceAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailDomainExtensionSchema"
+        "beckn:RetailDomainExtensionSchema"
       ],
-      "rdfs:subClassOf": "rcra:RetailResource",
-      "rsp:extendsSchema": "rcra:RetailResource",
+      "rdfs:subClassOf": "beckn:RetailResource",
+      "rsp:extendsSchema": "beckn:RetailResource",
       "rsp:container": "resourceAttributes"
     },
     {
-      "@id": "fnbr:FoodAndBeverageResourceAttributes",
+      "@id": "beckn:FoodAndBeverageResourceAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailDomainExtensionSchema"
+        "beckn:RetailDomainExtensionSchema"
       ],
-      "rdfs:subClassOf": "rcra:RetailResource",
-      "rsp:extendsSchema": "rcra:RetailResource",
+      "rdfs:subClassOf": "beckn:RetailResource",
+      "rsp:extendsSchema": "beckn:RetailResource",
       "rsp:container": "resourceAttributes"
     },
     {
-      "@id": "hkr:HomeAndKitchenResourceAttributes",
+      "@id": "beckn:HomeAndKitchenResourceAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailDomainExtensionSchema"
+        "beckn:RetailDomainExtensionSchema"
       ],
-      "rdfs:subClassOf": "rcra:RetailResource",
-      "rsp:extendsSchema": "rcra:RetailResource",
+      "rdfs:subClassOf": "beckn:RetailResource",
+      "rsp:extendsSchema": "beckn:RetailResource",
       "rsp:container": "resourceAttributes"
     },
     {
-      "@id": "fnbo:FoodAndBeverageOfferAttributes",
+      "@id": "beckn:FoodAndBeverageOfferAttributes",
       "@type": [
         "rdfs:Class",
-        "rsp:RetailDomainExtensionSchema"
+        "beckn:RetailDomainExtensionSchema"
       ],
-      "rdfs:subClassOf": "rcoa:RetailOffer",
-      "rsp:extendsSchema": "rcoa:RetailOffer",
+      "rdfs:subClassOf": "beckn:RetailOffer",
+      "rsp:extendsSchema": "beckn:RetailOffer",
       "rsp:container": "offerAttributes"
     },
     {
-      "@id": "rccma:RetailCommitment",
-      "owl:equivalentClass": "rccma:CommitmentAttributes"
+      "@id": "beckn:breakupTitle",
+      "owl:equivalentProperty": "beckn:title"
     },
     {
-      "@id": "rccna:breakupTitle",
-      "owl:equivalentProperty": "rccna:title"
+      "@id": "beckn:breakupAmount",
+      "owl:equivalentProperty": "beckn:amount"
     },
     {
-      "@id": "rccna:breakupAmount",
-      "owl:equivalentProperty": "rccna:amount"
+      "@id": "beckn:breakupType",
+      "owl:equivalentProperty": "beckn:type"
     },
     {
-      "@id": "rccna:breakupType",
-      "owl:equivalentProperty": "rccna:type"
+      "@id": "beckn:gatewayName",
+      "owl:equivalentProperty": "beckn:name"
     },
     {
-      "@id": "rcsa:gatewayName",
-      "owl:equivalentProperty": "rcsa:name"
+      "@id": "beckn:gatewayTransactionId",
+      "owl:equivalentProperty": "beckn:transactionId"
     },
     {
-      "@id": "rcsa:gatewayTransactionId",
-      "owl:equivalentProperty": "rcsa:transactionId"
+      "@id": "beckn:gatewayUrl",
+      "owl:equivalentProperty": "beckn:url"
     },
     {
-      "@id": "rcsa:gatewayUrl",
-      "owl:equivalentProperty": "rcsa:url"
+      "@id": "beckn:daysOfWeek",
+      "owl:equivalentProperty": "beckn:daysOfWeek"
     },
     {
-      "@id": "rcoa:daysOfWeek",
-      "owl:equivalentProperty": "rcpa:daysOfWeek"
+      "@id": "beckn:timeRange",
+      "owl:equivalentProperty": "beckn:timeRange"
     },
     {
-      "@id": "rcoa:timeRange",
-      "owl:equivalentProperty": "rcpa:timeRange"
+      "@id": "beckn:currency",
+      "owl:equivalentProperty": "beckn:currency"
     },
     {
-      "@id": "rccna:currency",
-      "owl:equivalentProperty": "rcsa:currency"
-    },
-    {
-      "@id": "hkr:installationNotes",
-      "skos:relatedMatch": "rcpa:installationNotes"
+      "@id": "beckn:installationNotes",
+      "skos:relatedMatch": "beckn:installationNotes"
     }
   ]
 }

@@ -3,580 +3,569 @@
     "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
     "schema": "https://schema.org/",
     "beckn": "https://schema.beckn.io/",
-    "rcra": "https://schema.beckn.io/RetailResource#",
-    "groc": "https://schema.beckn.io/GroceryResource#",
-    "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
-    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
-    "rcoa": "https://schema.beckn.io/RetailOffer#",
-    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
-    "rcpa": "https://schema.beckn.io/RetailPerformance#",
-    "rcca": "https://schema.beckn.io/RetailContract#",
-    "rccma": "https://schema.beckn.io/RetailCommitment#",
-    "rccna": "https://schema.beckn.io/RetailConsideration#",
-    "rcsa": "https://schema.beckn.io/RetailSettlement#",
-    "AdditiveType": "rcra:AdditiveType",
-    "BreakupItem": "rccna:BreakupItem",
-    "BreakupType": "rccna:BreakupType",
-    "CancellationCutoffEvent": "rcoa:CancellationCutoffEvent",
-    "Closure": "rcpa:Closure",
-    "CommitmentAttributes": "rccma:RetailCommitment",
-    "ContractAttributes": "rcca:ContractAttributes",
-    "DISPATCH": "rcpa:DISPATCH",
-    "DimensionUnit": "rcra:DimensionUnit",
-    "FeeType": "rcoa:FeeType",
-    "FoodAndBeverageOfferAttributes": "fnbo:FoodAndBeverageOfferAttributes",
-    "FoodAndBeverageResourceAttributes": "fnbr:FoodAndBeverageResourceAttributes",
-    "FoodClassification": "rcra:FoodClassification",
-    "Gateway": "rcsa:Gateway",
-    "GroceryResourceAttributes": "groc:GroceryResourceAttributes",
-    "HandlingType": "rcpa:HandlingType",
-    "HomeAndKitchenResourceAttributes": "hkr:HomeAndKitchenResourceAttributes",
-    "LoyaltyPointsApplied": "rccna:LoyaltyPointsApplied",
-    "ManufacturerOrPackerType": "rcra:ManufacturerOrPackerType",
-    "ORDER_CONFIRMATION": "rcpa:ORDER_CONFIRMATION",
-    "OfferType": "rcoa:OfferType",
-    "OperatingHour": "rcpa:OperatingHour",
-    "PACKING_COMPLETE": "rcpa:PACKING_COMPLETE",
-    "PaymentMethod": "rccna:PaymentMethod",
-    "PerformanceAttributes": "rcpa:PerformanceAttributes",
-    "PerformanceMode": "rcpa:PerformanceMode",
-    "RegistrationRole": "rcra:RegistrationRole",
-    "RetailCommitment": "rccma:RetailCommitment",
-    "RetailConsideration": "rccna:RetailConsideration",
-    "RetailOffer": "rcoa:RetailOffer",
-    "RetailResource": "rcra:RetailResource",
-    "RetailSettlement": "rcsa:RetailSettlement",
-    "ReturnMethod": "rcoa:ReturnMethod",
-    "SLAUnitBasis": "rcpa:SLAUnitBasis",
-    "SettlementMethod": "rcsa:SettlementMethod",
+    "AdditiveType": "beckn:AdditiveType",
+    "BreakupItem": "beckn:BreakupItem",
+    "BreakupType": "beckn:BreakupType",
+    "CancellationCutoffEvent": "beckn:CancellationCutoffEvent",
+    "Closure": "beckn:Closure",
+    "CommitmentAttributes": "beckn:RetailCommitment",
+    "ContractAttributes": "beckn:ContractAttributes",
+    "DISPATCH": "beckn:DISPATCH",
+    "DimensionUnit": "beckn:DimensionUnit",
+    "FeeType": "beckn:FeeType",
+    "FoodAndBeverageOfferAttributes": "beckn:FoodAndBeverageOfferAttributes",
+    "FoodAndBeverageResourceAttributes": "beckn:FoodAndBeverageResourceAttributes",
+    "FoodClassification": "beckn:FoodClassification",
+    "Gateway": "beckn:Gateway",
+    "GroceryResourceAttributes": "beckn:GroceryResourceAttributes",
+    "HandlingType": "beckn:HandlingType",
+    "HomeAndKitchenResourceAttributes": "beckn:HomeAndKitchenResourceAttributes",
+    "LoyaltyPointsApplied": "beckn:LoyaltyPointsApplied",
+    "ManufacturerOrPackerType": "beckn:ManufacturerOrPackerType",
+    "ORDER_CONFIRMATION": "beckn:ORDER_CONFIRMATION",
+    "OfferType": "beckn:OfferType",
+    "OperatingHour": "beckn:OperatingHour",
+    "PACKING_COMPLETE": "beckn:PACKING_COMPLETE",
+    "PaymentMethod": "beckn:PaymentMethod",
+    "PerformanceAttributes": "beckn:PerformanceAttributes",
+    "PerformanceMode": "beckn:PerformanceMode",
+    "RegistrationRole": "beckn:RegistrationRole",
+    "RetailCommitment": "beckn:RetailCommitment",
+    "RetailConsideration": "beckn:RetailConsideration",
+    "RetailOffer": "beckn:RetailOffer",
+    "RetailResource": "beckn:RetailResource",
+    "RetailSettlement": "beckn:RetailSettlement",
+    "ReturnMethod": "beckn:ReturnMethod",
+    "SLAUnitBasis": "beckn:SLAUnitBasis",
+    "SettlementMethod": "beckn:SettlementMethod",
     "additiveNotes": {
-      "@id": "rcra:additiveNotes"
+      "@id": "beckn:additiveNotes"
     },
     "additiveQuantity": {
-      "@id": "rcra:additiveQuantity"
+      "@id": "beckn:additiveQuantity"
     },
     "additiveType": {
-      "@id": "rcra:additiveType"
+      "@id": "beckn:additiveType"
     },
     "additiveValue": {
-      "@id": "rcra:additiveValue"
+      "@id": "beckn:additiveValue"
     },
     "additives": {
-      "@id": "rcra:additives"
+      "@id": "beckn:additives"
     },
     "address": {
-      "@id": "rcpa:address"
+      "@id": "beckn:address"
     },
-    "allergens": "fnbr:allergens",
+    "allergens": "beckn:allergens",
     "appearance": {
-      "@id": "rcra:appearance"
+      "@id": "beckn:appearance"
     },
-    "available": "fnbo:available",
+    "available": "beckn:available",
     "brand": {
-      "@id": "rcra:brand"
+      "@id": "beckn:brand"
     },
     "breadth": {
-      "@id": "rcra:breadth"
+      "@id": "beckn:breadth"
     },
     "breakup": {
-      "@id": "rccna:breakup"
+      "@id": "beckn:breakup"
     },
     "breakupAmount": {
-      "@id": "rccna:breakupAmount"
+      "@id": "beckn:breakupAmount"
     },
     "breakupTitle": {
-      "@id": "rccna:breakupTitle"
+      "@id": "beckn:breakupTitle"
     },
     "breakupType": {
-      "@id": "rccna:breakupType"
+      "@id": "beckn:breakupType"
     },
     "buyerInstructions": {
-      "@id": "rcca:buyerInstructions"
+      "@id": "beckn:buyerInstructions"
     },
     "campaignId": {
-      "@id": "rcca:campaignId"
+      "@id": "beckn:campaignId"
     },
     "cancellation": {
-      "@id": "rcoa:cancellation"
+      "@id": "beckn:cancellation"
     },
     "cancellationAllowed": {
-      "@id": "rcoa:cancellationAllowed"
+      "@id": "beckn:cancellationAllowed"
     },
     "cancellationCutoffEvent": {
-      "@id": "rcoa:cancellationCutoffEvent"
+      "@id": "beckn:cancellationCutoffEvent"
     },
     "cancellationFee": {
-      "@id": "rcoa:cancellationFee"
+      "@id": "beckn:cancellationFee"
     },
     "cancellationWindow": {
-      "@id": "rcoa:cancellationWindow"
+      "@id": "beckn:cancellationWindow"
     },
-    "careInstructions": "hkr:careInstructions",
+    "careInstructions": "beckn:careInstructions",
     "closureEndDate": {
-      "@id": "rcpa:closureEndDate"
+      "@id": "beckn:closureEndDate"
     },
     "closureStartDate": {
-      "@id": "rcpa:closureStartDate"
+      "@id": "beckn:closureStartDate"
     },
     "closures": {
-      "@id": "rcpa:closures"
+      "@id": "beckn:closures"
     },
     "codAvailable": {
-      "@id": "rcoa:codAvailable"
+      "@id": "beckn:codAvailable"
     },
     "color": {
-      "@id": "rcra:color"
+      "@id": "beckn:color"
     },
     "commonOrGenericName": {
-      "@id": "rcra:commonOrGenericName"
+      "@id": "beckn:commonOrGenericName"
     },
-    "compatibleWith": "hkr:compatibleWith",
+    "compatibleWith": "beckn:compatibleWith",
     "contact": {
-      "@id": "rcpa:contact"
+      "@id": "beckn:contact"
     },
     "contactName": {
-      "@id": "rcpa:contactName"
+      "@id": "beckn:contactName"
     },
     "contactPhone": {
-      "@id": "rcpa:contactPhone"
+      "@id": "beckn:contactPhone"
     },
     "contactless": {
-      "@id": "rcca:contactless"
+      "@id": "beckn:contactless"
     },
     "credentialId": {
-      "@id": "rcra:credentialId"
+      "@id": "beckn:credentialId"
     },
     "credentialIssuer": {
-      "@id": "rcra:credentialIssuer"
+      "@id": "beckn:credentialIssuer"
     },
     "credentialType": {
-      "@id": "rcra:credentialType"
+      "@id": "beckn:credentialType"
     },
     "credentialUri": {
-      "@id": "rcra:credentialUri"
+      "@id": "beckn:credentialUri"
     },
     "credentials": {
-      "@id": "rcra:credentials"
+      "@id": "beckn:credentials"
     },
-    "cuisine": "fnbr:cuisine",
+    "cuisine": "beckn:cuisine",
     "currency": {
-      "@id": "rccna:currency"
+      "@id": "beckn:currency"
     },
     "rcsa_currency": {
-      "@id": "rcsa:currency"
+      "@id": "beckn:currency"
     },
-    "customization": "fnbo:customization",
-    "customizationGroupCode": "fnbo:customizationGroupCode",
-    "customizationGroupName": "fnbo:customizationGroupName",
-    "customizationGroups": "fnbo:customizationGroups",
-    "customizationSelection": "fnbo:customizationSelection",
+    "customization": "beckn:customization",
+    "customizationGroupCode": "beckn:customizationGroupCode",
+    "customizationGroupName": "beckn:customizationGroupName",
+    "customizationGroups": "beckn:customizationGroups",
+    "customizationSelection": "beckn:customizationSelection",
     "daysOfWeek": {
-      "@id": "rcoa:daysOfWeek"
+      "@id": "beckn:daysOfWeek"
     },
     "rcpa_daysOfWeek": {
-      "@id": "rcpa:daysOfWeek"
+      "@id": "beckn:daysOfWeek"
     },
     "deliveryDetails": {
-      "@id": "rcpa:deliveryDetails"
+      "@id": "beckn:deliveryDetails"
     },
     "deliveryPreferences": {
-      "@id": "rcca:deliveryPreferences"
+      "@id": "beckn:deliveryPreferences"
     },
     "dimensionUnit": {
-      "@id": "rcra:dimensionUnit"
+      "@id": "beckn:dimensionUnit"
     },
     "dimensions": {
-      "@id": "rcra:dimensions"
+      "@id": "beckn:dimensions"
     },
     "distanceConstraint": {
-      "@id": "rcoa:distanceConstraint"
+      "@id": "beckn:distanceConstraint"
     },
     "distanceUnit": {
-      "@id": "rcoa:distanceUnit"
+      "@id": "beckn:distanceUnit"
     },
     "endTime": {
-      "@id": "rcpa:endTime"
+      "@id": "beckn:endTime"
     },
     "finish": {
-      "@id": "rcra:finish"
+      "@id": "beckn:finish"
     },
     "food": {
-      "@id": "rcra:food"
+      "@id": "beckn:food"
     },
     "foodClassification": {
-      "@id": "rcra:foodClassification"
+      "@id": "beckn:foodClassification"
     },
     "foodRegulatoryDeclaration": {
-      "@id": "rcra:foodRegulatoryDeclaration"
+      "@id": "beckn:foodRegulatoryDeclaration"
     },
-    "freshProduce": "groc:freshProduce",
+    "freshProduce": "beckn:freshProduce",
     "gateway": {
-      "@id": "rcsa:gateway"
+      "@id": "beckn:gateway"
     },
     "gatewayName": {
-      "@id": "rcsa:gatewayName"
+      "@id": "beckn:gatewayName"
     },
     "gatewayTransactionId": {
-      "@id": "rcsa:gatewayTransactionId"
+      "@id": "beckn:gatewayTransactionId"
     },
     "gatewayUrl": {
-      "@id": "rcsa:gatewayUrl"
+      "@id": "beckn:gatewayUrl"
     },
     "gift": {
-      "@id": "rcca:gift"
+      "@id": "beckn:gift"
     },
     "giftMessage": {
-      "@id": "rcca:giftMessage"
+      "@id": "beckn:giftMessage"
     },
     "giftWrap": {
-      "@id": "rcca:giftWrap"
+      "@id": "beckn:giftWrap"
     },
     "handling": {
-      "@id": "rcpa:handling"
+      "@id": "beckn:handling"
     },
     "height": {
-      "@id": "rcra:height"
+      "@id": "beckn:height"
     },
     "holidays": {
-      "@id": "rcoa:holidays"
+      "@id": "beckn:holidays"
     },
     "identity": {
-      "@id": "rcra:identity"
+      "@id": "beckn:identity"
     },
-    "indoorOnly": "hkr:indoorOnly",
-    "installation": "hkr:installation",
+    "indoorOnly": "beckn:indoorOnly",
+    "installation": "beckn:installation",
     "installationAvailable": {
-      "@id": "rcpa:installationAvailable"
+      "@id": "beckn:installationAvailable"
     },
-    "installationNotes": "hkr:installationNotes",
+    "installationNotes": "beckn:installationNotes",
     "rcpa_installationNotes": {
-      "@id": "rcpa:installationNotes"
+      "@id": "beckn:installationNotes"
     },
-    "installationProvidedBySeller": "hkr:installationProvidedBySeller",
-    "installationRequired": "hkr:installationRequired",
+    "installationProvidedBySeller": "beckn:installationProvidedBySeller",
+    "installationRequired": "beckn:installationRequired",
     "installationScheduling": {
-      "@id": "rcpa:installationScheduling"
+      "@id": "beckn:installationScheduling"
     },
     "invoiceCompanyName": {
-      "@id": "rcca:invoiceCompanyName"
+      "@id": "beckn:invoiceCompanyName"
     },
     "invoiceEmail": {
-      "@id": "rcca:invoiceEmail"
+      "@id": "beckn:invoiceEmail"
     },
     "invoicePreferences": {
-      "@id": "rcca:invoicePreferences"
+      "@id": "beckn:invoicePreferences"
     },
     "isGift": {
-      "@id": "rcca:isGift"
+      "@id": "beckn:isGift"
     },
-    "itemRef": "fnbo:itemRef",
+    "itemRef": "beckn:itemRef",
     "leaveAtDoor": {
-      "@id": "rcca:leaveAtDoor"
+      "@id": "beckn:leaveAtDoor"
     },
     "length": {
-      "@id": "rcra:length"
+      "@id": "beckn:length"
     },
     "lineId": {
-      "@id": "rccma:lineId"
+      "@id": "beckn:lineId"
     },
     "loyalty": {
-      "@id": "rcca:loyalty"
+      "@id": "beckn:loyalty"
     },
     "loyaltyPointsApplied": {
-      "@id": "rccna:loyaltyPointsApplied"
+      "@id": "beckn:loyaltyPointsApplied"
     },
     "loyaltyProgramId": {
-      "@id": "rcca:loyaltyProgramId"
+      "@id": "beckn:loyaltyProgramId"
     },
     "manufacturePackingImportDate": {
-      "@id": "rcra:manufacturePackingImportDate"
+      "@id": "beckn:manufacturePackingImportDate"
     },
     "manufacturerOrPacker": {
-      "@id": "rcra:manufacturerOrPacker"
+      "@id": "beckn:manufacturerOrPacker"
     },
     "manufacturerOrPackerAddress": {
-      "@id": "rcra:manufacturerOrPackerAddress"
+      "@id": "beckn:manufacturerOrPackerAddress"
     },
     "manufacturerOrPackerId": {
-      "@id": "rcra:manufacturerOrPackerId"
+      "@id": "beckn:manufacturerOrPackerId"
     },
     "manufacturerOrPackerName": {
-      "@id": "rcra:manufacturerOrPackerName"
+      "@id": "beckn:manufacturerOrPackerName"
     },
     "manufacturerOrPackerType": {
-      "@id": "rcra:manufacturerOrPackerType"
+      "@id": "beckn:manufacturerOrPackerType"
     },
     "material": {
-      "@id": "rcra:material"
+      "@id": "beckn:material"
     },
     "maxDistance": {
-      "@id": "rcoa:maxDistance"
+      "@id": "beckn:maxDistance"
     },
     "maxDuration": {
-      "@id": "rcpa:maxDuration"
+      "@id": "beckn:maxDuration"
     },
-    "maxSelections": "fnbo:maxSelections",
+    "maxSelections": "beckn:maxSelections",
     "method": {
-      "@id": "rcsa:method"
+      "@id": "beckn:method"
     },
     "minDuration": {
-      "@id": "rcpa:minDuration"
+      "@id": "beckn:minDuration"
     },
-    "minSelections": "fnbo:minSelections",
+    "minSelections": "beckn:minSelections",
     "monetaryEquivalent": {
-      "@id": "rccna:monetaryEquivalent"
+      "@id": "beckn:monetaryEquivalent"
     },
     "netQuantity": {
-      "@id": "rcra:netQuantity"
+      "@id": "beckn:netQuantity"
     },
-    "netQuantityDeclaration": "groc:netQuantityDeclaration",
-    "nutrient": "groc:nutrient",
-    "nutrition": "groc:nutrition",
-    "nutritionValue": "groc:nutritionValue",
+    "netQuantityDeclaration": "beckn:netQuantityDeclaration",
+    "nutrient": "beckn:nutrient",
+    "nutrition": "beckn:nutrition",
+    "nutritionValue": "beckn:nutritionValue",
     "offerId": {
-      "@id": "rccma:offerId"
+      "@id": "beckn:offerId"
     },
-    "offerRef": "fnbo:offerRef",
+    "offerRef": "beckn:offerRef",
     "offerTimeEnd": {
-      "@id": "rcoa:offerTimeEnd"
+      "@id": "beckn:offerTimeEnd"
     },
     "offerTimeStart": {
-      "@id": "rcoa:offerTimeStart"
+      "@id": "beckn:offerTimeStart"
     },
     "operatingHours": {
-      "@id": "rcpa:operatingHours"
+      "@id": "beckn:operatingHours"
     },
-    "optionCode": "fnbo:optionCode",
-    "optionName": "fnbo:optionName",
-    "options": "fnbo:options",
+    "optionCode": "beckn:optionCode",
+    "optionName": "beckn:optionName",
+    "options": "beckn:options",
     "originCountry": {
-      "@id": "rcra:originCountry"
+      "@id": "beckn:originCountry"
     },
-    "outdoorOnly": "hkr:outdoorOnly",
+    "outdoorOnly": "beckn:outdoorOnly",
     "packagedGoodsDeclaration": {
-      "@id": "rcra:packagedGoodsDeclaration"
+      "@id": "beckn:packagedGoodsDeclaration"
     },
     "paymentConstraints": {
-      "@id": "rcoa:paymentConstraints"
+      "@id": "beckn:paymentConstraints"
     },
     "paymentMethods": {
-      "@id": "rccna:paymentMethods"
+      "@id": "beckn:paymentMethods"
     },
     "physical": {
-      "@id": "rcra:physical"
+      "@id": "beckn:physical"
     },
     "pointsRedeemed": {
-      "@id": "rcca:pointsRedeemed"
+      "@id": "beckn:pointsRedeemed"
     },
     "pointsUsed": {
-      "@id": "rccna:pointsUsed"
+      "@id": "beckn:pointsUsed"
     },
     "policies": {
-      "@id": "rcoa:policies"
+      "@id": "beckn:policies"
     },
     "preferredTimeSlot": {
-      "@id": "rcca:preferredTimeSlot"
+      "@id": "beckn:preferredTimeSlot"
     },
-    "preparation": "fnbr:preparation",
-    "preparationInstructions": "fnbr:preparationInstructions",
+    "preparation": "beckn:preparation",
+    "preparationInstructions": "beckn:preparationInstructions",
     "price": {
-      "@id": "rccma:price"
+      "@id": "beckn:price"
     },
-    "priceDelta": "fnbo:priceDelta",
-    "priceDeltaType": "fnbo:priceDeltaType",
-    "priceDeltaValue": "fnbo:priceDeltaValue",
+    "priceDelta": "beckn:priceDelta",
+    "priceDeltaType": "beckn:priceDeltaType",
+    "priceDeltaValue": "beckn:priceDeltaValue",
     "programId": {
-      "@id": "rccna:programId"
+      "@id": "beckn:programId"
     },
     "proposedInstallationDate": {
-      "@id": "rcpa:proposedInstallationDate"
+      "@id": "beckn:proposedInstallationDate"
     },
     "quantity": {
-      "@id": "rccma:quantity"
+      "@id": "beckn:quantity"
     },
     "reconciliationId": {
-      "@id": "rcsa:reconciliationId"
+      "@id": "beckn:reconciliationId"
     },
     "registrationId": {
-      "@id": "rcra:registrationId"
+      "@id": "beckn:registrationId"
     },
     "registrationRole": {
-      "@id": "rcra:registrationRole"
+      "@id": "beckn:registrationRole"
     },
     "registrationScheme": {
-      "@id": "rcra:registrationScheme"
+      "@id": "beckn:registrationScheme"
     },
     "registrationUrl": {
-      "@id": "rcra:registrationUrl"
+      "@id": "beckn:registrationUrl"
     },
     "registrations": {
-      "@id": "rcra:registrations"
+      "@id": "beckn:registrations"
     },
     "replacement": {
-      "@id": "rcoa:replacement"
+      "@id": "beckn:replacement"
     },
     "replacementAllowed": {
-      "@id": "rcoa:replacementAllowed"
+      "@id": "beckn:replacementAllowed"
     },
     "replacementConditions": {
-      "@id": "rcoa:replacementConditions"
+      "@id": "beckn:replacementConditions"
     },
     "replacementMethod": {
-      "@id": "rcoa:replacementMethod"
+      "@id": "beckn:replacementMethod"
     },
     "replacementSubjectToAvailability": {
-      "@id": "rcoa:replacementSubjectToAvailability"
+      "@id": "beckn:replacementSubjectToAvailability"
     },
     "replacementWindow": {
-      "@id": "rcoa:replacementWindow"
+      "@id": "beckn:replacementWindow"
     },
     "resourceId": {
-      "@id": "rccma:resourceId"
+      "@id": "beckn:resourceId"
     },
     "restockingFee": {
-      "@id": "rcoa:restockingFee"
+      "@id": "beckn:restockingFee"
     },
     "restockingFeeType": {
-      "@id": "rcoa:restockingFeeType"
+      "@id": "beckn:restockingFeeType"
     },
     "restockingFeeValue": {
-      "@id": "rcoa:restockingFeeValue"
+      "@id": "beckn:restockingFeeValue"
     },
     "returnAllowed": {
-      "@id": "rcoa:returnAllowed"
+      "@id": "beckn:returnAllowed"
     },
     "returnConditions": {
-      "@id": "rcoa:returnConditions"
+      "@id": "beckn:returnConditions"
     },
     "returnMethod": {
-      "@id": "rcoa:returnMethod"
+      "@id": "beckn:returnMethod"
     },
     "returnWindow": {
-      "@id": "rcoa:returnWindow"
+      "@id": "beckn:returnWindow"
     },
     "returns": {
-      "@id": "rcoa:returns"
+      "@id": "beckn:returns"
     },
     "serviceability": {
-      "@id": "rcoa:serviceability"
+      "@id": "beckn:serviceability"
     },
     "settledAmount": {
-      "@id": "rcsa:settledAmount"
+      "@id": "beckn:settledAmount"
     },
     "settledAt": {
-      "@id": "rcsa:settledAt"
+      "@id": "beckn:settledAt"
     },
-    "shelfLife": "fnbr:shelfLife",
+    "shelfLife": "beckn:shelfLife",
     "sla": {
-      "@id": "rcpa:sla"
+      "@id": "beckn:sla"
     },
     "slaUnitBasis": {
-      "@id": "rcpa:slaUnitBasis"
+      "@id": "beckn:slaUnitBasis"
     },
     "source": {
-      "@id": "rcca:source"
+      "@id": "beckn:source"
     },
     "sourceChannel": {
-      "@id": "rcca:sourceChannel"
+      "@id": "beckn:sourceChannel"
     },
     "specialInstructions": {
-      "@id": "rccma:specialInstructions"
+      "@id": "beckn:specialInstructions"
     },
     "startTime": {
-      "@id": "rcpa:startTime"
+      "@id": "beckn:startTime"
     },
-    "storageInstructions": "fnbr:storageInstructions",
+    "storageInstructions": "beckn:storageInstructions",
     "supportedPerformanceModes": {
-      "@id": "rcpa:supportedPerformanceModes"
+      "@id": "beckn:supportedPerformanceModes"
     },
     "taxId": {
-      "@id": "rcca:taxId"
+      "@id": "beckn:taxId"
     },
     "taxIdCountry": {
-      "@id": "rcca:taxIdCountry"
+      "@id": "beckn:taxIdCountry"
     },
     "taxIdScheme": {
-      "@id": "rcca:taxIdScheme"
+      "@id": "beckn:taxIdScheme"
     },
     "taxIdValue": {
-      "@id": "rcca:taxIdValue"
+      "@id": "beckn:taxIdValue"
     },
     "timeRange": {
-      "@id": "rcoa:timeRange"
+      "@id": "beckn:timeRange"
     },
     "rcpa_timeRange": {
-      "@id": "rcpa:timeRange"
+      "@id": "beckn:timeRange"
     },
     "timeSlotEnd": {
-      "@id": "rcca:timeSlotEnd"
+      "@id": "beckn:timeSlotEnd"
     },
     "timeSlotStart": {
-      "@id": "rcca:timeSlotStart"
+      "@id": "beckn:timeSlotStart"
     },
     "timing": {
-      "@id": "rcoa:timing"
+      "@id": "beckn:timing"
     },
     "timingEnd": {
-      "@id": "rcoa:timingEnd"
+      "@id": "beckn:timingEnd"
     },
     "timingStart": {
-      "@id": "rcoa:timingStart"
+      "@id": "beckn:timingStart"
     },
     "totalAmount": {
-      "@id": "rccna:totalAmount"
+      "@id": "beckn:totalAmount"
     },
     "unitCode": {
-      "@id": "rccma:unitCode"
+      "@id": "beckn:unitCode"
     },
     "unitQuantity": {
-      "@id": "rccma:unitQuantity"
+      "@id": "beckn:unitQuantity"
     },
-    "usage": "hkr:usage",
+    "usage": "beckn:usage",
     "volume": {
-      "@id": "rcra:volume"
+      "@id": "beckn:volume"
     },
-    "warranty": "hkr:warranty",
-    "warrantyDuration": "hkr:warrantyDuration",
-    "warrantyTerms": "hkr:warrantyTerms",
-    "warrantyType": "hkr:warrantyType",
+    "warranty": "beckn:warranty",
+    "warrantyDuration": "beckn:warrantyDuration",
+    "warrantyTerms": "beckn:warrantyTerms",
+    "warrantyType": "beckn:warrantyType",
     "weight": {
-      "@id": "rcra:weight"
+      "@id": "beckn:weight"
     },
     "rcra_context": {
-      "@id": "rcra:@context"
+      "@id": "beckn:@context"
     },
     "rcra_type": {
-      "@id": "rcra:@type"
+      "@id": "beckn:@type"
     },
     "rcoa_context": {
-      "@id": "rcoa:@context"
+      "@id": "beckn:@context"
     },
     "rcoa_type": {
-      "@id": "rcoa:@type"
+      "@id": "beckn:@type"
     },
     "rcca_context": {
-      "@id": "rcca:@context"
+      "@id": "beckn:@context"
     },
     "rcca_type": {
-      "@id": "rcca:@type"
+      "@id": "beckn:@type"
     },
     "rccma_context": {
-      "@id": "rccma:@context"
+      "@id": "beckn:@context"
     },
     "rccma_type": {
-      "@id": "rccma:@type"
+      "@id": "beckn:@type"
     },
     "rccna_context": {
-      "@id": "rccna:@context"
+      "@id": "beckn:@context"
     },
     "rccna_type": {
-      "@id": "rccna:@type"
+      "@id": "beckn:@type"
     },
     "rcsa_context": {
-      "@id": "rcsa:@context"
+      "@id": "beckn:@context"
     },
     "rcsa_type": {
-      "@id": "rcsa:@type"
+      "@id": "beckn:@type"
     }
   }
 }
