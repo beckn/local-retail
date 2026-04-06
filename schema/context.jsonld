@@ -1,0 +1,582 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rcra": "https://schema.beckn.io/RetailResource#",
+    "groc": "https://schema.beckn.io/GroceryResource#",
+    "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
+    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
+    "rcoa": "https://schema.beckn.io/RetailOffer#",
+    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
+    "rcpa": "https://schema.beckn.io/RetailPerformance#",
+    "rcca": "https://schema.beckn.io/RetailContract#",
+    "rccma": "https://schema.beckn.io/RetailCommitment#",
+    "rccna": "https://schema.beckn.io/RetailConsideration#",
+    "rcsa": "https://schema.beckn.io/RetailSettlement#",
+    "AdditiveType": "rcra:AdditiveType",
+    "BreakupItem": "rccna:BreakupItem",
+    "BreakupType": "rccna:BreakupType",
+    "CancellationCutoffEvent": "rcoa:CancellationCutoffEvent",
+    "Closure": "rcpa:Closure",
+    "CommitmentAttributes": "rccma:RetailCommitment",
+    "ContractAttributes": "rcca:ContractAttributes",
+    "DISPATCH": "rcpa:DISPATCH",
+    "DimensionUnit": "rcra:DimensionUnit",
+    "FeeType": "rcoa:FeeType",
+    "FoodAndBeverageOfferAttributes": "fnbo:FoodAndBeverageOfferAttributes",
+    "FoodAndBeverageResourceAttributes": "fnbr:FoodAndBeverageResourceAttributes",
+    "FoodClassification": "rcra:FoodClassification",
+    "Gateway": "rcsa:Gateway",
+    "GroceryResourceAttributes": "groc:GroceryResourceAttributes",
+    "HandlingType": "rcpa:HandlingType",
+    "HomeAndKitchenResourceAttributes": "hkr:HomeAndKitchenResourceAttributes",
+    "LoyaltyPointsApplied": "rccna:LoyaltyPointsApplied",
+    "ManufacturerOrPackerType": "rcra:ManufacturerOrPackerType",
+    "ORDER_CONFIRMATION": "rcpa:ORDER_CONFIRMATION",
+    "OfferType": "rcoa:OfferType",
+    "OperatingHour": "rcpa:OperatingHour",
+    "PACKING_COMPLETE": "rcpa:PACKING_COMPLETE",
+    "PaymentMethod": "rccna:PaymentMethod",
+    "PerformanceAttributes": "rcpa:PerformanceAttributes",
+    "PerformanceMode": "rcpa:PerformanceMode",
+    "RegistrationRole": "rcra:RegistrationRole",
+    "RetailCommitment": "rccma:RetailCommitment",
+    "RetailConsideration": "rccna:RetailConsideration",
+    "RetailOffer": "rcoa:RetailOffer",
+    "RetailResource": "rcra:RetailResource",
+    "RetailSettlement": "rcsa:RetailSettlement",
+    "ReturnMethod": "rcoa:ReturnMethod",
+    "SLAUnitBasis": "rcpa:SLAUnitBasis",
+    "SettlementMethod": "rcsa:SettlementMethod",
+    "additiveNotes": {
+      "@id": "rcra:additiveNotes"
+    },
+    "additiveQuantity": {
+      "@id": "rcra:additiveQuantity"
+    },
+    "additiveType": {
+      "@id": "rcra:additiveType"
+    },
+    "additiveValue": {
+      "@id": "rcra:additiveValue"
+    },
+    "additives": {
+      "@id": "rcra:additives"
+    },
+    "address": {
+      "@id": "rcpa:address"
+    },
+    "allergens": "fnbr:allergens",
+    "appearance": {
+      "@id": "rcra:appearance"
+    },
+    "available": "fnbo:available",
+    "brand": {
+      "@id": "rcra:brand"
+    },
+    "breadth": {
+      "@id": "rcra:breadth"
+    },
+    "breakup": {
+      "@id": "rccna:breakup"
+    },
+    "breakupAmount": {
+      "@id": "rccna:breakupAmount"
+    },
+    "breakupTitle": {
+      "@id": "rccna:breakupTitle"
+    },
+    "breakupType": {
+      "@id": "rccna:breakupType"
+    },
+    "buyerInstructions": {
+      "@id": "rcca:buyerInstructions"
+    },
+    "campaignId": {
+      "@id": "rcca:campaignId"
+    },
+    "cancellation": {
+      "@id": "rcoa:cancellation"
+    },
+    "cancellationAllowed": {
+      "@id": "rcoa:cancellationAllowed"
+    },
+    "cancellationCutoffEvent": {
+      "@id": "rcoa:cancellationCutoffEvent"
+    },
+    "cancellationFee": {
+      "@id": "rcoa:cancellationFee"
+    },
+    "cancellationWindow": {
+      "@id": "rcoa:cancellationWindow"
+    },
+    "careInstructions": "hkr:careInstructions",
+    "closureEndDate": {
+      "@id": "rcpa:closureEndDate"
+    },
+    "closureStartDate": {
+      "@id": "rcpa:closureStartDate"
+    },
+    "closures": {
+      "@id": "rcpa:closures"
+    },
+    "codAvailable": {
+      "@id": "rcoa:codAvailable"
+    },
+    "color": {
+      "@id": "rcra:color"
+    },
+    "commonOrGenericName": {
+      "@id": "rcra:commonOrGenericName"
+    },
+    "compatibleWith": "hkr:compatibleWith",
+    "contact": {
+      "@id": "rcpa:contact"
+    },
+    "contactName": {
+      "@id": "rcpa:contactName"
+    },
+    "contactPhone": {
+      "@id": "rcpa:contactPhone"
+    },
+    "contactless": {
+      "@id": "rcca:contactless"
+    },
+    "credentialId": {
+      "@id": "rcra:credentialId"
+    },
+    "credentialIssuer": {
+      "@id": "rcra:credentialIssuer"
+    },
+    "credentialType": {
+      "@id": "rcra:credentialType"
+    },
+    "credentialUri": {
+      "@id": "rcra:credentialUri"
+    },
+    "credentials": {
+      "@id": "rcra:credentials"
+    },
+    "cuisine": "fnbr:cuisine",
+    "currency": {
+      "@id": "rccna:currency"
+    },
+    "rcsa_currency": {
+      "@id": "rcsa:currency"
+    },
+    "customization": "fnbo:customization",
+    "customizationGroupCode": "fnbo:customizationGroupCode",
+    "customizationGroupName": "fnbo:customizationGroupName",
+    "customizationGroups": "fnbo:customizationGroups",
+    "customizationSelection": "fnbo:customizationSelection",
+    "daysOfWeek": {
+      "@id": "rcoa:daysOfWeek"
+    },
+    "rcpa_daysOfWeek": {
+      "@id": "rcpa:daysOfWeek"
+    },
+    "deliveryDetails": {
+      "@id": "rcpa:deliveryDetails"
+    },
+    "deliveryPreferences": {
+      "@id": "rcca:deliveryPreferences"
+    },
+    "dimensionUnit": {
+      "@id": "rcra:dimensionUnit"
+    },
+    "dimensions": {
+      "@id": "rcra:dimensions"
+    },
+    "distanceConstraint": {
+      "@id": "rcoa:distanceConstraint"
+    },
+    "distanceUnit": {
+      "@id": "rcoa:distanceUnit"
+    },
+    "endTime": {
+      "@id": "rcpa:endTime"
+    },
+    "finish": {
+      "@id": "rcra:finish"
+    },
+    "food": {
+      "@id": "rcra:food"
+    },
+    "foodClassification": {
+      "@id": "rcra:foodClassification"
+    },
+    "foodRegulatoryDeclaration": {
+      "@id": "rcra:foodRegulatoryDeclaration"
+    },
+    "freshProduce": "groc:freshProduce",
+    "gateway": {
+      "@id": "rcsa:gateway"
+    },
+    "gatewayName": {
+      "@id": "rcsa:gatewayName"
+    },
+    "gatewayTransactionId": {
+      "@id": "rcsa:gatewayTransactionId"
+    },
+    "gatewayUrl": {
+      "@id": "rcsa:gatewayUrl"
+    },
+    "gift": {
+      "@id": "rcca:gift"
+    },
+    "giftMessage": {
+      "@id": "rcca:giftMessage"
+    },
+    "giftWrap": {
+      "@id": "rcca:giftWrap"
+    },
+    "handling": {
+      "@id": "rcpa:handling"
+    },
+    "height": {
+      "@id": "rcra:height"
+    },
+    "holidays": {
+      "@id": "rcoa:holidays"
+    },
+    "identity": {
+      "@id": "rcra:identity"
+    },
+    "indoorOnly": "hkr:indoorOnly",
+    "installation": "hkr:installation",
+    "installationAvailable": {
+      "@id": "rcpa:installationAvailable"
+    },
+    "installationNotes": "hkr:installationNotes",
+    "rcpa_installationNotes": {
+      "@id": "rcpa:installationNotes"
+    },
+    "installationProvidedBySeller": "hkr:installationProvidedBySeller",
+    "installationRequired": "hkr:installationRequired",
+    "installationScheduling": {
+      "@id": "rcpa:installationScheduling"
+    },
+    "invoiceCompanyName": {
+      "@id": "rcca:invoiceCompanyName"
+    },
+    "invoiceEmail": {
+      "@id": "rcca:invoiceEmail"
+    },
+    "invoicePreferences": {
+      "@id": "rcca:invoicePreferences"
+    },
+    "isGift": {
+      "@id": "rcca:isGift"
+    },
+    "itemRef": "fnbo:itemRef",
+    "leaveAtDoor": {
+      "@id": "rcca:leaveAtDoor"
+    },
+    "length": {
+      "@id": "rcra:length"
+    },
+    "lineId": {
+      "@id": "rccma:lineId"
+    },
+    "loyalty": {
+      "@id": "rcca:loyalty"
+    },
+    "loyaltyPointsApplied": {
+      "@id": "rccna:loyaltyPointsApplied"
+    },
+    "loyaltyProgramId": {
+      "@id": "rcca:loyaltyProgramId"
+    },
+    "manufacturePackingImportDate": {
+      "@id": "rcra:manufacturePackingImportDate"
+    },
+    "manufacturerOrPacker": {
+      "@id": "rcra:manufacturerOrPacker"
+    },
+    "manufacturerOrPackerAddress": {
+      "@id": "rcra:manufacturerOrPackerAddress"
+    },
+    "manufacturerOrPackerId": {
+      "@id": "rcra:manufacturerOrPackerId"
+    },
+    "manufacturerOrPackerName": {
+      "@id": "rcra:manufacturerOrPackerName"
+    },
+    "manufacturerOrPackerType": {
+      "@id": "rcra:manufacturerOrPackerType"
+    },
+    "material": {
+      "@id": "rcra:material"
+    },
+    "maxDistance": {
+      "@id": "rcoa:maxDistance"
+    },
+    "maxDuration": {
+      "@id": "rcpa:maxDuration"
+    },
+    "maxSelections": "fnbo:maxSelections",
+    "method": {
+      "@id": "rcsa:method"
+    },
+    "minDuration": {
+      "@id": "rcpa:minDuration"
+    },
+    "minSelections": "fnbo:minSelections",
+    "monetaryEquivalent": {
+      "@id": "rccna:monetaryEquivalent"
+    },
+    "netQuantity": {
+      "@id": "rcra:netQuantity"
+    },
+    "netQuantityDeclaration": "groc:netQuantityDeclaration",
+    "nutrient": "groc:nutrient",
+    "nutrition": "groc:nutrition",
+    "nutritionValue": "groc:nutritionValue",
+    "offerId": {
+      "@id": "rccma:offerId"
+    },
+    "offerRef": "fnbo:offerRef",
+    "offerTimeEnd": {
+      "@id": "rcoa:offerTimeEnd"
+    },
+    "offerTimeStart": {
+      "@id": "rcoa:offerTimeStart"
+    },
+    "operatingHours": {
+      "@id": "rcpa:operatingHours"
+    },
+    "optionCode": "fnbo:optionCode",
+    "optionName": "fnbo:optionName",
+    "options": "fnbo:options",
+    "originCountry": {
+      "@id": "rcra:originCountry"
+    },
+    "outdoorOnly": "hkr:outdoorOnly",
+    "packagedGoodsDeclaration": {
+      "@id": "rcra:packagedGoodsDeclaration"
+    },
+    "paymentConstraints": {
+      "@id": "rcoa:paymentConstraints"
+    },
+    "paymentMethods": {
+      "@id": "rccna:paymentMethods"
+    },
+    "physical": {
+      "@id": "rcra:physical"
+    },
+    "pointsRedeemed": {
+      "@id": "rcca:pointsRedeemed"
+    },
+    "pointsUsed": {
+      "@id": "rccna:pointsUsed"
+    },
+    "policies": {
+      "@id": "rcoa:policies"
+    },
+    "preferredTimeSlot": {
+      "@id": "rcca:preferredTimeSlot"
+    },
+    "preparation": "fnbr:preparation",
+    "preparationInstructions": "fnbr:preparationInstructions",
+    "price": {
+      "@id": "rccma:price"
+    },
+    "priceDelta": "fnbo:priceDelta",
+    "priceDeltaType": "fnbo:priceDeltaType",
+    "priceDeltaValue": "fnbo:priceDeltaValue",
+    "programId": {
+      "@id": "rccna:programId"
+    },
+    "proposedInstallationDate": {
+      "@id": "rcpa:proposedInstallationDate"
+    },
+    "quantity": {
+      "@id": "rccma:quantity"
+    },
+    "reconciliationId": {
+      "@id": "rcsa:reconciliationId"
+    },
+    "registrationId": {
+      "@id": "rcra:registrationId"
+    },
+    "registrationRole": {
+      "@id": "rcra:registrationRole"
+    },
+    "registrationScheme": {
+      "@id": "rcra:registrationScheme"
+    },
+    "registrationUrl": {
+      "@id": "rcra:registrationUrl"
+    },
+    "registrations": {
+      "@id": "rcra:registrations"
+    },
+    "replacement": {
+      "@id": "rcoa:replacement"
+    },
+    "replacementAllowed": {
+      "@id": "rcoa:replacementAllowed"
+    },
+    "replacementConditions": {
+      "@id": "rcoa:replacementConditions"
+    },
+    "replacementMethod": {
+      "@id": "rcoa:replacementMethod"
+    },
+    "replacementSubjectToAvailability": {
+      "@id": "rcoa:replacementSubjectToAvailability"
+    },
+    "replacementWindow": {
+      "@id": "rcoa:replacementWindow"
+    },
+    "resourceId": {
+      "@id": "rccma:resourceId"
+    },
+    "restockingFee": {
+      "@id": "rcoa:restockingFee"
+    },
+    "restockingFeeType": {
+      "@id": "rcoa:restockingFeeType"
+    },
+    "restockingFeeValue": {
+      "@id": "rcoa:restockingFeeValue"
+    },
+    "returnAllowed": {
+      "@id": "rcoa:returnAllowed"
+    },
+    "returnConditions": {
+      "@id": "rcoa:returnConditions"
+    },
+    "returnMethod": {
+      "@id": "rcoa:returnMethod"
+    },
+    "returnWindow": {
+      "@id": "rcoa:returnWindow"
+    },
+    "returns": {
+      "@id": "rcoa:returns"
+    },
+    "serviceability": {
+      "@id": "rcoa:serviceability"
+    },
+    "settledAmount": {
+      "@id": "rcsa:settledAmount"
+    },
+    "settledAt": {
+      "@id": "rcsa:settledAt"
+    },
+    "shelfLife": "fnbr:shelfLife",
+    "sla": {
+      "@id": "rcpa:sla"
+    },
+    "slaUnitBasis": {
+      "@id": "rcpa:slaUnitBasis"
+    },
+    "source": {
+      "@id": "rcca:source"
+    },
+    "sourceChannel": {
+      "@id": "rcca:sourceChannel"
+    },
+    "specialInstructions": {
+      "@id": "rccma:specialInstructions"
+    },
+    "startTime": {
+      "@id": "rcpa:startTime"
+    },
+    "storageInstructions": "fnbr:storageInstructions",
+    "supportedPerformanceModes": {
+      "@id": "rcpa:supportedPerformanceModes"
+    },
+    "taxId": {
+      "@id": "rcca:taxId"
+    },
+    "taxIdCountry": {
+      "@id": "rcca:taxIdCountry"
+    },
+    "taxIdScheme": {
+      "@id": "rcca:taxIdScheme"
+    },
+    "taxIdValue": {
+      "@id": "rcca:taxIdValue"
+    },
+    "timeRange": {
+      "@id": "rcoa:timeRange"
+    },
+    "rcpa_timeRange": {
+      "@id": "rcpa:timeRange"
+    },
+    "timeSlotEnd": {
+      "@id": "rcca:timeSlotEnd"
+    },
+    "timeSlotStart": {
+      "@id": "rcca:timeSlotStart"
+    },
+    "timing": {
+      "@id": "rcoa:timing"
+    },
+    "timingEnd": {
+      "@id": "rcoa:timingEnd"
+    },
+    "timingStart": {
+      "@id": "rcoa:timingStart"
+    },
+    "totalAmount": {
+      "@id": "rccna:totalAmount"
+    },
+    "unitCode": {
+      "@id": "rccma:unitCode"
+    },
+    "unitQuantity": {
+      "@id": "rccma:unitQuantity"
+    },
+    "usage": "hkr:usage",
+    "volume": {
+      "@id": "rcra:volume"
+    },
+    "warranty": "hkr:warranty",
+    "warrantyDuration": "hkr:warrantyDuration",
+    "warrantyTerms": "hkr:warrantyTerms",
+    "warrantyType": "hkr:warrantyType",
+    "weight": {
+      "@id": "rcra:weight"
+    },
+    "rcra_context": {
+      "@id": "rcra:@context"
+    },
+    "rcra_type": {
+      "@id": "rcra:@type"
+    },
+    "rcoa_context": {
+      "@id": "rcoa:@context"
+    },
+    "rcoa_type": {
+      "@id": "rcoa:@type"
+    },
+    "rcca_context": {
+      "@id": "rcca:@context"
+    },
+    "rcca_type": {
+      "@id": "rcca:@type"
+    },
+    "rccma_context": {
+      "@id": "rccma:@context"
+    },
+    "rccma_type": {
+      "@id": "rccma:@type"
+    },
+    "rccna_context": {
+      "@id": "rccna:@context"
+    },
+    "rccna_type": {
+      "@id": "rccna:@type"
+    },
+    "rcsa_context": {
+      "@id": "rcsa:@context"
+    },
+    "rcsa_type": {
+      "@id": "rcsa:@type"
+    }
+  }
+}
