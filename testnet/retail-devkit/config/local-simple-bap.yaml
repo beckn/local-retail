@@ -31,9 +31,12 @@ modules:
         registry:
           id: dediregistry
           config:
-            url: https://api.dev.beckn.io/registry/dedi
+            url: https://fabric.nfh.global/registry/dedi
             registryName: subscribers.beckn.one
             timeout: 10
+            retry_max: 3
+            retry_wait_min: 100ms
+            retry_wait_max: 500ms
         keyManager:
           id: simplekeymanager
           config:
@@ -53,6 +56,7 @@ modules:
             extendedSchema_cacheTTL: "86400"
             extendedSchema_maxCacheSize: "100"
             extendedSchema_downloadTimeout: "30"
+            extendedSchema_allowedDomains: "raw.githubusercontent.com,schema.beckn.io"
         cache:
           id: cache
           config:
@@ -87,9 +91,12 @@ modules:
         registry:
           id: dediregistry
           config:
-            url: https://api.dev.beckn.io/registry/dedi
+            url: https://fabric.nfh.global/registry/dedi
             registryName: subscribers.beckn.one
             timeout: 10
+            retry_max: 3
+            retry_wait_min: 100ms
+            retry_wait_max: 500ms
         keyManager:
           id: simplekeymanager
           config:
@@ -109,6 +116,7 @@ modules:
             extendedSchema_cacheTTL: "86400"
             extendedSchema_maxCacheSize: "100"
             extendedSchema_downloadTimeout: "30"
+            extendedSchema_allowedDomains: "raw.githubusercontent.com,schema.beckn.io"
         cache:
           id: cache
           config:
