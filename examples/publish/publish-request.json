@@ -12,7 +12,7 @@
     "ttl": "PT30S",
     "networkId": "beckn.one/testnet-retail"
   },
-  "message": {
+"message": {
     "catalogs": [
       {
         "id": "catalog-hbo-001",
@@ -55,12 +55,12 @@
               },
               "physical": {
                 "weight": {
-                  "value": 350,
-                  "unit": "G"
+                  "unitCode": "G",
+                  "unitQuantity": 350
                 },
                 "volume": {
-                  "value": 500,
-                  "unit": "ML"
+                  "unitCode": "ML",
+                  "unitQuantity": 500
                 },
                 "dimensions": {
                   "unit": "CM",
@@ -82,8 +82,8 @@
                 },
                 "commonOrGenericName": "Stainless Steel Vacuum Flask",
                 "netQuantity": {
-                  "value": 500,
-                  "unit": "ML"
+                  "unitCode": "ML",
+                  "unitQuantity": 500
                 }
               }
             }
@@ -110,12 +110,12 @@
               },
               "physical": {
                 "weight": {
-                  "value": 440,
-                  "unit": "G"
+                  "unitCode": "G",
+                  "unitQuantity": 440
                 },
                 "volume": {
-                  "value": 20,
-                  "unit": "L"
+                  "unitCode": "L",
+                  "unitQuantity": 20
                 },
                 "dimensions": {
                   "unit": "CM",
@@ -161,8 +161,8 @@
               },
               "physical": {
                 "weight": {
-                  "value": 2800,
-                  "unit": "G"
+                  "unitCode": "G",
+                  "unitQuantity": 2800
                 },
                 "dimensions": {
                   "unit": "CM",
