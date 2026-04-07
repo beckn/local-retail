@@ -30,6 +30,7 @@ components:
               type: object
               additionalProperties: false
               properties:
+                installationRequired:
                   type: boolean
                   description: Whether installation is required for this product
                   x-jsonld:
