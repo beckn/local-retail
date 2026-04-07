@@ -14,21 +14,9 @@ components:
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld"
         "@type": rcra:RetailResource
-      required:
-        - "@context"
-        - "@type"
       properties:
-        "@context":
-          type: string
-          format: uri
-          const: "https://schema.beckn.io/RetailResource/v2.1/context.jsonld"
-          x-jsonld-id: "rcra:@context"
-        "@type":
-          type: string
-          const: "rcra:RetailResource"
-          x-jsonld-id: "rcra:@type"
         identity:
           type: object
           additionalProperties: false
@@ -47,12 +35,12 @@ components:
           properties:
             weight:
               allOf:
-                - $ref: "https://schema.beckn.io/Quantity/2.0/context.jsonld"
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
               description: Resource weight using Beckn core Quantity
               x-jsonld-id: "rcra:weight"
             volume:
               allOf:
-                - $ref: "https://schema.beckn.io/Quantity/2.0/context.jsonld"
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
               description: Resource volume using Beckn core Quantity
               x-jsonld-id: "rcra:volume"
             dimensions:
@@ -123,7 +111,7 @@ components:
               x-jsonld-id: "rcra:commonOrGenericName"
             netQuantity:
               allOf:
-                - $ref: "https://schema.beckn.io/Quantity/2.0/context.jsonld"
+                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
               x-jsonld-id: "rcra:netQuantity"
             manufacturePackingImportDate:
               type: object

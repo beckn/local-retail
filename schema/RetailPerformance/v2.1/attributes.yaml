@@ -17,7 +17,7 @@ components:
       x-beckn-container: performanceAttributes
       x-jsonld:
         "@type": "rcpa:RetailPerformance"
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailPerformance/v2.1/context.jsonld"
       required:
         - supportedPerformanceModes
       properties:
@@ -38,7 +38,7 @@ components:
             - contact
           properties:
             address:
-              $ref: 'https://schema.beckn.io/Address/2.0/context.jsonld'
+              $ref: '../../v2.0.0/beckn.yaml#/components/schemas/Address'
               x-jsonld-id: "rcpa:address"
             contact:
               type: object
