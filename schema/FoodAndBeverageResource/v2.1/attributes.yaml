@@ -17,7 +17,7 @@ components:
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"
         "@type": fnbr:FoodAndBeverageResourceAttributes
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"

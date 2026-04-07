@@ -15,7 +15,7 @@ components:
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld"
         "@type": groc:GroceryResourceAttributes
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
@@ -35,7 +35,7 @@ components:
                       "@id": "groc:nutrient"
                   value:
                     allOf:
-                      - $ref: "https://schema.beckn.io/Quantity/2.0/context.jsonld"
+                      - $ref: "https://schema.beckn.io/Quantity/2.0#/components/schemas/Quantity"
                     description: Nutrient value using Beckn core Quantity (unitQuantity, unitCode per 100g or serving)
                     x-jsonld:
                       "@id": "groc:nutritionValue"

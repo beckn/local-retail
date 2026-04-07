@@ -17,12 +17,8 @@ components:
       x-beckn-container: contractAttributes
       x-jsonld:
         "@type": "rcca:RetailContract"
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailContract/v2.1/context.jsonld"
       properties:
-        "@context":
-          x-jsonld-id: "rcca:@context"
-        "@type":
-          x-jsonld-id: "rcca:@type"
         buyerInstructions:
           type: string
           description: Free-text instructions from buyer to provider

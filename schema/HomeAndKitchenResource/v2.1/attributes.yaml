@@ -15,7 +15,7 @@ components:
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld"
         "@type": hkr:HomeAndKitchenResourceAttributes
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
@@ -30,7 +30,6 @@ components:
               type: object
               additionalProperties: false
               properties:
-                required:
                   type: boolean
                   description: Whether installation is required for this product
                   x-jsonld:
