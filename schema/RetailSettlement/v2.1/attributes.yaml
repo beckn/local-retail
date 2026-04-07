@@ -13,25 +13,14 @@ components:
       additionalProperties: false
       x-beckn-container: settlementAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld"
         "@type": rcsa:RetailSettlement
       required:
-        - "@context"
-        - "@type"
         - method
         - settledAt
         - settledAmount
         - currency
       properties:
-        "@context":
-          type: string
-          format: uri
-          const: "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld"
-          x-jsonld-id: "rcsa:@context"
-        "@type":
-          type: string
-          const: "rcsa:RetailSettlement"
-          x-jsonld-id: "rcsa:@type"
         gateway:
           type: object
           additionalProperties: false

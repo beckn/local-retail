@@ -14,24 +14,13 @@ components:
       additionalProperties: false
       x-beckn-container: commitmentAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld"
         "@type": "rccma:RetailCommitment"
       required:
-        - "@context"
-        - "@type"
         - lineId
         - resourceId
         - quantity
       properties:
-        "@context":
-          type: string
-          format: uri
-          const: "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld"
-          x-jsonld-id: "rccma:@context"
-        "@type":
-          type: string
-          const: "rccma:RetailCommitment"
-          x-jsonld-id: "rccma:@type"
         lineId:
           type: string
           description: Line reference identifier within the contract
@@ -63,7 +52,7 @@ components:
               x-jsonld-id: "rccma:unitQuantity"
         price:
           allOf:
-            - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/PriceSpecification"
+            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
           description: Price specification for this line item commitment
           x-jsonld-id: "rccma:price"
         specialInstructions:

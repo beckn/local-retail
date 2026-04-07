@@ -13,23 +13,12 @@ components:
       additionalProperties: false
       x-beckn-container: considerationAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld"
         "@type": rccna:RetailConsideration
       required:
-        - "@context"
-        - "@type"
         - currency
         - totalAmount
       properties:
-        "@context":
-          type: string
-          format: uri
-          const: "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld"
-          x-jsonld-id: "rccna:@context"
-        "@type":
-          type: string
-          const: "rccna:RetailConsideration"
-          x-jsonld-id: "rccna:@type"
         paymentMethods:
           type: array
           description: Payment methods accepted

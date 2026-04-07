@@ -15,7 +15,7 @@ components:
       additionalProperties: false
       x-beckn-container: offerAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld"
         "@type": fnbo:FoodAndBeverageOfferAttributes
       allOf:
         - $ref: "../../RetailOffer/v2.1/attributes.yaml#/components/schemas/RetailOffer"

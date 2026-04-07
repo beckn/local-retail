@@ -14,21 +14,9 @@ components:
       additionalProperties: false
       x-beckn-container: offerAttributes
       x-jsonld:
-        "@context": ./context.jsonld
+        "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld"
         "@type": rcoa:RetailOffer
-      required:
-        - "@context"
-        - "@type"
       properties:
-        "@context":
-          type: string
-          format: uri
-          const: "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld"
-          x-jsonld-id: "rcoa:@context"
-        "@type":
-          type: string
-          const: "rcoa:RetailOffer"
-          x-jsonld-id: "rcoa:@type"
         policies:
           type: object
           additionalProperties: false
