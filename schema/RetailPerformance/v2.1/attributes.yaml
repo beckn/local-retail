@@ -38,7 +38,7 @@ components:
             - contact
           properties:
             address:
-              $ref: '../../v2.0.0/beckn.yaml#/components/schemas/Address'
+              $ref: 'https://schema.beckn.io/Address/2.0/context.jsonld'
               x-jsonld-id: "rcpa:address"
             contact:
               type: object

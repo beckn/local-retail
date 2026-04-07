@@ -35,7 +35,7 @@ components:
                       "@id": "groc:nutrient"
                   value:
                     allOf:
-                      - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+                      - $ref: "https://schema.beckn.io/Quantity/2.0/context.jsonld"
                     description: Nutrient value using Beckn core Quantity (unitQuantity, unitCode per 100g or serving)
                     x-jsonld:
                       "@id": "groc:nutritionValue"
