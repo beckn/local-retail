@@ -18,7 +18,7 @@ services:
       retries: 5
 
   onix-bap:
-    image: fidedocker/onix-adapter
+    image: fidedocker/onix-adapter:latest
     container_name: onix-bap
     platform: linux/amd64
     networks:
@@ -39,7 +39,7 @@ services:
     command: [ "./server", "--config=/app/config/local-simple-bap.yaml" ]
 
   onix-bpp:
-    image: fidedocker/onix-adapter
+    image: fidedocker/onix-adapter:latest
     container_name: onix-bpp
     platform: linux/amd64
     networks:
