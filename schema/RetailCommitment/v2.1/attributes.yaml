@@ -52,7 +52,7 @@ components:
               x-jsonld-id: "rccma:unitQuantity"
         price:
           allOf:
-            - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/PriceSpecification"
+            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
           description: Price specification for this line item commitment
           x-jsonld-id: "rccma:price"
         specialInstructions:

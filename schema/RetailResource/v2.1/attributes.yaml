@@ -35,12 +35,12 @@ components:
           properties:
             weight:
               allOf:
-                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+                - $ref: "https://schema.beckn.io/Quantity/2.0#/components/schemas/Quantity"
               description: Resource weight using Beckn core Quantity
               x-jsonld-id: "rcra:weight"
             volume:
               allOf:
-                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+                - $ref: "https://schema.beckn.io/Quantity/2.0#/components/schemas/Quantity"
               description: Resource volume using Beckn core Quantity
               x-jsonld-id: "rcra:volume"
             dimensions:
@@ -111,7 +111,7 @@ components:
               x-jsonld-id: "rcra:commonOrGenericName"
             netQuantity:
               allOf:
-                - $ref: "../../v2.0.0/beckn.yaml#/components/schemas/Quantity"
+                - $ref: "https://schema.beckn.io/Quantity/2.0#/components/schemas/Quantity"
               x-jsonld-id: "rcra:netQuantity"
             manufacturePackingImportDate:
               type: object
