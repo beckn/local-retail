@@ -41,7 +41,7 @@ modules:
           id: simplekeymanager
           config:
             networkParticipant: sandbox.food-finder.com
-            keyId: 76EU7VwahYv4XztXJzji9ssiSV74eWXWBcCKGn7jAdm5VGLCdYAJ8j
+            keyId: 76EU8y5vi36wsggHNp46dGVqEKEJ4Up7jj3fJ2nxUD7AXAh47gVEDF
             signingPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
             encrPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
@@ -101,7 +101,7 @@ modules:
           id: simplekeymanager
           config:
             networkParticipant: sandbox.food-finder.com
-            keyId: 76EU7VwahYv4XztXJzji9ssiSV74eWXWBcCKGn7jAdm5VGLCdYAJ8j
+            keyId: 76EU8y5vi36wsggHNp46dGVqEKEJ4Up7jj3fJ2nxUD7AXAh47gVEDF
             signingPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
             encrPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=

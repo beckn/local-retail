@@ -41,7 +41,7 @@ modules:
           id: simplekeymanager
           config:
             networkParticipant: sandbox.open-kitchen.com
-            keyId: 76EU81bjqDL8APZodt4sGcs1fuR8Wo1XwazJaxDwpWRkoNg9piEJ9H
+            keyId: 76EU8h2x8sGsY9c659SFNT7pJEJntehLHfr3p4oXVy3mCDMn5GFiMg
             signingPrivateKey: 4YRjrBFInRb8OLN1PiwUM9qutrJy2bvzcWPNy47VAD4=
             signingPublicKey: AAUhITzcjMbmPikr/UV5T8/Zp8+NWZ/NrVVateA5eiQ=
             encrPrivateKey: 4YRjrBFInRb8OLN1PiwUM9qutrJy2bvzcWPNy47VAD4=
@@ -96,7 +96,7 @@ modules:
           id: simplekeymanager
           config:
             networkParticipant: sandbox.open-kitchen.com
-            keyId: 76EU81bjqDL8APZodt4sGcs1fuR8Wo1XwazJaxDwpWRkoNg9piEJ9H
+            keyId: 76EU8h2x8sGsY9c659SFNT7pJEJntehLHfr3p4oXVy3mCDMn5GFiMg
             signingPrivateKey: 4YRjrBFInRb8OLN1PiwUM9qutrJy2bvzcWPNy47VAD4=
             signingPublicKey: AAUhITzcjMbmPikr/UV5T8/Zp8+NWZ/NrVVateA5eiQ=
             encrPrivateKey: 4YRjrBFInRb8OLN1PiwUM9qutrJy2bvzcWPNy47VAD4=
