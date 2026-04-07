@@ -8,7 +8,7 @@
     "bapId": "bap.example.com",
     "bapUri": "http://onix-bap:8081/bap/receiver",
     "ttl": "PT30S",
-    "networkId": "beckn.one/testnet"
+    "networkId": "beckn.one/testnet-retail"
   },
   "message": {
     "intent": {

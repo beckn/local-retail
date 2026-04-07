@@ -10,7 +10,7 @@
     "bppId": "bpp.example.com",
     "bppUri": "http://onix-bpp:8082/bpp/receiver",
     "ttl": "PT10M",
-    "networkId": "beckn.one/testnet"
+    "networkId": "beckn.one/testnet-retail"
   },
   "message": {
     "contract": {
@@ -27,6 +27,7 @@
           "participantAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
             "@type": "Provider",
+            "id": "provider-venky-bazaar",
             "descriptor": {
               "name": "Venky.Mahadevan@Bazaar",
               "shortDesc": "Multi-category retail store specializing in electronics and home goods"
@@ -43,23 +44,10 @@
             "@type": "Consumer",
             "role": "buyer",
             "person": {
-              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
-              "@type": "Person",
-              "id": "buyer-motiur-rehman",
+              "id": "abc",
               "name": "Motiur Rehman",
               "email": "nc.rehman@gmail.com",
-              "telephone": "+919191223433",
-              "address": {
-                "streetAddress": "42, MG Road",
-                "addressLocality": "Bangalore",
-                "addressRegion": "Karnataka",
-                "postalCode": "560001",
-                "addressCountry": "IN"
-              },
-              "knowsLanguage": [
-                "en",
-                "hi"
-              ]
+              "telephone": "+919191223433"
             }
           }
         }
@@ -87,12 +75,12 @@
                 },
                 "physical": {
                   "weight": {
-                    "value": 350,
-                    "unit": "G"
+                    "unitQuantity": 350,
+                    "unitCode": "G"
                   },
                   "volume": {
-                    "value": 500,
-                    "unit": "ML"
+                    "unitQuantity": 500,
+                    "unitCode": "ML"
                   },
                   "appearance": {
                     "color": "Yellow",
@@ -108,8 +96,8 @@
                   },
                   "commonOrGenericName": "Stainless Steel Vacuum Flask",
                   "netQuantity": {
-                    "value": 500,
-                    "unit": "ML"
+                    "unitQuantity": 500,
+                    "unitCode": "ML"
                   }
                 }
               }
@@ -206,7 +194,7 @@
           ],
           "performanceAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
-            "@type": "PerformanceAttributes",
+            "@type": "rcpa:RetailPerformance",
             "supportedPerformanceModes": [
               "DELIVERY"
             ],
@@ -253,64 +241,9 @@
           }
         }
       ],
-      "settlements": [
-        {
-          "id": "settlement-upi",
-          "considerationId": "consideration-001",
-          "status": "DRAFT",
-          "settlementAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailSettlement/v2.1/context.jsonld",
-            "@type": "RetailSettlement",
-            "method": "ONLINE",
-            "settledAmount": 3000,
-            "currency": "INR",
-            "settledAt": "",
-            "gateway": {
-              "name": "",
-              "transactionId": "",
-              "url": "upi://pay?pa=venky.bazaar@upi&am=3000&cu=INR"
-            }
-          }
-        },
-        {
-          "id": "settlement-cod",
-          "considerationId": "consideration-001",
-          "status": "DRAFT",
-          "settlementAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailSettlement/v2.1/context.jsonld",
-            "@type": "RetailSettlement",
-            "method": "COD_COLLECTION",
-            "settledAmount": 3000,
-            "currency": "INR",
-            "settledAt": "",
-            "gateway": {
-              "name": "COD",
-              "transactionId": ""
-            }
-          }
-        },
-        {
-          "id": "settlement-card",
-          "considerationId": "consideration-001",
-          "status": "DRAFT",
-          "settlementAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailSettlement/v2.1/context.jsonld",
-            "@type": "RetailSettlement",
-            "method": "ONLINE",
-            "settledAmount": 3000,
-            "currency": "INR",
-            "settledAt": "",
-            "gateway": {
-              "name": "",
-              "transactionId": "",
-              "url": "https://4e21-124-123-32-28.ngrok-free.app/payments/checkout?order_id=order-flask-20231106-001&amount=3000&currency=INR"
-            }
-          }
-        }
-      ],
       "contractAttributes": {
         "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld",
-        "@type": "ContractAttributes",
+        "@type": "rcca:RetailContract",
         "buyerInstructions": "Please handle with care",
         "deliveryPreferences": {
           "leaveAtDoor": false,

@@ -10,7 +10,7 @@
     "bppId": "bpp.example.com",
     "bppUri": "http://onix-bpp:8082/bpp/receiver",
     "ttl": "PT30S",
-    "networkId": "beckn.one/testnet"
+    "networkId": "beckn.one/testnet-retail"
   },
   "message": {
     "contract": {
@@ -26,6 +26,7 @@
           "participantAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
             "@type": "Provider",
+            "id": "provider-venky-bazaar",
             "descriptor": {
               "name": "Venky.Mahadevan@Bazaar",
               "shortDesc": "Multi-category retail store specializing in electronics and home goods"
@@ -42,23 +43,10 @@
             "@type": "Consumer",
             "role": "buyer",
             "person": {
-              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
-              "@type": "Person",
-              "id": "buyer-motiur-rehman",
+              "id": "abc",
               "name": "Motiur Rehman",
               "email": "nc.rehman@gmail.com",
-              "telephone": "+919191223433",
-              "address": {
-                "streetAddress": "42, MG Road",
-                "addressLocality": "Bangalore",
-                "addressRegion": "Karnataka",
-                "postalCode": "560001",
-                "addressCountry": "IN"
-              },
-              "knowsLanguage": [
-                "en",
-                "hi"
-              ]
+              "telephone": "+919191223433"
             }
           }
         }
@@ -130,7 +118,7 @@
           ],
           "performanceAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
-            "@type": "PerformanceAttributes",
+            "@type": "rcpa:RetailPerformance",
             "supportedPerformanceModes": [
               "DELIVERY"
             ],

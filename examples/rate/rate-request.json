@@ -10,7 +10,7 @@
     "bppId": "bpp.example.com",
     "bppUri": "http://onix-bpp:8082/bpp/receiver",
     "ttl": "PT10M",
-    "networkId": "beckn.one/testnet"
+    "networkId": "beckn.one/testnet-retail"
   },
   "message": {
     "ratingInputs": [
