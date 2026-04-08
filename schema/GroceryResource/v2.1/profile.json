@@ -4,7 +4,7 @@
   "version": "2.1.0",
   "protocol_version": "2.0",
   "semantic_model": "generalised",
-  "included_schemas": ["GroceryResourceAttributes"],
+  "included_schemas": ["GroceryResource"],
   "discovery_fields": ["nutrition[].nutrient", "freshProduce.netQuantityDeclaration"],
   "indexable_paths": [
     "beckn:resourceAttributes.nutrition[].nutrient",

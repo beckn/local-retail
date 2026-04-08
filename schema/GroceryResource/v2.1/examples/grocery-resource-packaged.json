@@ -56,7 +56,7 @@
             "category": "Staple Foods",
             "resourceAttributes": {
               "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld",
-              "@type": "groc:GroceryResourceAttributes",
+              "@type": "groc:GroceryResource",
               "identity": {
                 "brand": "Aashirvaad",
                 "originCountry": "IN"

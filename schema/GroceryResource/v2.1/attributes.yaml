@@ -10,13 +10,13 @@ info:
 
 components:
   schemas:
-    GroceryResourceAttributes:
+    GroceryResource:
       type: object
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld"
-        "@type": groc:GroceryResourceAttributes
+        "@type": groc:GroceryResource
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
         - type: object

@@ -89,7 +89,7 @@
             },
             "offerAttributes": {
               "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld",
-              "@type": "fnbo:FoodAndBeverageOfferAttributes",
+              "@type": "fnbo:FoodAndBeverageOffer",
               "customization": {
                 "groups": [
                   {

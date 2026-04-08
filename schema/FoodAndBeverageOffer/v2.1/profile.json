@@ -4,7 +4,7 @@
   "version": "2.1.0",
   "protocol_version": "2.0",
   "semantic_model": "generalised",
-  "included_schemas": ["FoodAndBeverageOfferAttributes"],
+  "included_schemas": ["FoodAndBeverageOffer"],
   "discovery_fields": ["customization.groups[].name"],
   "indexable_paths": [
     "beckn:offerAttributes.customization.groups[].code",

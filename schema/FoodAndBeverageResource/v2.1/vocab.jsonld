@@ -2,8 +2,8 @@
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
     "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
-    "FoodAndBeverageResourceAttributes": {
-      "@id": "fnbr:FoodAndBeverageResourceAttributes",
+    "FoodAndBeverageResource": {
+      "@id": "fnbr:FoodAndBeverageResource",
       "@type": "@vocab"
     },
     "allergens": {

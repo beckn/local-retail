@@ -2,8 +2,8 @@
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
     "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
-    "FoodAndBeverageOfferAttributes": {
-      "@id": "fnbo:FoodAndBeverageOfferAttributes",
+    "FoodAndBeverageOffer": {
+      "@id": "fnbo:FoodAndBeverageOffer",
       "@type": "@vocab"
     },
     "customization": {
