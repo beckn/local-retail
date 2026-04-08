@@ -1,4 +1,4 @@
-# GroceryResourceAttributes Schema
+# GroceryResource Schema
 
 **Container:** `Resource.resourceAttributes`
 **Protocol Version:** 2.0

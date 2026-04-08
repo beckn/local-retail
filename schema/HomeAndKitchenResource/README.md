@@ -1,4 +1,4 @@
-# HomeAndKitchenResourceAttributes Schema
+# HomeAndKitchenResource Schema
 
 **Container:** `Resource.resourceAttributes`
 **Protocol Version:** 2.0

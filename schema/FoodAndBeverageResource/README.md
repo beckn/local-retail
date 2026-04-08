@@ -1,4 +1,4 @@
-# FoodAndBeverageResourceAttributes Schema
+# FoodAndBeverageResource Schema
 
 **Container:** `Resource.resourceAttributes`
 **Protocol Version:** 2.0
@@ -41,7 +41,7 @@ Resource model.
 ## Non-Goals
 
 - Pricing and commercial terms (belong in `offerAttributes`)
-- Customization options (SIZE, TOPPINGS) (belong in `FoodAndBeverageOfferAttributes.customization`)
+- Customization options (SIZE, TOPPINGS) (belong in `FoodAndBeverageOffer.customization`)
 - Per-commitment quantity or line-level data (belong in `commitmentAttributes`)
 - Fulfillment/delivery and service slots (belong in `performanceAttributes`)
 
@@ -52,6 +52,6 @@ Resource model.
 ## Related Schemas
 
 - **RetailResource** — base retail resource schema (identity, physical, food classification)
-- **FoodAndBeverageOfferAttributes** — F&B offer-level customization (SIZE, TOPPINGS, etc.)
+- **FoodAndBeverageOffer** — F&B offer-level customization (SIZE, TOPPINGS, etc.)
 - **GroceryResource** — packaged foods and fresh produce (nutrition, fresh produce flag)
 - **HomeAndKitchenResource** — non-food home and kitchen products

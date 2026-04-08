@@ -1,14 +1,8 @@
-# Retail Core Settlement Attributes (v2.1)
+# RetailSettlement Schema (v2.1)
 
 ## Overview
 
 The **RetailSettlement** schema defines the structure for retail settlement discharge records in the Beckn protocol v2.1. This schema is intentionally minimal because retail settlements are typically handled by payment gateways, allowing for a clean and efficient representation of settlement transactions without duplicating payment processor logic.
-
-
-## Usage Examples
-
-
-## Design Rationale
 
 This schema is intentionally minimal because:
 

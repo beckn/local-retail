@@ -1,4 +1,4 @@
-# FoodAndBeverageOfferAttributes Schema
+# FoodAndBeverageOffer Schema
 
 **Container:** `Offer.offerAttributes`
 **Protocol Version:** 2.0
@@ -36,8 +36,8 @@ Migrated from `FoodAndBeverageOffer` (v2) to the v2.1 generalised model. The con
 
 ## Non-Goals
 
-- Nutritional or allergen information (belongs in `FoodAndBeverageResourceAttributes`)
-- Cuisine or preparation details (belong in `FoodAndBeverageResourceAttributes`)
+- Nutritional or allergen information (belongs in `FoodAndBeverageResource`)
+- Cuisine or preparation details (belong in `FoodAndBeverageResource`)
 - Per-commitment quantity (belongs in `commitmentAttributes`)
 - Fulfillment scheduling (belongs in `performanceAttributes`)
 
@@ -48,6 +48,6 @@ Migrated from `FoodAndBeverageOffer` (v2) to the v2.1 generalised model. The con
 ## Related Schemas
 
 - **RetailOffer** — base retail offer schema (policies, terms, service windows)
-- **FoodAndBeverageResourceAttributes** — F&B resource attributes (allergens, cuisine, preparation)
+- **FoodAndBeverageResource** — F&B resource attributes (allergens, cuisine, preparation)
 - **GroceryResource** — packaged foods and fresh produce
 - **HomeAndKitchenResource** — non-food home and kitchen products

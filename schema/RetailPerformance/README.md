@@ -21,13 +21,6 @@ This schema attaches to the following Beckn v2.0 core entities via the `performa
 - **Fulfillment**: Specific fulfillment execution details
 - **Commitment**: Per-commitment performance specifications
 
-
-## Schema Structure
-
-
-## Design Rationale
-
-
 ## Non-Goals
 
 This schema does **not**:
