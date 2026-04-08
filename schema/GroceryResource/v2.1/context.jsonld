@@ -4,7 +4,7 @@
     "schema": "https://schema.org/",
     "beckn": "https://schema.beckn.io/",
     "groc": "https://schema.beckn.io/GroceryResource#",
-    "GroceryResourceAttributes": "groc:GroceryResourceAttributes",
+    "GroceryResource": "groc:GroceryResource",
     "nutrition": "groc:nutrition",
     "nutrient": "groc:nutrient",
     "nutritionValue": "groc:nutritionValue",

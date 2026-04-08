@@ -12,13 +12,13 @@ info:
 
 components:
   schemas:
-    FoodAndBeverageResourceAttributes:
+    FoodAndBeverageResource:
       type: object
       additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"
-        "@type": fnbr:FoodAndBeverageResourceAttributes
+        "@type": fnbr:FoodAndBeverageResource
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"
         - type: object

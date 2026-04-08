@@ -56,7 +56,7 @@
             "category": "Dining Tables",
             "resourceAttributes": {
               "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld",
-              "@type": "hkr:HomeAndKitchenResourceAttributes",
+              "@type": "hkr:HomeAndKitchenResource",
               "identity": {
                 "brand": "WoodCraft",
                 "originCountry": "IN"

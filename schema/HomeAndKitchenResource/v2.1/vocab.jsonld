@@ -2,8 +2,8 @@
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
     "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
-    "HomeAndKitchenResourceAttributes": {
-      "@id": "hkr:HomeAndKitchenResourceAttributes",
+    "HomeAndKitchenResource": {
+      "@id": "hkr:HomeAndKitchenResource",
       "@type": "@vocab"
     },
     "careInstructions": {

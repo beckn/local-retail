@@ -56,7 +56,7 @@
             "category": "Pizzas",
             "resourceAttributes": {
               "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld",
-              "@type": "fnbr:FoodAndBeverageResourceAttributes",
+              "@type": "fnbr:FoodAndBeverageResource",
               "identity": {
                 "brand": "Sarpino's Pizzeria",
                 "originCountry": "IN"
