@@ -16,6 +16,18 @@
     "ManufacturerOrPackerType": "rcra:ManufacturerOrPackerType",
     "RegistrationRole": "rcra:RegistrationRole",
     "AdditiveType": "rcra:AdditiveType",
+    "category": {
+      "@id": "rcra:category"
+    },
+    "availableAt": {
+      "@id": "rcra:availableAt"
+    },
+    "rateable": {
+      "@id": "rcra:rateable"
+    },
+    "isActive": {
+      "@id": "rcra:isActive"
+    },
     "identity": {
       "@id": "rcra:identity"
     },

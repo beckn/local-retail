@@ -15,6 +15,27 @@
     "CancellationCutoffEvent": "rcoa:CancellationCutoffEvent",
     "FeeType": "rcoa:FeeType",
     "OfferType": "rcoa:OfferType",
+    "price": {
+      "@id": "rcoa:price"
+    },
+    "isActive": {
+      "@id": "rcoa:isActive"
+    },
+    "validity": {
+      "@id": "rcoa:validity"
+    },
+    "eligibleRegion": {
+      "@id": "rcoa:eligibleRegion"
+    },
+    "acceptedPaymentMethod": {
+      "@id": "rcoa:acceptedPaymentMethod"
+    },
+    "addOns": {
+      "@id": "rcoa:addOns"
+    },
+    "addOnItems": {
+      "@id": "rcoa:addOnItems"
+    },
     "policies": {
       "@id": "rcoa:policies"
     },

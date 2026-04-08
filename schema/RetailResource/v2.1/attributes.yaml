@@ -17,6 +17,26 @@ components:
         "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld"
         "@type": rcra:RetailResource
       properties:
+        category:
+          allOf:
+            - $ref: "https://schema.beckn.io/CategoryCode/2.0#/components/schemas/CategoryCode"
+          description: Taxonomy category code for the resource
+          x-jsonld-id: "rcra:category"
+        availableAt:
+          type: array
+          items:
+            $ref: "https://schema.beckn.io/Location/2.0#/components/schemas/Location"
+          description: Physical locations where the resource is available
+          x-jsonld-id: "rcra:availableAt"
+        rateable:
+          type: boolean
+          description: Whether the resource can be rated by customers
+          x-jsonld-id: "rcra:rateable"
+        isActive:
+          type: boolean
+          description: Whether the resource is active and available for discovery
+          default: true
+          x-jsonld-id: "rcra:isActive"
         identity:
           type: object
           additionalProperties: false
