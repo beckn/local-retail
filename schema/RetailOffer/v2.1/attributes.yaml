@@ -46,18 +46,6 @@ components:
             - $ref: "https://schema.beckn.io/AcceptedPaymentMethod/2.0#/components/schemas/AcceptedPaymentMethod"
           description: Payment methods accepted for this offer
           x-jsonld-id: "rcoa:acceptedPaymentMethod"
-        addOns:
-          type: array
-          items:
-            type: string
-          description: IDs of optional extra offers attachable to this offer (e.g., warranty, gift wrap)
-          x-jsonld-id: "rcoa:addOns"
-        addOnItems:
-          type: array
-          items:
-            type: string
-          description: IDs of optional extra resources attachable to this offer (e.g., toppings, accessories)
-          x-jsonld-id: "rcoa:addOnItems"
         policies:
           type: object
           additionalProperties: false
