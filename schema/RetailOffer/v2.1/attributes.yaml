@@ -17,6 +17,47 @@ components:
         "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld"
         "@type": rcoa:RetailOffer
       properties:
+        price:
+          allOf:
+            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
+          description: >
+            Published price snapshot for this offer at discovery time. Used for catalog rendering
+            and search. The formal agreed price is established via Consideration in the Contract
+            from the select call onwards.
+          x-jsonld-id: "rcoa:price"
+        isActive:
+          type: boolean
+          description: Whether the offer is active and available for discovery
+          default: true
+          x-jsonld-id: "rcoa:isActive"
+        validity:
+          allOf:
+            - $ref: "https://schema.beckn.io/TimePeriod/2.0#/components/schemas/TimePeriod"
+          description: Calendar window during which the offer is valid (start/end timestamps)
+          x-jsonld-id: "rcoa:validity"
+        eligibleRegion:
+          type: array
+          items:
+            $ref: "https://schema.beckn.io/Location/2.0#/components/schemas/Location"
+          description: Regions where the offer is eligible
+          x-jsonld-id: "rcoa:eligibleRegion"
+        acceptedPaymentMethod:
+          allOf:
+            - $ref: "https://schema.beckn.io/AcceptedPaymentMethod/2.0#/components/schemas/AcceptedPaymentMethod"
+          description: Payment methods accepted for this offer
+          x-jsonld-id: "rcoa:acceptedPaymentMethod"
+        addOns:
+          type: array
+          items:
+            type: string
+          description: IDs of optional extra offers attachable to this offer (e.g., warranty, gift wrap)
+          x-jsonld-id: "rcoa:addOns"
+        addOnItems:
+          type: array
+          items:
+            type: string
+          description: IDs of optional extra resources attachable to this offer (e.g., toppings, accessories)
+          x-jsonld-id: "rcoa:addOnItems"
         policies:
           type: object
           additionalProperties: false
