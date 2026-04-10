@@ -100,6 +100,10 @@
                   "subjectToAvailability": true
                 }
               },
+              "price": {
+                "currency": "INR",
+                "value": "1200.00"
+              },
               "paymentConstraints": {
                 "codAvailable": true
               },
@@ -142,6 +146,7 @@
             "@type": "RetailCommitment",
             "lineId": "LINE-001",
             "resourceId": "item-flask-mh500-yellow",
+            "offerId": "offer-flask-mh500-yellow",
             "quantity": {
               "unitCode": "EA",
               "unitQuantity": 2
