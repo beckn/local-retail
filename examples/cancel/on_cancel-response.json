@@ -27,6 +27,7 @@
           "participantAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/schemas/main/schema/Provider/v2.1/context.jsonld",
             "@type": "Provider",
+            "id": "provider-venky-bazaar",
             "descriptor": {
               "name": "Venky.Mahadevan@Bazaar",
               "shortDesc": "Multi-category retail store specializing in electronics and home goods"
@@ -43,8 +44,6 @@
             "@type": "Consumer",
             "role": "buyer",
             "person": {
-              "@context": "https://raw.githubusercontent.com/beckn/schemas/refs/heads/main/schema/Person/v2.0/context.jsonld",
-              "@type": "Person",
               "id": "buyer-motiur-rehman",
               "name": "Motiur Rehman",
               "email": "nc.rehman@gmail.com",
@@ -87,12 +86,12 @@
                 },
                 "physical": {
                   "weight": {
-                    "value": 350,
-                    "unit": "G"
+                    "unitQuantity": 350,
+                    "unitCode": "G"
                   },
                   "volume": {
-                    "value": 500,
-                    "unit": "ML"
+                    "unitQuantity": 500,
+                    "unitCode": "ML"
                   },
                   "appearance": {
                     "color": "Yellow",
@@ -108,8 +107,8 @@
                   },
                   "commonOrGenericName": "Stainless Steel Vacuum Flask",
                   "netQuantity": {
-                    "value": 500,
-                    "unit": "ML"
+                    "unitQuantity": 500,
+                    "unitCode": "ML"
                   }
                 }
               }
@@ -149,6 +148,10 @@
                   "method": "SELLER_PICKUP",
                   "subjectToAvailability": true
                 }
+              },
+              "price": {
+                "currency": "INR",
+                "value": 1200.00
               },
               "paymentConstraints": {
                 "codAvailable": true
@@ -198,7 +201,7 @@
               "unitQuantity": 2
             },
             "price": {
-              "value": 1200,
+              "value": 2400,
               "currency": "INR"
             },
             "specialInstructions": "Please ensure bubble wrap packaging"
@@ -247,7 +250,7 @@
           ],
           "performanceAttributes": {
             "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
-            "@type": "PerformanceAttributes",
+            "@type": "rcpa:RetailPerformance",
             "supportedPerformanceModes": [
               "DELIVERY"
             ],
@@ -316,7 +319,7 @@
       ],
       "contractAttributes": {
         "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld",
-        "@type": "ContractAttributes",
+        "@type": "rcca:RetailContract",
         "buyerInstructions": "Please handle with care",
         "deliveryPreferences": {
           "leaveAtDoor": false,

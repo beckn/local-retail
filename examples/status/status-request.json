@@ -39,6 +39,7 @@
             "@type": "RetailCommitment",
             "lineId": "LINE-001",
             "resourceId": "item-flask-mh500-yellow",
+            "offerId": "offer-flask-mh500-yellow",
             "quantity": {
               "unitCode": "EA",
               "unitQuantity": 2

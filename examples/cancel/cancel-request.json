@@ -39,6 +39,7 @@
             "@type": "RetailCommitment",
             "lineId": "LINE-001",
             "resourceId": "item-flask-mh500-yellow",
+            "offerId": "offer-flask-mh500-yellow",
             "quantity": {
               "unitCode": "EA",
               "unitQuantity": 2
@@ -48,7 +49,7 @@
       ],
       "contractAttributes": {
         "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld",
-        "@type": "ContractAttributes",
+        "@type": "rcca:RetailContract",
         "buyerInstructions": "Please cancel — changed my mind"
       }
     }

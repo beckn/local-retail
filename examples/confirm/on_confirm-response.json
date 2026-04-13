@@ -131,7 +131,46 @@
                   "window": "PT2H",
                   "cutoffEvent": "BEFORE_PACKING"
                 }
-              }
+              },
+              "price": {
+                "currency": "INR",
+                "value": 1200.00
+              },
+              "paymentConstraints": {
+                "codAvailable": true
+              },
+              "serviceability": {
+                "distanceConstraint": {
+                  "maxDistance": 15,
+                  "unit": "KM"
+                },
+                "timing": [
+                  {
+                    "daysOfWeek": [
+                      "MON",
+                      "TUE",
+                      "WED",
+                      "THU",
+                      "FRI",
+                      "SAT",
+                      "SUN"
+                    ],
+                    "timeRange": {
+                      "start": "09:00",
+                      "end": "21:00"
+                    }
+                  }
+                ]
+              },
+              "timeRange": {
+                "start": "09:00",
+                "end": "21:00"
+              },
+              "holidays": [
+                "2026-01-26",
+                "2026-08-15",
+                "2026-12-25"
+              ]
             }
           },
           "commitmentAttributes": {
@@ -145,7 +184,7 @@
               "unitQuantity": 2
             },
             "price": {
-              "value": 1200,
+              "value": 2400.00,
               "currency": "INR"
             },
             "specialInstructions": "Please ensure bubble wrap packaging"
