@@ -49,7 +49,7 @@
       ],
       "contractAttributes": {
         "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld",
-        "@type": "ContractAttributes",
+        "@type": "rcca:RetailContract",
         "buyerInstructions": "Please cancel — changed my mind"
       }
     }

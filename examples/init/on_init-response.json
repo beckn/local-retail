@@ -134,7 +134,7 @@
               },
               "price": {
                 "currency": "INR",
-                "value": "1200.00"
+                "value": 1200.00
               },
                "paymentConstraints": {
                 "codAvailable": true
@@ -184,7 +184,7 @@
               "unitQuantity": 2
             },
             "price": {
-              "value": "2400.00",
+              "value": 2400.00,
               "currency": "INR"
             },
             "specialInstructions": "Please ensure bubble wrap packaging"
