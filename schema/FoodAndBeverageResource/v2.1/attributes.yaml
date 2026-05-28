@@ -14,7 +14,7 @@ components:
   schemas:
     FoodAndBeverageResourceAttributes:
       type: object
-      additionalProperties: false
+      unevaluatedProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"

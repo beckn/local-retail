@@ -12,7 +12,7 @@ components:
   schemas:
     FoodAndBeverageOfferAttributes:
       type: object
-      additionalProperties: false
+      unevaluatedProperties: false
       x-beckn-container: offerAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld"

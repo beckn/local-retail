@@ -12,7 +12,7 @@ components:
   schemas:
     HomeAndKitchenResourceAttributes:
       type: object
-      additionalProperties: false
+      unevaluatedProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld"
