@@ -9,253 +9,166 @@
       "@id": "rcpa:PerformanceAttributes",
       "@type": "rdfs:Class",
       "rdfs:label": "Performance Attributes",
-      "rdfs:comment": "Container for retail performance execution and delivery capability declarations, migrated from v2 fulfillmentAttributes"
+      "rdfs:comment": "Container for retail performance execution and delivery capability declarations. Migrated from v2 fulfillmentAttributes. Updated in v2.1 with new modes, SLA basis values, and agent/delivery evidence fields."
     },
     {
       "@id": "rcpa:supportedPerformanceModes",
       "@type": "rdfs:Property",
       "rdfs:label": "Supported Performance Modes",
-      "rdfs:comment": "Array of performance modes (execution models) supported by the provider for fulfilling commitments"
+      "rdfs:comment": "Array of performance modes (execution models) supported by the provider for fulfilling commitments."
     },
     {
       "@id": "rcpa:PerformanceMode",
       "@type": "rdfs:Class",
       "rdfs:label": "Performance Mode",
-      "rdfs:comment": "Enumeration of supported performance modes"
+      "rdfs:comment": "Enumeration of supported fulfilment execution models. Updated in v2.1: PICKUP renamed to SELF_PICKUP; DINE_IN and CURBSIDE added."
     },
-    {
-      "@id": "rcpa:DELIVERY",
-      "@type": "rcpa:PerformanceMode",
-      "rdfs:label": "Delivery",
-      "rdfs:comment": "Delivery to customer-specified location"
-    },
-    {
-      "@id": "rcpa:PICKUP",
-      "@type": "rcpa:PerformanceMode",
-      "rdfs:label": "Pickup",
-      "rdfs:comment": "Customer pickup from provider location"
-    },
-    {
-      "@id": "rcpa:SERVICE",
-      "@type": "rcpa:PerformanceMode",
-      "rdfs:label": "Service",
-      "rdfs:comment": "Service provisioning at customer location (remapped from DINE_IN in v2)"
-    },
+    { "@id": "rcpa:DELIVERY",    "@type": "rcpa:PerformanceMode", "rdfs:label": "Delivery",    "rdfs:comment": "Provider delivers to the buyer's specified address." },
+    { "@id": "rcpa:SELF_PICKUP", "@type": "rcpa:PerformanceMode", "rdfs:label": "Self Pickup",  "rdfs:comment": "Buyer collects from the provider's location. Renamed from PICKUP in v2.1 for semantic clarity." },
+    { "@id": "rcpa:SERVICE",     "@type": "rcpa:PerformanceMode", "rdfs:label": "Service",      "rdfs:comment": "Provider performs a service at the buyer's or provider's location (e.g., appliance installation, home service)." },
+    { "@id": "rcpa:DINE_IN",     "@type": "rcpa:PerformanceMode", "rdfs:label": "Dine In",      "rdfs:comment": "Order consumed on-premises; used in food and beverage contexts. NEW in v2.1." },
+    { "@id": "rcpa:CURBSIDE",    "@type": "rcpa:PerformanceMode", "rdfs:label": "Curbside",     "rdfs:comment": "Buyer drives to the pickup point and seller brings the order to the vehicle. NEW in v2.1." },
+
     {
       "@id": "rcpa:deliveryDetails",
       "@type": "rdfs:Property",
       "rdfs:label": "Delivery Details",
-      "rdfs:comment": "Delivery address and contact information for fulfillment"
+      "rdfs:comment": "Delivery address and contact information for fulfilment execution."
     },
-    {
-      "@id": "rcpa:contact",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Contact",
-      "rdfs:comment": "Contact details for delivery coordination"
-    },
-    {
-      "@id": "rcpa:contactName",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Contact Name",
-      "rdfs:comment": "Name of the contact person for delivery"
-    },
-    {
-      "@id": "rcpa:contactPhone",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Contact Phone",
-      "rdfs:comment": "Phone number of the contact person"
-    },
+    { "@id": "rcpa:contact",      "@type": "rdfs:Property", "rdfs:label": "Contact",       "rdfs:comment": "Contact details for delivery coordination." },
+    { "@id": "rcpa:contactName",  "@type": "rdfs:Property", "rdfs:label": "Contact Name",  "rdfs:comment": "Name of the delivery contact person." },
+    { "@id": "rcpa:contactPhone", "@type": "rdfs:Property", "rdfs:label": "Contact Phone", "rdfs:comment": "Phone number of the delivery contact person." },
+
     {
       "@id": "rcpa:operatingHours",
       "@type": "rdfs:Property",
       "rdfs:label": "Operating Hours",
-      "rdfs:comment": "Schedule of operating hours with days and time ranges"
+      "rdfs:comment": "Schedule of operating hours specifying days and time ranges."
     },
     {
       "@id": "rcpa:OperatingHour",
       "@type": "rdfs:Class",
       "rdfs:label": "Operating Hour",
-      "rdfs:comment": "Single operating hour entry with days and time range"
+      "rdfs:comment": "A single operating hour block with days-of-week and a time range."
     },
-    {
-      "@id": "rcpa:daysOfWeek",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Days of Week",
-      "rdfs:comment": "Array of days (0=Sunday through 6=Saturday)"
-    },
-    {
-      "@id": "rcpa:timeRange",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Time Range",
-      "rdfs:comment": "Start and end times for the operating period"
-    },
-    {
-      "@id": "rcpa:startTime",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Start Time",
-      "rdfs:comment": "Start time in HH:MM format"
-    },
-    {
-      "@id": "rcpa:endTime",
-      "@type": "rdfs:Property",
-      "rdfs:label": "End Time",
-      "rdfs:comment": "End time in HH:MM format"
-    },
+    { "@id": "rcpa:daysOfWeek", "@type": "rdfs:Property", "rdfs:label": "Days of Week", "rdfs:comment": "Array of integers indicating days of operation (0=Sunday through 6=Saturday)." },
+    { "@id": "rcpa:timeRange",  "@type": "rdfs:Property", "rdfs:label": "Time Range",   "rdfs:comment": "Start and end times (HH:MM) for the operating period." },
+    { "@id": "rcpa:startTime",  "@type": "rdfs:Property", "rdfs:label": "Start Time",   "rdfs:comment": "Start of the operating period in HH:MM format." },
+    { "@id": "rcpa:endTime",    "@type": "rdfs:Property", "rdfs:label": "End Time",     "rdfs:comment": "End of the operating period in HH:MM format." },
+
     {
       "@id": "rcpa:closures",
       "@type": "rdfs:Property",
       "rdfs:label": "Closures",
-      "rdfs:comment": "Periods when the provider is closed with start and end dates"
+      "rdfs:comment": "Periods when the provider is closed, with start and end date-times."
     },
     {
       "@id": "rcpa:Closure",
       "@type": "rdfs:Class",
       "rdfs:label": "Closure",
-      "rdfs:comment": "Single closure period entry"
+      "rdfs:comment": "A single closure period (e.g., public holiday, planned maintenance)."
     },
-    {
-      "@id": "rcpa:closureStartDate",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Closure Start Date",
-      "rdfs:comment": "Start date-time of the closure period"
-    },
-    {
-      "@id": "rcpa:closureEndDate",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Closure End Date",
-      "rdfs:comment": "End date-time of the closure period"
-    },
+    { "@id": "rcpa:closureStartDate", "@type": "rdfs:Property", "rdfs:label": "Closure Start Date", "rdfs:comment": "Start date-time of the closure period (ISO 8601)." },
+    { "@id": "rcpa:closureEndDate",   "@type": "rdfs:Property", "rdfs:label": "Closure End Date",   "rdfs:comment": "End date-time of the closure period (ISO 8601)." },
+
     {
       "@id": "rcpa:sla",
       "@type": "rdfs:Property",
       "rdfs:label": "Service Level Agreement",
-      "rdfs:comment": "SLA terms with minimum and maximum durations and the basis for calculation"
+      "rdfs:comment": "SLA terms with minimum and maximum durations and the reference event from which the clock starts."
     },
-    {
-      "@id": "rcpa:minDuration",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Minimum Duration",
-      "rdfs:comment": "Minimum SLA duration in ISO 8601 format (e.g., PT30M)"
-    },
-    {
-      "@id": "rcpa:maxDuration",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Maximum Duration",
-      "rdfs:comment": "Maximum SLA duration in ISO 8601 format (e.g., PT2H)"
-    },
+    { "@id": "rcpa:minDuration",  "@type": "rdfs:Property", "rdfs:label": "Minimum Duration", "rdfs:comment": "Minimum SLA duration as ISO 8601 (e.g., PT30M, P1D)." },
+    { "@id": "rcpa:maxDuration",  "@type": "rdfs:Property", "rdfs:label": "Maximum Duration", "rdfs:comment": "Maximum SLA duration as ISO 8601 (e.g., PT2H, P3D)." },
     {
       "@id": "rcpa:slaUnitBasis",
       "@type": "rdfs:Property",
       "rdfs:label": "SLA Unit Basis",
-      "rdfs:comment": "Reference point from which SLA duration is calculated"
+      "rdfs:comment": "Reference event from which the SLA duration clock starts. Updated in v2.1: PACKING_COMPLETE renamed PACKED; DISPATCH renamed SHIPMENT; PAYMENT_RECEIPT added."
     },
     {
-      "@id": "rcpa:ORDER_CONFIRMATION",
+      "@id": "rcpa:SLAUnitBasis",
       "@type": "rdfs:Class",
-      "rdfs:label": "Order Confirmation",
-      "rdfs:comment": "SLA duration measured from order confirmation"
+      "rdfs:label": "SLA Unit Basis",
+      "rdfs:comment": "Enumeration of events that start the SLA clock. Updated in v2.1."
     },
-    {
-      "@id": "rcpa:PACKING_COMPLETE",
-      "@type": "rdfs:Class",
-      "rdfs:label": "Packing Complete",
-      "rdfs:comment": "SLA duration measured from completion of packing"
-    },
-    {
-      "@id": "rcpa:DISPATCH",
-      "@type": "rdfs:Class",
-      "rdfs:label": "Dispatch",
-      "rdfs:comment": "SLA duration measured from dispatch/shipment"
-    },
+    { "@id": "rcpa:ORDER_CONFIRMATION", "@type": "rcpa:SLAUnitBasis", "rdfs:label": "Order Confirmation", "rdfs:comment": "SLA clock starts when the provider confirms the order." },
+    { "@id": "rcpa:PACKED",             "@type": "rcpa:SLAUnitBasis", "rdfs:label": "Packed",             "rdfs:comment": "SLA clock starts when packing is complete. Renamed from PACKING_COMPLETE in v2.1." },
+    { "@id": "rcpa:SHIPMENT",           "@type": "rcpa:SLAUnitBasis", "rdfs:label": "Shipment",           "rdfs:comment": "SLA clock starts when the order is handed to the logistics carrier. Renamed from DISPATCH in v2.1." },
+    { "@id": "rcpa:PAYMENT_RECEIPT",    "@type": "rcpa:SLAUnitBasis", "rdfs:label": "Payment Receipt",    "rdfs:comment": "SLA clock starts when prepayment is confirmed cleared. NEW in v2.1." },
+
     {
       "@id": "rcpa:handling",
       "@type": "rdfs:Property",
       "rdfs:label": "Handling Capabilities",
-      "rdfs:comment": "Array of handling requirements and special capabilities supported"
+      "rdfs:comment": "Array of special handling requirements or capabilities supported by this performance unit."
     },
     {
       "@id": "rcpa:HandlingType",
       "@type": "rdfs:Class",
       "rdfs:label": "Handling Type",
-      "rdfs:comment": "Enumeration of handling types and capabilities"
+      "rdfs:comment": "Enumeration of special handling requirements and capabilities."
+    },
+    { "@id": "rcpa:FRAGILE",               "@type": "rcpa:HandlingType", "rdfs:label": "Fragile",               "rdfs:comment": "Capable of handling fragile items requiring careful packaging." },
+    { "@id": "rcpa:COLD_CHAIN",            "@type": "rcpa:HandlingType", "rdfs:label": "Cold Chain",            "rdfs:comment": "Capable of maintaining cold chain for chilled or frozen items." },
+    { "@id": "rcpa:TEMPERATURE_CONTROLLED","@type": "rcpa:HandlingType", "rdfs:label": "Temperature Controlled","rdfs:comment": "Capable of maintaining a controlled temperature range." },
+    { "@id": "rcpa:HAZARDOUS",             "@type": "rcpa:HandlingType", "rdfs:label": "Hazardous",             "rdfs:comment": "Capable of handling hazardous materials in compliance with applicable regulations." },
+    { "@id": "rcpa:OVERSIZED",             "@type": "rcpa:HandlingType", "rdfs:label": "Oversized",             "rdfs:comment": "Capable of handling oversized or non-standard-dimension items." },
+    { "@id": "rcpa:BULK",                  "@type": "rcpa:HandlingType", "rdfs:label": "Bulk",                  "rdfs:comment": "Capable of handling large-volume or bulk orders." },
+    { "@id": "rcpa:HIGH_VALUE",            "@type": "rcpa:HandlingType", "rdfs:label": "High Value",            "rdfs:comment": "Capable of handling high-value items with enhanced security measures." },
+    { "@id": "rcpa:LIQUID",                "@type": "rcpa:HandlingType", "rdfs:label": "Liquid",                "rdfs:comment": "Capable of handling liquid products with leak-proof packaging." },
+    { "@id": "rcpa:PERISHABLE",            "@type": "rcpa:HandlingType", "rdfs:label": "Perishable",            "rdfs:comment": "Capable of handling perishable items with time-sensitive delivery." },
+
+    {
+      "@id": "rcpa:agent",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Delivery Agent",
+      "rdfs:comment": "Details of the delivery agent assigned to this performance unit. Populated by the provider when an agent is assigned. Extensible via L2 for agentId, vehicleNumber, photo URL. NEW in v2.1."
+    },
+    { "@id": "rcpa:agentName",  "@type": "rdfs:Property", "rdfs:label": "Agent Name",  "rdfs:comment": "Full name of the assigned delivery agent. NEW in v2.1." },
+    { "@id": "rcpa:agentPhone", "@type": "rdfs:Property", "rdfs:label": "Agent Phone", "rdfs:comment": "Contact phone number of the assigned delivery agent. NEW in v2.1." },
+
+    {
+      "@id": "rcpa:proofOfDelivery",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Proof of Delivery",
+      "rdfs:comment": "URI pointing to photo or signature evidence of successful delivery. Used for dispute resolution and high-value item confirmation. NEW in v2.1."
     },
     {
-      "@id": "rcpa:FRAGILE",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Fragile",
-      "rdfs:comment": "Capable of handling fragile items requiring careful packaging"
+      "@id": "rcpa:deliveryOtp",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Delivery OTP",
+      "rdfs:comment": "One-time password the buyer presents to the delivery agent to confirm handover. The buyer receives the OTP at order time; the agent records it at the doorstep before releasing the package. NEW in v2.1."
     },
     {
-      "@id": "rcpa:COLD_CHAIN",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Cold Chain",
-      "rdfs:comment": "Capable of maintaining cold chain for perishables"
+      "@id": "rcpa:selfPickupCode",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Self Pickup Code",
+      "rdfs:comment": "Code the buyer presents at the pickup counter to collect their order. Only relevant when performance mode is SELF_PICKUP. NEW in v2.1."
     },
     {
-      "@id": "rcpa:TEMPERATURE_CONTROLLED",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Temperature Controlled",
-      "rdfs:comment": "Capable of maintaining temperature-controlled environments"
+      "@id": "rcpa:returnQcResult",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Return QC Result",
+      "rdfs:comment": "Quality inspection outcome when a returned item is received by the seller. NEW in v2.1."
     },
     {
-      "@id": "rcpa:HAZARDOUS",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Hazardous",
-      "rdfs:comment": "Capable of handling hazardous materials safely"
+      "@id": "rcpa:ReturnQcResult",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Return QC Result",
+      "rdfs:comment": "Enumeration of quality inspection outcomes for returned items. NEW in v2.1."
     },
-    {
-      "@id": "rcpa:OVERSIZED",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Oversized",
-      "rdfs:comment": "Capable of handling oversized items"
-    },
-    {
-      "@id": "rcpa:BULK",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Bulk",
-      "rdfs:comment": "Capable of handling bulk orders"
-    },
-    {
-      "@id": "rcpa:HIGH_VALUE",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "High Value",
-      "rdfs:comment": "Capable of handling high-value items with special security"
-    },
-    {
-      "@id": "rcpa:LIQUID",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Liquid",
-      "rdfs:comment": "Capable of handling liquid products"
-    },
-    {
-      "@id": "rcpa:PERISHABLE",
-      "@type": "rcpa:HandlingType",
-      "rdfs:label": "Perishable",
-      "rdfs:comment": "Capable of handling perishable items"
-    },
+    { "@id": "rcpa:ACCEPTED", "@type": "rcpa:ReturnQcResult", "rdfs:label": "Accepted", "rdfs:comment": "Returned item passed inspection and was accepted." },
+    { "@id": "rcpa:REJECTED", "@type": "rcpa:ReturnQcResult", "rdfs:label": "Rejected", "rdfs:comment": "Returned item failed inspection and was rejected." },
+    { "@id": "rcpa:PARTIAL",  "@type": "rcpa:ReturnQcResult", "rdfs:label": "Partial",  "rdfs:comment": "Returned item was partially damaged; a proportional refund applies." },
+
     {
       "@id": "rcpa:installationScheduling",
       "@type": "rdfs:Property",
       "rdfs:label": "Installation Scheduling",
-      "rdfs:comment": "Installation scheduling capability for home and kitchen items (NEW in v2.1)"
+      "rdfs:comment": "Installation scheduling capability for home and kitchen items. NEW in v2.1."
     },
-    {
-      "@id": "rcpa:installationAvailable",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Installation Available",
-      "rdfs:comment": "Boolean indicating if installation service is available"
-    },
-    {
-      "@id": "rcpa:proposedInstallationDate",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Proposed Installation Date",
-      "rdfs:comment": "Proposed date-time for installation"
-    },
-    {
-      "@id": "rcpa:installationNotes",
-      "@type": "rdfs:Property",
-      "rdfs:label": "Installation Notes",
-      "rdfs:comment": "Additional notes related to installation"
-    }
+    { "@id": "rcpa:installationAvailable",      "@type": "rdfs:Property", "rdfs:label": "Installation Available",       "rdfs:comment": "Boolean indicating whether installation service is available for this performance." },
+    { "@id": "rcpa:proposedInstallationDate",   "@type": "rdfs:Property", "rdfs:label": "Proposed Installation Date",   "rdfs:comment": "Proposed date-time for installation (ISO 8601)." },
+    { "@id": "rcpa:installationNotes",          "@type": "rdfs:Property", "rdfs:label": "Installation Notes",           "rdfs:comment": "Additional notes or requirements for the installation." }
   ]
 }

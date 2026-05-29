@@ -1,19 +1,8 @@
 {
+  "schema": "FoodAndBeverageOffer",
   "version": "2.1.0",
-  "schema_version": "2.1.0",
-  "domain": "FoodAndBeverageOffer",
-  "container": "offerAttributes",
-  "renderers": [
-    {
-      "field": "customization.groups",
-      "type": "accordion",
-      "display_name": "Customization Options",
-      "priority": 1,
-      "format": {
-        "group_label_template": "{{name}} ({{selection}})",
-        "option_template": "{{name}} {{#priceDelta}}({{#priceDelta.type}}{{priceDelta.type}}{{/priceDelta.type}} {{#priceDelta.value}}+{{priceDelta.value}}{{/priceDelta.value}}){{/priceDelta}}"
-      }
-    }
-  ],
-  "summary_template": "Customization groups: {{customization.groups.length}}"
+  "card_template": "{{#customization}}Customizable{{/customization}}{{^customization}}Standard{{/customization}}",
+  "detail_template": "Customization Groups:\n{{#customization.groups}}  {{name}} ({{selectionType}})\n{{/customization.groups}}",
+  "html": "<div class=\"fnbo-card\">{{#if customization}}<div class=\"fnbo-customize\"><strong>Customizable</strong> — {{customization.groups.length}} option group(s)</div>{{else}}<div class=\"fnbo-standard\">Standard item</div>{{/if}}</div>",
+  "html_detail": "<div class=\"fnbo-detail\">{{#if customization}}<section><h3>Customization Options</h3>{{#each customization.groups}}<div class=\"fnbo-group\"><h4>{{name}} <small>({{selectionType}})</small></h4><ul>{{#each options}}<li>{{name}}{{#if priceDelta}} (+{{priceDelta.value}} {{../../../currency}}){{/if}}</li>{{/each}}</ul></div>{{/each}}</section>{{else}}<section><p>No customization options available for this item.</p></section>{{/if}}</div>"
 }

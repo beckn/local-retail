@@ -9,151 +9,184 @@
       "@id": "rcca:ContractAttributes",
       "@type": "rdfs:Class",
       "rdfs:label": "Contract Attributes",
-      "rdfs:comment": "Container for retail contract-level buyer preferences and transaction terms, migrated from v2 orderAttributes"
+      "rdfs:comment": "Container for retail contract-level buyer preferences and transaction terms, migrated from v2 orderAttributes."
+    },
+    {
+      "@id": "rcca:quoteReference",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Quote Reference",
+      "rdfs:comment": "Reference to the quote or pro-forma invoice that preceded this contract (e.g., Q-2024-00123 or a URI). Relevant for B2B and made-to-order patterns. NEW in v2.1."
     },
     {
       "@id": "rcca:buyerInstructions",
       "@type": "rdfs:Property",
       "rdfs:label": "Buyer Instructions",
-      "rdfs:comment": "Free-text special instructions from buyer to provider for this transaction"
+      "rdfs:comment": "Free-text special instructions from buyer to provider for this transaction."
     },
     {
       "@id": "rcca:deliveryPreferences",
       "@type": "rdfs:Property",
       "rdfs:label": "Delivery Preferences",
-      "rdfs:comment": "Buyer preferences and constraints for delivery execution"
+      "rdfs:comment": "Buyer preferences and constraints for delivery execution."
     },
     {
       "@id": "rcca:leaveAtDoor",
       "@type": "rdfs:Property",
       "rdfs:label": "Leave at Door",
-      "rdfs:comment": "Boolean permission indicating delivery can be left at door without signature"
+      "rdfs:comment": "Boolean permission indicating delivery can be left at door without signature."
     },
     {
       "@id": "rcca:contactless",
       "@type": "rdfs:Property",
       "rdfs:label": "Contactless Delivery",
-      "rdfs:comment": "Boolean request for contactless delivery to minimize person-to-person contact"
+      "rdfs:comment": "Boolean request for contactless delivery to minimise person-to-person contact."
     },
     {
       "@id": "rcca:preferredTimeSlot",
       "@type": "rdfs:Property",
       "rdfs:label": "Preferred Time Slot",
-      "rdfs:comment": "Buyer's preferred delivery time window with start and end date-times"
+      "rdfs:comment": "Buyer's preferred delivery time window with start and end date-times."
     },
     {
       "@id": "rcca:timeSlotStart",
       "@type": "rdfs:Property",
       "rdfs:label": "Time Slot Start",
-      "rdfs:comment": "Start of the preferred delivery time window"
+      "rdfs:comment": "Start of the preferred delivery time window (ISO 8601 date-time)."
     },
     {
       "@id": "rcca:timeSlotEnd",
       "@type": "rdfs:Property",
       "rdfs:label": "Time Slot End",
-      "rdfs:comment": "End of the preferred delivery time window"
+      "rdfs:comment": "End of the preferred delivery time window (ISO 8601 date-time)."
     },
     {
       "@id": "rcca:gift",
       "@type": "rdfs:Property",
       "rdfs:label": "Gift",
-      "rdfs:comment": "Gift-related attributes including message and wrapping preferences"
+      "rdfs:comment": "Gift-related attributes including message and wrapping preferences."
     },
     {
       "@id": "rcca:isGift",
       "@type": "rdfs:Property",
       "rdfs:label": "Is Gift",
-      "rdfs:comment": "Boolean indicating whether this order is being sent as a gift"
+      "rdfs:comment": "Boolean indicating whether this order is being sent as a gift."
     },
     {
       "@id": "rcca:giftMessage",
       "@type": "rdfs:Property",
       "rdfs:label": "Gift Message",
-      "rdfs:comment": "Personalized gift message to include with the shipment"
+      "rdfs:comment": "Personalised gift message to include with the shipment."
     },
     {
       "@id": "rcca:giftWrap",
       "@type": "rdfs:Property",
       "rdfs:label": "Gift Wrap",
-      "rdfs:comment": "Boolean indicating whether to include gift wrapping service"
+      "rdfs:comment": "Boolean indicating whether to include gift wrapping service."
     },
     {
       "@id": "rcca:invoicePreferences",
       "@type": "rdfs:Property",
       "rdfs:label": "Invoice Preferences",
-      "rdfs:comment": "Invoice and billing preferences including tax ID and delivery email"
+      "rdfs:comment": "Invoice and billing preferences including tax ID, company name, and delivery email."
     },
     {
       "@id": "rcca:taxId",
       "@type": "rdfs:Property",
       "rdfs:label": "Tax ID",
-      "rdfs:comment": "Tax identification details with scheme, country code, and value"
+      "rdfs:comment": "Tax identification details with scheme, country code, and value."
     },
     {
       "@id": "rcca:taxIdScheme",
       "@type": "rdfs:Property",
       "rdfs:label": "Tax ID Scheme",
-      "rdfs:comment": "Tax identification scheme (e.g., GST, VAT, PAN, EIN)"
+      "rdfs:comment": "Tax identification scheme. Uses canonical global values (GST, VAT, PAN, TIN, EIN, ABN) or UPPERCASE_UNDERSCORE pattern for market-specific schemes. Updated in v2.1 to anyOf extensible enum."
     },
+    {
+      "@id": "rcca:TaxIdScheme",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Tax ID Scheme",
+      "rdfs:comment": "Canonical global tax identification schemes. Market-specific schemes not listed here are accepted via UPPERCASE_UNDERSCORE pattern. Updated in v2.1."
+    },
+    { "@id": "rcca:GST",   "@type": "rcca:TaxIdScheme", "rdfs:label": "GST",   "rdfs:comment": "Goods and Services Tax (India, Australia, Canada, NZ, Singapore)." },
+    { "@id": "rcca:VAT",   "@type": "rcca:TaxIdScheme", "rdfs:label": "VAT",   "rdfs:comment": "Value Added Tax (EU, UK, and most other markets)." },
+    { "@id": "rcca:PAN",   "@type": "rcca:TaxIdScheme", "rdfs:label": "PAN",   "rdfs:comment": "Permanent Account Number (India)." },
+    { "@id": "rcca:TIN",   "@type": "rcca:TaxIdScheme", "rdfs:label": "TIN",   "rdfs:comment": "Tax Identification Number (generic; used in US, EU, and others)." },
+    { "@id": "rcca:EIN",   "@type": "rcca:TaxIdScheme", "rdfs:label": "EIN",   "rdfs:comment": "Employer Identification Number (US business tax ID)." },
+    { "@id": "rcca:ABN",   "@type": "rcca:TaxIdScheme", "rdfs:label": "ABN",   "rdfs:comment": "Australian Business Number." },
+    { "@id": "rcca:OTHER_SCHEME", "@type": "rcca:TaxIdScheme", "rdfs:label": "Other", "rdfs:comment": "Any scheme not in the canonical list; use value field for detail." },
     {
       "@id": "rcca:taxIdCountry",
       "@type": "rdfs:Property",
       "rdfs:label": "Tax ID Country",
-      "rdfs:comment": "ISO 3166-1 alpha-2 country code for tax jurisdiction"
+      "rdfs:comment": "ISO 3166-1 alpha-2 country code for the tax jurisdiction."
     },
     {
       "@id": "rcca:taxIdValue",
       "@type": "rdfs:Property",
       "rdfs:label": "Tax ID Value",
-      "rdfs:comment": "Actual tax identification value (required if taxId is present)"
+      "rdfs:comment": "Actual tax identification value (required when taxId object is present)."
     },
     {
       "@id": "rcca:invoiceCompanyName",
       "@type": "rdfs:Property",
       "rdfs:label": "Invoice Company Name",
-      "rdfs:comment": "Company name to appear on the invoice"
+      "rdfs:comment": "Company name to appear on the invoice."
     },
     {
       "@id": "rcca:invoiceEmail",
       "@type": "rdfs:Property",
       "rdfs:label": "Invoice Email",
-      "rdfs:comment": "Email address to which invoice should be delivered"
+      "rdfs:comment": "Email address to which the invoice should be delivered."
     },
     {
       "@id": "rcca:loyalty",
       "@type": "rdfs:Property",
       "rdfs:label": "Loyalty",
-      "rdfs:comment": "Loyalty program participation including program ID and points redeemed"
+      "rdfs:comment": "Loyalty program participation including program ID and points redeemed."
     },
     {
       "@id": "rcca:loyaltyProgramId",
       "@type": "rdfs:Property",
       "rdfs:label": "Loyalty Program ID",
-      "rdfs:comment": "Identifier for the loyalty program in which points are being redeemed"
+      "rdfs:comment": "Identifier for the loyalty program in which points are being redeemed."
     },
     {
       "@id": "rcca:pointsRedeemed",
       "@type": "rdfs:Property",
       "rdfs:label": "Points Redeemed",
-      "rdfs:comment": "Number of loyalty points being redeemed in this transaction"
+      "rdfs:comment": "Number of loyalty points being redeemed in this transaction."
     },
     {
       "@id": "rcca:source",
       "@type": "rdfs:Property",
       "rdfs:label": "Source",
-      "rdfs:comment": "Transaction source attribution including channel and campaign tracking"
+      "rdfs:comment": "Transaction source and marketing attribution including channel and campaign tracking."
     },
     {
       "@id": "rcca:sourceChannel",
       "@type": "rdfs:Property",
       "rdfs:label": "Source Channel",
-      "rdfs:comment": "Channel through which transaction was sourced (e.g., web, mobile, app, api, social, email)"
+      "rdfs:comment": "Channel through which this transaction was sourced (see SourceChannel enum). Updated in v2.1 to include SOCIAL_COMMERCE, STREAMING_COMMERCE, IN_STORE."
     },
+    {
+      "@id": "rcca:SourceChannel",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Source Channel",
+      "rdfs:comment": "Enumeration of channels through which a retail transaction can originate. Updated in v2.1."
+    },
+    { "@id": "rcca:WEB",                "@type": "rcca:SourceChannel", "rdfs:label": "Web",                 "rdfs:comment": "Browser-based web storefront (desktop or mobile browser)." },
+    { "@id": "rcca:MOBILE_APP",         "@type": "rcca:SourceChannel", "rdfs:label": "Mobile App",          "rdfs:comment": "Native mobile application (distinct from a mobile browser session under WEB)." },
+    { "@id": "rcca:API",                "@type": "rcca:SourceChannel", "rdfs:label": "API",                 "rdfs:comment": "Programmatic API integration (B2B, headless commerce)." },
+    { "@id": "rcca:IN_STORE",           "@type": "rcca:SourceChannel", "rdfs:label": "In Store",            "rdfs:comment": "Order placed at a physical retail location (POS or assisted order entry)." },
+    { "@id": "rcca:VOICE",              "@type": "rcca:SourceChannel", "rdfs:label": "Voice",               "rdfs:comment": "Order placed via a voice assistant or call centre." },
+    { "@id": "rcca:SOCIAL_COMMERCE",    "@type": "rcca:SourceChannel", "rdfs:label": "Social Commerce",     "rdfs:comment": "Order originating from a social media platform storefront (e.g., Instagram Shop, Facebook Marketplace). NEW in v2.1." },
+    { "@id": "rcca:STREAMING_COMMERCE", "@type": "rcca:SourceChannel", "rdfs:label": "Streaming Commerce",  "rdfs:comment": "Order originating from a live-stream or video commerce event. NEW in v2.1." },
+    { "@id": "rcca:OTHER_CHANNEL",      "@type": "rcca:SourceChannel", "rdfs:label": "Other",               "rdfs:comment": "Channel not covered by the listed values." },
     {
       "@id": "rcca:campaignId",
       "@type": "rdfs:Property",
       "rdfs:label": "Campaign ID",
-      "rdfs:comment": "Marketing campaign identifier for attribution and analytics"
+      "rdfs:comment": "Marketing campaign identifier for attribution and analytics."
     }
   ]
 }

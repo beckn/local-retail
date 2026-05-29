@@ -1,93 +1,139 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld"
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rcsa": "https://schema.beckn.io/RetailSettlement#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
   "@graph": [
     {
       "@id": "rcsa:RetailSettlement",
       "@type": "rdfs:Class",
-      "rdfs:label": "Retail Core Settlement Attributes",
-      "rdfs:comment": "Schema for retail settlement discharge records. Minimal by design since retail settlements are typically handled by payment gateways.",
+      "rdfs:label": "Retail Settlement Attributes",
+      "rdfs:comment": "Schema for retail settlement discharge records. Records the outcome of a payment event — method, amount, gateway reference, and reconciliation status. Expanded in v2.1 with paymentRail, refund, adjustments, and reconciliationStatus.",
       "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
     },
+
+    {
+      "@id": "rcsa:method",
+      "@type": "rdf:Property",
+      "rdfs:label": "Settlement Method",
+      "rdfs:comment": "Method by which the settlement was discharged (see SettlementMethod enum). Expanded from 4 to 9 values in v2.1.",
+      "rdfs:domain": "rcsa:RetailSettlement"
+    },
+    {
+      "@id": "rcsa:SettlementMethod",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Settlement Method",
+      "rdfs:comment": "Enumeration of settlement discharge methods. Expanded in v2.1 with DIGITAL_WALLET, CARD, QR_CODE, BNPL_SETTLEMENT, CREDIT_FACILITY."
+    },
+    { "@id": "rcsa:ONLINE",           "@type": "rcsa:SettlementMethod", "rdfs:label": "Online",           "rdfs:comment": "Generic web-based settlement via payment gateway." },
+    { "@id": "rcsa:BANK_TRANSFER",    "@type": "rcsa:SettlementMethod", "rdfs:label": "Bank Transfer",    "rdfs:comment": "Direct bank-to-bank transfer (wire, NEFT, RTGS, FPS)." },
+    { "@id": "rcsa:COD_COLLECTION",   "@type": "rcsa:SettlementMethod", "rdfs:label": "COD Collection",   "rdfs:comment": "Cash collected by the delivery agent on behalf of the provider." },
+    { "@id": "rcsa:ESCROW_RELEASE",   "@type": "rcsa:SettlementMethod", "rdfs:label": "Escrow Release",   "rdfs:comment": "Release of funds held in escrow upon fulfilment." },
+    { "@id": "rcsa:DIGITAL_WALLET",   "@type": "rcsa:SettlementMethod", "rdfs:label": "Digital Wallet",   "rdfs:comment": "Settlement via digital wallet (GoPay, OVO, Paytm, etc.). NEW in v2.1." },
+    { "@id": "rcsa:CARD",             "@type": "rcsa:SettlementMethod", "rdfs:label": "Card",             "rdfs:comment": "Credit or debit card settlement. NEW in v2.1." },
+    { "@id": "rcsa:QR_CODE",          "@type": "rcsa:SettlementMethod", "rdfs:label": "QR Code",          "rdfs:comment": "QR-based payment rail settlement (QRIS, UPI, etc.). NEW in v2.1." },
+    { "@id": "rcsa:BNPL_SETTLEMENT",  "@type": "rcsa:SettlementMethod", "rdfs:label": "BNPL Settlement",  "rdfs:comment": "Merchant payout from a BNPL provider (buyer's debt already settled). NEW in v2.1." },
+    { "@id": "rcsa:CREDIT_FACILITY",  "@type": "rcsa:SettlementMethod", "rdfs:label": "Credit Facility",  "rdfs:comment": "Settlement against a credit facility or trade credit (B2B, net terms). NEW in v2.1." },
+
+    {
+      "@id": "rcsa:paymentRail",
+      "@type": "rdf:Property",
+      "rdfs:label": "Payment Rail",
+      "rdfs:comment": "Specific payment rail or scheme used within the settlement method (see canonical global values or UPPERCASE_UNDERSCORE pattern for market-specific rails). NEW in v2.1.",
+      "rdfs:domain": "rcsa:RetailSettlement"
+    },
+
     {
       "@id": "rcsa:gateway",
       "@type": "rdf:Property",
       "rdfs:label": "Gateway",
-      "rdfs:comment": "Payment gateway information including transaction details and reference",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "rcsa:Gateway"
+      "rdfs:comment": "Payment gateway information for this settlement, including name, transaction ID, and URL.",
+      "rdfs:domain": "rcsa:RetailSettlement"
     },
     {
       "@id": "rcsa:Gateway",
       "@type": "rdfs:Class",
       "rdfs:label": "Payment Gateway",
-      "rdfs:comment": "Information about the payment processing gateway",
+      "rdfs:comment": "Information about the payment processing gateway used for this settlement.",
       "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
     },
+    { "@id": "rcsa:gatewayName",          "@type": "rdf:Property", "rdfs:label": "Gateway Name",          "rdfs:comment": "Name of the payment gateway provider (e.g., Razorpay, PayPal, Stripe, Midtrans)." },
+    { "@id": "rcsa:gatewayTransactionId", "@type": "rdf:Property", "rdfs:label": "Gateway Transaction ID", "rdfs:comment": "Unique transaction identifier issued by the payment gateway." },
+    { "@id": "rcsa:gatewayUrl",           "@type": "rdf:Property", "rdfs:label": "Gateway URL",           "rdfs:comment": "URI for accessing transaction details or receipt from the payment gateway." },
+
+    { "@id": "rcsa:settledAt",     "@type": "rdf:Property", "rdfs:label": "Settled At",      "rdfs:comment": "ISO 8601 timestamp indicating when the settlement was discharged.", "rdfs:domain": "rcsa:RetailSettlement" },
+    { "@id": "rcsa:settledAmount", "@type": "rdf:Property", "rdfs:label": "Settled Amount",  "rdfs:comment": "Monetary amount that was settled or discharged.", "rdfs:domain": "rcsa:RetailSettlement" },
+    { "@id": "rcsa:currency",      "@type": "rdf:Property", "rdfs:label": "Currency",        "rdfs:comment": "ISO 4217 currency code for the settled amount.", "rdfs:domain": "rcsa:RetailSettlement" },
+
     {
-      "@id": "rcsa:name",
+      "@id": "rcsa:refund",
       "@type": "rdf:Property",
-      "rdfs:label": "Gateway Name",
-      "rdfs:comment": "Name of the payment gateway provider (e.g., Razorpay, PayPal, Stripe)",
-      "rdfs:domain": "rcsa:Gateway",
-      "rdfs:range": "xsd:string"
+      "rdfs:label": "Refund",
+      "rdfs:comment": "Refund details when this settlement record represents a return or cancellation refund. Absent for forward (buyer-to-seller) settlements. NEW in v2.1.",
+      "rdfs:domain": "rcsa:RetailSettlement"
     },
+    { "@id": "rcsa:refundAmount",      "@type": "rdf:Property", "rdfs:label": "Refund Amount",       "rdfs:comment": "Refund amount denominated in the settlement currency. NEW in v2.1." },
+    { "@id": "rcsa:refundMethod",      "@type": "rdf:Property", "rdfs:label": "Refund Method",       "rdfs:comment": "Refund method; may differ from the original payment method. Accepts the same values as SettlementMethod. NEW in v2.1." },
+    { "@id": "rcsa:refundTimelineDays","@type": "rdf:Property", "rdfs:label": "Refund Timeline Days","rdfs:comment": "Expected refund processing time in calendar days from the trigger event (minimum 0). NEW in v2.1." },
+    { "@id": "rcsa:refundStatus",      "@type": "rdf:Property", "rdfs:label": "Refund Status",       "rdfs:comment": "Current processing status of the refund (see RefundStatus enum). NEW in v2.1." },
     {
-      "@id": "rcsa:transactionId",
-      "@type": "rdf:Property",
-      "rdfs:label": "Transaction ID",
-      "rdfs:comment": "Unique transaction identifier issued by the payment gateway",
-      "rdfs:domain": "rcsa:Gateway",
-      "rdfs:range": "xsd:string"
+      "@id": "rcsa:RefundStatus",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Refund Status",
+      "rdfs:comment": "Enumeration of refund processing states. NEW in v2.1."
     },
+    { "@id": "rcsa:INITIATED",  "@type": "rcsa:RefundStatus", "rdfs:label": "Initiated",  "rdfs:comment": "Refund has been triggered but not yet processed by the payment gateway." },
+    { "@id": "rcsa:PROCESSING", "@type": "rcsa:RefundStatus", "rdfs:label": "Processing", "rdfs:comment": "Refund is being processed by the payment gateway or bank." },
+    { "@id": "rcsa:COMPLETE",   "@type": "rcsa:RefundStatus", "rdfs:label": "Complete",   "rdfs:comment": "Refund has been successfully credited to the buyer." },
+    { "@id": "rcsa:FAILED",     "@type": "rcsa:RefundStatus", "rdfs:label": "Failed",     "rdfs:comment": "Refund processing failed; manual intervention may be required." },
+
     {
-      "@id": "rcsa:url",
+      "@id": "rcsa:adjustments",
       "@type": "rdf:Property",
-      "rdfs:label": "Gateway URL",
-      "rdfs:comment": "URL for accessing transaction details or receipt from the payment gateway",
-      "rdfs:domain": "rcsa:Gateway",
-      "rdfs:range": "xsd:anyURI"
+      "rdfs:label": "Adjustments",
+      "rdfs:comment": "Post-transaction adjustments affecting the net settled amount. Provides an audit trail for how settledAmount was derived. Negative = deduction; positive = credit. NEW in v2.1.",
+      "rdfs:domain": "rcsa:RetailSettlement"
     },
+    { "@id": "rcsa:adjustmentType",        "@type": "rdf:Property", "rdfs:label": "Adjustment Type",        "rdfs:comment": "Type of post-settlement adjustment (see AdjustmentType enum). NEW in v2.1." },
+    { "@id": "rcsa:adjustmentAmount",      "@type": "rdf:Property", "rdfs:label": "Adjustment Amount",      "rdfs:comment": "Adjustment amount (negative = deduction from provider; positive = credit to provider). NEW in v2.1." },
+    { "@id": "rcsa:adjustmentDescription", "@type": "rdf:Property", "rdfs:label": "Adjustment Description", "rdfs:comment": "Human-readable explanation of this adjustment entry. NEW in v2.1." },
     {
-      "@id": "rcsa:method",
-      "@type": "rdf:Property",
-      "rdfs:label": "Settlement Method",
-      "rdfs:comment": "Method by which the settlement was discharged: ONLINE, BANK_TRANSFER, COD_COLLECTION, or ESCROW_RELEASE",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "xsd:string"
+      "@id": "rcsa:AdjustmentType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Adjustment Type",
+      "rdfs:comment": "Enumeration of post-settlement adjustment types. NEW in v2.1."
     },
-    {
-      "@id": "rcsa:settledAt",
-      "@type": "rdf:Property",
-      "rdfs:label": "Settled At",
-      "rdfs:comment": "ISO 8601 timestamp indicating when the settlement was discharged",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "xsd:dateTime"
-    },
-    {
-      "@id": "rcsa:settledAmount",
-      "@type": "rdf:Property",
-      "rdfs:label": "Settled Amount",
-      "rdfs:comment": "Monetary amount that was settled or discharged",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "xsd:decimal"
-    },
-    {
-      "@id": "rcsa:currency",
-      "@type": "rdf:Property",
-      "rdfs:label": "Currency",
-      "rdfs:comment": "ISO 4217 currency code for the settled amount",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "xsd:string"
-    },
+    { "@id": "rcsa:SLA_PENALTY",        "@type": "rcsa:AdjustmentType", "rdfs:label": "SLA Penalty",        "rdfs:comment": "Deduction for failing to meet a contracted service level agreement." },
+    { "@id": "rcsa:WEIGHT_DISPUTE",     "@type": "rcsa:AdjustmentType", "rdfs:label": "Weight Dispute",     "rdfs:comment": "Adjustment arising from a disputed shipment weight or dimension (chargeback from logistics provider)." },
+    { "@id": "rcsa:RETURN_DEDUCTION",   "@type": "rcsa:AdjustmentType", "rdfs:label": "Return Deduction",   "rdfs:comment": "Deduction for an approved product return." },
+    { "@id": "rcsa:PROMOTIONAL_CREDIT", "@type": "rcsa:AdjustmentType", "rdfs:label": "Promotional Credit", "rdfs:comment": "Credit applied as part of a promotional programme (e.g., platform subsidy, cashback)." },
+    { "@id": "rcsa:OTHER_ADJUSTMENT",   "@type": "rcsa:AdjustmentType", "rdfs:label": "Other Adjustment",   "rdfs:comment": "Any adjustment type not covered by the listed values." },
+
     {
       "@id": "rcsa:reconciliationId",
       "@type": "rdf:Property",
       "rdfs:label": "Reconciliation ID",
-      "rdfs:comment": "Unique identifier for tracking multi-party settlement reconciliation and batch processing",
-      "rdfs:domain": "rcsa:RetailSettlement",
-      "rdfs:range": "xsd:string"
-    }
+      "rdfs:comment": "Multi-party settlement reconciliation identifier for tracking across network participants and batch processing.",
+      "rdfs:domain": "rcsa:RetailSettlement"
+    },
+    {
+      "@id": "rcsa:reconciliationStatus",
+      "@type": "rdf:Property",
+      "rdfs:label": "Reconciliation Status",
+      "rdfs:comment": "Status of the reconciliation process for this settlement (see ReconciliationStatus enum). NEW in v2.1.",
+      "rdfs:domain": "rcsa:RetailSettlement"
+    },
+    {
+      "@id": "rcsa:ReconciliationStatus",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Reconciliation Status",
+      "rdfs:comment": "Enumeration of reconciliation process states. NEW in v2.1."
+    },
+    { "@id": "rcsa:PENDING",  "@type": "rcsa:ReconciliationStatus", "rdfs:label": "Pending",  "rdfs:comment": "Reconciliation not yet initiated." },
+    { "@id": "rcsa:AGREED",   "@type": "rcsa:ReconciliationStatus", "rdfs:label": "Agreed",   "rdfs:comment": "All parties agree on the settlement amount; no dispute raised." },
+    { "@id": "rcsa:DISPUTED", "@type": "rcsa:ReconciliationStatus", "rdfs:label": "Disputed", "rdfs:comment": "At least one party has raised a dispute on this settlement." },
+    { "@id": "rcsa:ADJUSTED", "@type": "rcsa:ReconciliationStatus", "rdfs:label": "Adjusted", "rdfs:comment": "Settlement was disputed and subsequently resolved with a modification (distinct from AGREED which implies no dispute)." }
   ]
 }

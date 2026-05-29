@@ -9,55 +9,91 @@
       "@id": "rccma:CommitmentAttributes",
       "@type": "rdfs:Class",
       "rdfs:label": "Commitment Attributes",
-      "rdfs:comment": "Container for per-commitment line-item details including references, quantity, and pricing (NEW in v2.1 - previously scattered in v2 FoodAndBeverageItem)"
+      "rdfs:comment": "Container for per-commitment line-item details including references, quantity, pricing, and customisations. NEW in v2.1 — previously scattered across FoodAndBeverageItem and orderAttributes in v2."
     },
     {
       "@id": "rccma:lineId",
       "@type": "rdfs:Property",
       "rdfs:label": "Line ID",
-      "rdfs:comment": "Unique line reference identifier within the parent contract"
+      "rdfs:comment": "Unique line reference identifier within the parent contract. Used for partial updates, cancellations, and dispute references."
     },
     {
       "@id": "rccma:resourceId",
       "@type": "rdfs:Property",
       "rdfs:label": "Resource ID",
-      "rdfs:comment": "Reference to the Resource (catalog item/product) being committed"
+      "rdfs:comment": "Reference to the Resource (catalog item or product) being committed."
     },
     {
       "@id": "rccma:offerId",
       "@type": "rdfs:Property",
       "rdfs:label": "Offer ID",
-      "rdfs:comment": "Reference to the Offer under which this commitment was made (enables offer-specific pricing/terms)"
+      "rdfs:comment": "Reference to the Offer under which this commitment was made. Enables offer-specific pricing and policy terms to be resolved at fulfilment time."
     },
     {
       "@id": "rccma:quantity",
       "@type": "rdfs:Property",
       "rdfs:label": "Quantity",
-      "rdfs:comment": "Quantity and unit of measurement for the committed resource"
+      "rdfs:comment": "Quantity with unit of measurement for the committed resource."
     },
     {
       "@id": "rccma:unitCode",
       "@type": "rdfs:Property",
       "rdfs:label": "Unit Code",
-      "rdfs:comment": "Standard unit code (e.g., EA=each, KG=kilogram, L=liter, M=meter, BOX=box)"
+      "rdfs:comment": "Unit of measurement code (e.g., EA=each, KG=kilogram, L=litre, M=metre, BOX=box). Required in v2.1."
     },
     {
       "@id": "rccma:unitQuantity",
       "@type": "rdfs:Property",
       "rdfs:label": "Unit Quantity",
-      "rdfs:comment": "Numeric quantity in the specified unit (must be greater than or equal to zero)"
+      "rdfs:comment": "Numeric quantity in the specified unit (minimum 0)."
     },
     {
       "@id": "rccma:price",
       "@type": "rdfs:Property",
       "rdfs:label": "Price",
-      "rdfs:comment": "Price specification for this commitment including currency, amount, and modifiers (references Beckn core PriceSpecification)"
+      "rdfs:comment": "Committed (post-discount) price for this line item. References Beckn core PriceSpecification."
+    },
+    {
+      "@id": "rccma:originalPrice",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Original Price",
+      "rdfs:comment": "Pre-discount price for display and audit purposes (strikethrough pricing, discount percentage computation). Omit when no discount applies. References Beckn core PriceSpecification. NEW in v2.1."
+    },
+    {
+      "@id": "rccma:addOnIds",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Add-On IDs",
+      "rdfs:comment": "IDs of add-ons selected by the buyer for this commitment line. Add-ons are defined at the Offer layer; this field records which were chosen at order time. NEW in v2.1."
+    },
+    {
+      "@id": "rccma:selectedCustomizations",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Selected Customisations",
+      "rdfs:comment": "Customisation options selected by the buyer for this line (e.g., F&B size/extras/modifiers, product colour/storage). The combination of groupId + optionId must unambiguously identify the committed item. NEW in v2.1."
+    },
+    {
+      "@id": "rccma:customizationGroupId",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Customisation Group ID",
+      "rdfs:comment": "Identifier of the customisation group (e.g., 'size', 'extras', 'colour'). NEW in v2.1."
+    },
+    {
+      "@id": "rccma:customizationOptionId",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Customisation Option ID",
+      "rdfs:comment": "Identifier of the selected option within the customisation group. NEW in v2.1."
+    },
+    {
+      "@id": "rccma:customizationLabel",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Customisation Label",
+      "rdfs:comment": "Human-readable label for the selected option, for display only (e.g., 'Large', 'Extra Spicy', 'Midnight Blue'). Do not use for routing or matching logic. NEW in v2.1."
     },
     {
       "@id": "rccma:specialInstructions",
       "@type": "rdfs:Property",
       "rdfs:label": "Special Instructions",
-      "rdfs:comment": "Per-item buyer notes and special handling instructions (e.g., 'no onions', 'extra hot', 'cut into wedges')"
+      "rdfs:comment": "Per-line buyer notes and special handling instructions (e.g., 'no onions', 'extra hot', 'cut into wedges', 'gift wrap separately')."
     }
   ]
 }

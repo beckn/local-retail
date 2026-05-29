@@ -1,40 +1,37 @@
 {
-  "name": "RetailSettlement",
-  "title": "Retail Core Settlement Attributes",
-  "description": "Beckn v2.1 schema for retail settlement discharge records",
-  "namespace_prefix": "rcsa",
-  "namespace_uri": "https://schema.beckn.io/RetailSettlement#",
+  "id": "https://schema.beckn.io/RetailSettlement/v2.1",
+  "name": "Retail Settlement Attributes",
+  "version": "2.1.0",
   "protocol_version": "2.0",
   "semantic_model": "generalised",
-  "container": "settlementAttributes",
-  "root_schema": "RetailSettlement",
-  "version": "2.1.0",
-  "schema_file": "attributes.yaml",
-  "context_file": "context.jsonld",
-  "vocab_file": "vocab.jsonld",
-  "renderer_file": "renderer.json",
-  "metadata": {
-    "author": "Beckn Foundation",
-    "license": "CC-BY-3.0",
-    "domain": "retail",
-    "created": "2026-03-25",
-    "updated": "2026-03-25"
-  },
-  "extensions": {
-    "settlementMethods": {
-      "type": "enum",
-      "values": [
-        "ONLINE",
-        "BANK_TRANSFER",
-        "COD_COLLECTION",
-        "ESCROW_RELEASE"
-      ],
-      "descriptions": {
-        "ONLINE": "Real-time online settlement through payment gateway",
-        "BANK_TRANSFER": "Settlement via bank transfer to merchant account",
-        "COD_COLLECTION": "Collection of cash and settlement with seller",
-        "ESCROW_RELEASE": "Release of funds held in escrow account"
-      }
-    }
-  }
+  "included_schemas": ["RetailSettlement"],
+  "discovery_fields": [
+    "method",
+    "reconciliationStatus"
+  ],
+  "indexable_paths": [
+    "beckn:settlementAttributes.method",
+    "beckn:settlementAttributes.paymentRail",
+    "beckn:settlementAttributes.settledAt",
+    "beckn:settlementAttributes.settledAmount",
+    "beckn:settlementAttributes.currency",
+    "beckn:settlementAttributes.reconciliationId",
+    "beckn:settlementAttributes.reconciliationStatus",
+    "beckn:settlementAttributes.refund.status"
+  ],
+  "filterable_paths": [
+    "beckn:settlementAttributes.method",
+    "beckn:settlementAttributes.paymentRail",
+    "beckn:settlementAttributes.currency",
+    "beckn:settlementAttributes.reconciliationStatus",
+    "beckn:settlementAttributes.refund.status"
+  ],
+  "sortable_paths": [
+    "beckn:settlementAttributes.settledAt",
+    "beckn:settlementAttributes.settledAmount"
+  ],
+  "privacy_notes": [
+    "gateway.transactionId is a financial reference and should be treated as sensitive — restrict to authorised parties only",
+    "gateway.url may expose gateway-specific session tokens in query parameters"
+  ]
 }

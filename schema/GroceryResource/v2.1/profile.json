@@ -5,16 +5,24 @@
   "protocol_version": "2.0",
   "semantic_model": "generalised",
   "included_schemas": ["GroceryResource"],
-  "discovery_fields": ["nutrition[].nutrient", "freshProduce.netQuantityDeclaration"],
+  "discovery_fields": [
+    "nutrition[].nutrient",
+    "freshProduce.netQuantityDeclaration",
+    "freshProduce.harvestDate"
+  ],
   "indexable_paths": [
     "beckn:resourceAttributes.nutrition[].nutrient",
     "beckn:resourceAttributes.nutrition[].value.unitQuantity",
-    "beckn:resourceAttributes.freshProduce.netQuantityDeclaration"
+    "beckn:resourceAttributes.freshProduce.netQuantityDeclaration",
+    "beckn:resourceAttributes.freshProduce.harvestDate"
   ],
   "filterable_paths": [
     "beckn:resourceAttributes.nutrition[].nutrient",
-    "beckn:resourceAttributes.freshProduce.netQuantityDeclaration"
+    "beckn:resourceAttributes.freshProduce.netQuantityDeclaration",
+    "beckn:resourceAttributes.freshProduce.harvestDate"
   ],
-  "sortable_paths": [],
+  "sortable_paths": [
+    "beckn:resourceAttributes.freshProduce.harvestDate"
+  ],
   "privacy_notes": []
 }
