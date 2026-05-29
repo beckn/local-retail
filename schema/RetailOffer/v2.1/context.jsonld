@@ -95,11 +95,35 @@
     "replacementSubjectToAvailability": {
       "@id": "rcoa:replacementSubjectToAvailability"
     },
+    "warranty": {
+      "@id": "rcoa:warranty"
+    },
+    "warrantyDuration": {
+      "@id": "rcoa:warrantyDuration"
+    },
+    "warrantyType": {
+      "@id": "rcoa:warrantyType"
+    },
+    "warrantyServiceCenter": {
+      "@id": "rcoa:warrantyServiceCenter"
+    },
+    "warrantyTerms": {
+      "@id": "rcoa:warrantyTerms"
+    },
     "paymentConstraints": {
       "@id": "rcoa:paymentConstraints"
     },
+    "policyRef": {
+      "@id": "rcoa:policyRef"
+    },
     "codAvailable": {
       "@id": "rcoa:codAvailable"
+    },
+    "codMaxAmount": {
+      "@id": "rcoa:codMaxAmount"
+    },
+    "prepaidOnly": {
+      "@id": "rcoa:prepaidOnly"
     },
     "serviceability": {
       "@id": "rcoa:serviceability"
@@ -136,6 +160,15 @@
     },
     "holidays": {
       "@id": "rcoa:holidays"
+    },
+    "minOrderQuantity": {
+      "@id": "rcoa:minOrderQuantity"
+    },
+    "maxOrderQuantity": {
+      "@id": "rcoa:maxOrderQuantity"
+    },
+    "subscriptionAvailable": {
+      "@id": "rcoa:subscriptionAvailable"
     }
   }
 }
