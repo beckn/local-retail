@@ -26,7 +26,12 @@ components:
           x-jsonld-id: "rcpa:supportedPerformanceModes"
           items:
             type: string
-            enum: [DELIVERY, PICKUP, SERVICE]
+            enum:
+              - DELIVERY      # Provider delivers to buyer's address
+              - SELF_PICKUP   # Buyer collects from provider's location (replaces PICKUP)
+              - SERVICE       # Provider performs a service at buyer's or provider's location
+              - DINE_IN       # Order consumed on-premises (F&B)
+              - CURBSIDE      # Buyer drives to pickup point; seller brings to the vehicle
             x-jsonld-id: "rcpa:PerformanceMode"
         deliveryDetails:
           type: object
@@ -130,7 +135,11 @@ components:
               x-jsonld-id: "rcpa:maxDuration"
             unitBasis:
               type: string
-              enum: [ORDER_CONFIRMATION, PACKING_COMPLETE, DISPATCH]
+              enum:
+                - ORDER_CONFIRMATION  # SLA clock starts when the order is confirmed
+                - PACKED              # SLA clock starts when packing is complete (replaces PACKING_COMPLETE)
+                - SHIPMENT            # SLA clock starts when handed to logistics carrier (replaces DISPATCH)
+                - PAYMENT_RECEIPT     # SLA clock starts when prepayment is confirmed cleared
               x-jsonld-id: "rcpa:SLAUnitBasis"
         handling:
           type: array
@@ -149,6 +158,48 @@ components:
               - LIQUID
               - PERISHABLE
             x-jsonld-id: "rcpa:HandlingType"
+        agent:
+          type: object
+          description: >
+            Delivery agent details. Populated by the provider when an agent is assigned
+            to this performance. Extensible — L2 networks may add agentId, vehicleNumber,
+            photo URL etc. via extension.
+          x-jsonld-id: "rcpa:agent"
+          properties:
+            name:
+              type: string
+              description: Full name of the assigned delivery agent
+              x-jsonld-id: "rcpa:agentName"
+            phone:
+              type: string
+              description: Contact phone number of the assigned delivery agent
+              x-jsonld-id: "rcpa:agentPhone"
+        proofOfDelivery:
+          type: string
+          format: uri
+          description: URL to photo or signature evidence of successful delivery, for dispute resolution and high-value item confirmation
+          x-jsonld-id: "rcpa:proofOfDelivery"
+        deliveryOtp:
+          type: string
+          description: >
+            One-time password the buyer must present to the delivery agent to confirm
+            handover. The buyer receives the OTP at order time; the agent records it
+            at the doorstep before releasing the package.
+          x-jsonld-id: "rcpa:deliveryOtp"
+        selfPickupCode:
+          type: string
+          description: >
+            Code the buyer presents at the pickup counter to collect their order.
+            Only relevant when performance mode is SELF_PICKUP.
+          x-jsonld-id: "rcpa:selfPickupCode"
+        returnQcResult:
+          type: string
+          enum: [ACCEPTED, REJECTED, PARTIAL]
+          description: >
+            Quality inspection outcome when a returned item is received by the seller.
+            PARTIAL covers cases where the item is partially damaged and a proportional
+            refund applies. Detailed inspection notes and refund computation are L2 concerns.
+          x-jsonld-id: "rcpa:returnQcResult"
         installationScheduling:
           type: object
           description: Installation scheduling capability for home and kitchen items
