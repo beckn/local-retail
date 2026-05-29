@@ -38,6 +38,7 @@ components:
           x-jsonld-id: "rccma:quantity"
           required:
             - unitQuantity
+            - unitCode
           properties:
             unitCode:
               type: string
@@ -51,8 +52,51 @@ components:
         price:
           allOf:
             - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
-          description: Price specification for this line item commitment
+          description: Committed (post-discount) price for this line item
           x-jsonld-id: "rccma:price"
+        originalPrice:
+          allOf:
+            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
+          description: >
+            Pre-discount price for display and audit purposes (e.g., strikethrough pricing,
+            discount percentage computation, promotional mechanics auditing). Only populate
+            when originalPrice differs from price — omit when no discount applies.
+          x-jsonld-id: "rccma:originalPrice"
+        addOnIds:
+          type: array
+          description: >
+            IDs of add-ons selected by the buyer for this commitment line.
+            Add-ons are defined at the Offer layer; this field records which
+            were chosen at order time. Per-add-on quantities or prices are
+            a L2 concern and can be modelled via extension.
+          items:
+            type: string
+          x-jsonld-id: "rccma:addOnIds"
+        selectedCustomizations:
+          type: array
+          description: >
+            Customization options selected by the buyer for this line (e.g., F&B
+            size/extras/modifiers, configurable product colour/storage). The combination
+            of groupId + optionId must be sufficient to reconstruct the committed item
+            without ambiguity. label is a display-only hint — do not use it for routing
+            or matching logic.
+          items:
+            type: object
+            required: [groupId, optionId]
+            properties:
+              groupId:
+                type: string
+                description: Customization group identifier (e.g., "size", "extras", "colour")
+                x-jsonld-id: "rccma:customizationGroupId"
+              optionId:
+                type: string
+                description: Selected option identifier within the group
+                x-jsonld-id: "rccma:customizationOptionId"
+              label:
+                type: string
+                description: Human-readable label for display only (e.g., "Large", "Extra Spicy")
+                x-jsonld-id: "rccma:customizationLabel"
+          x-jsonld-id: "rccma:selectedCustomizations"
         specialInstructions:
           type: string
           description: Per-line buyer notes (e.g., "no onions", "extra spicy")

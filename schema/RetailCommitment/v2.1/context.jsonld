@@ -32,6 +32,24 @@
     "price": {
       "@id": "rccma:price"
     },
+    "originalPrice": {
+      "@id": "rccma:originalPrice"
+    },
+    "addOnIds": {
+      "@id": "rccma:addOnIds"
+    },
+    "selectedCustomizations": {
+      "@id": "rccma:selectedCustomizations"
+    },
+    "customizationGroupId": {
+      "@id": "rccma:customizationGroupId"
+    },
+    "customizationOptionId": {
+      "@id": "rccma:customizationOptionId"
+    },
+    "customizationLabel": {
+      "@id": "rccma:customizationLabel"
+    },
     "specialInstructions": {
       "@id": "rccma:specialInstructions"
     }
