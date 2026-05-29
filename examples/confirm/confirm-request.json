@@ -62,7 +62,11 @@
           },
           "resources": [
             {
-              "id": "item-flask-mh500-yellow"
+              "id": "item-flask-mh500-yellow",
+              "quantity": {
+                "unitCode": "EA",
+                "unitQuantity": 2
+              }
             }
           ],
           "offer": {

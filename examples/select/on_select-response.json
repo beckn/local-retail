@@ -99,6 +99,10 @@
                     "unitCode": "ML"
                   }
                 }
+              },
+              "quantity": {
+                "unitCode": "EA",
+                "unitQuantity": 2
               }
             }
           ],
