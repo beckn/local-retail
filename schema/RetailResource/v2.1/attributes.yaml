@@ -58,8 +58,49 @@ components:
               x-jsonld-id: "rcra:brand"
             originCountry:
               type: string
-              description: ISO 3166-1 alpha-2 recommended
+              pattern: "^[A-Z]{2,3}$"
+              description: >
+                Country of origin. Accepts ISO 3166-1 alpha-2 (e.g. IN, US) or
+                alpha-3 (e.g. IND, USA). Alpha-3 is preferred for new implementations;
+                alpha-2 is retained for backward compatibility.
               x-jsonld-id: "rcra:originCountry"
+            model:
+              type: string
+              description: Product model name or number (e.g. "iPhone 15 Pro", "KitchenAid K400")
+              x-jsonld-id: "rcra:model"
+            modelYear:
+              type: integer
+              description: Year the product model was introduced (e.g. 2024)
+              x-jsonld-id: "rcra:modelYear"
+            sku:
+              type: string
+              description: Seller-assigned stock keeping unit identifier
+              x-jsonld-id: "rcra:sku"
+        productCodes:
+          type: array
+          description: >
+            Globally recognised product codes for this resource.
+            Used for interoperability with external catalogues, trade systems, and
+            barcode lookups. Seller-specific identifiers (e.g. internal SKU) belong
+            in identity.sku, not here.
+          items:
+            type: object
+            required: [type, value]
+            properties:
+              type:
+                type: string
+                enum: [GTIN, EAN, UPC, ISBN]
+                description: >
+                  GTIN — Global Trade Item Number (GS1; encompasses EAN-13, UPC-A, ISBN-13).
+                  EAN — European Article Number (13-digit GS1 subset).
+                  UPC — Universal Product Code (12-digit, North America).
+                  ISBN — International Standard Book Number (books and e-books).
+                x-jsonld-id: "rcra:productCodeType"
+              value:
+                type: string
+                description: The code value as a string (no spaces or hyphens)
+                x-jsonld-id: "rcra:productCodeValue"
+          x-jsonld-id: "rcra:productCodes"
         physical:
           type: object
           properties:
@@ -144,7 +185,7 @@ components:
               properties:
                 type:
                   type: string
-                  enum: [MANUFACTURER, PACKER]
+                  enum: [MANUFACTURER, PACKER, IMPORTER]
                   x-jsonld-id: "rcra:manufacturerOrPackerType"
                 name:
                   type: string

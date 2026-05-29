@@ -48,6 +48,25 @@
     "originCountry": {
       "@id": "rcra:originCountry"
     },
+    "model": {
+      "@id": "rcra:model"
+    },
+    "modelYear": {
+      "@id": "rcra:modelYear"
+    },
+    "sku": {
+      "@id": "rcra:sku"
+    },
+    "productCodes": {
+      "@id": "rcra:productCodes",
+      "@container": "@set"
+    },
+    "productCodeType": {
+      "@id": "rcra:productCodeType"
+    },
+    "productCodeValue": {
+      "@id": "rcra:productCodeValue"
+    },
     "physical": {
       "@id": "rcra:physical"
     },

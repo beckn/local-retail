@@ -9,6 +9,7 @@
     "preparation": "fnbr:preparation",
     "preparationInstructions": "fnbr:preparationInstructions",
     "storageInstructions": "fnbr:storageInstructions",
-    "shelfLife": "fnbr:shelfLife"
+    "shelfLife": "fnbr:shelfLife",
+    "spiceLevel": "fnbr:spiceLevel"
   }
 }
