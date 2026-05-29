@@ -10,7 +10,6 @@ components:
   schemas:
     RetailConsideration:
       type: object
-      additionalProperties: false
       x-beckn-container: considerationAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld"
@@ -37,7 +36,6 @@ components:
           x-jsonld-id: "rccna:breakup"
           items:
             type: object
-            additionalProperties: false
             required: [title, amount, type]
             properties:
               title:
@@ -56,7 +54,6 @@ components:
           x-jsonld-id: "rccna:totalAmount"
         loyaltyPointsApplied:
           type: object
-          additionalProperties: false
           description: Non-monetary consideration via loyalty points
           x-jsonld-id: "rccna:loyaltyPointsApplied"
           required: [programId, pointsUsed, monetaryEquivalent]

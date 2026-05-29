@@ -14,7 +14,6 @@ components:
   schemas:
     FoodAndBeverageResource:
       type: object
-      additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"
@@ -37,32 +36,25 @@ components:
                   - FISH
                   - SESAME
               description: List of allergens present in the food item
-              x-jsonld:
-                "@id": "fnbr:allergens"
+              x-jsonld-id: "fnbr:allergens"
             cuisine:
               type: string
               description: Cuisine type (e.g., Italian, Indian, Mexican, American, Chinese, Mediterranean, Japanese)
-              x-jsonld:
-                "@id": "fnbr:cuisine"
+              x-jsonld-id: "fnbr:cuisine"
             preparation:
               type: object
-              additionalProperties: false
               properties:
                 instructions:
                   type: string
                   description: Preparation instructions or special handling notes
-                  x-jsonld:
-                    "@id": "fnbr:preparationInstructions"
+                  x-jsonld-id: "fnbr:preparationInstructions"
                 storage:
                   type: string
                   description: Storage instructions (e.g., "Refrigerate at 4°C", "Keep frozen")
-                  x-jsonld:
-                    "@id": "fnbr:storageInstructions"
+                  x-jsonld-id: "fnbr:storageInstructions"
                 shelfLife:
                   type: string
                   description: Shelf life as ISO 8601 duration (e.g., "P7D" for 7 days)
-                  x-jsonld:
-                    "@id": "fnbr:shelfLife"
+                  x-jsonld-id: "fnbr:shelfLife"
               description: Preparation, storage, and shelf life information
-              x-jsonld:
-                "@id": "fnbr:preparation"
+              x-jsonld-id: "fnbr:preparation"
