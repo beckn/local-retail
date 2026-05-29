@@ -52,6 +52,17 @@ components:
           type: number
           description: Total monetary amount
           x-jsonld-id: "rccna:totalAmount"
+        codAmount:
+          type: number
+          description: >
+            Cash amount to be collected by the delivery agent on behalf of the provider,
+            denominated in the same currency as this consideration. Only applicable when
+            COD is included in paymentMethods. This is a pre-transaction financial
+            declaration at the consideration layer — distinct from settledAmount in
+            RetailSettlement, which records the actual post-collection discharge.
+            In partial-COD or split-payment scenarios, codAmount may be less than
+            totalAmount.
+          x-jsonld-id: "rccna:codAmount"
         loyaltyPointsApplied:
           type: object
           description: Non-monetary consideration via loyalty points

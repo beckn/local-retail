@@ -35,6 +35,9 @@
     "totalAmount": {
       "@id": "rccna:totalAmount"
     },
+    "codAmount": {
+      "@id": "rccna:codAmount"
+    },
     "loyaltyPointsApplied": {
       "@id": "rccna:loyaltyPointsApplied"
     },
