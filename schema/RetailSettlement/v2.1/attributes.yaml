@@ -38,8 +38,44 @@ components:
               x-jsonld-id: "rcsa:gatewayUrl"
         method:
           type: string
-          enum: [ONLINE, BANK_TRANSFER, COD_COLLECTION, ESCROW_RELEASE]
+          enum:
+            - ONLINE           # Generic web-based settlement (use specific types below where possible)
+            - BANK_TRANSFER    # Direct bank-to-bank transfer
+            - COD_COLLECTION   # Cash collected by delivery agent on behalf of provider
+            - ESCROW_RELEASE   # Release of funds held in escrow
+            - DIGITAL_WALLET   # Settlement via digital wallet (GoPay, OVO, Paytm etc.)
+            - CARD             # Credit or debit card settlement
+            - QR_CODE          # QR-based payment rail settlement (QRIS, UPI etc.)
+            - BNPL_SETTLEMENT  # Merchant payout from a BNPL provider (buyer's debt already settled)
+            - CREDIT_FACILITY  # Settlement against a credit facility or trade credit (B2B, net terms)
           x-jsonld-id: "rcsa:method"
+        paymentRail:
+          description: >
+            Specific payment rail or scheme used within the settlement method.
+            Use canonical global values where possible. Market-specific rails
+            (e.g. UPI, QRIS, BI_FAST, IMPS, FPS, ALIPAY) are accepted via the
+            second branch using UPPERCASE_UNDERSCORE convention — no L2 schema
+            extension required.
+          anyOf:
+            - type: string
+              title: Canonical global rail
+              enum:
+                - VISA        # Visa card network
+                - MASTERCARD  # Mastercard card network
+                - AMEX        # American Express
+                - UNIONPAY    # UnionPay (China; internationally accepted)
+                - JCB         # Japan Credit Bureau
+                - SWIFT       # International bank wire (Society for Worldwide Interbank Financial Telecommunication)
+                - SEPA        # Single Euro Payments Area (EU bank transfer)
+                - ACH         # Automated Clearing House (US bank transfer)
+                - OTHER
+            - type: string
+              title: Market-specific rail
+              pattern: '^[A-Z][A-Z0-9_]*$'
+              description: >
+                Market-specific payment rail in UPPERCASE_UNDERSCORE
+                (e.g. UPI, QRIS, BI_FAST, IMPS, NEFT, RTGS, FPS, WECHAT_PAY).
+          x-jsonld-id: "rcsa:paymentRail"
         settledAt:
           type: string
           format: date-time
@@ -52,7 +88,68 @@ components:
           description: ISO 4217 currency code
           pattern: "^[A-Z]{3}$"
           x-jsonld-id: "rcsa:currency"
+        refund:
+          type: object
+          description: >
+            Refund details when this settlement record represents a return or
+            cancellation refund. Absent for forward (buyer-to-seller) settlements.
+          x-jsonld-id: "rcsa:refund"
+          properties:
+            amount:
+              type: number
+              description: Refund amount, denominated in the settlement currency
+              x-jsonld-id: "rcsa:refundAmount"
+            method:
+              type: string
+              description: >
+                Refund method. May differ from the original payment method
+                (e.g. refund to wallet when original payment was by card).
+                Accepts the same values as the top-level method enum.
+              x-jsonld-id: "rcsa:refundMethod"
+            timelineDays:
+              type: integer
+              minimum: 0
+              description: Expected refund processing time in calendar days from the trigger event
+              x-jsonld-id: "rcsa:refundTimelineDays"
+            status:
+              type: string
+              enum: [INITIATED, PROCESSING, COMPLETE, FAILED]
+              description: Current status of the refund
+              x-jsonld-id: "rcsa:refundStatus"
+        adjustments:
+          type: array
+          description: >
+            Post-transaction adjustments affecting the net settled amount.
+            Provides an audit trail for how settledAmount was derived.
+            amount uses standard accounting sign convention:
+            negative = deduction from provider, positive = credit to provider.
+          x-jsonld-id: "rcsa:adjustments"
+          items:
+            type: object
+            required: [type, amount]
+            properties:
+              type:
+                type: string
+                enum: [SLA_PENALTY, WEIGHT_DISPUTE, RETURN_DEDUCTION, PROMOTIONAL_CREDIT, OTHER]
+                x-jsonld-id: "rcsa:adjustmentType"
+              amount:
+                type: number
+                description: Adjustment amount (negative = deduction, positive = credit)
+                x-jsonld-id: "rcsa:adjustmentAmount"
+              description:
+                type: string
+                description: Human-readable explanation of this adjustment
+                x-jsonld-id: "rcsa:adjustmentDescription"
         reconciliationId:
           type: string
           description: Multi-party settlement reconciliation identifier
           x-jsonld-id: "rcsa:reconciliationId"
+        reconciliationStatus:
+          type: string
+          enum: [PENDING, AGREED, DISPUTED, ADJUSTED]
+          description: >
+            Status of the reconciliation process for this settlement.
+            ADJUSTED indicates the settlement was disputed and subsequently
+            resolved with a modification (distinct from AGREED, which indicates
+            no dispute).
+          x-jsonld-id: "rcsa:reconciliationStatus"

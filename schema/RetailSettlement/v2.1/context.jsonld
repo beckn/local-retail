@@ -36,8 +36,41 @@
     "currency": {
       "@id": "rcsa:currency"
     },
+    "paymentRail": {
+      "@id": "rcsa:paymentRail"
+    },
+    "refund": {
+      "@id": "rcsa:refund"
+    },
+    "refundAmount": {
+      "@id": "rcsa:refundAmount"
+    },
+    "refundMethod": {
+      "@id": "rcsa:refundMethod"
+    },
+    "refundTimelineDays": {
+      "@id": "rcsa:refundTimelineDays"
+    },
+    "refundStatus": {
+      "@id": "rcsa:refundStatus"
+    },
+    "adjustments": {
+      "@id": "rcsa:adjustments"
+    },
+    "adjustmentType": {
+      "@id": "rcsa:adjustmentType"
+    },
+    "adjustmentAmount": {
+      "@id": "rcsa:adjustmentAmount"
+    },
+    "adjustmentDescription": {
+      "@id": "rcsa:adjustmentDescription"
+    },
     "reconciliationId": {
       "@id": "rcsa:reconciliationId"
+    },
+    "reconciliationStatus": {
+      "@id": "rcsa:reconciliationStatus"
     }
   }
 }
