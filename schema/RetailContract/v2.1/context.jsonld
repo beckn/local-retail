@@ -1,6 +1,5 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
     "rcca": "https://schema.beckn.io/RetailContract#",
     "@context": {
       "@id": "rcca:@context"

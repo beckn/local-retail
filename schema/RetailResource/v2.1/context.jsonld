@@ -1,6 +1,5 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
     "schema": "https://schema.org/",
     "beckn": "https://schema.beckn.io/",
     "rcra": "https://schema.beckn.io/RetailResource#",
@@ -28,6 +27,12 @@
     "isActive": {
       "@id": "rcra:isActive"
     },
+    "ageRestricted": {
+      "@id": "rcra:ageRestricted"
+    },
+    "minAge": {
+      "@id": "rcra:minAge"
+    },
     "identity": {
       "@id": "rcra:identity"
     },
@@ -42,6 +47,25 @@
     },
     "originCountry": {
       "@id": "rcra:originCountry"
+    },
+    "model": {
+      "@id": "rcra:model"
+    },
+    "modelYear": {
+      "@id": "rcra:modelYear"
+    },
+    "sku": {
+      "@id": "rcra:sku"
+    },
+    "productCodes": {
+      "@id": "rcra:productCodes",
+      "@container": "@set"
+    },
+    "productCodeType": {
+      "@id": "rcra:productCodeType"
+    },
+    "productCodeValue": {
+      "@id": "rcra:productCodeValue"
     },
     "physical": {
       "@id": "rcra:physical"
@@ -139,6 +163,18 @@
     "additiveNotes": {
       "@id": "rcra:additiveNotes"
     },
+    "warranty": {
+      "@id": "rcra:warranty"
+    },
+    "warrantyDuration": {
+      "@id": "rcra:warrantyDuration"
+    },
+    "warrantyType": {
+      "@id": "rcra:warrantyType"
+    },
+    "warrantyTerms": {
+      "@id": "rcra:warrantyTerms"
+    },
     "credentials": {
       "@id": "rcra:credentials"
     },
@@ -153,6 +189,14 @@
     },
     "credentialId": {
       "@id": "rcra:credentialId"
+    },
+    "credentialValidFrom": {
+      "@id": "rcra:credentialValidFrom",
+      "@type": "schema:Date"
+    },
+    "credentialValidTo": {
+      "@id": "rcra:credentialValidTo",
+      "@type": "schema:Date"
     }
   }
 }

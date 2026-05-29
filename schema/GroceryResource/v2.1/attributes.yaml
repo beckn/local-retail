@@ -12,7 +12,6 @@ components:
   schemas:
     GroceryResource:
       type: object
-      additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld"
@@ -25,32 +24,32 @@ components:
               type: array
               items:
                 type: object
-                additionalProperties: false
                 required: [nutrient, value]
                 properties:
                   nutrient:
                     type: string
                     description: Name of the nutrient (e.g., Energy, Protein, Carbohydrates, Fat, Fiber, Sodium)
-                    x-jsonld:
-                      "@id": "groc:nutrient"
+                    x-jsonld-id: "groc:nutrient"
                   value:
                     allOf:
                       - $ref: "https://schema.beckn.io/Quantity/2.0#/components/schemas/Quantity"
                     description: Nutrient value using Beckn core Quantity (unitQuantity, unitCode per 100g or serving)
-                    x-jsonld:
-                      "@id": "groc:nutritionValue"
+                    x-jsonld-id: "groc:nutritionValue"
               description: Array of nutrition facts (per 100g or serving size)
-              x-jsonld:
-                "@id": "groc:nutrition"
+              x-jsonld-id: "groc:nutrition"
             freshProduce:
               type: object
-              additionalProperties: false
               properties:
                 netQuantityDeclaration:
                   type: string
                   description: Net quantity declaration for fresh produce (e.g., "1 kg", "500g", "5 units")
-                  x-jsonld:
-                    "@id": "groc:netQuantityDeclaration"
+                  x-jsonld-id: "groc:netQuantityDeclaration"
+                harvestDate:
+                  type: string
+                  format: date
+                  description: >
+                    Date the produce was harvested (ISO 8601 date, e.g., "2024-10-15").
+                    Useful for freshness signalling on produce where no formal expiry label exists.
+                  x-jsonld-id: "groc:harvestDate"
               description: Fresh produce-specific attributes (harvested, bulk items without standard packaging)
-              x-jsonld:
-                "@id": "groc:freshProduce"
+              x-jsonld-id: "groc:freshProduce"

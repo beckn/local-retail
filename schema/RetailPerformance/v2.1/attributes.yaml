@@ -13,7 +13,6 @@ components:
     RetailPerformance:
       type: object
       description: Container for retail performance execution attributes (migrated from v2 fulfillmentAttributes)
-      additionalProperties: false
       x-beckn-container: performanceAttributes
       x-jsonld:
         "@type": "rcpa:RetailPerformance"

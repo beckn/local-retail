@@ -14,7 +14,6 @@ components:
   schemas:
     FoodAndBeverageResource:
       type: object
-      additionalProperties: false
       x-beckn-container: resourceAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld"
@@ -28,41 +27,47 @@ components:
               items:
                 type: string
                 enum:
-                  - GLUTEN
-                  - NUTS
-                  - DAIRY
-                  - EGGS
-                  - SOY
-                  - SHELLFISH
-                  - FISH
-                  - SESAME
-              description: List of allergens present in the food item
-              x-jsonld:
-                "@id": "fnbr:allergens"
+                  - GLUTEN       # Cereals containing gluten (wheat, rye, barley, oats)
+                  - NUTS         # Tree nuts (almonds, cashews, walnuts, pecans, pistachios, etc.)
+                  - DAIRY        # Milk and milk-derived products
+                  - EGGS         # Eggs and egg-derived products
+                  - SOY          # Soya / soybean
+                  - SHELLFISH    # Crustacean shellfish (crab, lobster, shrimp/prawns)
+                  - FISH         # Fish (all species)
+                  - SESAME       # Sesame seeds and sesame oil
+                  - SULPHITES    # Sulphur dioxide and sulphites (preservatives; EU Annex II major allergen)
+                  - CELERY       # Celery and celeriac (EU Annex II major allergen)
+                  - MUSTARD      # Mustard seeds, leaves, and oil (EU Annex II major allergen)
+                  - LUPIN        # Lupin flour and seeds (EU Annex II major allergen)
+              description: >
+                List of allergens present in the food item. Values align with the EU Annex II major
+                allergen list (Regulation (EU) No 1169/2011) and the US "Big Nine" (FDA 2023).
+                MOLLUSCS (e.g. oysters, squid) and PEANUTS are internationally recognised allergens
+                that may be added in future versions or via L2 extension.
+              x-jsonld-id: "fnbr:allergens"
             cuisine:
               type: string
               description: Cuisine type (e.g., Italian, Indian, Mexican, American, Chinese, Mediterranean, Japanese)
-              x-jsonld:
-                "@id": "fnbr:cuisine"
+              x-jsonld-id: "fnbr:cuisine"
+            spiceLevel:
+              type: string
+              enum: [NONE, LOW, MEDIUM, HIGH, EXTRA_HOT]
+              description: Perceived heat/spice level of the food item
+              x-jsonld-id: "fnbr:spiceLevel"
             preparation:
               type: object
-              additionalProperties: false
               properties:
                 instructions:
                   type: string
                   description: Preparation instructions or special handling notes
-                  x-jsonld:
-                    "@id": "fnbr:preparationInstructions"
+                  x-jsonld-id: "fnbr:preparationInstructions"
                 storage:
                   type: string
                   description: Storage instructions (e.g., "Refrigerate at 4°C", "Keep frozen")
-                  x-jsonld:
-                    "@id": "fnbr:storageInstructions"
+                  x-jsonld-id: "fnbr:storageInstructions"
                 shelfLife:
                   type: string
                   description: Shelf life as ISO 8601 duration (e.g., "P7D" for 7 days)
-                  x-jsonld:
-                    "@id": "fnbr:shelfLife"
+                  x-jsonld-id: "fnbr:shelfLife"
               description: Preparation, storage, and shelf life information
-              x-jsonld:
-                "@id": "fnbr:preparation"
+              x-jsonld-id: "fnbr:preparation"

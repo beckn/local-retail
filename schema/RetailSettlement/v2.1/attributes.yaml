@@ -10,7 +10,6 @@ components:
   schemas:
     RetailSettlement:
       type: object
-      additionalProperties: false
       x-beckn-container: settlementAttributes
       x-jsonld:
         "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld"
@@ -23,7 +22,6 @@ components:
       properties:
         gateway:
           type: object
-          additionalProperties: false
           description: Payment gateway details
           x-jsonld-id: "rcsa:gateway"
           required: [name, transactionId]

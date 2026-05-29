@@ -13,7 +13,6 @@ components:
     RetailContract:
       type: object
       description: Container for retail contract attributes (migrated from v2 orderAttributes)
-      additionalProperties: false
       x-beckn-container: contractAttributes
       x-jsonld:
         "@type": "rcca:RetailContract"

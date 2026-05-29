@@ -1,6 +1,5 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
     "rcpa": "https://schema.beckn.io/RetailPerformance#",
     "PerformanceAttributes": "rcpa:PerformanceAttributes",
     "PerformanceMode": "rcpa:PerformanceMode",
