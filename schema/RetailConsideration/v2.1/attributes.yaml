@@ -24,7 +24,17 @@ components:
           x-jsonld-id: "rccna:paymentMethods"
           items:
             type: string
-            enum: [PREPAID, COD, CREDIT, DEBIT, UPI, WALLET, NET_BANKING, BNPL]
+            enum:
+              - PREPAID           # Full upfront payment before fulfilment
+              - COD               # Cash on delivery
+              - CREDIT_CARD       # Credit card (replaces CREDIT from v2.1.0)
+              - DEBIT_CARD        # Debit card (replaces DEBIT from v2.1.0)
+              - QR_CODE           # QR-based payment rails (UPI, QRIS, Alipay, WeChat Pay etc.)
+              - DIGITAL_WALLET    # Digital wallet (GoPay, OVO, Paytm, Apple Pay etc.); replaces WALLET
+              - NET_BANKING       # Direct bank login / online banking transfer
+              - BNPL              # Buy now pay later
+              - BANK_TRANSFER     # Direct bank-to-bank transfer (RTGS, NEFT, wire)
+              - VOUCHER           # Gift card or store credit used as a payment instrument
         currency:
           type: string
           description: ISO 4217 currency code
@@ -46,12 +56,88 @@ components:
                 x-jsonld-id: "rccna:breakupAmount"
               type:
                 type: string
-                enum: [BASE_PRICE, TAX, DISCOUNT, DELIVERY_CHARGE, PACKING_CHARGE, CONVENIENCE_FEE, OTHER]
+                enum:
+                  - BASE_PRICE        # Pre-tax, pre-discount item price
+                  - TAX               # Tax line; populate taxDetail for rate and inclusivity
+                  - DISCOUNT          # Price reduction (promotional or negotiated)
+                  - DELIVERY_CHARGE   # Shipping / courier charge
+                  - PACKING_CHARGE    # Packaging material charge
+                  - CONVENIENCE_FEE   # Platform or service convenience charge
+                  - HANDLING_CHARGE   # Special handling (cold chain, fragile, oversized)
+                  - INSURANCE         # Shipping or product insurance premium
+                  - CANCELLATION_FEE  # Fee charged on order cancellation
+                  - RESTOCKING_FEE    # Fee charged when a returned item is restocked
+                  - TRADE_IN          # Deduction for a device / product traded in
+                  - LOYALTY_REDEEM    # Monetary value of loyalty points redeemed; see also loyaltyPointsApplied for program mechanics
+                  - FINANCE_CHARGE    # Interest or service charge for BNPL / deferred payment
+                  - GIFT_WRAP         # Gift wrapping service charge
+                  - PLATFORM_FEE      # Network or marketplace participation fee
+                  - PAYMENT_MILESTONE # Partial payment against a multi-milestone contract (B2B, made-to-order)
+                  - OTHER
                 x-jsonld-id: "rccna:breakupType"
+              taxDetail:
+                type: object
+                description: >
+                  Tax rate and inclusivity details. Only meaningful when type is TAX.
+                  L2 networks may extend this with market-specific tax regime fields
+                  (e.g. PPN/PPnBM for Indonesia, GST/IGST/CGST/SGST for India).
+                x-jsonld-id: "rccna:taxDetail"
+                required: [rate]
+                properties:
+                  rate:
+                    type: number
+                    description: Tax rate as a decimal (e.g. 0.10 for 10%, 0.18 for 18%)
+                    x-jsonld-id: "rccna:taxRate"
+                  included:
+                    type: boolean
+                    description: >
+                      Whether this tax is included in the line amount (true = tax-inclusive)
+                      or added on top of it (false = tax-exclusive)
+                    x-jsonld-id: "rccna:taxIncluded"
+                  taxableBase:
+                    type: number
+                    description: The amount on which the tax rate was applied (taxableBase × rate = amount)
+                    x-jsonld-id: "rccna:taxableBase"
         totalAmount:
           type: number
           description: Total monetary amount
           x-jsonld-id: "rccna:totalAmount"
+        codAmount:
+          type: number
+          description: >
+            Cash amount to be collected by the delivery agent on behalf of the provider,
+            denominated in the same currency as this consideration. Only applicable when
+            COD is included in paymentMethods. This is a pre-transaction financial
+            declaration at the consideration layer — distinct from settledAmount in
+            RetailSettlement, which records the actual post-collection discharge.
+            In partial-COD or split-payment scenarios, codAmount may be less than
+            totalAmount.
+          x-jsonld-id: "rccna:codAmount"
+        appliedVouchers:
+          type: array
+          description: >
+            Voucher or coupon codes applied to this consideration. Covers promotional
+            codes, seller vouchers, platform vouchers, and cashback vouchers applied
+            at order time. Distinct from paymentMethods: VOUCHER, which represents a
+            gift card or store credit used as a payment instrument.
+          x-jsonld-id: "rccna:appliedVouchers"
+          items:
+            type: object
+            required: [code]
+            properties:
+              code:
+                type: string
+                description: Voucher or coupon code applied
+                x-jsonld-id: "rccna:voucherCode"
+              discountAmount:
+                type: number
+                description: Monetary value of this voucher's discount, denominated in the consideration currency
+                x-jsonld-id: "rccna:voucherDiscountAmount"
+              type:
+                type: string
+                enum: [SELLER_VOUCHER, PLATFORM_VOUCHER, PAYMENT_VOUCHER, CASHBACK_VOUCHER, OTHER]
+                description: Voucher category for attribution and reconciliation
+                x-jsonld-id: "rccna:voucherType"
         loyaltyPointsApplied:
           type: object
           description: Non-monetary consideration via loyalty points

@@ -1,55 +1,34 @@
 {
-  "name": "RetailPerformance",
-  "namespace": "https://schema.beckn.io/RetailPerformance#",
+  "id": "https://schema.beckn.io/RetailPerformance/v2.1",
+  "name": "Retail Performance Attributes",
+  "version": "2.1.0",
   "protocol_version": "2.0",
   "semantic_model": "generalised",
-  "version": "2.1.0",
-  "description": "Performance execution and delivery capability declarations for retail fulfillment",
-  "indexable_attributes": [
-    "performanceAttributes.supportedPerformanceModes",
-    "performanceAttributes.deliveryDetails.address.city",
-    "performanceAttributes.sla.unitBasis",
-    "performanceAttributes.handling",
-    "performanceAttributes.installationScheduling.available"
+  "included_schemas": ["RetailPerformance"],
+  "discovery_fields": [
+    "supportedPerformanceModes",
+    "handling",
+    "installationScheduling.available"
   ],
-  "filterable_attributes": [
-    {
-      "path": "performanceAttributes.supportedPerformanceModes",
-      "type": "enum",
-      "values": ["DELIVERY", "PICKUP", "SERVICE"]
-    },
-    {
-      "path": "performanceAttributes.sla.unitBasis",
-      "type": "enum",
-      "values": ["ORDER_CONFIRMATION", "PACKING_COMPLETE", "DISPATCH"]
-    },
-    {
-      "path": "performanceAttributes.handling",
-      "type": "array_enum",
-      "values": ["FRAGILE", "COLD_CHAIN", "TEMPERATURE_CONTROLLED", "HAZARDOUS", "OVERSIZED", "BULK", "HIGH_VALUE", "LIQUID", "PERISHABLE"]
-    },
-    {
-      "path": "performanceAttributes.operatingHours.daysOfWeek",
-      "type": "integer_array",
-      "min": 0,
-      "max": 6
-    },
-    {
-      "path": "performanceAttributes.installationScheduling.available",
-      "type": "boolean"
-    }
+  "indexable_paths": [
+    "beckn:performanceAttributes.supportedPerformanceModes",
+    "beckn:performanceAttributes.sla.unitBasis",
+    "beckn:performanceAttributes.handling",
+    "beckn:performanceAttributes.installationScheduling.available",
+    "beckn:performanceAttributes.returnQcResult"
   ],
-  "contextual_attributes": [
-    "performanceAttributes.deliveryDetails.contact",
-    "performanceAttributes.operatingHours.timeRange",
-    "performanceAttributes.closures"
+  "filterable_paths": [
+    "beckn:performanceAttributes.supportedPerformanceModes",
+    "beckn:performanceAttributes.sla.unitBasis",
+    "beckn:performanceAttributes.handling",
+    "beckn:performanceAttributes.installationScheduling.available",
+    "beckn:performanceAttributes.returnQcResult"
   ],
-  "migration_notes": {
-    "from_version": "2.0.0",
-    "changes": [
-      "Renamed supportedFulfillmentTypes to supportedPerformanceModes",
-      "Remapped DINE_IN to SERVICE (remodeled as service provisioning mode)",
-      "Added installationScheduling for home and kitchen item execution detail"
-    ]
-  }
+  "sortable_paths": [],
+  "privacy_notes": [
+    "deliveryDetails.contact.name and deliveryDetails.contact.phone are personal contact data — do not index or expose in discovery responses",
+    "agent.name and agent.phone are personal data belonging to the delivery agent — transmit only to the relevant buyer",
+    "deliveryOtp and selfPickupCode are single-use secrets — never log or cache",
+    "proofOfDelivery URI may contain photographic evidence of the buyer's premises"
+  ]
 }

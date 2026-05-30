@@ -18,6 +18,14 @@ components:
         "@type": "rcca:RetailContract"
         "@context": "https://schema.beckn.io/RetailContract/v2.1/context.jsonld"
       properties:
+        quoteReference:
+          type: string
+          description: >
+            Reference to the quote or pro-forma invoice that preceded this contract.
+            May carry a quote number (e.g. "Q-2024-00123") or a URI pointing to the
+            quote document. Relevant for B2B and made-to-order patterns where a formal
+            quote is agreed before the order is confirmed.
+          x-jsonld-id: "rcca:quoteReference"
         buyerInstructions:
           type: string
           description: Free-text instructions from buyer to provider
@@ -80,8 +88,31 @@ components:
                 - value
               properties:
                 scheme:
-                  type: string
-                  description: Tax ID scheme (e.g., GST, VAT, PAN)
+                  description: >
+                    Tax identification scheme. Use canonical global values where possible
+                    to ensure cross-network interoperability. Market-specific schemes not
+                    listed here (e.g. NPWP for Indonesia, GSTIN for India, SSN for the US)
+                    are accepted via the second branch using UPPERCASE_UNDERSCORE convention.
+                    L2 schema authors SHOULD promote frequently used market values to typed
+                    enums in their extensions.
+                  anyOf:
+                    - type: string
+                      title: Canonical global scheme
+                      enum:
+                        - GST    # Goods and Services Tax (India, Australia, Canada, NZ, Singapore)
+                        - VAT    # Value Added Tax (EU, UK, and most other markets)
+                        - PAN    # Permanent Account Number (India)
+                        - TIN    # Tax Identification Number (generic; used in US, EU, and others)
+                        - EIN    # Employer Identification Number (US)
+                        - ABN    # Australian Business Number
+                        - OTHER  # Any scheme not listed above; use value field for detail
+                    - type: string
+                      title: Market-specific scheme
+                      pattern: '^[A-Z][A-Z0-9_]*$'
+                      description: >
+                        Market-specific tax ID scheme identifier in UPPERCASE_UNDERSCORE
+                        (e.g. NPWP, GSTIN, NIK, SSN). L2 schema authors should promote
+                        frequently used values to typed enums in their extensions.
                   x-jsonld-id: "rcca:taxIdScheme"
                 country:
                   type: string
@@ -122,7 +153,11 @@ components:
           properties:
             channel:
               type: string
-              description: Channel through which transaction was sourced (e.g., web, mobile, api)
+              enum: [WEB, MOBILE_APP, API, IN_STORE, VOICE, SOCIAL_COMMERCE, STREAMING_COMMERCE, OTHER]
+              description: >
+                Channel through which this transaction was sourced. MOBILE_APP refers to
+                a native application (distinct from a mobile browser session under WEB).
+                Use OTHER for channels not listed here.
               x-jsonld-id: "rcca:sourceChannel"
             campaignId:
               type: string

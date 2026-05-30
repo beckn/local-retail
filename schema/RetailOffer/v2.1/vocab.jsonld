@@ -1,34 +1,116 @@
 {
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "rcoa": "https://schema.beckn.io/RetailOffer#"
+    "rcoa": "https://schema.beckn.io/RetailOffer#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": [
     {
       "@id": "rcoa:ReturnMethod",
       "@type": "rdfs:Class",
       "rdfs:label": "Return Method",
-      "rdfs:comment": "Method by which a return is fulfilled"
+      "rdfs:comment": "Enumeration of methods by which a product return is fulfilled"
     },
-    { "@id": "rcoa:SELLER_PICKUP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Seller Pickup", "rdfs:comment": "Seller arranges pickup from the buyer" },
-    { "@id": "rcoa:BUYER_SHIP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Buyer Ship", "rdfs:comment": "Buyer ships the item back to the seller" },
-    { "@id": "rcoa:DROP_OFF", "@type": "rcoa:ReturnMethod", "rdfs:label": "Drop Off", "rdfs:comment": "Buyer drops off at a designated location" },
+    { "@id": "rcoa:SELLER_PICKUP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Seller Pickup", "rdfs:comment": "Seller arranges and pays for pickup from the buyer's location." },
+    { "@id": "rcoa:BUYER_SHIP",    "@type": "rcoa:ReturnMethod", "rdfs:label": "Buyer Ship",    "rdfs:comment": "Buyer ships the item back to the seller at buyer's expense (unless reimbursed)." },
+    { "@id": "rcoa:DROP_OFF",      "@type": "rcoa:ReturnMethod", "rdfs:label": "Drop Off",      "rdfs:comment": "Buyer drops the item off at a designated collection point." },
+
     {
       "@id": "rcoa:CancellationCutoffEvent",
       "@type": "rdfs:Class",
       "rdfs:label": "Cancellation Cutoff Event",
-      "rdfs:comment": "Event after which cancellation is no longer free"
+      "rdfs:comment": "Operational event up to which free or fee-free cancellation is permitted. Events are listed in chronological fulfilment order."
     },
-    { "@id": "rcoa:BEFORE_CONFIRMATION", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Confirmation" },
-    { "@id": "rcoa:BEFORE_PACKING", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Packing" },
-    { "@id": "rcoa:BEFORE_SHIPMENT", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Shipment" },
+    { "@id": "rcoa:BEFORE_CONFIRMATION", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Confirmation",  "rdfs:comment": "Cancellation allowed before the provider confirms the order." },
+    { "@id": "rcoa:BEFORE_PACKING",      "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Packing",       "rdfs:comment": "Cancellation allowed up to the start of the packing process." },
+    { "@id": "rcoa:BEFORE_DISPATCH",     "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Dispatch",      "rdfs:comment": "Cancellation allowed up to internal dispatch/release from the fulfilment centre (between packing complete and handover to carrier). NEW in v2.1." },
+    { "@id": "rcoa:BEFORE_SHIPMENT",     "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Shipment",      "rdfs:comment": "Cancellation allowed up to handover to the logistics carrier." },
+
     {
       "@id": "rcoa:FeeType",
       "@type": "rdfs:Class",
       "rdfs:label": "Fee Type",
-      "rdfs:comment": "Whether a fee is calculated as a percentage or fixed amount"
+      "rdfs:comment": "Whether a cancellation or restocking fee is calculated as a percentage of order value or a fixed amount"
     },
-    { "@id": "rcoa:PERCENTAGE", "@type": "rcoa:FeeType", "rdfs:label": "Percentage" },
-    { "@id": "rcoa:FIXED", "@type": "rcoa:FeeType", "rdfs:label": "Fixed Amount" }
+    { "@id": "rcoa:PERCENTAGE", "@type": "rcoa:FeeType", "rdfs:label": "Percentage", "rdfs:comment": "Fee expressed as a percentage of the total order value." },
+    { "@id": "rcoa:FIXED",      "@type": "rcoa:FeeType", "rdfs:label": "Fixed Amount", "rdfs:comment": "Fee expressed as a fixed monetary amount." },
+
+    {
+      "@id": "rcoa:WarrantyType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Warranty Type",
+      "rdfs:comment": "Type of warranty declared at the offer level. Offer-level warranties can extend, curtail, or overwrite the resource-level warranty. NEW in v2.1."
+    },
+    { "@id": "rcoa:MANUFACTURER", "@type": "rcoa:WarrantyType", "rdfs:label": "Manufacturer Warranty", "rdfs:comment": "Warranty provided directly by the original manufacturer." },
+    { "@id": "rcoa:SELLER",       "@type": "rcoa:WarrantyType", "rdfs:label": "Seller Warranty",       "rdfs:comment": "Warranty provided by the seller or marketplace, separate from the manufacturer's coverage." },
+    { "@id": "rcoa:EXTENDED",     "@type": "rcoa:WarrantyType", "rdfs:label": "Extended Warranty",     "rdfs:comment": "Extended warranty that supplements or extends the manufacturer or seller warranty period." },
+    { "@id": "rcoa:NONE",         "@type": "rcoa:WarrantyType", "rdfs:label": "No Warranty",           "rdfs:comment": "No warranty is offered with this item under this offer (e.g., as-is or clearance items)." },
+
+    {
+      "@id": "rcoa:warranty",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty",
+      "rdfs:comment": "Offer-level warranty declaration. Overrides the resource-level warranty for transactions made under this offer. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:policyRef",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Policy Reference",
+      "rdfs:comment": "Stable URI pointing to the canonical policy document (returns, cancellation, replacement, or warranty). Avoids repeating inline fields on every catalog entry. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:warrantyDuration",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Duration",
+      "rdfs:comment": "Offer-level warranty duration as an ISO 8601 duration string (e.g., P1Y for 1 year, P2Y6M for 2.5 years). NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:warrantyType",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Type",
+      "rdfs:comment": "Type of warranty being declared at offer level (see WarrantyType enum). NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:warrantyServiceCenter",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Service Center",
+      "rdfs:comment": "Name or description of the warranty service centre for this offer. May be geography-specific. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:warrantyTerms",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Terms",
+      "rdfs:comment": "Warranty terms and conditions specific to this offer. Overrides resource-level terms when present. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:codMaxAmount",
+      "@type": "rdfs:Property",
+      "rdfs:label": "COD Max Amount",
+      "rdfs:comment": "Maximum order value eligible for cash-on-delivery, denominated in the offer price currency. Only relevant when codAvailable is true. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:prepaidOnly",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Prepaid Only",
+      "rdfs:comment": "Boolean indicating that prepayment is mandatory for this offer (e.g., high-value items, pre-orders, imported goods). NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:minOrderQuantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Minimum Order Quantity",
+      "rdfs:comment": "Minimum quantity a buyer must order in a single transaction (inclusive). May be decimal for weight-sold items. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:maxOrderQuantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Maximum Order Quantity",
+      "rdfs:comment": "Maximum quantity a buyer may order in a single transaction (inclusive). May be decimal for weight-sold items. NEW in v2.1."
+    },
+    {
+      "@id": "rcoa:subscriptionAvailable",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Subscription Available",
+      "rdfs:comment": "Discovery hint indicating this offer supports recurring subscription purchase. Subscription terms (frequency, billing cycle, renewal) are modelled in a separate SubscriptionOffer extension. NEW in v2.1."
+    }
   ]
 }

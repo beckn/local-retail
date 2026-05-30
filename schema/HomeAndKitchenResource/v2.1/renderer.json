@@ -1,48 +1,8 @@
 {
+  "schema": "HomeAndKitchenResource",
   "version": "2.1.0",
-  "schema_version": "2.1.0",
-  "domain": "HomeAndKitchenResource",
-  "container": "resourceAttributes",
-  "renderers": [
-    {
-      "field": "installation.required",
-      "type": "boolean",
-      "display_name": "Installation Required",
-      "priority": 1
-    },
-    {
-      "field": "installation.providedBySeller",
-      "type": "boolean",
-      "display_name": "Installation Offered by Seller",
-      "priority": 2
-    },
-    {
-      "field": "warranty.duration",
-      "type": "text",
-      "display_name": "Warranty Period",
-      "priority": 3
-    },
-    {
-      "field": "warranty.type",
-      "type": "badge",
-      "display_name": "Warranty Type",
-      "priority": 4
-    },
-    {
-      "field": "usage.indoorOnly",
-      "type": "text",
-      "display_name": "Indoor Use Only",
-      "priority": 5,
-      "format": {
-        "template": "{{#usage.indoorOnly}}Yes{{/usage.indoorOnly}}{{^usage.indoorOnly}}No{{/usage.indoorOnly}}"
-      }
-    },
-    {
-      "field": "careInstructions",
-      "type": "text",
-      "display_name": "Care Instructions",
-      "priority": 6
-    }
-  ],
-  "summary_template": "Installation: {{#installation.required}}Yes{{/installation.required}}{{^installation.required}}No{{/installation.required}} | Warranty: {{warranty.duration}} {{warranty.type}}"
+  "card_template": "Installation: {{#installation.required}}Required{{/installation.required}}{{^installation.required}}Not required{{/installation.required}} | Warranty: {{warranty.duration}} ({{warranty.type}})",
+  "detail_template": "Installation Required: {{installation.required}}\nInstallation by Seller: {{installation.providedBySeller}}\nWarranty Duration: {{warranty.duration}}\nWarranty Type: {{warranty.type}}\nIndoor Only: {{usage.indoorOnly}}\nCare Instructions: {{careInstructions}}",
+  "html": "<div class=\"hakr-card\">{{#if installation.required}}<div class=\"hakr-install\"><strong>Installation Required</strong>{{#if installation.providedBySeller}} — offered by seller{{/if}}</div>{{/if}}{{#if warranty.duration}}<div class=\"hakr-warranty\"><strong>Warranty:</strong> {{warranty.duration}} ({{warranty.type}})</div>{{/if}}</div>",
+  "html_detail": "<div class=\"hakr-detail\">{{#if installation}}<section><h3>Installation</h3><p><strong>Required:</strong> {{installation.required}}</p><p><strong>Provided by Seller:</strong> {{installation.providedBySeller}}</p></section>{{/if}}{{#if warranty}}<section><h3>Warranty</h3><p><strong>Type:</strong> {{warranty.type}}</p><p><strong>Duration:</strong> {{warranty.duration}}</p>{{#if warranty.warrantyServiceCenter}}<p><strong>Service Center:</strong> {{warranty.warrantyServiceCenter}}</p>{{/if}}{{#if warranty.warrantyTerms}}<p><strong>Terms:</strong> {{warranty.warrantyTerms}}</p>{{/if}}</section>{{/if}}{{#if usage}}<section><h3>Usage</h3><p><strong>Indoor Only:</strong> {{usage.indoorOnly}}</p></section>{{/if}}{{#if careInstructions}}<section><h3>Care Instructions</h3><p>{{careInstructions}}</p></section>{{/if}}</div>"
 }

@@ -2,34 +2,67 @@
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
     "fnbr": "https://schema.beckn.io/FoodAndBeverageResource#",
-    "FoodAndBeverageResource": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
       "@id": "fnbr:FoodAndBeverageResource",
-      "@type": "@vocab"
+      "@type": "rdfs:Class",
+      "rdfs:label": "Food and Beverage Resource",
+      "rdfs:comment": "Resource attributes for prepared foods, cuisines, beverages, and restaurant menu items. Extends RetailResource for F&B-specific declarations."
     },
-    "allergens": {
+    {
       "@id": "fnbr:allergens",
-      "@type": "@vocab",
-      "@container": "@list"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Allergens",
+      "rdfs:comment": "List of allergens present in the food item, aligned with the EU Annex II major allergen list (Regulation (EU) No 1169/2011) and the US FDA Big Nine (2023)."
     },
-    "cuisine": {
+    {
       "@id": "fnbr:cuisine",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Cuisine",
+      "rdfs:comment": "Cuisine type or culinary tradition (e.g., Italian, Indian, Mexican, American, Chinese, Mediterranean, Japanese)."
     },
-    "preparation": {
+    {
+      "@id": "fnbr:spiceLevel",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Spice Level",
+      "rdfs:comment": "Perceived heat or spice level of the food item. Aids discovery filtering and consumer guidance. NEW in v2.1."
+    },
+    {
+      "@id": "fnbr:SpiceLevel",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Spice Level",
+      "rdfs:comment": "Enumeration of perceived heat/spice levels for food items. NEW in v2.1."
+    },
+    { "@id": "fnbr:NONE",      "@type": "fnbr:SpiceLevel", "rdfs:label": "None",      "rdfs:comment": "No spice or perceivable heat; suitable for all diners." },
+    { "@id": "fnbr:LOW",       "@type": "fnbr:SpiceLevel", "rdfs:label": "Low",       "rdfs:comment": "Mild spice; a gentle warmth noticeable only by sensitive palates." },
+    { "@id": "fnbr:MEDIUM",    "@type": "fnbr:SpiceLevel", "rdfs:label": "Medium",    "rdfs:comment": "Moderate heat; noticeable spice but manageable for most diners." },
+    { "@id": "fnbr:HIGH",      "@type": "fnbr:SpiceLevel", "rdfs:label": "High",      "rdfs:comment": "Significantly spicy; may be uncomfortable for those unaccustomed to chilli heat." },
+    { "@id": "fnbr:EXTRA_HOT", "@type": "fnbr:SpiceLevel", "rdfs:label": "Extra Hot", "rdfs:comment": "Very high heat intended for enthusiasts; potentially extreme for unaccustomed diners." },
+    {
       "@id": "fnbr:preparation",
-      "@type": "@vocab"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Preparation",
+      "rdfs:comment": "Container for preparation, storage, and shelf-life information about the food item."
     },
-    "preparationInstructions": {
+    {
       "@id": "fnbr:preparationInstructions",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Preparation Instructions",
+      "rdfs:comment": "Preparation or cooking instructions and special handling notes (e.g., heat before serving, microwave 3 minutes)."
     },
-    "storageInstructions": {
+    {
       "@id": "fnbr:storageInstructions",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Storage Instructions",
+      "rdfs:comment": "Storage requirements for the food item (e.g., Refrigerate at 4°C, Keep frozen, Store in a cool dry place)."
     },
-    "shelfLife": {
+    {
       "@id": "fnbr:shelfLife",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Shelf Life",
+      "rdfs:comment": "Expected shelf life as an ISO 8601 duration (e.g., P7D = 7 days, P3M = 3 months)."
     }
-  }
+  ]
 }

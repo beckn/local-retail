@@ -8,6 +8,9 @@
       "@id": "rcca:@type"
     },
     "ContractAttributes": "rcca:ContractAttributes",
+    "quoteReference": {
+      "@id": "rcca:quoteReference"
+    },
     "buyerInstructions": {
       "@id": "rcca:buyerInstructions"
     },

@@ -1,50 +1,32 @@
 {
-  "name": "RetailConsideration",
-  "title": "Retail Core Consideration Attributes",
-  "description": "Beckn v2.1 schema for retail monetary consideration attributes",
-  "namespace_prefix": "rccna",
-  "namespace_uri": "https://schema.beckn.io/RetailConsideration#",
+  "id": "https://schema.beckn.io/RetailConsideration/v2.1",
+  "name": "Retail Consideration Attributes",
+  "version": "2.1.0",
   "protocol_version": "2.0",
   "semantic_model": "generalised",
-  "container": "considerationAttributes",
-  "root_schema": "RetailConsideration",
-  "version": "2.1.0",
-  "schema_file": "attributes.yaml",
-  "context_file": "context.jsonld",
-  "vocab_file": "vocab.jsonld",
-  "renderer_file": "renderer.json",
-  "metadata": {
-    "author": "Beckn Foundation",
-    "license": "CC-BY-3.0",
-    "domain": "retail",
-    "created": "2026-03-25",
-    "updated": "2026-03-25"
-  },
-  "extensions": {
-    "paymentMethods": {
-      "type": "enum",
-      "values": [
-        "PREPAID",
-        "COD",
-        "CREDIT",
-        "DEBIT",
-        "UPI",
-        "WALLET",
-        "NET_BANKING",
-        "BNPL"
-      ]
-    },
-    "breakupTypes": {
-      "type": "enum",
-      "values": [
-        "BASE_PRICE",
-        "TAX",
-        "DISCOUNT",
-        "DELIVERY_CHARGE",
-        "PACKING_CHARGE",
-        "CONVENIENCE_FEE",
-        "OTHER"
-      ]
-    }
-  }
+  "included_schemas": ["RetailConsideration"],
+  "discovery_fields": [
+    "paymentMethods",
+    "totalAmount",
+    "currency"
+  ],
+  "indexable_paths": [
+    "beckn:considerationAttributes.paymentMethods",
+    "beckn:considerationAttributes.currency",
+    "beckn:considerationAttributes.totalAmount",
+    "beckn:considerationAttributes.codAmount",
+    "beckn:considerationAttributes.breakup[].type"
+  ],
+  "filterable_paths": [
+    "beckn:considerationAttributes.paymentMethods",
+    "beckn:considerationAttributes.currency",
+    "beckn:considerationAttributes.codAmount"
+  ],
+  "sortable_paths": [
+    "beckn:considerationAttributes.totalAmount"
+  ],
+  "privacy_notes": [
+    "loyaltyPointsApplied.programId may identify a specific loyalty account",
+    "appliedVouchers[].code may be single-use and should not be logged in plaintext"
+  ]
 }

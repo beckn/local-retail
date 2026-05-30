@@ -1,36 +1,8 @@
 {
+  "schema": "FoodAndBeverageResource",
   "version": "2.1.0",
-  "schema_version": "2.1.0",
-  "domain": "FoodAndBeverageResource",
-  "container": "resourceAttributes",
-  "renderers": [
-    {
-      "field": "cuisine",
-      "type": "text",
-      "display_name": "Cuisine",
-      "priority": 1
-    },
-    {
-      "field": "allergens",
-      "type": "list",
-      "display_name": "Allergens",
-      "priority": 2,
-      "format": {
-        "item_template": "{{.}}"
-      }
-    },
-    {
-      "field": "preparation.shelfLife",
-      "type": "text",
-      "display_name": "Shelf Life",
-      "priority": 3
-    },
-    {
-      "field": "preparation.storageInstructions",
-      "type": "text",
-      "display_name": "Storage",
-      "priority": 4
-    }
-  ],
-  "summary_template": "{{cuisine}} | Allergens: {{allergens.length}} | Shelf: {{preparation.shelfLife}}"
+  "card_template": "{{cuisine}} | Spice: {{spiceLevel}} | Allergens: {{allergens}} | Shelf: {{preparation.shelfLife}}",
+  "detail_template": "Cuisine: {{cuisine}}\nSpice Level: {{spiceLevel}}\nAllergens: {{allergens}}\nShelf Life: {{preparation.shelfLife}}\nStorage: {{preparation.storageInstructions}}\nPreparation: {{preparation.preparationInstructions}}",
+  "html": "<div class=\"fnbr-card\">{{#if cuisine}}<div class=\"fnbr-cuisine\"><strong>Cuisine:</strong> {{cuisine}}</div>{{/if}}{{#if spiceLevel}}<div class=\"fnbr-spice\"><strong>Spice:</strong> {{spiceLevel}}</div>{{/if}}{{#if allergens}}<div class=\"fnbr-allergens\"><strong>Allergens:</strong> {{allergens}}</div>{{/if}}{{#if preparation.shelfLife}}<div class=\"fnbr-shelf\"><strong>Shelf Life:</strong> {{preparation.shelfLife}}</div>{{/if}}</div>",
+  "html_detail": "<div class=\"fnbr-detail\">{{#if cuisine}}<section><h3>Cuisine</h3><p>{{cuisine}}</p></section>{{/if}}{{#if spiceLevel}}<section><h3>Spice Level</h3><p>{{spiceLevel}}</p></section>{{/if}}{{#if allergens}}<section><h3>Allergens</h3><p class=\"fnbr-allergen-warning\">{{allergens}}</p></section>{{/if}}{{#if preparation}}<section><h3>Preparation &amp; Storage</h3>{{#if preparation.shelfLife}}<p><strong>Shelf Life:</strong> {{preparation.shelfLife}}</p>{{/if}}{{#if preparation.storageInstructions}}<p><strong>Storage:</strong> {{preparation.storageInstructions}}</p>{{/if}}{{#if preparation.preparationInstructions}}<p><strong>Preparation:</strong> {{preparation.preparationInstructions}}</p>{{/if}}</section>{{/if}}</div>"
 }

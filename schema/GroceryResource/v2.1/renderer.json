@@ -1,24 +1,8 @@
 {
+  "schema": "GroceryResource",
   "version": "2.1.0",
-  "schema_version": "2.1.0",
-  "domain": "GroceryResource",
-  "container": "resourceAttributes",
-  "renderers": [
-    {
-      "field": "nutrition",
-      "type": "list",
-      "display_name": "Nutrition Facts",
-      "priority": 1,
-      "format": {
-        "item_template": "{{nutrient}}: {{value.unitQuantity}} {{value.unitCode}}"
-      }
-    },
-    {
-      "field": "freshProduce.netQuantityDeclaration",
-      "type": "text",
-      "display_name": "Net Quantity",
-      "priority": 2
-    }
-  ],
-  "summary_template": "Nutrition: {{nutrition.length}} facts | Fresh: {{#freshProduce}}Yes{{/freshProduce}}{{^freshProduce}}No{{/freshProduce}}"
+  "card_template": "Net Qty: {{freshProduce.netQuantityDeclaration}}{{#freshProduce.harvestDate}} | Harvested: {{freshProduce.harvestDate}}{{/freshProduce.harvestDate}}",
+  "detail_template": "Net Quantity: {{freshProduce.netQuantityDeclaration}}\nHarvest Date: {{freshProduce.harvestDate}}\nNutrition Facts:\n{{#nutrition}}  {{nutrient}}: {{value.unitQuantity}} {{value.unitCode}}\n{{/nutrition}}",
+  "html": "<div class=\"groc-card\">{{#if freshProduce}}<div class=\"groc-qty\"><strong>Net Qty:</strong> {{freshProduce.netQuantityDeclaration}}</div>{{#if freshProduce.harvestDate}}<div class=\"groc-harvest\"><strong>Harvested:</strong> {{freshProduce.harvestDate}}</div>{{/if}}{{/if}}{{#if nutrition}}<div class=\"groc-nutrition\"><strong>Nutrition:</strong> {{nutrition.length}} fact(s)</div>{{/if}}</div>",
+  "html_detail": "<div class=\"groc-detail\">{{#if freshProduce}}<section><h3>Fresh Produce</h3>{{#if freshProduce.netQuantityDeclaration}}<p><strong>Net Quantity:</strong> {{freshProduce.netQuantityDeclaration}}</p>{{/if}}{{#if freshProduce.harvestDate}}<p><strong>Harvest Date:</strong> {{freshProduce.harvestDate}}</p>{{/if}}</section>{{/if}}{{#if nutrition}}<section><h3>Nutrition Facts</h3><table><thead><tr><th>Nutrient</th><th>Amount</th></tr></thead><tbody>{{#each nutrition}}<tr><td>{{nutrient}}</td><td>{{value.unitQuantity}} {{value.unitCode}}</td></tr>{{/each}}</tbody></table></section>{{/if}}</div>"
 }

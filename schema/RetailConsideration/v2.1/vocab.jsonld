@@ -1,116 +1,223 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld"
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rccna": "https://schema.beckn.io/RetailConsideration#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
   "@graph": [
     {
       "@id": "rccna:RetailConsideration",
       "@type": "rdfs:Class",
-      "rdfs:label": "Retail Core Consideration Attributes",
-      "rdfs:comment": "Schema for retail monetary consideration attributes. Intentionally thin since retail transactions are overwhelmingly monetary.",
+      "rdfs:label": "Retail Consideration Attributes",
+      "rdfs:comment": "Schema for retail monetary consideration attributes. Intentionally thin since retail transactions are overwhelmingly monetary. NEW in v2.1.",
       "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
     },
+
     {
       "@id": "rccna:paymentMethods",
       "@type": "rdf:Property",
       "rdfs:label": "Payment Methods",
-      "rdfs:comment": "Array of payment methods accepted for this consideration",
-      "rdfs:domain": "rccna:RetailConsideration",
-      "rdfs:range": "rdf:list"
+      "rdfs:comment": "Array of payment methods accepted for this consideration.",
+      "rdfs:domain": "rccna:RetailConsideration"
     },
+    {
+      "@id": "rccna:PaymentMethod",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Payment Method",
+      "rdfs:comment": "Enumeration of payment methods accepted for retail consideration. Enum values updated in v2.1 for global interoperability."
+    },
+    { "@id": "rccna:PREPAID",        "@type": "rccna:PaymentMethod", "rdfs:label": "Prepaid",         "rdfs:comment": "Full upfront payment before fulfilment." },
+    { "@id": "rccna:COD",            "@type": "rccna:PaymentMethod", "rdfs:label": "Cash on Delivery", "rdfs:comment": "Cash collected by the delivery agent at the point of handover." },
+    { "@id": "rccna:CREDIT_CARD",    "@type": "rccna:PaymentMethod", "rdfs:label": "Credit Card",      "rdfs:comment": "Credit card payment. Replaces CREDIT from pre-v2.1." },
+    { "@id": "rccna:DEBIT_CARD",     "@type": "rccna:PaymentMethod", "rdfs:label": "Debit Card",       "rdfs:comment": "Debit card payment. Replaces DEBIT from pre-v2.1." },
+    { "@id": "rccna:QR_CODE",        "@type": "rccna:PaymentMethod", "rdfs:label": "QR Code",          "rdfs:comment": "QR-based payment rails such as UPI (India), QRIS (Indonesia), Alipay, WeChat Pay. Replaces UPI from pre-v2.1." },
+    { "@id": "rccna:DIGITAL_WALLET", "@type": "rccna:PaymentMethod", "rdfs:label": "Digital Wallet",   "rdfs:comment": "Digital wallet (GoPay, OVO, Paytm, Apple Pay, etc.). Replaces WALLET from pre-v2.1." },
+    { "@id": "rccna:NET_BANKING",    "@type": "rccna:PaymentMethod", "rdfs:label": "Net Banking",      "rdfs:comment": "Direct bank login or online banking transfer." },
+    { "@id": "rccna:BNPL",           "@type": "rccna:PaymentMethod", "rdfs:label": "Buy Now Pay Later", "rdfs:comment": "Buy-now-pay-later deferred consumer credit." },
+    { "@id": "rccna:BANK_TRANSFER",  "@type": "rccna:PaymentMethod", "rdfs:label": "Bank Transfer",    "rdfs:comment": "Direct bank-to-bank transfer (RTGS, NEFT, wire). NEW in v2.1." },
+    { "@id": "rccna:VOUCHER",        "@type": "rccna:PaymentMethod", "rdfs:label": "Voucher",          "rdfs:comment": "Gift card or store credit used as a payment instrument. NEW in v2.1." },
+
     {
       "@id": "rccna:currency",
       "@type": "rdf:Property",
       "rdfs:label": "Currency",
-      "rdfs:comment": "ISO 4217 currency code for the monetary amounts",
-      "rdfs:domain": "rccna:RetailConsideration",
-      "rdfs:range": "xsd:string"
+      "rdfs:comment": "ISO 4217 three-letter currency code for all monetary amounts in this consideration.",
+      "rdfs:domain": "rccna:RetailConsideration"
     },
+
     {
       "@id": "rccna:breakup",
       "@type": "rdf:Property",
       "rdfs:label": "Breakup",
-      "rdfs:comment": "Breakdown of charges, taxes, discounts, and fees",
-      "rdfs:domain": "rccna:RetailConsideration",
-      "rdfs:range": "rdf:list"
+      "rdfs:comment": "Ordered array of charge line items — taxes, discounts, fees, and credits — that together sum to totalAmount.",
+      "rdfs:domain": "rccna:RetailConsideration"
     },
     {
       "@id": "rccna:BreakupItem",
       "@type": "rdfs:Class",
       "rdfs:label": "Breakup Item",
-      "rdfs:comment": "Individual item in the charge breakup",
+      "rdfs:comment": "Individual line item in the consideration charge breakup.",
       "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
     },
     {
-      "@id": "rccna:title",
+      "@id": "rccna:breakupTitle",
       "@type": "rdf:Property",
-      "rdfs:label": "Title",
-      "rdfs:comment": "Title or description of the charge",
-      "rdfs:domain": "rccna:BreakupItem",
-      "rdfs:range": "xsd:string"
+      "rdfs:label": "Breakup Title",
+      "rdfs:comment": "Human-readable label for the breakup line item (e.g., 'GST 18%', 'Delivery charge', 'Diwali discount').",
+      "rdfs:domain": "rccna:BreakupItem"
     },
     {
-      "@id": "rccna:amount",
+      "@id": "rccna:breakupAmount",
       "@type": "rdf:Property",
-      "rdfs:label": "Amount",
-      "rdfs:comment": "Monetary amount for this charge",
-      "rdfs:domain": "rccna:BreakupItem",
-      "rdfs:range": "xsd:decimal"
+      "rdfs:label": "Breakup Amount",
+      "rdfs:comment": "Monetary amount for this line item, denominated in the consideration currency.",
+      "rdfs:domain": "rccna:BreakupItem"
     },
     {
-      "@id": "rccna:type",
+      "@id": "rccna:breakupType",
       "@type": "rdf:Property",
-      "rdfs:label": "Type",
-      "rdfs:comment": "Type of charge: BASE_PRICE, TAX, DISCOUNT, DELIVERY_CHARGE, PACKING_CHARGE, CONVENIENCE_FEE, or OTHER",
-      "rdfs:domain": "rccna:BreakupItem",
-      "rdfs:range": "xsd:string"
+      "rdfs:label": "Breakup Type",
+      "rdfs:comment": "Classification of the breakup line item (see BreakupType enum). Expanded from 7 to 17 values in v2.1.",
+      "rdfs:domain": "rccna:BreakupItem"
     },
+    {
+      "@id": "rccna:BreakupType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Breakup Type",
+      "rdfs:comment": "Enumeration of charge breakup line types. Expanded in v2.1 to cover common global retail charge patterns."
+    },
+    { "@id": "rccna:BASE_PRICE",        "@type": "rccna:BreakupType", "rdfs:label": "Base Price",          "rdfs:comment": "Pre-tax, pre-discount item price." },
+    { "@id": "rccna:TAX",               "@type": "rccna:BreakupType", "rdfs:label": "Tax",                 "rdfs:comment": "Tax line item; populate taxDetail sub-object for rate and inclusivity." },
+    { "@id": "rccna:DISCOUNT",          "@type": "rccna:BreakupType", "rdfs:label": "Discount",            "rdfs:comment": "Price reduction — promotional, negotiated, or volume-based." },
+    { "@id": "rccna:DELIVERY_CHARGE",   "@type": "rccna:BreakupType", "rdfs:label": "Delivery Charge",     "rdfs:comment": "Shipping or courier charge." },
+    { "@id": "rccna:PACKING_CHARGE",    "@type": "rccna:BreakupType", "rdfs:label": "Packing Charge",      "rdfs:comment": "Packaging material charge." },
+    { "@id": "rccna:CONVENIENCE_FEE",   "@type": "rccna:BreakupType", "rdfs:label": "Convenience Fee",     "rdfs:comment": "Platform or service convenience charge." },
+    { "@id": "rccna:HANDLING_CHARGE",   "@type": "rccna:BreakupType", "rdfs:label": "Handling Charge",     "rdfs:comment": "Special handling surcharge (cold chain, fragile, oversized). NEW in v2.1." },
+    { "@id": "rccna:INSURANCE",         "@type": "rccna:BreakupType", "rdfs:label": "Insurance",           "rdfs:comment": "Shipping or product insurance premium. NEW in v2.1." },
+    { "@id": "rccna:CANCELLATION_FEE",  "@type": "rccna:BreakupType", "rdfs:label": "Cancellation Fee",    "rdfs:comment": "Fee charged on order cancellation. NEW in v2.1." },
+    { "@id": "rccna:RESTOCKING_FEE",    "@type": "rccna:BreakupType", "rdfs:label": "Restocking Fee",      "rdfs:comment": "Fee charged when a returned item is restocked. NEW in v2.1." },
+    { "@id": "rccna:TRADE_IN",          "@type": "rccna:BreakupType", "rdfs:label": "Trade-In",            "rdfs:comment": "Deduction for a device or product traded in by the buyer. NEW in v2.1." },
+    { "@id": "rccna:LOYALTY_REDEEM",    "@type": "rccna:BreakupType", "rdfs:label": "Loyalty Redeem",      "rdfs:comment": "Monetary value of loyalty points redeemed. See also loyaltyPointsApplied for program mechanics. NEW in v2.1." },
+    { "@id": "rccna:FINANCE_CHARGE",    "@type": "rccna:BreakupType", "rdfs:label": "Finance Charge",      "rdfs:comment": "Interest or service charge for BNPL or deferred payment. NEW in v2.1." },
+    { "@id": "rccna:GIFT_WRAP",         "@type": "rccna:BreakupType", "rdfs:label": "Gift Wrap",           "rdfs:comment": "Gift wrapping service charge. NEW in v2.1." },
+    { "@id": "rccna:PLATFORM_FEE",      "@type": "rccna:BreakupType", "rdfs:label": "Platform Fee",        "rdfs:comment": "Network or marketplace participation fee. NEW in v2.1." },
+    { "@id": "rccna:PAYMENT_MILESTONE", "@type": "rccna:BreakupType", "rdfs:label": "Payment Milestone",   "rdfs:comment": "Partial payment against a multi-milestone contract (B2B, made-to-order). NEW in v2.1." },
+    { "@id": "rccna:OTHER_CHARGE",      "@type": "rccna:BreakupType", "rdfs:label": "Other",               "rdfs:comment": "Any charge type not covered by the listed values." },
+
+    {
+      "@id": "rccna:taxDetail",
+      "@type": "rdf:Property",
+      "rdfs:label": "Tax Detail",
+      "rdfs:comment": "Tax rate and inclusivity details for a TAX-type breakup line. L2 networks may extend with market-specific fields (e.g., IGST/CGST/SGST, PPN/PPnBM). NEW in v2.1.",
+      "rdfs:domain": "rccna:BreakupItem"
+    },
+    {
+      "@id": "rccna:taxRate",
+      "@type": "rdf:Property",
+      "rdfs:label": "Tax Rate",
+      "rdfs:comment": "Tax rate as a decimal fraction (e.g., 0.10 for 10%, 0.18 for 18%). NEW in v2.1."
+    },
+    {
+      "@id": "rccna:taxIncluded",
+      "@type": "rdf:Property",
+      "rdfs:label": "Tax Included",
+      "rdfs:comment": "Boolean: true if the tax is included in the line amount (tax-inclusive); false if added on top (tax-exclusive). NEW in v2.1."
+    },
+    {
+      "@id": "rccna:taxableBase",
+      "@type": "rdf:Property",
+      "rdfs:label": "Taxable Base",
+      "rdfs:comment": "The amount on which the tax rate was applied (taxableBase × rate = amount). NEW in v2.1."
+    },
+
     {
       "@id": "rccna:totalAmount",
       "@type": "rdf:Property",
       "rdfs:label": "Total Amount",
-      "rdfs:comment": "Total monetary amount for this consideration",
-      "rdfs:domain": "rccna:RetailConsideration",
-      "rdfs:range": "xsd:decimal"
+      "rdfs:comment": "Total monetary amount for this consideration, denominated in currency.",
+      "rdfs:domain": "rccna:RetailConsideration"
     },
+
+    {
+      "@id": "rccna:codAmount",
+      "@type": "rdf:Property",
+      "rdfs:label": "COD Amount",
+      "rdfs:comment": "Cash amount to be collected on delivery, denominated in consideration currency. Pre-transaction financial declaration at the consideration layer — distinct from RetailSettlement.settledAmount. NEW in v2.1.",
+      "rdfs:domain": "rccna:RetailConsideration"
+    },
+
+    {
+      "@id": "rccna:appliedVouchers",
+      "@type": "rdf:Property",
+      "rdfs:label": "Applied Vouchers",
+      "rdfs:comment": "Voucher or coupon codes applied to this consideration at order time. Distinct from paymentMethods:VOUCHER (gift card as payment instrument). NEW in v2.1.",
+      "rdfs:domain": "rccna:RetailConsideration"
+    },
+    {
+      "@id": "rccna:voucherCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "Voucher Code",
+      "rdfs:comment": "Voucher or coupon code string applied to this consideration. NEW in v2.1."
+    },
+    {
+      "@id": "rccna:voucherDiscountAmount",
+      "@type": "rdf:Property",
+      "rdfs:label": "Voucher Discount Amount",
+      "rdfs:comment": "Monetary value of this voucher's discount, denominated in the consideration currency. NEW in v2.1."
+    },
+    {
+      "@id": "rccna:voucherType",
+      "@type": "rdf:Property",
+      "rdfs:label": "Voucher Type",
+      "rdfs:comment": "Voucher category for attribution and reconciliation (see VoucherType enum). NEW in v2.1."
+    },
+    {
+      "@id": "rccna:VoucherType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Voucher Type",
+      "rdfs:comment": "Enumeration of voucher/coupon categories. NEW in v2.1."
+    },
+    { "@id": "rccna:SELLER_VOUCHER",   "@type": "rccna:VoucherType", "rdfs:label": "Seller Voucher",   "rdfs:comment": "Voucher issued by the seller/provider." },
+    { "@id": "rccna:PLATFORM_VOUCHER", "@type": "rccna:VoucherType", "rdfs:label": "Platform Voucher", "rdfs:comment": "Voucher issued by the network or marketplace platform." },
+    { "@id": "rccna:PAYMENT_VOUCHER",  "@type": "rccna:VoucherType", "rdfs:label": "Payment Voucher",  "rdfs:comment": "Voucher provided by a payment partner (bank offer, card discount)." },
+    { "@id": "rccna:CASHBACK_VOUCHER", "@type": "rccna:VoucherType", "rdfs:label": "Cashback Voucher", "rdfs:comment": "Cashback voucher that credits money after purchase completion." },
+    { "@id": "rccna:OTHER_VOUCHER",    "@type": "rccna:VoucherType", "rdfs:label": "Other Voucher",    "rdfs:comment": "Voucher type not covered by the listed values." },
+
     {
       "@id": "rccna:loyaltyPointsApplied",
       "@type": "rdf:Property",
       "rdfs:label": "Loyalty Points Applied",
-      "rdfs:comment": "Loyalty points applied as non-monetary consideration",
-      "rdfs:domain": "rccna:RetailConsideration",
-      "rdfs:range": "rccna:LoyaltyPointsApplied"
+      "rdfs:comment": "Loyalty points applied as non-monetary value in this consideration.",
+      "rdfs:domain": "rccna:RetailConsideration"
     },
     {
       "@id": "rccna:LoyaltyPointsApplied",
       "@type": "rdfs:Class",
       "rdfs:label": "Loyalty Points Applied",
-      "rdfs:comment": "Details of loyalty points applied to a transaction",
+      "rdfs:comment": "Details of loyalty points used in this transaction.",
       "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
     },
     {
       "@id": "rccna:programId",
       "@type": "rdf:Property",
       "rdfs:label": "Program ID",
-      "rdfs:comment": "Unique identifier of the loyalty program",
-      "rdfs:domain": "rccna:LoyaltyPointsApplied",
-      "rdfs:range": "xsd:string"
+      "rdfs:comment": "Unique identifier of the loyalty program.",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied"
     },
     {
       "@id": "rccna:pointsUsed",
       "@type": "rdf:Property",
       "rdfs:label": "Points Used",
-      "rdfs:comment": "Number of loyalty points used in this transaction",
-      "rdfs:domain": "rccna:LoyaltyPointsApplied",
-      "rdfs:range": "xsd:integer"
+      "rdfs:comment": "Number of loyalty points used in this transaction.",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied"
     },
     {
       "@id": "rccna:monetaryEquivalent",
       "@type": "rdf:Property",
       "rdfs:label": "Monetary Equivalent",
-      "rdfs:comment": "Monetary value equivalent of the loyalty points applied",
-      "rdfs:domain": "rccna:LoyaltyPointsApplied",
-      "rdfs:range": "xsd:decimal"
+      "rdfs:comment": "Monetary value equivalent of the loyalty points applied, denominated in the consideration currency.",
+      "rdfs:domain": "rccna:LoyaltyPointsApplied"
     }
   ]
 }

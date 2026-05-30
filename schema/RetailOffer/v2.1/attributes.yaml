@@ -51,6 +51,11 @@ components:
             returns:
               type: object
               properties:
+                policyRef:
+                  type: string
+                  format: uri
+                  description: Stable URI pointing to the canonical returns policy definition. Use as an alternative to repeating inline fields on every catalog entry.
+                  x-jsonld-id: "rcoa:policyRef"
                 allowed:
                   type: boolean
                   x-jsonld-id: "rcoa:returnAllowed"
@@ -80,6 +85,11 @@ components:
             cancellation:
               type: object
               properties:
+                policyRef:
+                  type: string
+                  format: uri
+                  description: Stable URI pointing to the canonical cancellation policy definition. Use as an alternative to repeating inline fields on every catalog entry.
+                  x-jsonld-id: "rcoa:policyRef"
                 allowed:
                   type: boolean
                   x-jsonld-id: "rcoa:cancellationAllowed"
@@ -89,7 +99,12 @@ components:
                   x-jsonld-id: "rcoa:cancellationWindow"
                 cutoffEvent:
                   type: string
-                  enum: [BEFORE_CONFIRMATION, BEFORE_PACKING, BEFORE_SHIPMENT]
+                  enum: [BEFORE_CONFIRMATION, BEFORE_PACKING, BEFORE_DISPATCH, BEFORE_SHIPMENT]
+                  description: >
+                    Latest operational event up to which cancellation is permitted.
+                    BEFORE_DISPATCH sits between BEFORE_PACKING (goods packed) and
+                    BEFORE_SHIPMENT (handed to carrier) — use it when the cutoff is
+                    internal release/dispatch readiness.
                   x-jsonld-id: "rcoa:cancellationCutoffEvent"
                 fee:
                   type: object
@@ -104,6 +119,11 @@ components:
             replacement:
               type: object
               properties:
+                policyRef:
+                  type: string
+                  format: uri
+                  description: Stable URI pointing to the canonical replacement policy definition. Use as an alternative to repeating inline fields on every catalog entry.
+                  x-jsonld-id: "rcoa:policyRef"
                 allowed:
                   type: boolean
                   x-jsonld-id: "rcoa:replacementAllowed"
@@ -122,13 +142,55 @@ components:
                   type: boolean
                   x-jsonld-id: "rcoa:replacementSubjectToAvailability"
               x-jsonld-id: "rcoa:replacement"
+            warranty:
+              type: object
+              description: >
+                Offer-level warranty declaration. Can extend, curtail, or overwrite the
+                resource-level warranty declared in RetailResource.warranty. When both are
+                present, this offer-level declaration takes precedence for transactions
+                under this offer.
+              properties:
+                policyRef:
+                  type: string
+                  format: uri
+                  description: Stable URI pointing to the canonical warranty policy definition
+                  x-jsonld-id: "rcoa:policyRef"
+                duration:
+                  type: string
+                  description: Warranty duration as ISO 8601 duration (e.g., "P1Y" for 1 year, "P2Y6M" for 2.5 years)
+                  x-jsonld-id: "rcoa:warrantyDuration"
+                type:
+                  type: string
+                  enum: [MANUFACTURER, SELLER, EXTENDED, NONE]
+                  description: Type of warranty being declared at offer level
+                  x-jsonld-id: "rcoa:warrantyType"
+                serviceCenter:
+                  type: string
+                  description: Name or description of the warranty service centre (may be geography-specific for this offer)
+                  x-jsonld-id: "rcoa:warrantyServiceCenter"
+                terms:
+                  type: string
+                  description: Warranty terms and conditions specific to this offer (overrides resource-level terms when present)
+                  x-jsonld-id: "rcoa:warrantyTerms"
+              x-jsonld-id: "rcoa:warranty"
           x-jsonld-id: "rcoa:policies"
         paymentConstraints:
           type: object
           properties:
             codAvailable:
               type: boolean
+              description: Whether cash-on-delivery is available for this offer
               x-jsonld-id: "rcoa:codAvailable"
+            codMaxAmount:
+              type: number
+              description: >
+                Maximum order value eligible for COD. Denominated in the same currency
+                as the offer price. Only relevant when codAvailable is true.
+              x-jsonld-id: "rcoa:codMaxAmount"
+            prepaidOnly:
+              type: boolean
+              description: Whether prepayment is mandatory for this offer (e.g. high-value items, pre-orders)
+              x-jsonld-id: "rcoa:prepaidOnly"
           x-jsonld-id: "rcoa:paymentConstraints"
         serviceability:
           type: object
@@ -185,3 +247,22 @@ components:
             type: string
             format: date
           x-jsonld-id: "rcoa:holidays"
+        minOrderQuantity:
+          type: number
+          description: >
+            Minimum quantity a buyer must order in a single transaction (inclusive).
+            For weight-sold items this may be a decimal (e.g. 0.5 kg).
+          x-jsonld-id: "rcoa:minOrderQuantity"
+        maxOrderQuantity:
+          type: number
+          description: >
+            Maximum quantity a buyer may order in a single transaction (inclusive).
+            For weight-sold items this may be a decimal (e.g. 5.0 kg).
+          x-jsonld-id: "rcoa:maxOrderQuantity"
+        subscriptionAvailable:
+          type: boolean
+          description: >
+            Whether this offer can be purchased as a recurring subscription.
+            This is a discovery hint only — subscription terms (frequency, billing
+            cycle, renewal) are modelled in a separate SubscriptionOffer extension.
+          x-jsonld-id: "rcoa:subscriptionAvailable"

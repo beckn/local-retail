@@ -2,29 +2,50 @@
   "@context": {
     "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
     "groc": "https://schema.beckn.io/GroceryResource#",
-    "GroceryResource": {
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
       "@id": "groc:GroceryResource",
-      "@type": "@vocab"
+      "@type": "rdfs:Class",
+      "rdfs:label": "Grocery Resource",
+      "rdfs:comment": "Resource attributes for grocery, packaged goods, and fresh produce. Extends RetailResource for grocery-specific nutrition and fresh-produce declarations."
     },
-    "nutrition": {
+    {
       "@id": "groc:nutrition",
-      "@type": "@vocab"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Nutrition",
+      "rdfs:comment": "Array of nutritional facts per serving or per 100 g/ml. Each entry names a nutrient and carries its quantity and unit."
     },
-    "nutrient": {
+    {
       "@id": "groc:nutrient",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Nutrient",
+      "rdfs:comment": "Name of the nutrient (e.g., Energy, Protein, Total Fat, Saturated Fat, Carbohydrates, Dietary Fibre, Sodium)."
     },
-    "nutritionValue": {
+    {
       "@id": "groc:nutritionValue",
-      "@type": "@vocab"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Nutrition Value",
+      "rdfs:comment": "Quantified value for the nutrient, expressed as a unit quantity with a unit code (e.g., 250 kcal, 12 g)."
     },
-    "freshProduce": {
+    {
       "@id": "groc:freshProduce",
-      "@type": "@vocab"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Fresh Produce",
+      "rdfs:comment": "Fresh produce-specific attributes for harvested or bulk items that lack standard manufactured packaging."
     },
-    "netQuantityDeclaration": {
+    {
       "@id": "groc:netQuantityDeclaration",
-      "@type": "xsd:string"
+      "@type": "rdfs:Property",
+      "rdfs:label": "Net Quantity Declaration",
+      "rdfs:comment": "Net quantity declaration for fresh produce as a human-readable string (e.g., 1 kg, 500 g, 5 units). Used where no formal barcode label exists."
+    },
+    {
+      "@id": "groc:harvestDate",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Harvest Date",
+      "rdfs:comment": "Date the produce was harvested, expressed as an ISO 8601 date (e.g., 2024-10-15). Enables freshness signalling on loose or unpackaged produce where no formal expiry label is affixed. NEW in v2.1."
     }
-  }
+  ]
 }

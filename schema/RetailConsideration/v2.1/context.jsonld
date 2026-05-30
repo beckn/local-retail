@@ -23,17 +23,44 @@
     "breakup": {
       "@id": "rccna:breakup"
     },
-    "breakupTitle": {
+    "title": {
       "@id": "rccna:breakupTitle"
     },
-    "breakupAmount": {
+    "amount": {
       "@id": "rccna:breakupAmount"
     },
-    "breakupType": {
+    "type": {
       "@id": "rccna:breakupType"
+    },
+    "taxDetail": {
+      "@id": "rccna:taxDetail"
+    },
+    "taxRate": {
+      "@id": "rccna:taxRate"
+    },
+    "taxIncluded": {
+      "@id": "rccna:taxIncluded"
+    },
+    "taxableBase": {
+      "@id": "rccna:taxableBase"
     },
     "totalAmount": {
       "@id": "rccna:totalAmount"
+    },
+    "codAmount": {
+      "@id": "rccna:codAmount"
+    },
+    "appliedVouchers": {
+      "@id": "rccna:appliedVouchers"
+    },
+    "voucherCode": {
+      "@id": "rccna:voucherCode"
+    },
+    "voucherDiscountAmount": {
+      "@id": "rccna:voucherDiscountAmount"
+    },
+    "voucherType": {
+      "@id": "rccna:voucherType"
     },
     "loyaltyPointsApplied": {
       "@id": "rccna:loyaltyPointsApplied"
