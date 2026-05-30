@@ -23,13 +23,13 @@
     "breakup": {
       "@id": "rccna:breakup"
     },
-    "breakupTitle": {
+    "title": {
       "@id": "rccna:breakupTitle"
     },
-    "breakupAmount": {
+    "amount": {
       "@id": "rccna:breakupAmount"
     },
-    "breakupType": {
+    "type": {
       "@id": "rccna:breakupType"
     },
     "taxDetail": {

@@ -82,6 +82,7 @@ components:
                   L2 networks may extend this with market-specific tax regime fields
                   (e.g. PPN/PPnBM for Indonesia, GST/IGST/CGST/SGST for India).
                 x-jsonld-id: "rccna:taxDetail"
+                required: [rate]
                 properties:
                   rate:
                     type: number

@@ -181,6 +181,7 @@ components:
           x-jsonld-id: "rcpa:proofOfDelivery"
         deliveryOtp:
           type: string
+          pattern: '^[0-9]{4,8}$'
           description: >
             One-time password the buyer must present to the delivery agent to confirm
             handover. The buyer receives the OTP at order time; the agent records it
