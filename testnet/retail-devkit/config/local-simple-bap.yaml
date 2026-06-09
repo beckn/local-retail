@@ -32,7 +32,6 @@ modules:
           id: dediregistry
           config:
             url: https://fabric.nfh.global/registry/dedi
-            registryName: subscribers.beckn.one
             timeout: 10
             retry_max: 3
             retry_wait_min: 100ms
@@ -40,7 +39,7 @@ modules:
         keyManager:
           id: simplekeymanager
           config:
-            networkParticipant: sandbox.food-finder.com
+            subscriberId: sandbox.food-finder.com
             keyId: 76EU8y5vi36wsggHNp46dGVqEKEJ4Up7jj3fJ2nxUD7AXAh47gVEDF
             signingPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
@@ -63,6 +62,8 @@ modules:
             addr: redis:6379
         signValidator:
           id: signvalidator
+        signer:
+          id: signer
         router:
           id: router
           config:
@@ -76,6 +77,7 @@ modules:
         - validateSign
         - addRoute
         - validateSchema
+        - signAck
   
   - name: bapTxnCaller
     path: /bap/caller/
@@ -92,7 +94,6 @@ modules:
           id: dediregistry
           config:
             url: https://fabric.nfh.global/registry/dedi
-            registryName: subscribers.beckn.one
             timeout: 10
             retry_max: 3
             retry_wait_min: 100ms
@@ -100,7 +101,7 @@ modules:
         keyManager:
           id: simplekeymanager
           config:
-            networkParticipant: sandbox.food-finder.com
+            subscriberId: sandbox.food-finder.com
             keyId: 76EU8y5vi36wsggHNp46dGVqEKEJ4Up7jj3fJ2nxUD7AXAh47gVEDF
             signingPrivateKey: rrNtVgyASCGlo+ebsJaA37D5CZYZVfT0JA5/vlkTeV0=
             signingPublicKey: oFIk7KqCqvqRYkLMjQqiaKM5oOozkYT64bfLuc8p/SU=
@@ -127,6 +128,14 @@ modules:
             routingConfig: ./config/local-simple-routing-BAPCaller.yaml
         signer:
           id: signer
+        signValidator:
+          id: signvalidator
+        payloadStore:
+          id: payloadstore
+          config:
+            ttl: "24h"
+            indexTTL: "25h"
+            storeSignature: "true"
         middleware:
           - id: reqpreprocessor
             config:
@@ -135,5 +144,7 @@ modules:
       steps:
         - addRoute
         - sign
+        - storePayload
         - validateSchema
+        - validateAckSign
   
