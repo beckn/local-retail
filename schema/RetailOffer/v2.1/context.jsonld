@@ -29,12 +29,6 @@
     "acceptedPaymentMethod": {
       "@id": "rcoa:acceptedPaymentMethod"
     },
-    "addOns": {
-      "@id": "rcoa:addOns"
-    },
-    "addOnItems": {
-      "@id": "rcoa:addOnItems"
-    },
     "policies": {
       "@id": "rcoa:policies"
     },
