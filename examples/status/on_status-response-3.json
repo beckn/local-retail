@@ -235,7 +235,7 @@
             "paymentMethods": [
               "PREPAID",
               "COD",
-              "UPI"
+              "QR_CODE"
             ]
           }
         }
@@ -343,7 +343,7 @@
           "email": "nc.rehman@gmail.com"
         },
         "source": {
-          "channel": "mobile-app",
+          "channel": "MOBILE_APP",
           "campaignId": "DIWALI2023"
         },
         "loyalty": {
