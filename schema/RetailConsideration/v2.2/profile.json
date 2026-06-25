@@ -1,0 +1,32 @@
+{
+  "id": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.2",
+  "name": "Retail Consideration Attributes",
+  "version": "2.2.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailConsideration"],
+  "discovery_fields": [
+    "paymentMethods",
+    "totalAmount",
+    "currencyCode"
+  ],
+  "indexable_paths": [
+    "beckn:considerationAttributes.paymentMethods",
+    "beckn:considerationAttributes.currencyCode",
+    "beckn:considerationAttributes.totalAmount",
+    "beckn:considerationAttributes.codAmount",
+    "beckn:considerationAttributes.breakup[].type"
+  ],
+  "filterable_paths": [
+    "beckn:considerationAttributes.paymentMethods",
+    "beckn:considerationAttributes.currencyCode",
+    "beckn:considerationAttributes.codAmount"
+  ],
+  "sortable_paths": [
+    "beckn:considerationAttributes.totalAmount"
+  ],
+  "privacy_notes": [
+    "loyaltyPointsApplied.programId may identify a specific loyalty account",
+    "appliedVouchers[].code may be single-use and should not be logged in plaintext"
+  ]
+}

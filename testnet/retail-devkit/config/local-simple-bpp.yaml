@@ -74,6 +74,18 @@ modules:
             ttl: "24h"
             indexTTL: "25h"
             storeSignature: "true"
+        manifestLoader:
+          id: manifestloader
+          config:
+            cacheTTL: 1h
+            fetchTimeoutSeconds: "30"
+            skipSignatureVerification: "true"
+        schemaVersionMediator:
+          id: schemaversionmediator
+          config:
+            action: translate
+            onFailure: passThrough
+            nodeId: "beckn.one/open-kitchen-subscription-details/open-kitchen-bpp"
         middleware:
           - id: reqpreprocessor
             config:
@@ -83,8 +95,9 @@ modules:
         - validateSign
         - addRoute
         - validateSchema
+        - mediateSchema
         - signAck
-  
+
   - name: bppTxnCaller
     path: /bpp/caller/
     handler:

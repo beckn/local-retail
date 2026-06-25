@@ -1,0 +1,78 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "beckn": "https://schema.beckn.io/",
+    "rccna": "https://schema.beckn.io/RetailConsideration#",
+    "@context": {
+      "@id": "rccna:@context"
+    },
+    "@type": {
+      "@id": "rccna:@type"
+    },
+    "RetailConsideration": "rccna:RetailConsideration",
+    "PaymentMethod": "rccna:PaymentMethod",
+    "BreakupItem": "rccna:BreakupItem",
+    "BreakupType": "rccna:BreakupType",
+    "LoyaltyPointsApplied": "rccna:LoyaltyPointsApplied",
+    "paymentMethods": {
+      "@id": "rccna:paymentMethods"
+    },
+    "currencyCode": {
+      "@id": "rccna:currencyCode"
+    },
+    "breakup": {
+      "@id": "rccna:breakup"
+    },
+    "title": {
+      "@id": "rccna:breakupTitle"
+    },
+    "amount": {
+      "@id": "rccna:breakupAmount"
+    },
+    "type": {
+      "@id": "rccna:breakupType"
+    },
+    "taxDetail": {
+      "@id": "rccna:taxDetail"
+    },
+    "taxRate": {
+      "@id": "rccna:taxRate"
+    },
+    "taxIncluded": {
+      "@id": "rccna:taxIncluded"
+    },
+    "taxableBase": {
+      "@id": "rccna:taxableBase"
+    },
+    "totalAmount": {
+      "@id": "rccna:totalAmount"
+    },
+    "codAmount": {
+      "@id": "rccna:codAmount"
+    },
+    "appliedVouchers": {
+      "@id": "rccna:appliedVouchers"
+    },
+    "voucherCode": {
+      "@id": "rccna:voucherCode"
+    },
+    "voucherDiscountAmount": {
+      "@id": "rccna:voucherDiscountAmount"
+    },
+    "voucherType": {
+      "@id": "rccna:voucherType"
+    },
+    "loyaltyPointsApplied": {
+      "@id": "rccna:loyaltyPointsApplied"
+    },
+    "programId": {
+      "@id": "rccna:programId"
+    },
+    "pointsUsed": {
+      "@id": "rccna:pointsUsed"
+    },
+    "monetaryEquivalent": {
+      "@id": "rccna:monetaryEquivalent"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+openapi: 3.1.1
+info:
+  title: Retail — Core Consideration Attributes (v2.2)
+  version: 2.2.0
+  description: >
+    Minimal retail monetary consideration attributes.
+    v2.2: Renamed `currency` to `currencyCode` for explicit ISO 4217 semantics.
+
+components:
+  schemas:
+    RetailConsideration:
+      type: object
+      x-beckn-container: considerationAttributes
+      x-jsonld:
+        "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.2/context.jsonld"
+        "@type": rccna:RetailConsideration
+      required:
+        - currencyCode
+        - totalAmount
+      properties:
+        paymentMethods:
+          type: array
+          description: Payment methods accepted
+          x-jsonld-id: "rccna:paymentMethods"
+          items:
+            type: string
+            enum:
+              - PREPAID
+              - COD
+              - CREDIT_CARD
+              - DEBIT_CARD
+              - QR_CODE
+              - DIGITAL_WALLET
+              - NET_BANKING
+              - BNPL
+              - BANK_TRANSFER
+              - VOUCHER
+        currencyCode:
+          type: string
+          description: ISO 4217 currency code (renamed from `currency` in v2.1)
+          pattern: "^[A-Z]{3}$"
+          x-jsonld-id: "rccna:currencyCode"
+        breakup:
+          type: array
+          description: Breakdown of charges and taxes
+          x-jsonld-id: "rccna:breakup"
+          items:
+            type: object
+            required: [title, amount, type]
+            properties:
+              title:
+                type: string
+                x-jsonld-id: "rccna:breakupTitle"
+              amount:
+                type: number
+                x-jsonld-id: "rccna:breakupAmount"
+              type:
+                type: string
+                enum:
+                  - BASE_PRICE
+                  - TAX
+                  - DISCOUNT
+                  - DELIVERY_CHARGE
+                  - PACKING_CHARGE
+                  - CONVENIENCE_FEE
+                  - HANDLING_CHARGE
+                  - INSURANCE
+                  - CANCELLATION_FEE
+                  - RESTOCKING_FEE
+                  - TRADE_IN
+                  - LOYALTY_REDEEM
+                  - FINANCE_CHARGE
+                  - GIFT_WRAP
+                  - PLATFORM_FEE
+                  - PAYMENT_MILESTONE
+                  - OTHER
+                x-jsonld-id: "rccna:breakupType"
+              taxDetail:
+                type: object
+                x-jsonld-id: "rccna:taxDetail"
+                required: [rate]
+                properties:
+                  rate:
+                    type: number
+                    x-jsonld-id: "rccna:taxRate"
+                  included:
+                    type: boolean
+                    x-jsonld-id: "rccna:taxIncluded"
+                  taxableBase:
+                    type: number
+                    x-jsonld-id: "rccna:taxableBase"
+        totalAmount:
+          type: number
+          description: Total monetary amount
+          x-jsonld-id: "rccna:totalAmount"
+        codAmount:
+          type: number
+          description: Cash amount to be collected on delivery, denominated in currencyCode
+          x-jsonld-id: "rccna:codAmount"
+        appliedVouchers:
+          type: array
+          x-jsonld-id: "rccna:appliedVouchers"
+          items:
+            type: object
+            required: [code]
+            properties:
+              code:
+                type: string
+                x-jsonld-id: "rccna:voucherCode"
+              discountAmount:
+                type: number
+                x-jsonld-id: "rccna:voucherDiscountAmount"
+              type:
+                type: string
+                enum: [SELLER_VOUCHER, PLATFORM_VOUCHER, PAYMENT_VOUCHER, CASHBACK_VOUCHER, OTHER]
+                x-jsonld-id: "rccna:voucherType"
+        loyaltyPointsApplied:
+          type: object
+          x-jsonld-id: "rccna:loyaltyPointsApplied"
+          required: [programId, pointsUsed, monetaryEquivalent]
+          properties:
+            programId:
+              type: string
+              x-jsonld-id: "rccna:programId"
+            pointsUsed:
+              type: integer
+              x-jsonld-id: "rccna:pointsUsed"
+            monetaryEquivalent:
+              type: number
+              x-jsonld-id: "rccna:monetaryEquivalent"

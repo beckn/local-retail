@@ -1,0 +1,13 @@
+{
+  "considerationAttributes": {
+    "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.2/context.jsonld",
+    "@type": "RetailConsideration",
+    "paymentMethods": ["PREPAID", "COD"],
+    "currencyCode": "INR",
+    "breakup": [
+      { "title": "Item price (2 × ₹1200)", "amount": 2400.0, "type": "BASE_PRICE" },
+      { "title": "Taxes", "amount": 600.0, "type": "TAX" }
+    ],
+    "totalAmount": 3000.0
+  }
+}

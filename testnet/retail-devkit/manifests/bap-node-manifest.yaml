@@ -1,0 +1,22 @@
+manifestVersion: "1.0"
+manifestType: "node-manifest"
+subscriberId: "nfh.global/subscribers.beckn.one/sandbox.food-finder.com"
+schema:
+  # RetailConsideration uses the feature branch URL so the backward translation
+  # artifact (v2.1/RetailConsideration_from_v2.2) is reachable on the same branch.
+  # The Postman collection's considerationAttributes @context must match this URL.
+  schemaObjects:
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.1/context.jsonld"
+      type: "RetailConsideration"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld"
+      type: "RetailResource"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld"
+      type: "RetailOffer"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld"
+      type: "RetailCommitment"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld"
+      type: "RetailPerformance"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld"
+      type: "RetailContract"
+governance:
+  effectiveFrom: "2024-01-01T00:00:00Z"
