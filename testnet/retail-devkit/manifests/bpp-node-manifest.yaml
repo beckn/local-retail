@@ -1,6 +1,6 @@
 manifestVersion: "1.0"
 manifestType: "node-manifest"
-subscriberId: "beckn.one/testnet-retail/open-kitchen"
+subscriberId: "beckn.one/open-kitchen-subscription-details/open-kitchen-bpp"
 schema:
   schemaObjects:
     # RetailConsideration bumped to v2.2 — this is what triggers mediation on the BPP adapter

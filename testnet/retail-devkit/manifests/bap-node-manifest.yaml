@@ -1,6 +1,6 @@
 manifestVersion: "1.0"
 manifestType: "node-manifest"
-subscriberId: "beckn.one/testnet-retail/food-finder"
+subscriberId: "beckn.one/food-finder-subscription-details/food-finder-bap"
 schema:
   # RetailConsideration uses the feature branch URL so the backward translation
   # artifact (v2.1/RetailConsideration_from_v2.2) is reachable on the same branch.
