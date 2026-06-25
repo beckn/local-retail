@@ -3,12 +3,22 @@ services:
   # Core Infrastructure Services
   # ============================================
 
-  # Redis - Caching Service
-  redis:
+  # Redis - BAP state/cache
+  redis-bap:
     image: redis:alpine
-    container_name: redis
-    ports:
-      - "6379:6379"
+    container_name: redis-bap
+    networks:
+      - beckn_network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Redis - BPP state/cache
+  redis-bpp:
+    image: redis:alpine
+    container_name: redis-bpp
     networks:
       - beckn_network
     healthcheck:
@@ -29,10 +39,13 @@ services:
       CONFIG_FILE: "/app/config/local-simple-bap.yaml"
       VAULT_ADDR: http://vault:8200
       VAULT_TOKEN: root
-      REDIS_ADDR: redis:6379
+      REDIS_ADDR: redis-bap:6379
       RABBITMQ_ADDR: rabbitmq:5672
       RABBITMQ_USER: admin
       RABBITMQ_PASS: admin123
+    depends_on:
+      redis-bap:
+        condition: service_healthy
     volumes:
       - ../config:/app/config
       - ../schemas:/app/schemas
@@ -50,10 +63,13 @@ services:
       CONFIG_FILE: "/app/config/local-simple-bpp.yaml"
       VAULT_ADDR: http://vault:8200
       VAULT_TOKEN: root
-      REDIS_ADDR: redis:6379
+      REDIS_ADDR: redis-bpp:6379
       RABBITMQ_ADDR: rabbitmq:5672
       RABBITMQ_USER: admin
       RABBITMQ_PASS: admin123
+    depends_on:
+      redis-bpp:
+        condition: service_healthy
     volumes:
       - ../config:/app/config
       - ../schemas:/app/schemas
@@ -85,6 +101,8 @@ services:
       - PORT=3002
     ports:
       - "3002:3002"
+    volumes:
+      - ../../../sandbox-payloads/beckn.one/testnet-retail/response:/app/dist/webhook/jsons/beckn.one/testnet-retail/response
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3002/api/health"]
       interval: 10s
