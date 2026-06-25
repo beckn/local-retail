@@ -1,6 +1,6 @@
 manifestVersion: "1.0"
 manifestType: "node-manifest"
-subscriberId: "nfh.global/subscribers.beckn.one/sandbox.open-kitchen.com"
+subscriberId: "beckn.one/subscribers.beckn.one/sandbox.open-kitchen.com"
 schema:
   schemaObjects:
     # RetailConsideration bumped to v2.2 — this is what triggers mediation on the BPP adapter
