@@ -203,9 +203,9 @@
             "code": "QUOTED"
           },
           "considerationAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailConsideration/v2.1/context.jsonld",
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.2/context.jsonld",
             "@type": "RetailConsideration",
-            "currency": "INR",
+            "currencyCode": "INR",
             "totalAmount": 3000.0,
             "breakup": [
               {

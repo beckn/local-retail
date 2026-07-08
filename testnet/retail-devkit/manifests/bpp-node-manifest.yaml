@@ -8,7 +8,7 @@ schema:
       type: "RetailConsideration"
     - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld"
       type: "RetailResource"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld"
+    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailOffer/v2.2/context.jsonld"
       type: "RetailOffer"
     - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld"
       type: "RetailCommitment"
