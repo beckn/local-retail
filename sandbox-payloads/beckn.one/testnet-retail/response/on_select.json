@@ -121,7 +121,7 @@
               }
             },
             "offerAttributes": {
-              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer/v2.1/context.jsonld",
+              "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailOffer/v2.2/context.jsonld",
               "@type": "RetailOffer",
               "policies": {
                 "returns": {
