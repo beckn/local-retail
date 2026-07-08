@@ -95,6 +95,7 @@ modules:
         - validateSign
         - addRoute
         - validateSchema
+        - mediateSchema
         - signAck
 
   - name: bppTxnCaller
