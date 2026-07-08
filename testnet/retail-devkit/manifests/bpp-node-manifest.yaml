@@ -4,17 +4,29 @@ subscriberId: "beckn.one/open-kitchen-subscription-details/open-kitchen-bpp"
 schema:
   schemaObjects:
     # RetailConsideration bumped to v2.2 — this is what triggers mediation on the BPP adapter
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration/v2.2/context.jsonld"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration"
       type: "RetailConsideration"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld"
+      supportedVersions:
+        - "v2.2"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource"
       type: "RetailResource"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailOffer/v2.2/context.jsonld"
+      supportedVersions:
+        - "v2.1"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailOffer"
       type: "RetailOffer"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld"
+      supportedVersions:
+        - "v2.2"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment"
       type: "RetailCommitment"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld"
+      supportedVersions:
+        - "v2.1"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance"
       type: "RetailPerformance"
-    - contextUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract/v2.1/context.jsonld"
+      supportedVersions:
+        - "v2.1"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract"
       type: "RetailContract"
+      supportedVersions:
+        - "v2.1"
 governance:
   effectiveFrom: "2024-01-01T00:00:00Z"
