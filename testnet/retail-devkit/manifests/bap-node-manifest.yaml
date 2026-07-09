@@ -2,31 +2,28 @@ manifestVersion: "1.0"
 manifestType: "node-manifest"
 subscriberId: "beckn.one/food-finder-subscription-details/food-finder-bap"
 schema:
-  # RetailConsideration uses the feature branch URL so the backward translation
-  # artifact (v2.1/RetailConsideration_from_v2.2) is reachable on the same branch.
-  # The Postman collection's considerationAttributes @context must match this URL.
   schemaObjects:
     - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration"
       type: "RetailConsideration"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailResource"
       type: "RetailResource"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailOffer"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailOffer"
       type: "RetailOffer"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailCommitment"
       type: "RetailCommitment"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailPerformance"
       type: "RetailPerformance"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailContract"
       type: "RetailContract"
       supportedVersions:
         - "v2.1"

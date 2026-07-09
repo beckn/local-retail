@@ -3,12 +3,11 @@ manifestType: "node-manifest"
 subscriberId: "beckn.one/open-kitchen-subscription-details/open-kitchen-bpp"
 schema:
   schemaObjects:
-    # RetailConsideration bumped to v2.2 — this is what triggers mediation on the BPP adapter
     - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailConsideration"
       type: "RetailConsideration"
       supportedVersions:
         - "v2.2"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailResource"
       type: "RetailResource"
       supportedVersions:
         - "v2.1"
@@ -16,15 +15,15 @@ schema:
       type: "RetailOffer"
       supportedVersions:
         - "v2.2"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailCommitment"
       type: "RetailCommitment"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailPerformance"
       type: "RetailPerformance"
       supportedVersions:
         - "v2.1"
-    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailContract"
+    - baseUrl: "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailContract"
       type: "RetailContract"
       supportedVersions:
         - "v2.1"
