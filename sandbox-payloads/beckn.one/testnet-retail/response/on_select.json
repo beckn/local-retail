@@ -66,7 +66,7 @@
                 "name": "Isothermal Stainless Steel Hiking Flask MH500 Yellow - Water bottle"
               },
               "resourceAttributes": {
-                "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailResource/v2.1/context.jsonld",
+                "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailResource/v2.1/context.jsonld",
                 "@type": "RetailResource",
                 "identity": {
                   "brand": "InstaCuppa",
@@ -180,7 +180,7 @@
             }
           },
           "commitmentAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailCommitment/v2.1/context.jsonld",
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailCommitment/v2.1/context.jsonld",
             "@type": "RetailCommitment",
             "lineId": "LINE-001",
             "resourceId": "item-flask-mh500-yellow",
@@ -238,7 +238,7 @@
             "commitment-flask-001"
           ],
           "performanceAttributes": {
-            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/main/schema/RetailPerformance/v2.1/context.jsonld",
+            "@context": "https://raw.githubusercontent.com/beckn/local-retail/refs/heads/feat/773-schema-version-mediation-test/schema/RetailPerformance/v2.1/context.jsonld",
             "@type": "rcpa:RetailPerformance",
             "supportedPerformanceModes": [
               "DELIVERY"
