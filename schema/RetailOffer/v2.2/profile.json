@@ -1,0 +1,46 @@
+{
+  "id": "https://schema.beckn.io/RetailOffer/v2.2",
+  "name": "Retail Core Offer Attributes",
+  "version": "2.2.0",
+  "protocol_version": "2.0",
+  "semantic_model": "generalised",
+  "included_schemas": ["RetailOffer"],
+  "discovery_fields": [
+    "policies.returns.allowed",
+    "policies.cancellation.allowed",
+    "paymentConstraints.codAvailable",
+    "policies.warranty.type",
+    "subscriptionAvailable",
+    "discountCode"
+  ],
+  "indexable_paths": [
+    "beckn:offerAttributes.policies.returns.allowed",
+    "beckn:offerAttributes.policies.cancellation.allowed",
+    "beckn:offerAttributes.policies.cancellation.cutoffEvent",
+    "beckn:offerAttributes.policies.warranty.type",
+    "beckn:offerAttributes.policies.warranty.duration",
+    "beckn:offerAttributes.paymentConstraints.codAvailable",
+    "beckn:offerAttributes.paymentConstraints.prepaidOnly",
+    "beckn:offerAttributes.paymentConstraints.codMaxAmount",
+    "beckn:offerAttributes.minOrderQuantity",
+    "beckn:offerAttributes.maxOrderQuantity",
+    "beckn:offerAttributes.subscriptionAvailable",
+    "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance",
+    "beckn:offerAttributes.discountCode"
+  ],
+  "filterable_paths": [
+    "beckn:offerAttributes.policies.returns.allowed",
+    "beckn:offerAttributes.policies.warranty.type",
+    "beckn:offerAttributes.paymentConstraints.codAvailable",
+    "beckn:offerAttributes.paymentConstraints.prepaidOnly",
+    "beckn:offerAttributes.subscriptionAvailable",
+    "beckn:offerAttributes.minOrderQuantity",
+    "beckn:offerAttributes.maxOrderQuantity",
+    "beckn:offerAttributes.discountCode"
+  ],
+  "sortable_paths": [
+    "beckn:offerAttributes.serviceability.distanceConstraint.maxDistance",
+    "beckn:offerAttributes.paymentConstraints.codMaxAmount"
+  ],
+  "privacy_notes": []
+}

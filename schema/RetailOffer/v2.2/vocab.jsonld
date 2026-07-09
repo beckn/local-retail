@@ -1,0 +1,108 @@
+{
+  "@context": {
+    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
+    "rcoa": "https://schema.beckn.io/RetailOffer#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "@graph": [
+    {
+      "@id": "rcoa:ReturnMethod",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Return Method",
+      "rdfs:comment": "Enumeration of methods by which a product return is fulfilled"
+    },
+    { "@id": "rcoa:SELLER_PICKUP", "@type": "rcoa:ReturnMethod", "rdfs:label": "Seller Pickup" },
+    { "@id": "rcoa:BUYER_SHIP",    "@type": "rcoa:ReturnMethod", "rdfs:label": "Buyer Ship" },
+    { "@id": "rcoa:DROP_OFF",      "@type": "rcoa:ReturnMethod", "rdfs:label": "Drop Off" },
+
+    {
+      "@id": "rcoa:CancellationCutoffEvent",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Cancellation Cutoff Event"
+    },
+    { "@id": "rcoa:BEFORE_CONFIRMATION", "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Confirmation" },
+    { "@id": "rcoa:BEFORE_PACKING",      "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Packing" },
+    { "@id": "rcoa:BEFORE_DISPATCH",     "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Dispatch" },
+    { "@id": "rcoa:BEFORE_SHIPMENT",     "@type": "rcoa:CancellationCutoffEvent", "rdfs:label": "Before Shipment" },
+
+    {
+      "@id": "rcoa:FeeType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Fee Type"
+    },
+    { "@id": "rcoa:PERCENTAGE", "@type": "rcoa:FeeType", "rdfs:label": "Percentage" },
+    { "@id": "rcoa:FIXED",      "@type": "rcoa:FeeType", "rdfs:label": "Fixed Amount" },
+
+    {
+      "@id": "rcoa:WarrantyType",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Warranty Type"
+    },
+    { "@id": "rcoa:MANUFACTURER", "@type": "rcoa:WarrantyType", "rdfs:label": "Manufacturer Warranty" },
+    { "@id": "rcoa:SELLER",       "@type": "rcoa:WarrantyType", "rdfs:label": "Seller Warranty" },
+    { "@id": "rcoa:EXTENDED",     "@type": "rcoa:WarrantyType", "rdfs:label": "Extended Warranty" },
+    { "@id": "rcoa:NONE",         "@type": "rcoa:WarrantyType", "rdfs:label": "No Warranty" },
+
+    {
+      "@id": "rcoa:discountCode",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Discount Code",
+      "rdfs:comment": "Promotional or coupon code associated with this offer. Defaults to NONE when no code applies. NEW in v2.2."
+    },
+    {
+      "@id": "rcoa:warranty",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty"
+    },
+    {
+      "@id": "rcoa:policyRef",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Policy Reference"
+    },
+    {
+      "@id": "rcoa:warrantyDuration",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Duration"
+    },
+    {
+      "@id": "rcoa:warrantyType",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Type"
+    },
+    {
+      "@id": "rcoa:warrantyServiceCenter",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Service Center"
+    },
+    {
+      "@id": "rcoa:warrantyTerms",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Warranty Terms"
+    },
+    {
+      "@id": "rcoa:codMaxAmount",
+      "@type": "rdfs:Property",
+      "rdfs:label": "COD Max Amount"
+    },
+    {
+      "@id": "rcoa:prepaidOnly",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Prepaid Only"
+    },
+    {
+      "@id": "rcoa:minOrderQuantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Minimum Order Quantity"
+    },
+    {
+      "@id": "rcoa:maxOrderQuantity",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Maximum Order Quantity"
+    },
+    {
+      "@id": "rcoa:subscriptionAvailable",
+      "@type": "rdfs:Property",
+      "rdfs:label": "Subscription Available"
+    }
+  ]
+}
