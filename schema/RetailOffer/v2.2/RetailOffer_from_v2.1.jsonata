@@ -1,1 +1,1 @@
-$
+$ ~> |$|{"discountCode": $exists(discountCode) ? discountCode : "NONE"}|
