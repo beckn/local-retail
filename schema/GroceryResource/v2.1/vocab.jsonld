@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "groc": "https://schema.beckn.io/GroceryResource#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "groc": "https://schema.nfh.global/GroceryResource#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": [

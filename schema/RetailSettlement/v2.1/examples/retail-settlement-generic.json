@@ -42,12 +42,12 @@
       ],
       "settlements": [
         {
-          "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+          "@context": "https://schema.nfh.global/RetailSettlement/v2.1/context.jsonld",
           "@type": "beckn:MonetaryTransfer",
           "id": "settlement-001",
           "status": "COMPLETE",
           "settlementAttributes": {
-            "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailSettlement/v2.1/context.jsonld",
             "@type": "rcsa:RetailSettlement",
             "gateway": {
               "name": "Razorpay",
@@ -62,12 +62,12 @@
           }
         },
         {
-          "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+          "@context": "https://schema.nfh.global/RetailSettlement/v2.1/context.jsonld",
           "@type": "beckn:MonetaryTransfer",
           "id": "settlement-002",
           "status": "COMPLETE",
           "settlementAttributes": {
-            "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailSettlement/v2.1/context.jsonld",
             "@type": "rcsa:RetailSettlement",
             "gateway": {
               "name": "UPI Bank Transfer",

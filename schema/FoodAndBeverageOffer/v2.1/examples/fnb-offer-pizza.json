@@ -17,7 +17,7 @@
   "message": {
     "catalogs": [
       {
-        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
         "@type": "beckn:Catalog",
         "id": "catalog:sarpinos:002",
         "descriptor": {
@@ -39,7 +39,7 @@
         },
         "resources": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Resource",
             "id": "resource:sarpinos:margherita:custom",
             "descriptor": {
@@ -49,7 +49,7 @@
             },
             "category": "Pizzas",
             "resourceAttributes": {
-              "@context": "https://schema.beckn.io/FoodAndBeverageResource/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/FoodAndBeverageResource/v2.1/context.jsonld",
               "@type": "fnbr:FoodAndBeverageResourceAttributes",
               "identity": {
                 "brand": "Sarpino's Pizzeria",
@@ -79,7 +79,7 @@
         ],
         "offers": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Offer",
             "id": "offer:sarpinos:margherita:custom",
             "resourceIds": ["resource:sarpinos:margherita:custom"],
@@ -88,7 +88,7 @@
               "name": "Margherita Pizza - Customizable"
             },
             "offerAttributes": {
-              "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/FoodAndBeverageOffer/v2.1/context.jsonld",
               "@type": "fnbo:FoodAndBeverageOffer",
               "customization": {
                 "groups": [

@@ -29,7 +29,7 @@
         },
         "offers": [
           {
-            "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
             "@type": "rcoa:RetailOffer",
             "id": "offer-001",
             "descriptor": {
@@ -38,7 +38,7 @@
               "long_desc": "Get 25% discount on fresh vegetables when you buy 5kg or more. Valid only on weekends."
             },
             "offerAttributes": {
-              "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
               "@type": "rcoa:RetailOffer",
               "policies": {
                 "returns": {
@@ -114,7 +114,7 @@
             }
           },
           {
-            "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
             "@type": "rcoa:RetailOffer",
             "id": "offer-002",
             "descriptor": {
@@ -123,7 +123,7 @@
               "long_desc": "Buy 2 units of any dairy product and get 1 free. Cannot be combined with other offers."
             },
             "offerAttributes": {
-              "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
               "@type": "rcoa:RetailOffer",
               "policies": {
                 "returns": {
@@ -185,7 +185,7 @@
             }
           },
           {
-            "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
             "@type": "rcoa:RetailOffer",
             "id": "offer-003",
             "descriptor": {
@@ -194,7 +194,7 @@
               "long_desc": "Get free home delivery on all orders worth Rs.500 or more within 10km radius"
             },
             "offerAttributes": {
-              "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld",
               "@type": "rcoa:RetailOffer",
               "policies": {
                 "returns": {

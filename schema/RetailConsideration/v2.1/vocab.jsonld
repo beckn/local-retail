@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "rccna": "https://schema.beckn.io/RetailConsideration#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "rccna": "https://schema.nfh.global/RetailConsideration#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
@@ -11,7 +11,7 @@
       "@type": "rdfs:Class",
       "rdfs:label": "Retail Consideration Attributes",
       "rdfs:comment": "Schema for retail monetary consideration attributes. Intentionally thin since retail transactions are overwhelmingly monetary. NEW in v2.1.",
-      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+      "rdfs:isDefinedBy": "https://schema.nfh.global/RetailConsideration#"
     },
 
     {
@@ -58,7 +58,7 @@
       "@type": "rdfs:Class",
       "rdfs:label": "Breakup Item",
       "rdfs:comment": "Individual line item in the consideration charge breakup.",
-      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+      "rdfs:isDefinedBy": "https://schema.nfh.global/RetailConsideration#"
     },
     {
       "@id": "rccna:breakupTitle",
@@ -196,7 +196,7 @@
       "@type": "rdfs:Class",
       "rdfs:label": "Loyalty Points Applied",
       "rdfs:comment": "Details of loyalty points used in this transaction.",
-      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailConsideration#"
+      "rdfs:isDefinedBy": "https://schema.nfh.global/RetailConsideration#"
     },
     {
       "@id": "rccna:programId",

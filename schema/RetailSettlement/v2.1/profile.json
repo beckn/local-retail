@@ -1,5 +1,5 @@
 {
-  "id": "https://schema.beckn.io/RetailSettlement/v2.1",
+  "id": "https://schema.nfh.global/RetailSettlement/v2.1",
   "name": "Retail Settlement Attributes",
   "version": "2.1.0",
   "protocol_version": "2.0",

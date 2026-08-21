@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "https://schema.org/",
-    "beckn": "https://schema.beckn.io/",
-    "rccma": "https://schema.beckn.io/RetailCommitment#",
+    "beckn": "https://schema.nfh.global/",
+    "rccma": "https://schema.nfh.global/RetailCommitment#",
     "@context": {
       "@id": "rccma:@context"
     },

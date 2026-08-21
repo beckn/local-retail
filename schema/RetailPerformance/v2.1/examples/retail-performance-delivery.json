@@ -44,7 +44,7 @@
         {
           "id": "perf-001",
           "performanceAttributes": {
-            "@context": "https://schema.beckn.io/RetailPerformance/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailPerformance/v2.1/context.jsonld",
             "@type": "rcpa:RetailPerformance",
             "supportedPerformanceModes": [
               "DELIVERY",

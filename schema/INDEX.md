@@ -9,7 +9,7 @@ Complete index of three generated Beckn v2.1 schema packs for retail fulfillment
 ### Schema 1: RetailPerformance
 - **Purpose:** Performance execution and delivery capability declarations
 - **Container:** `performanceAttributes`
-- **Prefix:** `rcpa` → https://schema.beckn.io/RetailPerformance#
+- **Prefix:** `rcpa` → https://schema.nfh.global/RetailPerformance#
 - **Migration:** From v2 `fulfillmentAttributes` (renamed)
 - **Files:**
   - [attributes.yaml](./RetailPerformance/attributes.yaml) - OpenAPI 3.1.1 schema definition
@@ -33,7 +33,7 @@ Complete index of three generated Beckn v2.1 schema packs for retail fulfillment
 ### Schema 2: RetailContract
 - **Purpose:** Contract-level buyer preferences and transaction terms
 - **Container:** `contractAttributes`
-- **Prefix:** `rcca` → https://schema.beckn.io/RetailContract#
+- **Prefix:** `rcca` → https://schema.nfh.global/RetailContract#
 - **Migration:** From v2 `orderAttributes` (direct 1:1 mapping, no structural changes)
 - **Files:**
   - [attributes.yaml](./RetailContract/attributes.yaml) - OpenAPI 3.1.1 schema definition
@@ -56,7 +56,7 @@ Complete index of three generated Beckn v2.1 schema packs for retail fulfillment
 ### Schema 3: RetailCommitment (NEW)
 - **Purpose:** Line-item commitment details for retail contracts
 - **Container:** `commitmentAttributes`
-- **Prefix:** `rccma` → https://schema.beckn.io/RetailCommitment#
+- **Prefix:** `rccma` → https://schema.nfh.global/RetailCommitment#
 - **Status:** NEW schema in v2.1 (consolidates v2 scattered fields)
 - **Files:**
   - [attributes.yaml](./RetailCommitment/attributes.yaml) - OpenAPI 3.1.1 schema definition
@@ -104,8 +104,8 @@ $ref: '../../v2.0.0/beckn.yaml#/components/schemas/...'
 
 ### Semantic Integration
 All schemas use Beckn core:
-- **Context:** `https://schema.beckn.io/core/v2/context.jsonld#generalised`
-- **Vocabulary:** `https://schema.beckn.io/core/v2/vocab.jsonld`
+- **Context:** `https://schema.nfh.global/core/v2/context.jsonld#generalised`
+- **Vocabulary:** `https://schema.nfh.global/core/v2/vocab.jsonld`
 
 ### Profile Configuration
 All profiles specify:

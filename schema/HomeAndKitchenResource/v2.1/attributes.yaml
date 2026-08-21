@@ -15,7 +15,7 @@ components:
       type: object
       x-beckn-container: resourceAttributes
       x-jsonld:
-        "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/HomeAndKitchenResource/v2.1/context.jsonld"
         "@type": hkr:HomeAndKitchenResource
       allOf:
         - $ref: "../../RetailResource/v2.1/attributes.yaml#/components/schemas/RetailResource"

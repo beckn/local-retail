@@ -17,7 +17,7 @@
   "message": {
     "catalogs": [
       {
-        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
         "@type": "beckn:Catalog",
         "id": "catalog:grocer:001",
         "descriptor": {
@@ -39,7 +39,7 @@
         },
         "resources": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Resource",
             "id": "resource:aashirvaad:wheat:001",
             "descriptor": {
@@ -55,7 +55,7 @@
             },
             "category": "Staple Foods",
             "resourceAttributes": {
-              "@context": "https://schema.beckn.io/GroceryResource/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/GroceryResource/v2.1/context.jsonld",
               "@type": "groc:GroceryResource",
               "identity": {
                 "brand": "Aashirvaad",
@@ -118,7 +118,7 @@
         ],
         "offers": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Offer",
             "id": "offer:aashirvaad:wheat:001",
             "resourceIds": ["resource:aashirvaad:wheat:001"]

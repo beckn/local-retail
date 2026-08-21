@@ -12,7 +12,7 @@ components:
       type: object
       x-beckn-container: settlementAttributes
       x-jsonld:
-        "@context": "https://schema.beckn.io/RetailSettlement/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/RetailSettlement/v2.1/context.jsonld"
         "@type": rcsa:RetailSettlement
       required:
         - method

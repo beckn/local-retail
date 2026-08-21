@@ -1,6 +1,6 @@
 {
   "@context": {
-    "rcca": "https://schema.beckn.io/RetailContract#",
+    "rcca": "https://schema.nfh.global/RetailContract#",
     "@context": {
       "@id": "rcca:@context"
     },

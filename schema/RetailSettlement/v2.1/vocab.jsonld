@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "rcsa": "https://schema.beckn.io/RetailSettlement#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "rcsa": "https://schema.nfh.global/RetailSettlement#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "rdf":  "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
@@ -11,7 +11,7 @@
       "@type": "rdfs:Class",
       "rdfs:label": "Retail Settlement Attributes",
       "rdfs:comment": "Schema for retail settlement discharge records. Records the outcome of a payment event — method, amount, gateway reference, and reconciliation status. Expanded in v2.1 with paymentRail, refund, adjustments, and reconciliationStatus.",
-      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
+      "rdfs:isDefinedBy": "https://schema.nfh.global/RetailSettlement#"
     },
 
     {
@@ -57,7 +57,7 @@
       "@type": "rdfs:Class",
       "rdfs:label": "Payment Gateway",
       "rdfs:comment": "Information about the payment processing gateway used for this settlement.",
-      "rdfs:isDefinedBy": "https://schema.beckn.io/RetailSettlement#"
+      "rdfs:isDefinedBy": "https://schema.nfh.global/RetailSettlement#"
     },
     { "@id": "rcsa:gatewayName",          "@type": "rdf:Property", "rdfs:label": "Gateway Name",          "rdfs:comment": "Name of the payment gateway provider (e.g., Razorpay, PayPal, Stripe, Midtrans)." },
     { "@id": "rcsa:gatewayTransactionId", "@type": "rdf:Property", "rdfs:label": "Gateway Transaction ID", "rdfs:comment": "Unique transaction identifier issued by the payment gateway." },

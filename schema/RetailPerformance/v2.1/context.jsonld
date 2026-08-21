@@ -1,6 +1,6 @@
 {
   "@context": {
-    "rcpa": "https://schema.beckn.io/RetailPerformance#",
+    "rcpa": "https://schema.nfh.global/RetailPerformance#",
     "PerformanceAttributes": "rcpa:PerformanceAttributes",
     "PerformanceMode": "rcpa:PerformanceMode",
     "OperatingHour": "rcpa:OperatingHour",

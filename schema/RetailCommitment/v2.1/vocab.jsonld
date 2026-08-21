@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "rccma": "https://schema.beckn.io/RetailCommitment#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "rccma": "https://schema.nfh.global/RetailCommitment#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
   },
   "@graph": [

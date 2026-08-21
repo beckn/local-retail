@@ -13,7 +13,7 @@ components:
       type: object
       x-beckn-container: commitmentAttributes
       x-jsonld:
-        "@context": "https://schema.beckn.io/RetailCommitment/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/RetailCommitment/v2.1/context.jsonld"
         "@type": "rccma:RetailCommitment"
       required:
         - lineId
@@ -51,12 +51,12 @@ components:
               x-jsonld-id: "rccma:unitQuantity"
         price:
           allOf:
-            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
+            - $ref: "https://schema.nfh.global/PriceSpecification/v2.0#/components/schemas/PriceSpecification"
           description: Committed (post-discount) price for this line item
           x-jsonld-id: "rccma:price"
         originalPrice:
           allOf:
-            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
+            - $ref: "https://schema.nfh.global/PriceSpecification/v2.0#/components/schemas/PriceSpecification"
           description: >
             Pre-discount price for display and audit purposes (e.g., strikethrough pricing,
             discount percentage computation, promotional mechanics auditing). Only populate
