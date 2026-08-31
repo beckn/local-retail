@@ -39,7 +39,7 @@
         }
       ],
       "contractAttributes": {
-        "@context": "https://schema.beckn.io/RetailContract/v2.1/context.jsonld",
+        "@context": "https://schema.nfh.global/RetailContract/v2.1/context.jsonld",
         "@type": "rcca:RetailContract",
         "buyerInstructions": "Please ring the doorbell twice and wait. Leave the order outside the door if no one answers.",
         "deliveryPreferences": {

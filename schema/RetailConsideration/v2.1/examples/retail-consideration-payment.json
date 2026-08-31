@@ -42,7 +42,7 @@
       ],
       "consideration": [
         {
-          "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld",
+          "@context": "https://schema.nfh.global/RetailConsideration/v2.1/context.jsonld",
           "@type": "beckn:MonetaryConsideration",
           "id": "cons-001",
           "status": {
@@ -51,7 +51,7 @@
             }
           },
           "considerationAttributes": {
-            "@context": "https://schema.beckn.io/RetailConsideration/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailConsideration/v2.1/context.jsonld",
             "@type": "rccna:RetailConsideration",
             "paymentMethods": [
               "UPI",

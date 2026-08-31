@@ -16,7 +16,7 @@ components:
       x-beckn-container: contractAttributes
       x-jsonld:
         "@type": "rcca:RetailContract"
-        "@context": "https://schema.beckn.io/RetailContract/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/RetailContract/v2.1/context.jsonld"
       properties:
         quoteReference:
           type: string

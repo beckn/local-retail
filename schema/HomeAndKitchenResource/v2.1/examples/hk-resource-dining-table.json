@@ -17,7 +17,7 @@
   "message": {
     "catalogs": [
       {
-        "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+        "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
         "@type": "beckn:Catalog",
         "id": "catalog:furniture:001",
         "descriptor": {
@@ -39,7 +39,7 @@
         },
         "resources": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Resource",
             "id": "resource:dining:oak:table:001",
             "descriptor": {
@@ -55,7 +55,7 @@
             },
             "category": "Dining Tables",
             "resourceAttributes": {
-              "@context": "https://schema.beckn.io/HomeAndKitchenResource/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/HomeAndKitchenResource/v2.1/context.jsonld",
               "@type": "hkr:HomeAndKitchenResource",
               "identity": {
                 "brand": "WoodCraft",
@@ -102,7 +102,7 @@
         ],
         "offers": [
           {
-            "@context": "https://schema.beckn.io/core/v2/context.jsonld#generalised",
+            "@context": "https://schema.nfh.global/core/v2/context.jsonld#generalised",
             "@type": "beckn:Offer",
             "id": "offer:dining:oak:table:001",
             "resourceIds": ["resource:dining:oak:table:001"],

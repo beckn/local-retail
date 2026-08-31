@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "rcra": "https://schema.beckn.io/RetailResource#"
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "rcra": "https://schema.nfh.global/RetailResource#"
   },
   "@graph": [
     {

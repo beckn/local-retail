@@ -14,7 +14,7 @@ components:
       type: object
       x-beckn-container: offerAttributes
       x-jsonld:
-        "@context": "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/FoodAndBeverageOffer/v2.1/context.jsonld"
         "@type": fnbo:FoodAndBeverageOffer
       allOf:
         - $ref: "../../RetailOffer/v2.1/attributes.yaml#/components/schemas/RetailOffer"

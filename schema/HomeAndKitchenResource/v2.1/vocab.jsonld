@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "hkr": "https://schema.beckn.io/HomeAndKitchenResource#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "hkr": "https://schema.nfh.global/HomeAndKitchenResource#",
     "HomeAndKitchenResource": {
       "@id": "hkr:HomeAndKitchenResource",
       "@type": "@vocab"

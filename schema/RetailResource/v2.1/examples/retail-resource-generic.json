@@ -44,7 +44,7 @@
         },
         "resources": [
           {
-            "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailResource/v2.1/context.jsonld",
             "@type": "rcra:RetailResource",
             "id": "res-tata-salt-001",
             "descriptor": {
@@ -66,7 +66,7 @@
               "unitQuantity": 1
             },
             "resourceAttributes": {
-              "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/RetailResource/v2.1/context.jsonld",
               "@type": "rcra:RetailResource",
               "identity": {
                 "brand": "Tata Salt",
@@ -135,7 +135,7 @@
             }
           },
           {
-            "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+            "@context": "https://schema.nfh.global/RetailResource/v2.1/context.jsonld",
             "@type": "rcra:RetailResource",
             "id": "res-amul-milk-001",
             "descriptor": {
@@ -157,7 +157,7 @@
               "unitQuantity": 1
             },
             "resourceAttributes": {
-              "@context": "https://schema.beckn.io/RetailResource/v2.1/context.jsonld",
+              "@context": "https://schema.nfh.global/RetailResource/v2.1/context.jsonld",
               "@type": "rcra:RetailResource",
               "identity": {
                 "brand": "Amul",

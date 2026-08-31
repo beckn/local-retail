@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "fnbo": "https://schema.beckn.io/FoodAndBeverageOffer#",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "fnbo": "https://schema.nfh.global/FoodAndBeverageOffer#",
     "FoodAndBeverageOffer": {
       "@id": "fnbo:FoodAndBeverageOffer",
       "@type": "@vocab"

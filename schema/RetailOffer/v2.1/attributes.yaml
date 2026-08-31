@@ -13,12 +13,12 @@ components:
       type: object
       x-beckn-container: offerAttributes
       x-jsonld:
-        "@context": "https://schema.beckn.io/RetailOffer/v2.1/context.jsonld"
+        "@context": "https://schema.nfh.global/RetailOffer/v2.1/context.jsonld"
         "@type": rcoa:RetailOffer
       properties:
         price:
           allOf:
-            - $ref: "https://schema.beckn.io/PriceSpecification/2.0#/components/schemas/PriceSpecification"
+            - $ref: "https://schema.nfh.global/PriceSpecification/v2.0#/components/schemas/PriceSpecification"
           description: >
             Published price snapshot for this offer at discovery time. Used for catalog rendering
             and search. The formal agreed price is established via Consideration in the Contract
@@ -31,18 +31,18 @@ components:
           x-jsonld-id: "rcoa:isActive"
         validity:
           allOf:
-            - $ref: "https://schema.beckn.io/TimePeriod/2.0#/components/schemas/TimePeriod"
+            - $ref: "https://schema.nfh.global/TimePeriod/v2.0#/components/schemas/TimePeriod"
           description: Calendar window during which the offer is valid (start/end timestamps)
           x-jsonld-id: "rcoa:validity"
         eligibleRegion:
           type: array
           items:
-            $ref: "https://schema.beckn.io/Location/2.0#/components/schemas/Location"
+            $ref: "https://schema.nfh.global/Location/v2.0#/components/schemas/Location"
           description: Regions where the offer is eligible
           x-jsonld-id: "rcoa:eligibleRegion"
         acceptedPaymentMethod:
           allOf:
-            - $ref: "https://schema.beckn.io/AcceptedPaymentMethod/2.0#/components/schemas/AcceptedPaymentMethod"
+            - $ref: "https://schema.nfh.global/AcceptedPaymentMethod/v2.0#/components/schemas/AcceptedPaymentMethod"
           description: Payment methods accepted for this offer
           x-jsonld-id: "rcoa:acceptedPaymentMethod"
         policies:

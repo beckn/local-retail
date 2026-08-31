@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@import": "https://schema.beckn.io/core/v2/vocab.jsonld",
-    "beckn": "https://schema.beckn.io/",
+    "@import": "https://schema.nfh.global/core/v2/vocab.jsonld",
+    "beckn": "https://schema.nfh.global/",
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -16,18 +16,18 @@
       "rdfs:label": "Beckn Retail Schema Pack v2.1",
       "rdfs:comment": "Unified ontology bridge for Retail Core and domain extensions in Beckn v2.1.",
       "owl:imports": [
-        "https://schema.beckn.io/core/v2/vocab.jsonld",
-        "https://schema.beckn.io/RetailResource/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/GroceryResource/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/FoodAndBeverageResource/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/HomeAndKitchenResource/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailOffer/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/FoodAndBeverageOffer/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailPerformance/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailContract/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailCommitment/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailConsideration/v2.1/vocab.jsonld",
-        "https://schema.beckn.io/RetailSettlement/v2.1/vocab.jsonld"
+        "https://schema.nfh.global/core/v2/vocab.jsonld",
+        "https://schema.nfh.global/RetailResource/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/GroceryResource/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/FoodAndBeverageResource/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/HomeAndKitchenResource/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailOffer/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/FoodAndBeverageOffer/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailPerformance/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailContract/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailCommitment/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailConsideration/v2.1/vocab.jsonld",
+        "https://schema.nfh.global/RetailSettlement/v2.1/vocab.jsonld"
       ]
     },
     {
