@@ -18,13 +18,13 @@ components:
       properties:
         category:
           allOf:
-            - $ref: "https://schema.nfh.global/CategoryCode/v2.0#/components/schemas/CategoryCode"
+            - $ref: "https://schema.nfh.global/CategoryCode/v2.0/attributes.yaml#/components/schemas/CategoryCode"
           description: Taxonomy category code for the resource
           x-jsonld-id: "rcra:category"
         availableAt:
           type: array
           items:
-            $ref: "https://schema.nfh.global/Location/v2.0#/components/schemas/Location"
+            $ref: "https://schema.nfh.global/Location/v2.0/attributes.yaml#/components/schemas/Location"
           description: Physical locations where the resource is available
           x-jsonld-id: "rcra:availableAt"
         rateable:
@@ -106,12 +106,12 @@ components:
           properties:
             weight:
               allOf:
-                - $ref: "https://schema.nfh.global/Quantity/v2.0#/components/schemas/Quantity"
+                - $ref: "https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity"
               description: Resource weight using Beckn core Quantity
               x-jsonld-id: "rcra:weight"
             volume:
               allOf:
-                - $ref: "https://schema.nfh.global/Quantity/v2.0#/components/schemas/Quantity"
+                - $ref: "https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity"
               description: Resource volume using Beckn core Quantity
               x-jsonld-id: "rcra:volume"
             dimensions:
@@ -201,7 +201,7 @@ components:
               x-jsonld-id: "rcra:commonOrGenericName"
             netQuantity:
               allOf:
-                - $ref: "https://schema.nfh.global/Quantity/v2.0#/components/schemas/Quantity"
+                - $ref: "https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity"
               x-jsonld-id: "rcra:netQuantity"
             manufacturePackingImportDate:
               type: object

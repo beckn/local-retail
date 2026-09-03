@@ -42,7 +42,7 @@ components:
             - contact
           properties:
             address:
-              $ref: 'https://schema.nfh.global/Address/v2.0#/components/schemas/Address'
+              $ref: 'https://schema.nfh.global/Address/v2.0/attributes.yaml#/components/schemas/Address'
               x-jsonld-id: "rcpa:address"
             contact:
               type: object

@@ -32,7 +32,7 @@ components:
                     x-jsonld-id: "groc:nutrient"
                   value:
                     allOf:
-                      - $ref: "https://schema.nfh.global/Quantity/v2.0#/components/schemas/Quantity"
+                      - $ref: "https://schema.nfh.global/Quantity/v2.0/attributes.yaml#/components/schemas/Quantity"
                     description: Nutrient value using Beckn core Quantity (unitQuantity, unitCode per 100g or serving)
                     x-jsonld-id: "groc:nutritionValue"
               description: Array of nutrition facts (per 100g or serving size)
